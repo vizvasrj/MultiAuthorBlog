@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login
 
 # local
 from .models import Profile, Contact
-from .forms import LoginForm
+from .forms import LoginForm , UserRegistrationForm
 
 def user_login(request):
     if request.method == 'POST':
@@ -39,4 +39,29 @@ def user_login(request):
         request,
         'account/login.html',
         {'form': form}
+    )
+
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.set_password(
+                user_form.cleaned_data['password']
+            )
+            new_user.save()
+            Profile.objects.create(user=new_user)
+            return render(
+                request,
+                'account/register_done.html',
+                {'new_user': new_user}
+            )
+    else:
+        user_form = UserRegistrationForm()
+    return render(
+        request,
+        'account/register.html',
+        {'user_from': user_form}
     )
