@@ -1,0 +1,20 @@
+{% extends 'account_base.html' %}
+{% block title %} Login {% endblock %}
+
+{% block content %} 
+<div  class="login mt-5">
+    <h1 style="font-size: 80px;">Login</h1>
+    <p>
+        <hr>
+        <hr>
+    <hr>
+        <form action="" method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <p>
+                <input type="submit" value="Login">
+            </p>
+        </form>
+    </p>
+</div>
+{% endblock %}
