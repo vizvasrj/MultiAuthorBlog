@@ -10,7 +10,9 @@ class Profile(models.Model):
         related_name='profiles'
     )
     full_name = models.CharField(
-        max_length=100
+        max_length=100,
+        blank=True,
+        null=True
     )
     photo = models.ImageField(
         upload_to='users/%Y/%m/%d',
@@ -32,7 +34,7 @@ class Profile(models.Model):
     )
 
     def __str__(self):
-        return self.full_name
+        return str(self.user)
 
 
 class Contact(models.Model):
