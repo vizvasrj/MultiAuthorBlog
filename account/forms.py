@@ -54,8 +54,32 @@ class UserEditForm(forms.ModelForm):
         model = User
         fields = ('email',)
 
+        widgets = {
+            'email': forms.TextInput(
+                attrs={'rows': '3', 'cols': '50',
+                        'class': 'myfieldclass'}
+            ),
+        }
+
+
+
 
 class ProfileEditForm(forms.ModelForm):
+    photo = forms.ImageField(widget=forms.FileInput,)
     class Meta:
         model = Profile
         fields = ('about', 'full_name', 'photo', 'color')
+
+        widgets = {
+            'about': forms.Textarea(
+                attrs={'rows': '3', 'cols': '50',
+                        'class': 'myfieldclass'}
+            ),
+            'full_name': forms.TextInput(
+                attrs={'rows': '3', 'cols': '50',
+                        'class': 'myfieldclass'}
+            ),
+
+        }
+
+

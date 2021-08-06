@@ -1,0 +1,97 @@
+{% extends "account_base.html" %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
+{% block title %}Edit your account{% endblock title %}
+{% block color %} {% include 'blog/nav_color.html' %} {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 bg-secondary"></div>
+        <div class="col-sm-8 bg-light">
+            <div class="somealign">
+                <h1 class="maintitle">Make It Awesome</h1>
+                <div class="mb-3">
+                    <form method="POST" enctype="multipart/form-data">
+                        <!-- {{ user_form|crispy }} -->
+                        <div class="email mb-2 border-top">
+                            <label class="mt-2 labeltext" for="email" class="form-label">{{user_form.email.label}}:</label>
+                            <div class="">
+                                {{ user_form.email }}
+                            </div>
+                        </div>
+                        <!-- {{ profile_form|crispy }} -->
+                        <div class="about mb-2 border-top">
+                            <label class="mt-2 labeltext" for="about" class="form-label">{{profile_form.about.label}}:</label>
+                            <div class="">
+                                {{profile_form.about}}
+                            </div>
+                        </div>
+                        <div class="fullname mb-2 border-top">
+                            <label class="mt-2 labeltext" for="full_name" class="form-label">{{profile_form.full_name.label}}:</label>
+                            <div class="">
+                                {{profile_form.full_name}}
+                            </div>
+                        </div>
+                        <div class="photo mb-2 border-top">
+                            <label class="mt-2 labeltext" for="photo">{{profile_form.photo.label}}:</label>
+                            {{profile_form.photo}}
+                        </div>
+                            {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
+                            <img class="rounded" width="300px" id="myImg" src="{{ im.url }}" alt="your image" />
+                        <div class="colorlabelsize mb-2 border-top">
+                            <label for="color" class="mt-2 labeltext">{{profile_form.color.label}}:</label>
+                            {{profile_form.color}}
+                        </div>    
+                        {% csrf_token %}
+                        <p class="mb-2 border-top">
+                            <input class="mt-2 btn btn-primary" type="submit" value="Save changes">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 bg-secondary"></div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+<div class="container-fluid bg-dark">
+    <div class="row">
+        <div class="col-sm-4 mt-5 mb-5">
+            <h1 class="footertitle">
+                <a class="textnone" href="/">MultiUserBlog</a>
+            </h1>
+        </div>
+        <div class="col-sm-4 mt-5 mb-5">
+            <h3 class="footertitle">
+                Copyright© 2021
+            </h3>
+            <a class="linkfooter" href="/sitemap.xml">Sitemap</a>
+        </div>
+        <div class="col-sm-4 mt-5 mb-5">
+            <h4 class="footertitle d-flex flex-column">
+                Contact Me
+                <a class="linkfooter" href="mailto:root@vizvasrj.com">root@vizvasrj.com</a>
+            </h4>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block domready %}
+$(function () {
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+  });
+  
+  function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result);
+  };
+{% endblock %}

@@ -12,49 +12,68 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Palette+Mosaic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet"> 
 
+    <!-- colorfield -->
+    <script src="{% static 'colorfield/colorfield.js' %}"></script>
+    <script src="{% static 'colorfield/jscolor/jscolor.js' %}"></script>
+    <script src="{% static 'colorfield/jscolor/jscolor.min.js' %}"></script>
+  
 </head>
 <body">
-    <header class="p-3 mb-3">
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mx-2 mb-lg-0 text-dark text-decoration-none">
-            <img src="{% static 'logo/multiuserblog.svg' %}" alt="" srcset="">
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 link-dark">Overview</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand navtext" href="#">MultiUserBlog</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item text-center">
+            <a class="nav-link active navtext" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item text-center">
+            <a class="nav-link navtext" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown text-center">
+            <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item navtext" href="#">Action</a></li>
+              <li><a class="dropdown-item navtext" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider navtext"></li>
+              <li><a class="dropdown-item navtext" href="#">Something else here</a></li>
             </ul>
-    
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-              <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-            {% if request.user.is_authenticated %}
-    
-            <div class="dropdown text-end">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-            </div>
-
-            {% endif %}
-          </div>
-        </div>
-    </header>
+          </li>
+          <li class="nav-item text-center">
+            <a class="nav-link disabled navtext" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
     
     {% block content %}  {% endblock %}
+
+    {% block footer %}  {% endblock %}
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <!-- <script src="{% static 'js/popper.min.js' %}"></script> -->
 <!-- <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+
+<script>
+  {% block domready %}
+  {% endblock %}
+</script>
 
 </body>
 </html>

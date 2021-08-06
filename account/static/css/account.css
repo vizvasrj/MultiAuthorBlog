@@ -8,3 +8,57 @@
     font-weight: 400;
     color: rgb(77, 77, 77);
 }
+.somealign{
+    margin-left: 80px;
+    margin-right: 80px;
+
+}
+.maintitle {
+    font-family: Roboto;
+    font-weight: 700;
+    color: slategrey;
+}
+.colorlabelsize {
+    max-width: 300px;
+}
+.footertitle{
+    font-family: 'Palette Mosaic', cursive;
+    font-weight: 400;
+    color: rgb(55, 55, 106);
+    font-size: xx-large;
+}
+.linkfooter {
+    text-decoration: none;
+    font-family: Work Sans;
+    font-size: 20px;
+    font-weight: 400;
+}
+.textnone{
+    text-decoration: none;
+    color: inherit;
+}
+.myfieldclass {
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    color: rgb(77, 77, 77);
+    border: rgb(77, 77, 77);
+    border-style: solid;
+    background-color: inherit;
+}
+.labeltext{
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    background-color: inherit;
+    color: rgb(48, 48, 48);
+    font-size: 20px;
+
+    
+}
+
+.navtext{
+    font-family: 'Mali', cursive;
+    font-weight: 400;
+    color:rgb(41, 41, 41);
+    font-size:20px
+}
