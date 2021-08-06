@@ -48,3 +48,14 @@ class UserRegistrationForm(forms.ModelForm):
                 'Passwords dosent Matched.')
         return cd['password2']
 
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email',)
+
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('about', 'full_name', 'photo', 'color')

@@ -27,7 +27,7 @@ class Profile(models.Model):
         blank=True,
         null=True
     )
-    nav_color = ColorField(
+    color = ColorField(
         format='hexa'
     )
 
