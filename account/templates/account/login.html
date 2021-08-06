@@ -1,20 +1,26 @@
 {% extends 'account_base.html' %}
+{% load crispy_forms_tags %}
+
 {% block title %} Login {% endblock %}
 
-{% block content %} 
-<div  class="login mt-5">
-    <h1 style="font-size: 80px;">Login</h1>
-    <p>
-        <hr>
-        <hr>
-    <hr>
-        <form action="" method="POST">
+{% block content %}
+<div class="login mt-5">
+    <h1 class="headercreateaccount d-flex justify-content-center">Create account</h1>
+    <div class="d-flex mb-5 justify-content-center border">
+
+        <p>
+            <hr>
+            <hr>
+            <hr>
+        <form class="mt-5" action="" method="POST">
             {{ form.as_p }}
             {% csrf_token %}
             <p>
-                <input type="submit" value="Login">
+                <input class="btn btn-square btn-primary " type="submit" value="Login">
+                <a class="btn btn-secondary" href="{% url 'register' %}">SignUp</a>
             </p>
         </form>
-    </p>
+        </p>
+    </div>
 </div>
 {% endblock %}

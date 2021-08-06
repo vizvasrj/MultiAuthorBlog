@@ -1,10 +1,21 @@
 {% extends "account_base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}Create an account{% endblock title %}
 {% block content %}
-  <h1>Create account</h1>
-  <form method="POST">
-    {{ user_form.as_p }}
-    {% csrf_token %}
-    <p><input type="submit" value="Create"></p>
-  </form>
+<h1 class="headercreateaccount d-flex justify-content-center">Create account</h1>
+<div class="d-flex justify-content-center border">
+
+    <form class="roboto" method="POST">
+        {{ user_form|crispy }}
+        {% csrf_token %}
+        <p>
+            <input class="mt-2 btn btn-primary" type="submit" value="Create">
+            <a class="mt-2 btn btn-secondary" href="{% url 'user_login' %}">Login Here</a>
+        </p>
+
+    </form>
+</div>
+<div class="roboto already d-flex justify-content-center">
+</div>
+
 {% endblock content %}

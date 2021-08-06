@@ -9,7 +9,8 @@ from django.contrib.auth import authenticate, login
 
 # local
 from .models import Profile, Contact
-from .forms import LoginForm , UserRegistrationForm
+from .forms import LoginForm, UserRegistrationForm
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -42,14 +43,13 @@ def user_login(request):
     )
 
 
-
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(
-                user_form.cleaned_data['password']
+                user_form.cleaned_data['password1']
             )
             new_user.save()
             Profile.objects.create(user=new_user)
@@ -63,5 +63,5 @@ def register(request):
     return render(
         request,
         'account/register.html',
-        {'user_from': user_form}
+        {'user_form': user_form}
     )
