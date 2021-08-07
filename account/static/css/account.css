@@ -13,6 +13,20 @@
     margin-right: 80px;
 
 }
+@media screen and (max-width: 404px) {
+    .somealign{
+        margin-left: 8px;
+        margin-right: 8px;
+    
+    }
+    .left150px{
+
+    }
+    .right150px{
+
+    }
+    
+}
 .maintitle {
     font-family: Roboto;
     font-weight: 700;
@@ -61,4 +75,32 @@
     font-weight: 400;
     color:rgb(41, 41, 41);
     font-size:20px
+}
+/* .left150px{
+    margin-left: 150px !important
+}
+.right150px{
+    margin-right: 150px !important
+} */
+
+.fileinput {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    background-color: inherit;
+    color: rgb(48, 48, 48);
+    font-size: 20px;
+    
+}
+
+.left520px{
+    margin-left: -520px;
+}
+#id_color{
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    color: rgb(77, 77, 77);
+    border: rgb(77, 77, 77);
+    border-style: solid;
+    background-color: inherit;
 }

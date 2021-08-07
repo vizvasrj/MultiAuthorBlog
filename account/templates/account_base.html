@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load thumbnail %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,43 +24,76 @@
     <script src="{% static 'colorfield/jscolor/jscolor.min.js' %}"></script>
   
 </head>
-<body">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand navtext" href="#">MultiUserBlog</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item text-center">
-            <a class="nav-link active navtext" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item text-center">
-            <a class="nav-link navtext" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown text-center">
-            <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item navtext" href="#">Action</a></li>
-              <li><a class="dropdown-item navtext" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider navtext"></li>
-              <li><a class="dropdown-item navtext" href="#">Something else here</a></li>
+<body class="bg-light">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light left150px">
+      <div class="container-fluid">
+        <a class="navbar-brand navtext" href="#">MultiUserBlog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item text-center">
+              <a class="nav-link active navtext" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item text-center">
+              <a class="nav-link navtext" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown text-center">
+              <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item navtext" href="#">Action</a></li>
+                <li><a class="dropdown-item navtext" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider navtext"></li>
+                <li><a class="dropdown-item navtext" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item text-center">
+              <a class="nav-link disabled navtext" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+            {% if request.user.is_authenticated %}
+            <!-- Settings Profile -->
+            <ul class="navbar-nav right150px mb-2 mb-lg-0">
+              <li class="nav-item dropdown text-center">
+                <a class="nav-link dropdown" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
+                  {% thumbnail request.user.profiles.photo 30x30 crop as avatar %}
+                  <img class="rounded" width="30px" src="{{ avatar.url }}" alt="">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                  <li><a class="dropdown-item" href="{ % url 'user_detail' request.user.username % } ">{{ request.user.username }}</a></li>
+                  <li><a class="dropdown-item" href="{% url 'edit' %}">Manage profile</a></li>
+                  <li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                  <li><a class="dropdown-item" href="{ % url 'blog:post_new' % }">Create Post</a></li>
+        
+                  <li><a class="dropdown-item" href="{ % url 'dashboard' % }">Dashbord</a></li>
+        
+        
+                </ul>
+              </li>
+    
             </ul>
-          </li>
-          <li class="nav-item text-center">
-            <a class="nav-link disabled navtext" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+            <!-- { % include "account/user/profile.html" % } -->
+      
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+      
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  
+  </div>
     
     {% block content %}  {% endblock %}
 

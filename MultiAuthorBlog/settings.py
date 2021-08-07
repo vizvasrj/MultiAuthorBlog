@@ -134,3 +134,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/edit/'
+
+
+# fixing Errors 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
