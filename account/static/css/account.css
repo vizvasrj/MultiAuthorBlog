@@ -93,7 +93,7 @@
 }
 
 .left520px{
-    margin-left: -520px;
+    margin-left: -380px;
 }
 #id_color{
     font-family: 'Varela Round', sans-serif;
@@ -103,4 +103,12 @@
     border: rgb(77, 77, 77);
     border-style: solid;
     background-color: inherit;
+}
+.listnone{
+    list-style: none;
+}
+.footer {
+    bottom: 0;
+    position: absolute;
+    display: block;
 }

@@ -6,11 +6,35 @@
 <div class="d-flex justify-content-center border">
 
     <form class="roboto" method="POST">
-        {{ user_form|crispy }}
-        {% csrf_token %}
+        <div class="fullname mb-2 border-top">
+            <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.email.label}}:</label>
+            <div class="">
+                {{user_form.email}}
+            </div>
+        </div>
+        <div class="fullname mb-2 border-top">
+            <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.username.label}}:</label>
+            <div class="">
+                {{user_form.username}}
+            </div>
+        </div>
+        <div class="fullname mb-2 border-top">
+            <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.password1.label}}:</label>
+            <div class="">
+                {{user_form.password1}}
+            </div>
+        </div>
+        <div class="fullname mb-2 border-top">
+            <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.password2.label}}:</label>
+            <div class="">
+                {{user_form.password2}}
+            </div>
+        </div>
+
+{% csrf_token %}
         <p>
             <input class="mt-2 btn btn-primary" type="submit" value="Create">
-            <a class="mt-2 btn btn-secondary" href="{% url 'user_login' %}">Login Here</a>
+            <a class="mt-2 btn btn-secondary" href="{% url 'login' %}">Login Here</a>
         </p>
 
     </form>
@@ -19,3 +43,27 @@
 </div>
 
 {% endblock content %}
+
+{% block footer %}
+<div class="container-fluid bg-dark">
+    <div class="row">
+        <div class="col-sm-4 mt-5 mb-5">
+            <h1 class="footertitle">
+                <a class="textnone" href="/">MultiUserBlog</a>
+            </h1>
+        </div>
+        <div class="col-sm-4 mt-5 mb-5">
+            <h3 class="footertitle">
+                Copyright© 2021
+            </h3>
+            <a class="linkfooter" href="/sitemap.xml">Sitemap</a>
+        </div>
+        <div class="col-sm-4 mt-5 mb-5">
+            <h4 class="footertitle d-flex flex-column">
+                Contact Me
+                <a class="linkfooter" href="mailto:root@vizvasrj.com">root@vizvasrj.com</a>
+            </h4>
+        </div>
+    </div>
+</div>
+{% endblock %}

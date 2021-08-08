@@ -1,8 +1,46 @@
 {% extends "account_base.html" %}
 {% block title %}Welcome{% endblock title %}
 {% block content %}
-  <h1 class="info">Welcome {{ new_user.first_name }}!</h1>
-  <p>Your account has been successfully created. Now your can 
-      <a href="{% url 'login' %}">Login</a>
-  </p>
-{% endblock content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 bg-light"></div>
+        <div class="col-sm-8 bg-light">
+            <div class="somealign">
+                <h1 class="maintitle">Work! Work! Work!</h1>
+                <div class="mb-3">
+                    <h1 class="title">Welcome your email {{ new_user.email }} and username is {{ new_user.username }}!</h1>
+                    <p class="paragraph">Your account has been successfully created. Now your can 
+                        <a href="{% url 'login' %}">Login</a>
+                    </p>
+                    <p class="paragraph">But First you have to Verify your account</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 bg-light"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="container-fluid bg-dark footer">
+    <div class="row">
+        <div class="col-sm-4 mt-5 mb-5">
+            <h1 class="footertitle">
+                <a class="textnone" href="/">MultiUserBlog</a>
+            </h1>
+        </div>
+        <div class="col-sm-4 mt-5 mb-5">
+            <h3 class="footertitle">
+                Copyright© 2021
+            </h3>
+            <a class="linkfooter" href="/sitemap.xml">Sitemap</a>
+        </div>
+        <div class="col-sm-4 mt-5 mb-5">
+            <h4 class="footertitle d-flex flex-column">
+                Contact Me
+                <a class="linkfooter" href="mailto:root@vizvasrj.com">root@vizvasrj.com</a>
+            </h4>
+        </div>
+    </div>
+</div>
+{% endblock %}

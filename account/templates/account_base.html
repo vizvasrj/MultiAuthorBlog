@@ -56,8 +56,8 @@
             </li>
           </ul>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input class="form-control me-2 navtext" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success navtext" type="submit">Search</button>
           </form>
             {% if request.user.is_authenticated %}
             <!-- Settings Profile -->
@@ -80,13 +80,17 @@
                 </ul>
               </li>
     
+              <!-- { % include "account/user/profile.html" % } -->
+        
+              {% else %}
+              <li class="listnone nav-item">
+                <a class="nav-link navtext" href="{% url 'login' %}">Login</a>
+              </li>
+              <li class="listnone nav-item">
+                <a class="nav-link navtext" href="{% url 'register' %}">SignUp</a>
+              </li>
+
             </ul>
-            <!-- { % include "account/user/profile.html" % } -->
-      
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </li>
             {% endif %}
       
         </div>

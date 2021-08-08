@@ -5,6 +5,9 @@ from django.contrib.auth import views as auth_views
 
 # local
 from . import views
+from .forms import (
+    UserPasswordResetForm, UserPasswordChangeForm
+)
 
 urlpatterns = [
     path('',
@@ -18,18 +21,28 @@ urlpatterns = [
          auth_views.LogoutView.as_view(
              template_name='registration/logout.html'
          ), name='logout'),
-    path('password_change/',
-         auth_views.PasswordChangeView.as_view(),
-         name='password_change'),
+
+    # path('password_change/',
+    #      auth_views.PasswordChangeView.as_view(),
+    #      name='password_change'),
+
+    path('password_change/', auth_views.PasswordChangeView.as_view(
+        template_name='registration/password_change_form.html',
+        form_class=UserPasswordChangeForm), name='password_change'),
+
 
     path('password_change/done/',
          auth_views.PasswordChangeDoneView.as_view(),
          name='password_change_done'),
 
     # Reset password urls
-    path('password_reset/',
-         auth_views.PasswordResetView.as_view(),
-         name='password_reset'),
+    # path('password_reset/',
+    #      auth_views.PasswordResetView.as_view(),
+    #      name='password_reset'),
+
+    path('password_reset/', auth_views.PasswordResetView.as_view(
+        template_name='registration/password_reset_form.html',
+        form_class=UserPasswordResetForm), name='password_reset'),
 
     path('password_reset/done/',
          auth_views.PasswordResetDoneView.as_view(),
@@ -45,6 +58,7 @@ urlpatterns = [
 
     path('register/',
          views.register, name='register'),
+         
     path('edit/', views.edit, name='edit'),
 
 

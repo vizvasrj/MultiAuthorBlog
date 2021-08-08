@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # 3rd party
 
@@ -109,4 +110,13 @@ def edit(request):
             'user_form': user_form,
             'profile_form': profile_form
         }
+    )
+
+
+def user_list(request):
+    users = User.objects.filter(is_active=True)
+    return render(
+        request,
+        'account/user/list.html',
+        {'users': users}
     )
