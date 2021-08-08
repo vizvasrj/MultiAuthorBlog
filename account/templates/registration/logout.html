@@ -1,0 +1,23 @@
+{% extends "account_base.html" %}
+{% block title %}
+  Logged out
+{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 bg-light">
+      <h1 class="maintitle">Logged out</h1>
+      <hr>
+      <p class="labeltext">
+          You have been successfully logged out.
+          You can <a class="linkfooter" href="{% url 'login' %}">Login again</a>
+      </p>
+        </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+
+{% endblock %}

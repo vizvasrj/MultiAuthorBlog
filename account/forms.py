@@ -12,10 +12,19 @@ from .models import Profile
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(
-        widget=forms.PasswordInput
-    )
+    username = forms.CharField(label='Username', widget=forms.PasswordInput(attrs={
+        'class': 'myfieldclass',
+        'placeholder': 'Username',
+        'type': 'text',
+        'name': 'username'
+    }))
+
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={
+        'class': 'myfieldclass',
+        'placeholder': 'Password',
+        'type': 'password',
+        'name': 'password'
+    }))
 
 
 class UserRegistrationForm(forms.ModelForm):
