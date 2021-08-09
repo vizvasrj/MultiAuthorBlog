@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+
+
 from colorfield.fields import ColorField
 
 class Profile(models.Model):
@@ -35,6 +37,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def get_absolute_url(self):
+        return self.user
 
 
 class Contact(models.Model):

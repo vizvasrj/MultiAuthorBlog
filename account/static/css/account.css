@@ -120,10 +120,36 @@
     text-align: center;
 }
 
+
 section {
     height: 100%;
 }
 
 .wrapper {
     min-height: 100%;
+}
+.circle100{
+    border-radius: 100px;
+    background-color: khaki;
+    border-radius: 10px;
+}
+
+.little_about{
+    font-family: Work Sans;
+    font-weight: 400;
+    color: rgb(77, 77, 77);
+    font-size: 16px;
+}
+.shift_right {
+    margin-right: 10px;
+    margin-left: 20px
+}
+
+.usernametext {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 800;
+    background-color: inherit;
+    color: rgb(48, 48, 48);
+    font-size: 20px;
+
 }
