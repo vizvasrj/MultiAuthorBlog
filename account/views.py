@@ -6,6 +6,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.core.paginator import (
+    EmptyPage,
+    PageNotAnInteger,
+    Paginator)
 
 # 3rd party
 
@@ -114,7 +118,24 @@ def edit(request):
 
 
 def user_list(request):
-    users = User.objects.filter(is_active=True)
+    object_list = User.objects.filter(is_active=True)
+    paginator = Paginator(object_list, 5)
+    page = request.GET.get('page')
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            return HttpResponse('')
+        users = paginator.page(paginator.num_pages)
+    if request.is_ajax():
+        return render(
+            request,
+            'account/user/user_list.html',
+            {'users': users}
+        )
+
     return render(
         request,
         'account/user/list.html',

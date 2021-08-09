@@ -9,24 +9,35 @@
         <div class="col-sm-2 bg-secondary"></div>
         <div class="col-sm-8 bg-light">
             <div class="somealign">
-                <h1 class="maintitle">Make It Awesome</h1>
-                {% for user in users %}
-                <div class="mb-3">
-                    <div class="border d-flex flex-row">
-                        <a class="d-flex linkfooter" href="/{{user.profiles.get_absolute_url}}">
-                            {% thumbnail user.profiles.photo "100x100" crop="100%" as im %}
-                            <img class=" rounded-circle" width="100px" src="{{im.url}}" class="img-thumbnail">
-                            <div class="d-flex flex-column shift_right">
-                                <p class="d-flex usernametext ">{{ user }}</p>
-                                <p class="d-flex little_about ">{{ user.profiles.about }}</p>
-                            </div>
-                        </a>
-                    </div>
+                <h1 class="maintitle">Users List</h1>
+                <div id="user-list">
+                    {% include "account/user/user_list.html" %}
                 </div>
-                {% endfor %}
             </div>
         </div>
         <div class="col-sm-2 bg-secondary"></div>
     </div>
 </div>
+{% endblock %}
+
+{% block domready %} 
+var page=1;
+var empty_page=false;
+var block_request=false;
+
+$(window).scroll(function () {
+    var margin = $(document).height() - $(window).height() - 200;
+    if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+        block_request = true;
+        page += 1;
+        $.get('?page=' + page, function (data) {
+            if (data == '') {
+                empty_page = true;
+            } else {
+                block_request = false;
+                $('#user-list').append(data);
+            }
+        });
+    }
+});
 {% endblock %}

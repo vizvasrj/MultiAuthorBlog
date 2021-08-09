@@ -1,0 +1,15 @@
+{% load thumbnail %}
+{% for user in users %}
+<div class="mb-3">
+    <div class="border d-flex flex-row">
+        <a class="d-flex linkfooter" href="/{{user.profiles.get_absolute_url}}">
+            {% thumbnail user.profiles.photo "100x100" crop="100%" as im %}
+            <img class=" rounded-circle" width="100px" src="{{im.url}}" class="img-thumbnail">
+            <div class="d-flex flex-column shift_right">
+                <p class="d-flex usernametext ">{{ user }}</p>
+                <p class="d-flex little_about ">{{ user.profiles.about }}</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endfor %}
