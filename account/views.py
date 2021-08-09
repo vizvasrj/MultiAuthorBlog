@@ -10,6 +10,7 @@ from django.core.paginator import (
     EmptyPage,
     PageNotAnInteger,
     Paginator)
+from django.shortcuts import get_object_or_404
 
 # 3rd party
 
@@ -140,4 +141,16 @@ def user_list(request):
         request,
         'account/user/list.html',
         {'users': users}
+    )
+
+def user_detail(request, username):
+    user = get_object_or_404(
+        User,
+        username=username,
+        is_active=True
+    )
+    return render(
+        request,
+        'account/user/detail.html',
+        {'user': user}
     )
