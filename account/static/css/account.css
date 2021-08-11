@@ -228,3 +228,12 @@ section {
     width: inherit;
     width: 100%;
 }
+
+.small_square_image{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+}
+.fallowers_name{
+    vertical-align: inherit;
+    display: inline;
+}
