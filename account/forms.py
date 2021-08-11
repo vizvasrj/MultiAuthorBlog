@@ -28,14 +28,6 @@ class LoginForm(forms.Form):
 
 
 class UserRegistrationForm(forms.ModelForm):
-    # password1 = forms.CharField(
-    #     label='Password',
-    #     widget=forms.PasswordInput
-    # )
-    # password2 = forms.CharField(
-    #     label='Repeat password',
-    #     widget=forms.PasswordInput
-    # )
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={
         'class': 'myfieldclass',
         'placeholder': 'Password ...',
@@ -68,15 +60,6 @@ class UserRegistrationForm(forms.ModelForm):
         model = User
         fields = ('username', 'email')
         
-
-        # widgets = {
-        #     'email': forms.TextInput(
-        #         attrs={'value': '', 'class': 'myfieldclass'}
-        #     ),
-        #     'username': forms.TextInput(
-        #         attrs={'value': '', 'class': 'myfieldclass'}
-        #     )
-        # }
         help_texts = {
             'username': '',
         }
