@@ -6,73 +6,119 @@
 
 {% block title %} {{ user.profiles.full_name }} {% endblock %}
 
-{% block content %} 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3 mt-5">
-                <div class="userinfo">
-                    <h2 class="userfullname">{{ user.profiles.full_name }}</h2>
-                    <h3 class="userabout">{{ user.profiles.about }}</h3>
-                    {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
-                    <img class="col-sm-12" src="{{im.url}}" class="src">
-                </div>
-                {% if request.user.is_authenticated %}
-                    {% if request.user.id != user.id %}
-                        <a href="#" data-id="{{ user.id }}" data-action="
-                            {% if request.user in user.followers.all %}
-                            un{% endif %}follow" class="btn btn-success">
-                            {% if request.user not in user.followers.all %}
-                                Fallow
-                            {% else %}
-                                Following
-                            {% endif %}
-                        </a>
-                    {% endif %}    
-                {% else %}
-                <a href="/account/login?next={{ request.path }}"
-                class="btn-btn-success">
-                </a>
-                {% endif %}
-                <div class="theyfallow">
-                    <h2 class="fallowers">
-                        <li class="listnone">
-                            Fallowers
-                        </li>
-                        <li class="listnone">
-                            <h5 class="fallowers_name">User one</h5>
-                            <h5 class="fallowers_name">User Two</h5>
-                            <h5 class="fallowers_name">User Three</h5>
-                        </li>
-                    </h2>
-                </div>
-                <div class="ifallow">
-                    <h2 class="fallowers">
-                        <li class="listnone">
-                            I Fallow
-                        </li>
-                        <li class="listnone">
-                            <h5 class="fallowers_name">Fa one</h5>
-                            <h5 class="fallowers_name">Ba Two</h5>
-                            <h5 class="fallowers_name">Ca Three</h5>
-                        </li>
-                    </h2>
-                </div>
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 mt-5">
+            <div class="userinfo">
+                <h2 class="userfullname">{{ user.profiles.full_name }}</h2>
+                <h3 class="userabout">{{ user.profiles.about }}</h3>
+                {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
+                <img class="col-sm-12" src="{{im.url}}" class="src">
             </div>
-            <div class="col-sm-6 theirposts mt-5">
-                <div class="">
-                    <h3 class="post_title">Post Title: !st August 1978</h3>
-                </div>
-                <img class="col-sm-12 post-image" src="{% static 'image/demo.jpg' %}" alt="">
-                <p class="post_body mt-1">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nihil velit quisquam, commodi debitis neque possimus architecto fugiat perferendis laboriosam maiores dolor recusandae fugit beatae exercitationem, quam accusantium sit ut?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam alias iusto facere unde, nihil sequi voluptatem, voluptatum tempora sit cum excepturi eveniet sed adipisci laborum sunt ab aliquam. Amet, quae.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, rerum quis perferendis vitae incidunt eius quo vero mollitia laudantium dolorum quisquam sequi libero et nemo praesentium minima consectetur molestias temporibus.
-                </p>
+            {% if request.user.is_authenticated %}
+            <div id="csrf_token">
+                {% csrf_token %}
+            </div>
+            {% if request.user.id != user.id %}
+            <a href="#" data-url="{% url 'user_follow' %}" data-id="{{ user.id }}"
+                data-action="{% if request.user in user.followers.all %}un{% endif %}follow"
+                class="follow btn btn-success rounded-pill">
+                {% if request.user not in user.followers.all %}
+                Follow
+                {% else %}
+                Following
+                {% endif %}
+            </a>
+            {% endif %}
+            {% else %}
+            <a href="/account/login/?next={{ request.path }}" class="btn btn-success rounded-pill">Follow</a>
+            {% endif %}
+            <div class="theyfallow">
+                <h2 class="fallowers">
+                    <li class="listnone mx-1">
+                        Fallowers
+                    </li>
+                    <li class="listnone">
+                        {% for l in user.rel_to_set.all|slice:":5" %}
+                        <div class="d-flex flex-row">
+                            {% thumbnail l.user_from.profiles.photo 40x40 crop as im %}
+                            <div class="d-flex mt-1">
+                                <a href="/{{ l.user_from.profiles.get_absolute_url }}">
+                                    <img class="small_square_image mx-2" width="40px" src="{{ im.url }}">
+                                </a>
+                            </div>
+                            <div class="d-flex mt-1">
+                                <a href="/{{ l.user_from.profiles.get_absolute_url }}" class="textnone ">
+                                    <h5 class="fallowers_name">{{l.user_from.profiles}}</h5>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% if user.followers.count > 6 %}
+                        <div class="col-sm-2 mx-2 mt-3">
+                            <a href="" class="textnone">
+                                <h5 class="">more({{user.followers.count|add:"-5"}})</h5>
+                            </a>
+                        </div>
+                        {% endif %}
+
+                    </li>
+                </h2>
+            </div>
+            <div class="ifallow">
+                <h2 class="fallowers">
+                    <li class="listnone mx-1">
+                        I follows
+                    </li>
+                    <li class="listnone">
+                        {% for l in user.rel_from_set.all|slice:":5" %}
+                        <div class="d-flex flex-row">
+                            {% thumbnail l.user_to.profiles.photo 40x40 crop as im %}
+                            <div class="d-flex mt-1">
+                                <a href="/{{ l.user_to.profiles.get_absolute_url }}">
+                                    <img class="small_square_image mx-2" width="40px" src="{{ im.url }}">
+                                </a>
+                            </div>
+                            <div class="d-flex mt-1">
+                                <a href="/{{ l.user_to.profiles.get_absolute_url }}" class="textnone ">
+                                    <h5 class="fallowers_name">{{l.user_to.profiles}}</h5>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% if user.following.count > 6 %}
+                        <div class="col-sm-2 mx-2 mt-3">
+                            <a href="" class="textnone">
+                                <h5 class="">more({{user.following.count|add:"-5"}})</h5>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </li>
+                </h2>
             </div>
         </div>
+        <div class="col-sm-6 theirposts mt-5">
+            <div class="">
+                <h3 class="post_title">Post Title: !st August 1978</h3>
+            </div>
+            <img class="col-sm-12 post-image" src="{% static 'image/demo.jpg' %}" alt="">
+            <p class="post_body mt-1">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nihil velit quisquam, commodi
+                debitis neque possimus architecto fugiat perferendis laboriosam maiores dolor recusandae fugit beatae
+                exercitationem, quam accusantium sit ut?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam alias iusto facere unde, nihil sequi
+                voluptatem, voluptatum tempora sit cum excepturi eveniet sed adipisci laborum sunt ab aliquam. Amet,
+                quae.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, rerum quis perferendis vitae
+                incidunt eius quo vero mollitia laudantium dolorum quisquam sequi libero et nemo praesentium minima
+                consectetur molestias temporibus.
+            </p>
+        </div>
     </div>
+</div>
 {% endblock %}
 
-{% block script %} 
+{% block script %}
 <script src="{% static 'js/fallow.js' %}"></script>
 {% endblock %}
