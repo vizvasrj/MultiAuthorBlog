@@ -1,9 +1,11 @@
 $(document).ready(function () {
+    var csrfToken = $("input[name=csrfmiddlewaretoken]").val();
   $("a.follow").click(function (e) {
     e.preventDefault();
     $.post(
-      '{% url "user_follow" %}',
+        $(this).data("url"),
       {
+        csrfmiddlewaretoken: csrfToken,
         id: $(this).data("id"),
         action: $(this).data("action"),
       },
