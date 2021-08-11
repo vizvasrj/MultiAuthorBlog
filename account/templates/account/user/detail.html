@@ -1,0 +1,78 @@
+{% extends "account_base.html" %}
+
+{% load thumbnail %}
+
+{% load static %}
+
+{% block title %} {{ user.profiles.full_name }} {% endblock %}
+
+{% block content %} 
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 mt-5">
+                <div class="userinfo">
+                    <h2 class="userfullname">{{ user.profiles.full_name }}</h2>
+                    <h3 class="userabout">{{ user.profiles.about }}</h3>
+                    {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
+                    <img class="col-sm-12" src="{{im.url}}" class="src">
+                </div>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.id != user.id %}
+                        <a href="#" data-id="{{ user.id }}" data-action="
+                            {% if request.user in user.followers.all %}
+                            un{% endif %}follow" class="btn btn-success">
+                            {% if request.user not in user.followers.all %}
+                                Fallow
+                            {% else %}
+                                Following
+                            {% endif %}
+                        </a>
+                    {% endif %}    
+                {% else %}
+                <a href="/account/login?next={{ request.path }}"
+                class="btn-btn-success">
+                </a>
+                {% endif %}
+                <div class="theyfallow">
+                    <h2 class="fallowers">
+                        <li class="listnone">
+                            Fallowers
+                        </li>
+                        <li class="listnone">
+                            <h5 class="fallowers_name">User one</h5>
+                            <h5 class="fallowers_name">User Two</h5>
+                            <h5 class="fallowers_name">User Three</h5>
+                        </li>
+                    </h2>
+                </div>
+                <div class="ifallow">
+                    <h2 class="fallowers">
+                        <li class="listnone">
+                            I Fallow
+                        </li>
+                        <li class="listnone">
+                            <h5 class="fallowers_name">Fa one</h5>
+                            <h5 class="fallowers_name">Ba Two</h5>
+                            <h5 class="fallowers_name">Ca Three</h5>
+                        </li>
+                    </h2>
+                </div>
+            </div>
+            <div class="col-sm-6 theirposts mt-5">
+                <div class="">
+                    <h3 class="post_title">Post Title: !st August 1978</h3>
+                </div>
+                <img class="col-sm-12 post-image" src="{% static 'image/demo.jpg' %}" alt="">
+                <p class="post_body mt-1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nihil velit quisquam, commodi debitis neque possimus architecto fugiat perferendis laboriosam maiores dolor recusandae fugit beatae exercitationem, quam accusantium sit ut?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam alias iusto facere unde, nihil sequi voluptatem, voluptatum tempora sit cum excepturi eveniet sed adipisci laborum sunt ab aliquam. Amet, quae.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, rerum quis perferendis vitae incidunt eius quo vero mollitia laudantium dolorum quisquam sequi libero et nemo praesentium minima consectetur molestias temporibus.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %} 
+<script src="{% static 'js/fallow.js' %}"></script>
+{% endblock %}
