@@ -23,7 +23,7 @@
             {% if request.user.id != user.id %}
             <a href="#" data-url="{% url 'user_follow' %}" data-id="{{ user.id }}"
                 data-action="{% if request.user in user.followers.all %}un{% endif %}follow"
-                class="follow btn btn-success rounded-pill">
+                class="follow btn btn-outline-primary mt-1">
                 {% if request.user not in user.followers.all %}
                 Follow
                 {% else %}

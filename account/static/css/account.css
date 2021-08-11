@@ -237,3 +237,22 @@ section {
     vertical-align: inherit;
     display: inline;
 }
+.follow{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: #3D997055;
+    color: #01111155;
+}
+.follow:hover{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: #3D997055;
+    color: royalblue;
+}
+
