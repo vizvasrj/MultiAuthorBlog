@@ -154,3 +154,5 @@ def user_detail(request, username):
         'account/user/detail.html',
         {'user': user}
     )
+    
+
