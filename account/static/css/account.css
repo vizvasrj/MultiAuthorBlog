@@ -74,16 +74,18 @@
 .navtext {
     font-family: 'Roboto Mono', monospace;
     font-weight: 400;
-    color: rgb(41, 41, 41);
-    font-size: 16px
+    color: hsla(210, 100%, 75%, 1.0);
+    font-size: 16px;
+    background: #001f3f;
 }
-
-/* .left150px{
-    margin-left: 150px !important
+.navtext:valid {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    color: rgb(70, 162, 255);
+    font-size: 16px;
+    background: #001f3f;
+    
 }
-.right150px{
-    margin-right: 150px !important
-} */
 
 .fileinput {
     font-family: 'Questrial', sans-serif;
@@ -256,3 +258,11 @@ section {
     color: royalblue;
 }
 
+.navbackgroundcolor{
+    background-color: #001f3f;
+}
+.realborder{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+
+}
