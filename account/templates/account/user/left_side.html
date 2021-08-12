@@ -1,0 +1,90 @@
+{% load thumbnail %}
+<div class="col-sm-3 mt-5">
+    <div class="userinfo">
+        <h2 class="userfullname">{{ user.profiles.full_name }}</h2>
+        <h3 class="userabout">{{ user.profiles.about }}</h3>
+        {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
+        <img class="col-sm-12" src="{{im.url}}" class="src">
+    </div>
+    {% if request.user.is_authenticated %}
+    <div id="csrf_token">
+        {% csrf_token %}
+    </div>
+    {% if request.user.id != user.id %}
+    <a href="#" data-url="{% url 'user_follow' %}" data-id="{{ user.id }}"
+        data-action="{% if request.user in user.followers.all %}un{% endif %}follow"
+        class="follow btn btn-outline-primary mt-1">
+        {% if request.user not in user.followers.all %}
+        Follow
+        {% else %}
+        Following
+        {% endif %}
+    </a>
+    {% endif %}
+    {% else %}
+    <a href="/login/?next={{ request.path }}" class="followsignup btn btn-outline-primary mt-1">Follow</a>
+    {% endif %}
+    <div class="theyfallow">
+        <h2 class="fallowers">
+            <li class="listnone followers">
+                <h3 class="mx-1">Followers</h3>
+            </li>
+            <li class="listnone followers_list">
+                {% for l in user.rel_to_set.all|slice:":5" %}
+                <div class="d-flex flex-row">
+                    {% thumbnail l.user_from.profiles.photo 40x40 crop as im %}
+                    <div class="d-flex">
+                        <a class="mt-1 mb-1" href="/{{ l.user_from.profiles.get_absolute_url }}">
+                            <img class="small_square_image mx-2" width="40px" src="{{ im.url }}">
+                        </a>
+                    </div>
+                    <div class="d-flex ">
+                        <a class="textnone littledark" href="/{{ l.user_from.profiles.get_absolute_url }}">
+                            <h5 class="fallowers_name">{{l.user_from.profiles}}</h5>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% if user.followers.count > 5 %}
+                <div class="col-sm-2 mx-2 mt-3">
+                    <a href="{% url 'user_follower' user %}" class="textnone littledark">
+                        <h5 class="">more({{user.followers.count|add:"-5"}})</h5>
+                    </a>
+                </div>
+                {% endif %}
+
+            </li>
+        </h2>
+    </div>
+    <div class="ifallow">
+        <h2 class="fallowers">
+            <li class="listnone followings">
+                <h3 class="mx-1">Followings</h3>
+            </li>
+            <li class="listnone followings_list">
+                {% for l in user.rel_from_set.all|slice:":5" %}
+                <div class="d-flex flex-row">
+                    {% thumbnail l.user_to.profiles.photo 40x40 crop as im %}
+                    <div class="d-flex mt-1">
+                        <a class="mt-1 mb-1" href="/{{ l.user_to.profiles.get_absolute_url }}">
+                            <img class="small_square_image mx-2" width="40px" src="{{ im.url }}">
+                        </a>
+                    </div>
+                    <div class="d-flex mt-1">
+                        <a class="textnone littledark" href="/{{ l.user_to.profiles.get_absolute_url }}">
+                            <h5 class="fallowers_name">{{l.user_to.profiles}}</h5>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% if user.following.count > 6 %}
+                <div class="col-sm-2 mx-2 mt-3">
+                    <a href="{% url 'user_following' user %}" class="textnone littledark">
+                        <h5 class="">more({{user.following.count|add:"-5"}})</h5>
+                    </a>
+                </div>
+                {% endif %}
+            </li>
+        </h2>
+    </div>
+</div>
