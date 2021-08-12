@@ -229,5 +229,35 @@ def user_following(request, username):
     return render(
         request,
         'account/user/following.html',
-        {'following': following}
+        {'following': following, 'user': user}
+    )
+
+
+def user_follower(request, username):
+    user = get_object_or_404(
+        User,
+        username=username,
+        is_active=True
+    )
+    object_list = user.rel_to_set.all()
+    paginator = Paginator(object_list, 5)
+    page = request.GET.get('page')
+    try:
+        follower = paginator.page(page)
+    except PageNotAnInteger:
+        follower = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            return HttpResponse('')
+        follower = paginator.page(paginator.num_pages)
+    if request.is_ajax():
+        return render(
+            request,
+            'account/user/follower_list.html',
+            {'follower': follower}
+        )
+    return render(
+        request,
+        'account/user/follower.html',
+        {'follower': follower, 'user': user}
     )

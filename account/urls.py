@@ -73,7 +73,10 @@ urlpatterns = [
 
     path('my/profile/', views.me, name='my_profile'),
 
-     path('<str:username>/following/',
-          views.user_following, name='user_following'),
+    path('<str:username>/following/',
+         views.user_following, name='user_following'),
+
+    path('<str:username>/follower/',
+         views.user_follower, name='user_follower'),
 
 ]
