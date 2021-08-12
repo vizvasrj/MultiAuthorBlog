@@ -1,0 +1,44 @@
+{% extends "account_base.html" %}
+{% load thumbnail %}
+
+{% block title %} Users {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="somealign">
+                <h1 class="maintitle">Following</h1>
+                <div id="user-list">
+                    {% include "account/user/following_list.html" %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block domready %} 
+var page=1;
+var empty_page=false;
+var block_request=false;
+
+$(window).scroll(function () {
+    var margin = $(document).height() - $(window).height() - 200;
+    if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+        block_request = true;
+        page += 1;
+        $.get('?page=' + page, function (data) {
+            if (data == '') {
+                empty_page = true;
+            } else {
+                block_request = false;
+                $('#user-list').append(data);
+            }
+        });
+    }
+});
+{% endblock %}
+
