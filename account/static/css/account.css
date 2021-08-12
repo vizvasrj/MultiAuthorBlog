@@ -141,6 +141,7 @@ section {
     font-weight: 400;
     color: rgb(77, 77, 77);
     font-size: 16px;
+    margin-top: -20px;
 }
 .shift_right {
     margin-right: 10px;
@@ -255,7 +256,7 @@ section {
     font-weight: 400;
     font-size: 25px;
     background-color: #3D997055;
-    color: royalblue;
+    color: rgb(37, 37, 37);
 }
 
 .navbackgroundcolor{
@@ -265,4 +266,45 @@ section {
     border: rgb(48, 48, 48);
     border-style: solid;
 
+}
+.followers{
+    background-color: #FF851B;
+    color: hsla(28, 100%, 20%, 1.0);
+}
+.followers_list{
+    background-color: #F012BE;
+    color: hsla(314, 88%, 21%, 1.0);
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+.followings{
+    background-color: #FFDC00;
+    color: hsla(52, 100%, 20%, 1.0);
+}
+.followings_list{
+    background-color: #B10DC9;
+    color: hsla(292, 88%, 82%, 1.0);
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+.littledark:hover{
+    color: black;
+}
+.followsignup {
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: #3D997055;
+    color: #01111155;
+}
+.followsignup:hover{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: #3D997055;
+    color: rgb(37, 37, 37);
 }
