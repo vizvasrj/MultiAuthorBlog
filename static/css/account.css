@@ -1,0 +1,310 @@
+.headercreateaccount {
+    font-family: Work Sans;
+    font-weight: 700;
+    color: rgb(41, 41, 41);
+}
+
+.roboto {
+    font-family: Roboto;
+    font-weight: 400;
+    color: rgb(77, 77, 77);
+}
+
+.somealign {
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+@media screen and (max-width: 404px) {
+    .somealign {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    .left150px {}
+    .right150px {}
+}
+
+.maintitle {
+    font-family: Roboto;
+    font-weight: 700;
+    color: slategrey;
+}
+
+.colorlabelsize {
+    max-width: 300px;
+}
+
+.footertitle {
+    font-family: 'Palette Mosaic', cursive;
+    font-weight: 400;
+    color: rgb(55, 55, 106);
+    font-size: xx-large;
+}
+
+.linkfooter {
+    text-decoration: none;
+    font-family: Work Sans;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.textnone {
+    text-decoration: none;
+    color: inherit;
+}
+
+.myfieldclass {
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    color: rgb(77, 77, 77);
+    border: rgb(77, 77, 77);
+    border-style: solid;
+    background-color: inherit;
+}
+
+.labeltext {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    background-color: inherit;
+    color: rgb(48, 48, 48);
+    font-size: 20px;
+}
+
+.navtext {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    color: hsla(210, 100%, 75%, 1.0);
+    font-size: 16px;
+    background: #001f3f;
+}
+.navtext:valid {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    color: rgb(70, 162, 255);
+    font-size: 16px;
+    background: #001f3f;
+    
+}
+
+.fileinput {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    background-color: inherit;
+    color: rgb(48, 48, 48);
+    font-size: 20px;
+}
+
+.left520px {
+    margin-left: -380px;
+}
+
+#id_color {
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    color: rgb(77, 77, 77);
+    border: rgb(77, 77, 77);
+    border-style: solid;
+    background-color: inherit;
+}
+
+.listnone {
+    list-style: none;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+
+section {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+}
+.circle100{
+    border-radius: 100px;
+    background-color: khaki;
+    border-radius: 10px;
+}
+
+.little_about{
+    font-family: Work Sans;
+    font-weight: 400;
+    color: rgb(77, 77, 77);
+    font-size: 16px;
+    margin-top: -20px;
+}
+.shift_right {
+    margin-right: 10px;
+    margin-left: 20px
+}
+
+.usernametext {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 800;
+    background-color: inherit;
+    color: rgb(48, 48, 48);
+    font-size: 20px;
+
+}
+.userinfo {
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    color: rgb(77, 77, 77);
+    border: rgb(77, 77, 77);
+    border-style: solid;
+    background-color: inherit;
+}
+.userfullname{
+    text-align: center;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 25px;
+    color: rgb(41, 41, 41);
+    margin-bottom: 0px;
+    background-color: #01FF7055;
+}
+.userabout{
+    color: rgb(105, 105, 105);
+    font-style: Roboto;
+    font-weight: 400;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 20px;
+    background-color: #3D997055;
+}
+.theyfallow{
+    margin-top: 5px;
+    font-family: 'Varela Round';
+    font-family: 400;
+    font-size: 25px;
+    color: rgb(77, 77, 77);
+    border: rgb(77, 77, 77);
+    border-style: solid;
+    background-color: inherit;
+    line-height: 2em;
+}
+.ifallow{
+    margin-top: 5px;
+    font-family: 'Varela Round';
+    font-family: 400;
+    font-size: 25px;
+    color: rgb(77, 77, 77);
+    border: rgb(77, 77, 77);
+    border-style: solid;
+    background-color: inherit;
+    line-height: 2em;
+}
+.theirposts{
+    font-family: 'Lucida Sans';
+    font-weight: 400;
+    border: rgb(77, 77, 77);
+    border-style: solid;
+    background-color: #7FDBFF;
+}
+.post_title{
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    color: rgb(105, 105, 105);
+}
+.post_body{
+    font-family: Roboro;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(48, 48, 48);
+}
+.post-image{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    width: inherit;
+    width: 100%;
+}
+
+.small_square_image{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+}
+.fallowers_name{
+    vertical-align: inherit;
+    display: inline;
+}
+.follow{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: #3D997055;
+    color: #01111155;
+}
+.follow:hover{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: #3D997055;
+    color: rgb(37, 37, 37);
+}
+
+.navbackgroundcolor{
+    background-color: #001f3f;
+}
+.realborder{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+
+}
+.followers{
+    background-color: #FF851B;
+    color: hsla(28, 100%, 20%, 1.0);
+}
+.followers_list{
+    background-color: #F012BE;
+    color: hsla(314, 88%, 21%, 1.0);
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+.followings{
+    background-color: #FFDC00;
+    color: hsla(52, 100%, 20%, 1.0);
+}
+.followings_list{
+    background-color: #B10DC9;
+    color: hsla(292, 88%, 82%, 1.0);
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+.littledark:hover{
+    color: black;
+}
+.followsignup {
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: #3D997055;
+    color: #01111155;
+}
+.followsignup:hover{
+    border: rgb(48, 48, 48);
+    border-style: solid;
+    font-family: Work Sans;
+    font-weight: 400;
+    font-size: 25px;
+    background-color: #3D997055;
+    color: rgb(37, 37, 37);
+}
