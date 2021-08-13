@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     'colorfield',
     'easy_thumbnails',
+    'autoslug',
+    'taggit',
+    'mptt',
+
+    # local
+    'blog',
 ]
 
 MIDDLEWARE = [
