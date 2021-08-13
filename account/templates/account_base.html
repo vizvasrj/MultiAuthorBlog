@@ -33,7 +33,7 @@
 
     <body class="bg-light">
       <div class="container">
-        <nav class="navbar navbar-expand-lg left150px">
+        <nav class="navbar navbar-expand-sm left150px">
           <div class="container-fluid navbackgroundcolor">
             <a class=" navbar-brand navtext " href="#">MultiUserBlog</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -42,29 +42,9 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav me-auto mb-lg-0">
                 <li class="nav-item text-center">
                   <a class="nav-link active navtext" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item text-center">
-                  <a class="nav-link navtext" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown text-center">
-                  <a class="nav-link dropdown-toggle navtext" href="#" id="navbarDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item navtext" href="#">Action</a></li>
-                    <li><a class="dropdown-item navtext" href="#">Another action</a></li>
-                    <li>
-                      <hr class="dropdown-divider navtext">
-                    </li>
-                    <li><a class="dropdown-item navtext" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item text-center">
-                  <a class="nav-link disabled navtext" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
               </ul>
               <form class="d-flex">
@@ -73,7 +53,7 @@
               </form>
               {% if request.user.is_authenticated %}
               <!-- Settings Profile -->
-              <ul class="navbar-nav right150px mb-2 mb-lg-0">
+              <ul class="navbar-nav right150px mb-lg-0">
                 <li class="nav-item dropdown text-center">
                   <a class="nav-link dropdown" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
                     {% thumbnail request.user.profiles.photo 30x30 crop as avatar %}
@@ -118,18 +98,18 @@
       {% block footer %}
       <footer class="container-fluid bg-dark">
         <div class="row">
-          <div class="col-sm-4 mt-5 mb-5">
+          <div class="col-md-4 mt-5 mb-5">
             <h1 class="footertitle">
               <a class="textnone" href="/">MultiUserBlog</a>
             </h1>
           </div>
-          <div class="col-sm-4 mt-5 mb-5">
+          <div class="col-md-4 mt-5 mb-5">
             <h3 class="footertitle">
               Copyright© 2021
             </h3>
             <a class="linkfooter" href="/sitemap.xml">Sitemap</a>
           </div>
-          <div class="col-sm-4 mt-5 mb-5">
+          <div class="col-md-4 mt-5 mb-5">
             <h4 class="footertitle d-flex flex-column">
               Contact Me
               <a class="linkfooter" href="mailto:root@vizvasrj.com">root@vizvasrj.com</a>

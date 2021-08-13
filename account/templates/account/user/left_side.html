@@ -1,10 +1,31 @@
 {% load thumbnail %}
-<div class="col-sm-3 mt-5">
+<div class="col-md-3 mt-5">
     <div class="userinfo">
         <h2 class="userfullname">{{ user.profiles.full_name }}</h2>
         <h3 class="userabout">{{ user.profiles.about }}</h3>
-        {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
-        <img class="col-sm-12" src="{{im.url}}" class="src">
+        {% thumbnail user.profiles.photo "300x300" crop="100%" as im300 %}
+        {% thumbnail user.profiles.photo "600x600" crop="100%" as im600 %}
+        {% thumbnail user.profiles.photo "900x900" crop="100%" as im900 %}
+
+        <!-- <img class="col-sm-12" src="{{im.url}}" class="src"> -->
+
+        <picture>
+            <source media="(min-width:500px)" srcset="{{im600.url}}">
+            <source media="(min-width:865px)" srcset="{{im900.url}}">
+            <img class="col-sm-12" src="{{im300.url}}" style="width: 100%;">
+        </picture>
+          
+
+        <!-- <img 
+        class="col-sm-12" srcset="
+        {{im300.url}}  300w,
+        {{om600.url}}  600w,
+        {{im900.url}}  900w,
+        "
+        sizes="70vmin"
+        > -->
+
+
     </div>
     {% if request.user.is_authenticated %}
     <div id="csrf_token">
