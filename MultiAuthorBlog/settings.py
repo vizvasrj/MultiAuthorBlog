@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'autoslug',
     'taggit',
     'mptt',
+    'trumbowyg',
 
     # local
     'blog',
