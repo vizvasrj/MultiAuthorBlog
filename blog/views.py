@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 # local
 from .models import Post, Category, Comment
 from .forms import (
-    PostForm
+    PostForm, CommentForm
 )
 # 3rd party
 from taggit.models import Tag
@@ -51,18 +51,7 @@ def create_post(request):
 def post_list(request, tag_slug=None, category_slug=None):
     posts = Post.published.all()
     object_list = Post.published.all()
-    categories = Category.objects.annotate(
-        total_category=Count('post_category')
-    )
     tag = None
-    if category_slug:
-        category = get_object_or_404(
-            Category,
-            slug=category_slug
-        )
-        object_list = object_list.filter(
-            category__in=[category]
-        )
     if tag_slug:
         tag = get_object_or_404(
             Tag, slug=tag_slug
@@ -93,7 +82,46 @@ def post_list(request, tag_slug=None, category_slug=None):
         'blog/post/list.html',{
             'posts': posts,
             'tag': tag,
-            'categories': categories
 
+        }
+    )
+
+
+def post_detail(request, post):
+    post = get_object_or_404(
+        Post,
+        slug=post,
+        status='published',
+    )
+    comments = post.comments.filter(active=True)
+    new_comment = None
+    if request.method=='POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.commentor_id = request.user.id
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    post_tags_ids = post.tags.values_list(
+        'id', flat=True
+    )
+    similar_posts = Post.published.filter(
+        tags__in=post_tags_ids
+    ).exclude(id=post.id)
+    similar_posts = similar_posts.annotate(
+        same_tags=Count('tags')
+    ).order_by('-same_tags', '-publish')[:4]
+
+    return render(
+        request,
+        'blog/post/detail.html',{
+            'post': post,
+            'comments': comments,
+            'new_comment': new_comment,
+            'comment_form': comment_form,
+            'similar_posts': similar_posts
         }
     )

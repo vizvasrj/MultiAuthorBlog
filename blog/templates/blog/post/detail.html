@@ -1,0 +1,12 @@
+{% extends "blog_base.html" %}
+{% load thumbnail %}
+{% load crispy_forms_tags %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block content %} 
+    <h1>{{ post.title }}</h1>
+    {% thumbnail post.cover "600x600" crop="100%" as im %}
+    <img src="{{im.url}}" alt="">
+    <h4>{{post.body}}</h4>
+{% endblock %}

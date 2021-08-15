@@ -1,0 +1,115 @@
+{% load blog_tags %}
+{% load thumbnail %}
+{{user.profiles.all}}
+{% for post in posts %}
+<div class="left_column_2">
+  <div class="popular_article">
+    <div class="popular_article_2">
+      <div class="popular_article_3">
+        <div class="popular_textside">
+          <div class="one">
+            <div class="two">
+                <a href="/account/users/{{ post.author.user }}">
+                  {% thumbnail post.author.photo "20x20" crop="100%" as im  %}
+                    <img class="editoricon" src="{{ im.url }}" alt="editor one" width="20" height="20">
+                </a>
+                <div class="three">
+                    <a href="/account/users/{{ post.author.user }}" class="four">
+                        <h4 class="five">
+                          {{ post.author }}
+                        </h4>
+                    </a>
+                    <div class="six">
+                        <h4 class="seven">
+                            in
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ten">
+          <a href="{{ post.get_absolute_url }}" class="eleven">
+            <h2 class="twelve2">
+              {{ post.title }}
+            </h2>
+          </a>
+        </div>
+        <div class="thirteen">
+          <p class="fourteen">
+            <a href="{{ post.get_absolute_url }}" class="fifteen">
+              {{ post.body|truncatewords:30|markdown|striptags|safe }}
+            </a>
+          </p>
+        </div>
+        <div class="sixteen">
+          <div class="seventeen">
+            <p class="eighteen">
+              <a href="{{ post.get_absolute_url }}" class="nineteen">
+                Read More
+              </a>
+            </p>
+            <div class="twenty">
+              <span class="twentyone">
+                <span class="twentytwo">
+                  .
+                </span>
+              </span>
+            </div>
+            <span class="twentythree">
+              {{ post.body|readtime }}
+            </span>
+            <div class="twenty">
+              <span class="twentyone">
+                <span class="twentytwo">
+                  .
+                </span>
+              </span>
+            </div>
+            <span class="userbasedtext twentythree">
+              Popular on Vizvasrj 
+            </span>
+            <span class="twentyfour">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="width: 15px; height: 15px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-icon="octicon:star-fill-24" data-inline="false"><path fill-rule="evenodd" d="M12.672.668a.75.75 0 0 0-1.345 0L8.27 6.865l-6.838.994a.75.75 0 0 0-.416 1.279l4.948 4.823l-1.168 6.811a.75.75 0 0 0 1.088.791L12 18.347l6.117 3.216a.75.75 0 0 0 1.088-.79l-1.168-6.812l4.948-4.823a.75.75 0 0 0-.416-1.28l-6.838-.993L12.672.668z" fill="currentColor"></path></svg>
+            </span>
+          </div>
+          <div class="bookmark_options3">
+            <div class="bookmark">
+              {% with bookmark=post.bookmark_list.all %}
+      
+              {% if user.is_authenticated %}
+              
+              <a data-id="{{ post.id }}" data-action="{% if request.user in bookmark %}un{% endif %}bookmark" class="bookmark">
+                  <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                      <path class="{% if request.user in bookmark %}king{% endif %} {{ post.id }} icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262"/>
+                  </svg>
+                </a>
+      
+              {% else %}
+      
+              <a href="{% url 'login' %}?next={{ request.path }}" class="bookmark_unauthenticated">
+                  <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                      <path class="icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262"/>
+                  </svg>
+              </a>
+      
+              {% endif %}
+      
+      
+              {% endwith %}
+            </div>
+            <div class="dot_menu">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-icon="mdi:dots-vertical" data-inline="false" style="transform: rotate(360deg);"><path d="M12 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2z" fill="currentColor"></path></svg>
+            </div>
+          </div>
+        </div>
+        </div>
+        <a href="{{ post.get_absolute_url }}" class="popular_imageside">
+          {% thumbnail post.cover 243x181 crop as im %}
+          <img class="imagechangesize" src="{{ im.url }}" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}

@@ -1,0 +1,50 @@
+{% extends "blog_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1>New post</h1>
+        <h1>{{ user }}</h1>
+        {{request.user.id}}
+        
+        <form method="POST" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
+            <img width="300px" id="myImg" src='' alt="your image" />
+        
+        
+            {{media}}
+            <br>
+            <button type="submit" formnovalidate="formnovalidate" class="save btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block domready %} 
+$(function () {
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+  });
+  
+  function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result);
+  };
+  
+{% endblock %}
+
+{% block script %} 
+
+{% endblock %}
+
+

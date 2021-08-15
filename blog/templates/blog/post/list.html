@@ -1,0 +1,98 @@
+{% extends "blog_base.html" %}
+{% load blog_tags %}
+{% block title %}
+list page
+{% endblock title %}
+
+{% block scroller %}
+
+<div class="nav-scroller bg--body shadow-sm">
+    <nav class="nav nav-underline" aria-label="Secondary navigation">
+        {% for c in categories %}
+
+        <a class="nav-link" href="{% url 'blog:post_list_by_category' c.slug %}">
+            {{ c.title }}
+            <span class="badge bg-light text-dark rounded-pill align-text-bottom">{{ c.total_category }}</span>
+        </a>
+        {% endfor %}
+
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-8-md">
+            <div id="post-list">
+                {% include "blog/post/list_ajax_copy.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block domready %}
+var page = 1;
+var empty_page = false;
+var block_request = false;
+
+$(window).scroll(function () {
+    var margin = $(document).height() - $(window).height() - 200;
+    if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+        block_request = true;
+        page += 1;
+        $.get('?page=' + page, function (data) {
+            if (data == '') {
+                empty_page = true;
+            } else {
+                block_request = false;
+                $('#post-list').append(data);
+            }
+        });
+    }
+});
+
+<!-- bla -->
+
+{% endblock %}
+
+
+{% block domready2 %} 
+<!-- bookmark -->
+$('#post-list').on("click", "a.bookmark", function(event){
+    {% if request.user.is_authenticated %}
+      event.preventDefault();
+  {% else %}
+      console.log("Login First");
+  {% endif %}
+
+    console.log( $(this).data('id') );
+    var a = $(this).data('id');
+    $.post('{% url "blog:bookmark" %}',
+  {
+      id: $(this).data('id'),
+      action: $(this).data('action')
+  },
+  function(data){
+      if (data['status'] == 'ok')
+      {
+          
+          
+          var previous_action = $('a.bookmark').data('action');
+
+          //toggle data-action
+          $('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
+
+          //toggle link text
+          $('a.bookmark svg path.'+a).toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' : '');
+
+      }
+      else{
+          console.log("Error")
+      }
+  });
+});
+
+
+{% endblock %}
