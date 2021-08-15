@@ -36,7 +36,7 @@
 .trumbowyg-editor {
   display: block;
   position: relative;
-  border: 1px solid #DDD;
+  /* border: 1px solid #DDD; */
   width: 100%;
   min-height: 300px; }
 
@@ -44,7 +44,7 @@
   margin: 0 auto; }
 
 .trumbowyg-box.trumbowyg-fullscreen {
-  background: #FEFEFE;
+  /* background: #FEFEFE; */
   border: none !important; }
 
 .trumbowyg-editor,
@@ -428,7 +428,7 @@ body.trumbowyg-body-fullscreen {
   .trumbowyg-editor canvas:focus {
     outline: none; }
   .trumbowyg-editor.trumbowyg-reset-css {
-    background: #FEFEFE !important;
+    /* background: #FEFEFE !important; */
     font-family: "Trebuchet MS", Helvetica, Verdana, sans-serif !important;
     font-size: 14px !important;
     line-height: 1.45em !important;
