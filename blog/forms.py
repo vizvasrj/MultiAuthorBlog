@@ -19,21 +19,21 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control myfieldclass'}
+                attrs={'class': 'myfieldclass bg-aqua '}
             ),
             'body': TrumbowygWidget(
                 attrs={
-                    'class': 'form-control myfieldclass',
+                    'class': 'myfieldclass',
                 }
             ),
             'tags': TagWidget(
                 attrs={
-                    'class': 'form-control myfieldclass',
+                    'class': 'myfieldclass',
                 }
             ),
             'cover': forms.FileInput(
                 attrs={
-                    'class': 'form-control myfieldclass',
+                    'class': 'myfieldclass',
                     'required': False
                 }
             )

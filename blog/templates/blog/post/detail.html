@@ -8,5 +8,8 @@
     <h1>{{ post.title }}</h1>
     {% thumbnail post.cover "600x600" crop="100%" as im %}
     <img src="{{im.url}}" alt="">
-    <h4>{{post.body}}</h4>
-{% endblock %}
+    <h4 class="bg-orange">{{post.body|safe}}</h4>
+    {% for tag in post.tags.all %}
+        <li class="bg-success">{{tag}}</li>
+    {% endfor %}
+    {% endblock %}

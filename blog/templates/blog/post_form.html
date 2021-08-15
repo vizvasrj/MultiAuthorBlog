@@ -5,14 +5,40 @@
 <div class="container">
     <div class="row">
         <h1>New post</h1>
-        <h1>{{ user }}</h1>
-        {{request.user.id}}
         
         <form method="POST" class="post-form" enctype="multipart/form-data">
-            {% csrf_token %}
             {{form.media}}
-            {{form|crispy}}
-            <img width="300px" id="myImg" src='' alt="your image" />
+
+            <div class="title mb-2 bg-yellow">
+                <label class="mt-2 labeltext" for="title" class="form-label">{{form.title.label}}:</label>
+                <div class="bg-aqua">
+                    {{ form.title }}
+                </div>
+            </div>
+            <div class="body mb-2 bg-yellow">
+                <label class="mt-2 labeltext" for="body" class="form-label">{{form.body.label}}:</label>
+                <div class="bg-aqua">
+                    {{ form.body }}
+                </div>
+            </div>
+            <div class="cover mb-2 bg-yellow">
+                <label class="mt-2 labeltext" for="cover" class="form-label">{{form.cover.label}}:</label>
+                <div class="bg-aqua">
+                    <label id="remove" class="uploadcover" for="id_cover"><img class="blogcoverimage" width="100%" id="myImg" src='' alt="Upload"/></label>
+                    {{ form.cover }}
+                    
+                </div>
+
+            </div>
+            <div class="tags mb-2 bg-yellow">
+                <label class="mt-2 labeltext" for="tags" class="form-label">{{form.tags.label}}:</label>
+                <div class="bg-aqua">
+                    {{ form.tags }}
+                </div>
+            </div>
+
+
+            {% csrf_token %}
         
         
             {{media}}
@@ -39,6 +65,7 @@ $(function () {
   
   function imageIsLoaded(e) {
     $('#myImg').attr('src', e.target.result);
+    <!-- $('#remove').remove(); -->
   };
   
 {% endblock %}

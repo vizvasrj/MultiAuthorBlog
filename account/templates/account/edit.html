@@ -13,14 +13,12 @@
                 <h1 class="maintitle">Make It Awesome</h1>
                 <div class="mb-3">
                     <form method="POST" enctype="multipart/form-data">
-                        <!-- {{ user_form|crispy }} -->
                         <div class="email mb-2 border-top">
                             <label class="mt-2 labeltext" for="email" class="form-label">{{user_form.email.label}}:</label>
                             <div class="">
                                 {{ user_form.email }}
                             </div>
                         </div>
-                        <!-- {{ profile_form|crispy }} -->
                         <div class="about mb-2 border-top">
                             <label class="mt-2 labeltext" for="about" class="form-label">{{profile_form.about.label}}:</label>
                             <div class="">
