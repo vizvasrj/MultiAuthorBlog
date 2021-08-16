@@ -46,8 +46,7 @@ INSTALLED_APPS = [
     'autoslug',
     'taggit',
     'mptt',
-    'trumbowyg',
-    'bootstrap_datepicker_plus',
+    'django_editorjs_fields',
 
     # local
     'blog',

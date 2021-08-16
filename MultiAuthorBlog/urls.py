@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('account.urls')),
     path('blog/', include('blog.urls')),
-    path('trumbowyg/', include('trumbowyg.urls')),
+    path('editorjs/', include('django_editorjs_fields.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(

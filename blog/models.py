@@ -1,7 +1,6 @@
 # Django
 from django.db import models
 import time
-from django.forms.widgets import Textarea
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -13,6 +12,7 @@ from account.models import Profile
 from autoslug import AutoSlugField
 from taggit.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
+from django_editorjs_fields import EditorJsJSONField
 
 
 now = timezone.now()
@@ -21,8 +21,8 @@ class PublishedManager(models.Manager):
         return super(
             PublishedManager, self
         ).get_queryset().filter(
-            publish__lte=now
-            # status='published'
+            # publish__lte=now
+            status='published'
         )
     
 
@@ -91,7 +91,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='blog_posts'
     )
-    body = models.TextField()
+    body = EditorJsJSONField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)

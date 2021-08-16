@@ -15,7 +15,27 @@
     font-size: 20px;
     width: 100%;
     border: rgb(77, 77, 77);
-    border-style: solid;
+    border-style: none;
+    background-color: transparent;
+}
+
+.myfieldclass:hover {
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    width: 100%;
+    border: rgb(77, 77, 77);
+    border-style: none;
+    background-color: transparent;
+}
+
+.myfieldclass:valid {
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    width: 100%;
+    border: rgb(77, 77, 77);
+    border-style: none;
     background-color: transparent;
 }
 
@@ -35,17 +55,20 @@
     height: 100%;
 }
 
-.detail_readtime{
+.detail_readtime {
     font-size: 10px;
 }
-.hr-line{
+
+.hr-line {
     border: 1px solid;
 }
-.post-body{
-    font-family: Helvetica, Arial, sans-serif;
+
+.post-body {
+    font-family: 'Andada Pro', serif;
     font-weight: 400;
 }
-.posttitle{
+
+.posttitle {
     font-size: 1.6em;
     line-height: 1.25em;
     width: 100%;
@@ -53,13 +76,36 @@
     padding: 0;
 }
 
-.sidebar {
-    clear: both;
-	position: fixed;
-	display: block;
-	right: -3.2em;
-	top: 15%;
-	-webkit-animation: slideright 1s forwards;
-	-webkit-animation-delay: 1.5s;
-	animation: slideright 1s forwards;
-	animation-delay: 1.5s;   }
+.bookmark_like {
+    display: flex;
+}
+
+.imageone {
+    width: 100%;
+}
+
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    font-family: "Andada Pro";
+    font-weight: 400;
+}
+
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+cite {
+    margin-left: 35px;
+}

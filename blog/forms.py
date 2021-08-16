@@ -5,11 +5,9 @@ from django import forms
 from .models import Post, Comment
 
 # 3rd party
-from trumbowyg.widgets import TrumbowygWidget
 from taggit.forms import TagWidget
 from mptt.forms import TreeNodeChoiceField
-from bootstrap_datepicker_plus import DatePickerInput
-
+from django_editorjs_fields import EditorJsWidget
 
 class PostForm(forms.ModelForm):
     # publish = forms.DateField(
@@ -26,10 +24,12 @@ class PostForm(forms.ModelForm):
             'title': forms.TextInput(
                 attrs={'class': 'myfieldclass '}
             ),
-            'body': TrumbowygWidget(
-                attrs={
-                    'class': 'myfieldclass ',
-                }
+            'body': EditorJsWidget(
+
+                config={'minHeight': 100}
+                # attrs={
+                #     'class': 'myfieldclass ',
+                # }
             ),
             'tags': TagWidget(
                 attrs={
