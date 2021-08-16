@@ -15,13 +15,14 @@ from taggit.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
 
 
-
+now = timezone.now()
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(
             PublishedManager, self
         ).get_queryset().filter(
-            status='published'
+            publish__lte=now
+            # status='published'
         )
     
 

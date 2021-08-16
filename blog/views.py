@@ -24,7 +24,6 @@ from taggit.models import Tag
 
 @login_required
 def create_post(request):
-    user = request.user.profiles.full_name
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -42,7 +41,6 @@ def create_post(request):
         request,
         'blog/post_form.html',{
             'form': form,
-            'user': user
         }
     )
 

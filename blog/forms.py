@@ -8,9 +8,14 @@ from .models import Post, Comment
 from trumbowyg.widgets import TrumbowygWidget
 from taggit.forms import TagWidget
 from mptt.forms import TreeNodeChoiceField
+from bootstrap_datepicker_plus import DatePickerInput
 
 
 class PostForm(forms.ModelForm):
+    # publish = forms.DateField(
+    #     widget=DatePickerInput(format='%m/%d/%Y')
+    # )
+
     class Meta:
         model = Post
         fields = (
@@ -19,11 +24,11 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'myfieldclass bg-aqua '}
+                attrs={'class': 'myfieldclass '}
             ),
             'body': TrumbowygWidget(
                 attrs={
-                    'class': 'myfieldclass',
+                    'class': 'myfieldclass ',
                 }
             ),
             'tags': TagWidget(
@@ -36,7 +41,7 @@ class PostForm(forms.ModelForm):
                     'class': 'myfieldclass',
                     'required': False
                 }
-            )
+            ),
         }
 
 
@@ -44,6 +49,7 @@ class CommentForm(forms.ModelForm):
     parent = TreeNodeChoiceField(
         queryset=Comment.objects.all()
     )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -59,5 +65,3 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'body': forms.Textarea()
         }
-
-    

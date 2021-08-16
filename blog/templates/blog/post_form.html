@@ -4,7 +4,8 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <h1>New post</h1>
+        <h1 class="maintitle">New post</h1>
+        {{request.user.username}}
         
         <form method="POST" class="post-form" enctype="multipart/form-data">
             {{form.media}}
@@ -39,7 +40,6 @@
 
 
             {% csrf_token %}
-        
         
             {{media}}
             <br>

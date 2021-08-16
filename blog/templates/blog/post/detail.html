@@ -1,15 +1,111 @@
 {% extends "blog_base.html" %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
+{% load blog_tags %}
 
 {% block title %} {{ post.title }} {% endblock %}
 
-{% block content %} 
-    <h1>{{ post.title }}</h1>
-    {% thumbnail post.cover "600x600" crop="100%" as im %}
-    <img src="{{im.url}}" alt="">
-    <h4 class="bg-orange">{{post.body|safe}}</h4>
-    {% for tag in post.tags.all %}
-        <li class="bg-success">{{tag}}</li>
-    {% endfor %}
-    {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+          
+        </div>
+        <div class="col-lg-8">
+            <h1 class="posttitle mt-5 mb-5">{{ post.title }}</h1>
+            <p class="detail_readtime">{{post.body|readtime}}</p>
+            <p class="date">
+                Published {{ post.publish }} by {{ post.author }}
+            </p>
+            <hr class="hr-line">
+            {% thumbnail post.cover "400x600" crop="100%" as im %}
+            <img class="mb-3" width="100%" src="{{im.url}}" alt="">
+            <p class="">{{post.body|markdown}}</p>
+            {% for tag in post.tags.all %}
+            <li class="bg-success">{{tag}}</li>
+            {% endfor %}
+            {% with total_likes=post.users_like.count users_like=post.users_like.all %}
+            <div class="info">
+                <div class="count">
+                    <span class="count">
+                        <span class="total">{{ total_likes }}</span> like{{ total_likes|pluralize }}
+                    </span>
+                    {% if user.is_authenticated %}
+
+                    <a href="" data-id="{{ post.id }}"
+                        data-action="{% if request.user in users_like %}un{% endif %}like" class="like">
+                        <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                            height="1em"
+                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                            <path class="{% if request.user in users_like %}red{% endif %} icad"
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+                                fill="#626262" />
+                        </svg>
+                    </a>
+
+                    {% else %}
+
+                    <a href="{% url 'login' %}?next={{ request.path }}" class="likes">
+                        <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                            height="1em"
+                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                            <path class="icad"
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+                                fill="#626262" />
+                        </svg>
+                    </a>
+
+                    {% endif %}
+                </div>
+            </div>
+            <div class="bookmark">
+                {% with bookmark=post.bookmark_list.all %}
+
+                {% if user.is_authenticated %}
+
+                <a href="" data-id="{{ post.id }}" data-action="{% if request.user in bookmark %}un{% endif %}bookmark"
+                    class="bookmark">
+                    <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                        height="1em"
+                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                        <path class="{% if request.user in bookmark %}king{% endif %} icad"
+                            d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262" />
+                    </svg>
+                </a>
+
+                {% else %}
+
+                <a href="{% url 'login' %}?next={{ request.path }}" class="bookmark_unauthenticated">
+                    <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                        height="1em"
+                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                        <path class="icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262" />
+                    </svg>
+                </a>
+
+                {% endif %}
+
+
+                {% endwith %}
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+
+        {% endwith %}
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block domready %} 
+
+
+{% endblock %}

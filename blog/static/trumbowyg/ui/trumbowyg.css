@@ -44,7 +44,7 @@
   margin: 0 auto; }
 
 .trumbowyg-box.trumbowyg-fullscreen {
-  /* background: #FEFEFE; */
+  background: inherit;
   border: none !important; }
 
 .trumbowyg-editor,
