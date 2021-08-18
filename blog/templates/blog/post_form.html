@@ -1,12 +1,12 @@
 {% extends "blog_base.html" %}
 {% load crispy_forms_tags %}
-{% load editorjs %} 
+{% load editorjs %}
 
 {% block content %}
 <div class="container">
     <div class="row">
-        <h1 class="maintitle">New post</h1>
-        
+        <h1 class="maintitle">New post {{user}}</h1>
+
         <form method="POST" class="post-form" enctype="multipart/form-data">
             {{form.media}}
 
@@ -25,11 +25,11 @@
             <div class="cover mb-2 ">
                 <label class="mt-2 labeltext" for="cover" class="form-label">{{form.cover.label}}:</label>
                 <div class="">
-                    <label id="remove" class="uploadcover" for="id_cover"><img class="blogcoverimage" width="100%" id="myImg" src='' alt="Upload"/></label>
+                    <label id="remove" class="uploadcover" for="id_cover">
+                        <img class="blogcoverimage" width="100%" id="myImg" src='' alt="Upload" />
+                    </label>
                     {{ form.cover }}
-                    
                 </div>
-
             </div>
             <div class="tags mb-2 ">
                 <label class="mt-2 labeltext" for="tags" class="form-label">{{form.tags.label}}:</label>
@@ -40,7 +40,7 @@
 
 
             {% csrf_token %}
-        
+
             {{media}}
             <br>
             <button type="submit" formnovalidate="formnovalidate" class="save btn btn-primary">Save</button>
@@ -52,27 +52,25 @@
 
 {% endblock %}
 
-{% block domready %} 
+{% block domready %}
 $(function () {
-    $(":file").change(function () {
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = imageIsLoaded;
-            reader.readAsDataURL(this.files[0]);
-        }
-    });
-  });
-  
-  function imageIsLoaded(e) {
-    $('#myImg').attr('src', e.target.result);
-    <!-- $('#remove').remove(); -->
-  };
-  
-  
-{% endblock %}
+$(":file").change(function () {
+if (this.files && this.files[0]) {
+var reader = new FileReader();
+reader.onload = imageIsLoaded;
+reader.readAsDataURL(this.files[0]);
+}
+});
+});
 
-{% block script %} 
+function imageIsLoaded(e) {
+$('#myImg').attr('src', e.target.result);
+<!-- $('#remove').remove(); -->
+};
+
 
 {% endblock %}
 
+{% block script %}
 
+{% endblock %}

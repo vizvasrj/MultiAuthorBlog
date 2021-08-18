@@ -18,7 +18,6 @@ from django.contrib.postgres.search import(
     SearchQuery, SearchVector , SearchRank
 )
 
-
 # local
 from .models import Post, Category, Comment
 from .forms import (
@@ -30,6 +29,7 @@ from taggit.models import Tag
 
 @login_required
 def create_post(request):
+    user=request.user.id
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -47,6 +47,7 @@ def create_post(request):
         request,
         'blog/post_form.html',{
             'form': form,
+            'user': user,
         }
     )
 
