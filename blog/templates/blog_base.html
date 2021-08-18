@@ -12,6 +12,11 @@
   <link rel="stylesheet" href="{% static 'css/account.css' %}">
   <link rel="stylesheet" href="{% static 'css/blog.css' %}">
   <link rel="stylesheet" href="{% static 'css/color.css' %}">
+  <link rel="stylesheet" href="{% static 'css/utility.css' %}">
+
+  
+  <!-- icons -->
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
 
   <!-- Google fonts -->
@@ -31,11 +36,7 @@
   <script src="{% static 'colorfield/colorfield.js' %}"></script>
   <script src="{% static 'colorfield/jscolor/jscolor.js' %}"></script>
   <script src="{% static 'colorfield/jscolor/jscolor.min.js' %}"></script>
-  <script>
-    {% block script %}
-    {% endblock %}
-  </script>
-  
+
 
 </head>
 <section>
@@ -136,11 +137,30 @@
 <!-- <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
 <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
 <script src="{% static 'js/editor.js' %}"></script>
+<script src="{% static 'js/js.cookie.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
 
 
 <script>
-  {% block domready %}
-  {% endblock %}
+      var csrftoken = Cookies.get('csrftoken');
+    function csrfSafeMethod(method) {
+      // These HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+      beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+      }
+    });
+
+    $(document).ready(function () {
+      {% block domready %}
+      {% endblock %}
+    });
+
 </script>
 
 
