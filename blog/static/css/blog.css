@@ -109,3 +109,6 @@ blockquote p {
 cite {
     margin-left: 35px;
 }
+.code{
+    background-color: rgb(170, 170, 170);
+}

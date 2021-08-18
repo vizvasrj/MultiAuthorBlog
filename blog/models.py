@@ -12,7 +12,9 @@ from account.models import Profile
 from autoslug import AutoSlugField
 from taggit.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
-from django_editorjs_fields import EditorJsJSONField
+from django_editorjs_fields import (
+    EditorJsJSONField, EditorJsTextField
+)
 
 
 now = timezone.now()
@@ -43,8 +45,8 @@ def custome_slugify(value):
 class Category(models.Model):
     title = models.CharField(max_length=100)
     slug = AutoSlugField(
-        populate_from='title',
-        slugify=custome_slugify,
+        populate_from=['title','created'],
+        # slugify=custome_slugify,
     )
     subtitle = models.CharField(
         max_length=200,
@@ -91,7 +93,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='blog_posts'
     )
-    body = EditorJsJSONField()
+    body = EditorJsTextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)
@@ -165,7 +167,7 @@ class Comment(MPTTModel):
     )
 
     class MPTTMeta:
-        order_instertion_by = ['-publish']
+        order_instertion_by = ['publish']
 
     def __str__(self):
-        return f'comment by {self.commentor} on {self.post__title}'
+        return f'comment by {self.commentor} on {self.post}'
