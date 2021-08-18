@@ -19,10 +19,9 @@ class PostForm(forms.ModelForm):
         fields = (
             'title', 'body', 'tags', 'cover'
         )
-
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'myfieldclass '}
+                attrs={'class': 'myfieldclass', 'autocomplete': 'off'}
             ),
             'body': EditorJsWidget(
 
@@ -33,7 +32,8 @@ class PostForm(forms.ModelForm):
             ),
             'tags': TagWidget(
                 attrs={
-                    'class': 'myfieldclass',
+                    'class': 'myfieldclass'
+                    , 'autocomplete': 'off'
                 }
             ),
             'cover': forms.FileInput(
@@ -65,3 +65,7 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'body': forms.Textarea()
         }
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField()
