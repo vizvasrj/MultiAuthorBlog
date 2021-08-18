@@ -1,0 +1,27 @@
+{% extends "blog_base.html" %}
+
+{% block title %} 
+    {{ post.title }}'s comments
+{% endblock %}
+
+{% block content %} 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="title">
+                <h3 class="">title:{{post.title}}</h3>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                {{media}}
+                <input type="submit" class="btn btn-primary" value='Update'>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+{% endblock %}
