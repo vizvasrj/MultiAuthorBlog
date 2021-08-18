@@ -13,80 +13,90 @@
 
         </div>
         <div class="col-lg-8">
-            <h1 class="posttitle">{{ post.title }}</h1>
-            <p class="detail_readtime">{{post.body|readtime}}</p>
-            <p class="date">
-                Published {{ post.publish }} by {{ post.author }}
-            </p>
-            <hr class="hr-line">
-            {% thumbnail post.cover "800x400" crop="100%" as im %}
-            <img class="mb-3" width="100%"  src="{{im.url}}" alt="">
-            <p class="post-body">{{post.body|editorjs}}</p>
-            {% for tag in post.tags.all %}
-            <li class="bg-success">{{tag}}</li>
-            {% endfor %}
-            <div class="bookmark_like">
-
-                {% with total_likes=post.users_like.count users_like=post.users_like.all %}
-                <div class="info">
-                    <div class="count">
-                        <span class="count">
-                            <span class="total">{{ total_likes }}</span> like{{ total_likes|pluralize }}
-                        </span>
-                        {% if user.is_authenticated %}
-                        <a href="" data-id="{{ post.id }}"
-                            data-action="{% if request.user in users_like %}un{% endif %}like" class="like">
-                            <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
-                                width="1em" height="1em"
-                                style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
-                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                                <path class="{% if request.user in users_like %}red{% endif %} icad"
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
-                                    fill="#626262" />
-                            </svg>
-                        </a>
-                        {% else %}
-                        <a href="{% url 'login' %}?next={{ request.path }}" class="likes">
-                            <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
-                                width="1em" height="1em"
-                                style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
-                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                                <path class="icad"
-                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
-                                    fill="#626262" />
-                            </svg>
-                        </a>
-                        {% endif %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-1 border">
+                        para
                     </div>
-                </div>
-                <div class="bookmark">
-                    {% with bookmark=post.bookmark_list.all %}
-                    {% if user.is_authenticated %}
-                    <a href="" data-id="{{ post.id }}"
-                        data-action="{% if request.user in bookmark %}un{% endif %}bookmark" class="bookmark">
-                        <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
-                            height="1em"
-                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
-                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                            <path class="{% if request.user in bookmark %}king{% endif %} icad"
-                                d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262" />
-                        </svg>
-                    </a>
-                    {% else %}
-                    <a href="{% url 'login' %}?next={{ request.path }}" class="bookmark_unauthenticated">
-                        <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
-                            height="1em"
-                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
-                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                            <path class="icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262" />
-                        </svg>
-                    </a>
-                    {% endif %}
-                    {% endwith %}
+                    <div class="col-11">
+                        <h1 class="posttitle">{{ post.title }}</h1>
+                        <p class="detail_readtime">{{post.body|readtime}}</p>
+                        <p class="date">
+                            Published {{ post.publish }} by {{ post.author }}
+                        </p>
+                        <hr class="hr-line">
+                        {% thumbnail post.cover "800x400" crop="100%" as im %}
+                        <img class="mb-3" width="100%" src="{{im.url}}" alt="">
+                        <p class="post-body">{{ post.body|editorjs }}</p>
+                        <div class="d-flex flex-row justify-content-center">
+                            {% for tag in post.tags.all %}
+                            <a href="#" class="d-flex my-2 mx-2 {% cycle " bg-orange" "bg-olive" "bg-green" %}">{{tag}}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="bookmark_like">
+                            {% with total_likes=post.users_like.count users_like=post.users_like.all %}
+                            <div class="info">
+                                <div class="count">
+                                    <span class="count">
+                                        <span class="total">{{ total_likes }}</span> like{{ total_likes|pluralize }}
+                                    </span>
+                                    {% if user.is_authenticated %}
+                                    <a href="" data-id="{{ post.id }}"
+                                        data-action="{% if request.user in users_like %}un{% endif %}like" class="like">
+                                        <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
+                                            width="1em" height="1em"
+                                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                            <path class="{% if request.user in users_like %}red{% endif %} icad"
+                                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+                                                fill="#626262" />
+                                        </svg>
+                                    </a>
+                                    {% else %}
+                                    <a href="{% url 'login' %}?next={{ request.path }}" class="likes">
+                                        <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
+                                            width="1em" height="1em"
+                                            style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                            <path class="icad"
+                                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+                                                fill="#626262" />
+                                        </svg>
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="bookmark">
+                                {% with bookmark=post.bookmark_list.all %}
+                                {% if user.is_authenticated %}
+                                <a href="" data-id="{{ post.id }}"
+                                    data-action="{% if request.user in bookmark %}un{% endif %}bookmark" class="bookmark">
+                                    <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                                        height="1em"
+                                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                        <path class="{% if request.user in bookmark %}king{% endif %} icad"
+                                            d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262" />
+                                    </svg>
+                                </a>
+                                {% else %}
+                                <a href="{% url 'login' %}?next={{ request.path }}" class="bookmark_unauthenticated">
+                                    <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                                        height="1em"
+                                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                        <path class="icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262" />
+                                    </svg>
+                                </a>
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,10 +105,238 @@
         <div class="col-lg-2"></div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div id="comment-list" class="">
+                {% with allcomments.count as total_comments %}
+                <h2>
+                    {{ total_comments }} comment{{ total_comments|pluralize }}
+                </h2>
+                {% endwith %}
+
+                {% load mptt_tags %}
+
+                <div>
+                    {% recursetree comments %}
+
+                    <div id="{{ node.id }}" class="my-2 p-2" style="border: 1px solid grey;">
+                        <div class="d-flex justify-content-between">
+                            {% thumbnail node.commentor.photo "20x20" crop="100%" as im %}
+                            <strong><img width="20px" src="{{ im.url }}" alt=""> 
+                                {{node.name}} {{ node.commentor.user }}</strong>
+                            <div>{{ node.created }} {% if request.user.id == node.commentor.id %} <a
+                                    href="{% url 'edit_comment' node.id %}">Edit</a> {% endif %}</div>
+                        </div>
+                        <div>
+                            {{ node.id }}: {{ node.body|safe }}
+
+
+                        </div>
+                        <div id="">
+
+                            {% with total_likes=node.users_like.count users_like=node.users_like.all %}
+                            <div class="c_count" data-action="">
+                                <span class="c_count">
+                                    <span class="c_total {{ node.id }}">{{ total_likes }}</span>
+                                     like{{ total_likes|pluralize }}
+                                </span>
+                                {% if request.user.is_authenticated %}
+
+                                <a data-id="{{ node.id }}"
+                                    data-action="{% if request.user in users_like %}un{% endif %}like"
+                                    class="c_like {{ node.id }}" style="font-size: 20px;">
+                                    <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
+                                        width="1em" height="1em"
+                                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                        <path
+                                            class="{% if request.user in users_like %}red{% endif %} {{ node.id }} icad"
+                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+                                            fill="#626262" />
+                                    </svg>
+                                </a>
+
+                                {% else %}
+
+                                <a href="{% url 'login' %}?next={{ request.path }}" class="likes">
+                                    <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
+                                        width="1em" height="1em"
+                                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                        <path class="icad"
+                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+                                            fill="#626262" />
+                                    </svg>
+                                </a>
+
+                                {% endif %}
+                            </div>
+                            <!-- end count and like -->
+                            {% endwith %}
+                        </div>
+
+
+
+                        <hr>
+                        <button class="btn btn-success" onClick="myFunction({{ node.id }})">Reply</button>
+                    </div>
+                    {% if not node.is_leaf_node %}
+
+                    <div class="children pl-2 pl-md-5" style="margin-left: 5px;">
+                        {{ children }}
+                    </div>
+                    {% endif %}
+
+                    {% endrecursetree %}
+                </div>
+
+
+
+
+                <h2>Make a new comment</h2>
+                {% if request.user.is_authenticated %}
+
+                <form id="myForm" method="post">
+                    {{ comment_form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                </form>
+
+                {% else %}
+
+                <form id="disabledInput" method="post" disabled>
+                    <textarea id="disabledInput" name="body" cols="40" rows="10" required="" disabled></textarea>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" disabled>Submit</button>
+                </form>
+
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <hr>
+    <h2 style="font-weight: 700; color: slategrey;">Similar posts</h2>
+
+    <div id="post-list">
+        {% include "blog/post/list_ajax_similar.html" with posts=similar_posts %}
+    </div>
+
 </div>
 {% endblock %}
 
 {% block domready %}
-
+console.log("aa");
+$('a.like').click(function(e){
+    e.preventDefault();
+    $.post('{% url "like" %}',
+    {
+    id: $(this).data('id'),
+    action: $(this).data('action')
+    },
+    function(data){
+    if (data['status'] == 'ok')
+    {
+    var previous_action = $('a.like').data('action');
+    
+    //toggle data-action
+    $('a.like').data('action', previous_action == 'like' ? 'unlike' : 'like');
+    
+    $('a.like svg path.icad').toggleClass(previous_action == 'like' || previous_action == 'unlike' ? 'red' : '');
+    
+    <!-- removing users like  image profile -->
+    $('div.userlikes div.{{ user.profiles.id }}').toggleClass(previous_action == 'like' || previous_action == 'unlike' ?
+    'hideme' : '');
+    
+    if (previous_action == 'like' || previous_action == 'unlike'){
+    $('div.userlikes div.{{ user.profiles.id }}').toggle()
+    }
+    
+    
+    
+    //update total likes
+    var previous_likes = parseInt($('span.count .total').text());
+    $('span.count span.total').text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
+    
+    }
+    });
+    });
+    
+    <!-- bookmark -->
+    $('a.bookmark').click(function(e){
+    e.preventDefault();
+    $.post('{% url "bookmark" %}',
+    {
+    id: $(this).data('id'),
+    action: $(this).data('action')
+    },
+    function(data){
+    if (data['status'] == 'ok')
+    {
+    
+    console.log("ok");
+    var previous_action = $('a.bookmark').data('action');
+    
+    //toggle data-action
+    $('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
+    
+    //toggle link text
+    $('a.bookmark svg path.icad').toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' :
+    '');
+    
+    }
+    else{
+    console.log("Error")
+    }
+    });
+    });
+    
+    <!-- Comment Like -->
+    $('#comment-list').on("click", "a.c_like", function(event){
+      {% if request.user.is_authenticated %}
+      event.preventDefault();
+      {% else %}
+      console.log("Login First");
+      {% endif %}
+    
+    var ba = $(this).data('id');
+    console.log(ba);
+    $.post('{% url "comment_like" %}',
+    {
+      id: $(this).data('id'),
+      action: $(this).data('action')
+    },
+    function(data){
+      if (data['status'] == 'ok' )
+      {
+        previous_action = $('a.c_like.'+ba).data('action');
+        //toggle data-action
+        //$('a.c_like.'+ba).data('action', previous_action == 'like' ? 'unlike' : 'like');
+        $('a.c_like.'+ba).attr('data-action', $('a.c_like.'+ba).attr('data-action') == 'like' ? 'unlike' : 'like')
+        if ($('a.c_like.'+ba).attr('data-action') == 'like'){
+          console.log("unlike");
+          previous_likes = parseInt($('span.c_total.'+ba).text());
+          $('span.c_total.'+ba).text(previous_likes - 1);
+        }
+        else{
+          console.log("like");
+          previous_likes = parseInt($('span.c_total.'+ba).text());
+          $('span.c_total.'+ba).text(previous_likes + 1);
+        }
+        //toggle class
+        $('a.c_like svg path.'+ba).toggleClass(previous_action == 'like' || previous_action == 'unlike' ? 'red' : '')
+    
+        //update total likes
+        //var previous_likes = parseInt($('div.c_count span.c_count span.c_total.'+ba).text());
+        //$('span.c_total.'+ba).text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
+    
+      
+      }
+    });
+    });
 
 {% endblock %}

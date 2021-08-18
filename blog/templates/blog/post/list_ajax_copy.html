@@ -1,6 +1,7 @@
 {% load blog_tags %}
 {% load thumbnail %}
-{% load editorjs %}
+{% load no_code_editorjs %}
+
 {{user.profiles.all}}
 {% for post in posts %}
 <div class="">
@@ -12,6 +13,6 @@
 
 <img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="">
 <p class="post_body mt-1">
-{{post.body|truncatewords:200|markdown|striptags|safe|editorjs}}
+{{post.body|no_code_editorjs|truncatewords:100 }}
 </p>
 {% endfor %}

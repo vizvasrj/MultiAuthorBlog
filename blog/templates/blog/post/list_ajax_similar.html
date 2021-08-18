@@ -1,0 +1,79 @@
+{% load blog_tags %}
+{% load thumbnail %}
+{% load no_code_editorjs %}
+
+{{user.profiles.all}}
+{% for post in posts %}
+<div class="left_column_2">
+  <div class="popular_article">
+    <div class="popular_article_2">
+      <div class="popular_article_3">
+        <div class="popular_textside">
+          <div class="one">
+            <div class="two">
+                <a href="https://google.com">
+                  {% thumbnail post.author.photo "20x20" crop="100%" as im  %}
+                    <img class="editoricon" src="{{ im.url }}" alt="editor one" width="20" height="20">
+                </a>
+                <div class="three">
+                    <a href="/account/users/{{ post.author.user }}" class="four">
+                        <h4 class="five">
+                          {{ post.author }}
+                        </h4>
+                    </a>
+                    <div class="six">
+                        <h4 class="seven">
+                            in
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ten">
+          <a href="{{ post.get_absolute_url }}" class="eleven">
+            <h2 class="twelve">
+              {{ post.title }}
+            </h2>
+          </a>
+        </div>
+        <div class="thirteen">
+          <p class="fourteen">
+            <a href="{{ post.get_absolute_url }}" class="fifteen">
+              {{ post.body|no_code_editorjs|truncatewords:30 }}
+            </a>
+          </p>
+        </div>
+        <div class="sixteen">
+          <div class="seventeen">
+            <p class="eighteen">
+              <a href="{{ post.get_absolute_url }}" class="nineteen">
+                Read More
+              </a>
+            </p>
+            <div class="twenty">
+              <span class="twentyone">
+                <span class="twentytwo">
+                  .
+                </span>
+              </span>
+            </div>
+            <span class="twentythree">
+              {{ post.body|readtime }}
+            </span>
+            
+           
+           
+          </div>
+         
+        </div>
+        </div>
+        <a href="{{ post.get_absolute_url }}" class="popular_imageside">
+          {% thumbnail post.cover 243x181 crop as im %}
+          <img class="imagechangesize" src="{{ im.url }}" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
