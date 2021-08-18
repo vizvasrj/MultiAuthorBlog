@@ -14,34 +14,45 @@
                 <div class="mb-3">
                     <form method="POST" enctype="multipart/form-data">
                         <div class="email mb-2 border-top">
-                            <label class="mt-2 labeltext" for="email" class="form-label">{{user_form.email.label}}:</label>
+                            <label class="mt-2 labeltext" for="email"
+                                class="form-label">{{user_form.email.label}}:</label>
                             <div class="">
                                 {{ user_form.email }}
                             </div>
                         </div>
                         <div class="about mb-2 border-top">
-                            <label class="mt-2 labeltext" for="about" class="form-label">{{profile_form.about.label}}:</label>
+                            <label class="mt-2 labeltext" for="about"
+                                class="form-label">{{profile_form.about.label}}:</label>
                             <div class="">
                                 {{profile_form.about}}
                             </div>
                         </div>
                         <div class="fullname mb-2 border-top">
-                            <label class="mt-2 labeltext" for="full_name" class="form-label">{{profile_form.full_name.label}}:</label>
+                            <label class="mt-2 labeltext" for="full_name"
+                                class="form-label">{{profile_form.full_name.label}}:</label>
                             <div class="">
                                 {{profile_form.full_name}}
                             </div>
                         </div>
                         <div class="photo mb-2 border-top">
                             <label class="mt-2 labeltext" for="photo">{{profile_form.photo.label}}:</label>
-                            {{profile_form.photo}}
-                            <label class="btn btn-secondary left520px" for="id_photo">Upload</label>
+                            <div class="">
+                                <label id="remove" class="uploadcover" for="id_photo">
+                                    {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
+                                    <img class="blogcoverimage" width="100%" id="myImg" src='{{ im.url }}' alt="Upload" />
+                                </label>
+                                {{profile_form.photo}}
+                            </div>
+
+                            <!-- {{profile_form.photo}}
+                            <label class="btn btn-secondary left520px" for="id_photo">Upload</label> -->
                         </div>
-                            {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
-                            <img class="rounded" width="300px" id="myImg" src="{{ im.url }}" alt="your image" />
+                        <!-- {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
+                        <img class="rounded" width="300px" id="myImg" src="{{ im.url }}" alt="your image" /> -->
                         <div class="colorlabelsize mb-2 border-top">
                             <label for="color" class="mt-2 labeltext">{{profile_form.color.label}}:</label>
                             {{profile_form.color}}
-                        </div>    
+                        </div>
                         {% csrf_token %}
                         <p class="mb-2 border-top">
                             <input class="mt-2 btn btn-primary" type="submit" value="Save changes">
@@ -58,19 +69,19 @@
 
 {% block domready %}
 $(function () {
-    $(":file").change(function () {
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = imageIsLoaded;
-            reader.readAsDataURL(this.files[0]);
-        }
-    });
-  });
-  
-  function imageIsLoaded(e) {
-    $('#myImg').attr('src', e.target.result);
-  };
+$(":file").change(function () {
+if (this.files && this.files[0]) {
+var reader = new FileReader();
+reader.onload = imageIsLoaded;
+reader.readAsDataURL(this.files[0]);
+}
+});
+});
+
+function imageIsLoaded(e) {
+$('#myImg').attr('src', e.target.result);
+};
 
 
-  
+
 {% endblock %}
