@@ -25,7 +25,7 @@ SECRET_KEY = 'opk#ocn6$638cwa&&w(_v^&$e-%_8f2=^ph+ok!+9v1bb64fu^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.4']
 
 
 # Application definition
@@ -143,5 +143,36 @@ LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/edit/'
 
 
-# fixing Errors 
+# fixing Errors
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+APPEND_SLASH = False
+
+EDITORJS_DEFAULT_CONFIG_TOOLS = {
+        'Image': {
+            'class': 'ImageTool',
+            'inlineToolbar': True,
+            "config": {"endpoints": {"byFile": "/editorjs/image_upload/"}},
+        },
+        'Header': {
+            'class': 'Header',
+            'inlineToolbar': True,
+            'config': {
+                'placeholder': 'Enter a tilte',
+                'levels': [2, 3, 4],
+                'defaultLevel': 2,
+            }
+        },
+        'Checklist': {'class': 'Checklist', 'inlineToolbar': True},
+        'List': {'class': 'List', 'inlineToolbar': True},
+        'Quote': {'class': 'Quote', 'inlineToolbar': True},
+        # 'Raw': {'class': 'RawTool'},
+        'Code': {'class': 'CodeTool'},
+        'InlineCode': {'class': 'InlineCode'},
+        'Embed': {'class': 'Embed'},
+        'Delimiter': {'class': 'Delimiter'},
+        'Warning': {'class': 'Warning', 'inlineToolbar': True},
+        'LinkTool': {'class': 'LinkTool'},
+        'Marker': {'class': 'Marker', 'inlineToolbar': True},
+        'Table': {'class': 'Table', 'inlineToolbar': True},
+    }
