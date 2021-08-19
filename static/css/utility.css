@@ -1,0 +1,32 @@
+.heart {
+    content: url('https://api.iconify.design/mdi:heart.svg?color=%23ff0000');
+    vertical-align: -0.125em;
+    color: #ff0000;
+}
+
+.red {
+    fill: #da5235;
+    color: red;
+}
+
+.king {
+    fill: #4594c9;
+}
+
+.hateheart {
+    content: url('https://api.iconify.design/mdi:heart-off.svg?height=24');
+    vertical-align: -0.125em;
+}
+
+.changesize {
+    font-size: 24px;
+}
+
+.hideme {
+    visibility: hidden;
+}
+
+.bottom-border {
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+

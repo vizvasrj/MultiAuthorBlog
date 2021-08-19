@@ -15,6 +15,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 from django_editorjs_fields import (
     EditorJsJSONField, EditorJsTextField
 )
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 now = timezone.now()
@@ -93,7 +94,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='blog_posts'
     )
-    body = EditorJsTextField()
+    body = CKEditor5Field('Text', config_name='extends')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)
