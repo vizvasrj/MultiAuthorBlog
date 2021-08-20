@@ -9,6 +9,7 @@ from taggit.forms import TagWidget
 from mptt.forms import TreeNodeChoiceField
 from django_editorjs_fields import EditorJsWidget
 from django_ckeditor_5.widgets import CKEditor5Widget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class PostForm(forms.ModelForm):
@@ -51,6 +52,7 @@ class CommentForm(forms.ModelForm):
     parent = TreeNodeChoiceField(
         queryset=Comment.objects.all()
     )
+    body = forms.TextInput()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -60,12 +62,17 @@ class CommentForm(forms.ModelForm):
         )
         self.fields['parent'].label = ''
         self.fields['parent'].required = False
+        self.fields['body'].required = False
 
     class Meta:
         model = Comment
         fields = ('parent', 'body')
         widgets = {
-            'body': forms.Textarea()
+            'body': forms.Textarea(
+                attrs={
+                    'class': 'myfieldclass',
+                }
+            )
         }
 
 
