@@ -24,6 +24,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('editorjs/', include('django_editorjs_fields.urls')),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(
