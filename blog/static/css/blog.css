@@ -42,6 +42,10 @@
 #id_cover {
     display: none;
 }
+.hideit {
+    display: none;
+}
+
 
 .blogcoverimage {
     cursor: pointer;
@@ -111,4 +115,7 @@ cite {
 }
 .code{
     background-color: rgb(170, 170, 170);
+}
+.image {
+    width: 100%;
 }

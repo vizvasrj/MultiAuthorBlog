@@ -107,6 +107,7 @@ def post_detail(request, post):
             new_comment.post = post
             new_comment.commentor_id = request.user.id
             new_comment.save()
+            return HttpResponseRedirect('')
     else:
         comment_form = CommentForm()
 
