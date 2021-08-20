@@ -16,6 +16,9 @@ from django_editorjs_fields import (
     EditorJsJSONField, EditorJsTextField
 )
 from django_ckeditor_5.fields import CKEditor5Field
+from ckeditor.fields import RichTextField 
+from ckeditor_uploader.fields import RichTextUploadingField
+
 
 
 now = timezone.now()
@@ -94,7 +97,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='blog_posts'
     )
-    body = CKEditor5Field('Text', config_name='extends')
+    body = CKEditor5Field(config_name='default')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)
