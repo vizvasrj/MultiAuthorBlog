@@ -3,6 +3,7 @@ from ..models import Post
 
 from django.db.models import Count
 from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
 import markdown
 import readtime
@@ -49,3 +50,12 @@ def read(html):
     return readtime.of_html(html)
 
 register.filter('readtime', read)
+
+
+from html import unescape
+
+@register.filter(name='xssprotect')
+def xssprotect(html):
+    htmlone = html.replace("<", "&lt;").replace(">", "&gt;")
+    return htmlone
+
