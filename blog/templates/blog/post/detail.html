@@ -133,10 +133,8 @@
                             <div>{{ node.created }} {% if request.user.id == node.commentor.id %} <a
                                     href="{% url 'edit_comment' node.id %}">Edit</a> {% endif %}</div>
                         </div>
-                        <div>
-                            {{ node.id }}: {{ node.body|xssprotect|safe }}
-
-
+                        <div class="">
+                            {{ node.id }}: {{ node.body|xssprotect }}
                         </div>
                         <div id="">
 
@@ -205,14 +203,10 @@
                 {% if request.user.is_authenticated %}
 
                 <form id="myForm" method="post">
-                    <!-- <label for="id_body" id="editor">
-                        This is blah! @@@@ @@@ @@@ @@@ @ @ @
-                    </label> -->
                     <div class="cover mb-2 ">
                         <label class="mt-2 labeltext" for="cover" class="form-label">{{comment_form.body.label}}:</label>
                         <div class="">
                             <label  for="id_body" id="editor">
-                                <!-- <textarea name="body" id="id_body" cols="30" rows="10"></textarea> -->
                             </label>
                             {{ comment_form.body }}
                         </div>
