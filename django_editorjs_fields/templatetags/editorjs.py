@@ -138,4 +138,5 @@ def editorjs(value):
         elif type == 'Quote':
             html_list.append(generate_quote(data))
 
+
     return mark_safe(''.join(html_list))
