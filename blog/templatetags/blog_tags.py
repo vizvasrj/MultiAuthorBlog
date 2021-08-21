@@ -57,7 +57,6 @@ register.filter('readtime', read)
 @register.filter(is_safe=True, name='xssprotect')
 def xssprotect(html):
     htmlone = html
-    # htmlone = html.replace("<", "&lt;").replace(">","&gt;")
     htmlone = clean_html(htmlone)
 
     return mark_safe(''.join(htmlone))

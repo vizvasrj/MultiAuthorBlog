@@ -26,7 +26,7 @@ class PostForm(forms.ModelForm):
             'title': forms.TextInput(
                 attrs={'class': 'myfieldclass', 'autocomplete': 'off'}
             ),
-            'body': CKEditor5Widget(
+            'body': EditorJsWidget(
 
                 # config={'minHeight': 100}
                 # attrs={
