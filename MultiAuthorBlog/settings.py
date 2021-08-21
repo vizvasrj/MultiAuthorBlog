@@ -47,9 +47,7 @@ INSTALLED_APPS = [
     'taggit',
     'mptt',
     'django_editorjs_fields',
-    'ckeditor',
     'ckeditor_uploader',
-    'django_ckeditor_5',
 
     # local
     'blog',
