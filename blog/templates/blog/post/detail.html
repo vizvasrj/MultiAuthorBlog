@@ -27,7 +27,7 @@
                         <hr class="hr-line">
                         {% thumbnail post.cover "800x400" crop="100%" as im %}
                         <img class="mb-3" width="100%" src="{{im.url}}" alt="">
-                        <p class="post-body">{{ post.body|editorjs }}</p>
+                        <p class="post-body">{{ post.body|xssprotect }}</p>
                         <div class="d-flex flex-row justify-content-center">
                             {% for tag in post.tags.all %}
                             <a href="#" class="d-flex my-2 mx-2 {% cycle " bg-orange" "bg-olive" "bg-green" %}">{{tag}}</a>

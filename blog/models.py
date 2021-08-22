@@ -12,12 +12,6 @@ from account.models import Profile
 from autoslug import AutoSlugField
 from taggit.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
-from django_editorjs_fields import (
-    EditorJsJSONField, EditorJsTextField
-)
-from django_ckeditor_5.fields import CKEditor5Field
-from ckeditor.fields import RichTextField 
-from ckeditor_uploader.fields import RichTextUploadingField
 
 
 
@@ -97,7 +91,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='blog_posts'
     )
-    body = EditorJsTextField()
+    body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)

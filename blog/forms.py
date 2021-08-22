@@ -7,9 +7,6 @@ from .models import Post, Comment
 # 3rd party
 from taggit.forms import TagWidget
 from mptt.forms import TreeNodeChoiceField
-from django_editorjs_fields import EditorJsWidget
-from django_ckeditor_5.widgets import CKEditor5Widget
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class PostForm(forms.ModelForm):
@@ -26,7 +23,7 @@ class PostForm(forms.ModelForm):
             'title': forms.TextInput(
                 attrs={'class': 'myfieldclass', 'autocomplete': 'off'}
             ),
-            'body': EditorJsWidget(
+            'body': forms.Textarea(
 
                 # config={'minHeight': 100}
                 # attrs={
