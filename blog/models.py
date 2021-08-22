@@ -97,7 +97,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='blog_posts'
     )
-    body = CKEditor5Field(config_name='default')
+    body = EditorJsTextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)

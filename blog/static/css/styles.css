@@ -5,7 +5,7 @@
 
  :root {
 	--ck-sample-base-spacing: 2em;
-	--ck-sample-color-white: #fff;
+	--ck-sample-color-white: transparent !important;
 	--ck-sample-color-green: #279863;
 	--ck-sample-color-blue: #1a9aef;
 	--ck-sample-container-width: 1285px;
@@ -25,7 +25,7 @@ main .ck-editor[role='application'] .ck.ck-content,
 /* Inline & Balloon build. */
 .ck.editor[role='textbox'] {
 	width: 100%;
-	background: #fff;
+	background: transparent !important;
 	font-size: 1em;
 	line-height: 1.6em;
 	min-height: var(--ck-sample-editor-min-height);
@@ -37,7 +37,7 @@ main .ck-editor[role='application'] {
 }
 
 .ck.ck-editor__editable {
-	background: #fff;
+	background: transparent !important;
 	border: 1px solid hsl(0, 0%, 70%);
 	width: 100%;
 }
@@ -202,7 +202,7 @@ body[ data-editor='InlineEditor'] .collaboration-demo__row {
 }
 
 .collaboration-demo__topbar {
-	background: #fff;
+	background: transparent !important;
 	border: 1px solid var(--ck-color-toolbar-border);
     display: flex;
     justify-content: space-between;
@@ -273,7 +273,7 @@ body[ data-editor='InlineEditor'] .collaboration-demo__row {
     padding: 5px 15px;
     border-radius: 3px;
     background: #111;
-    color: #fff;
+    color: transparent !important;
     text-align: center;
     font-size: 11px;
 	top: 100%;
@@ -342,4 +342,161 @@ body[ data-editor='InlineEditor'] .collaboration-demo__row {
 	right: unset;
 }
 
+/* Custom */
+.ck-dropdown__panel{
+	background: transparent !important;
+}
+.ck-list{
+	background: transparent !important;
+}
 /* --------- SAMPLE GENERIC STYLES (not related to CKEditor) ------------------------------------------------------- */
+body, html {
+	padding: 0;
+	margin: 0;
+
+	font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+body {
+	height: 100%;
+	color: #2D3A4A;
+}
+
+body * {
+	box-sizing: border-box;
+}
+
+a {
+	color: #38A5EE;
+}
+
+header .centered {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 8em;
+}
+
+header h1 a {
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	color: #2D3A4A;
+	text-decoration: none;
+}
+
+header h1 img {
+	display: block;
+	height: 64px;
+}
+
+header nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+header nav ul li {
+	display: inline-block;
+}
+
+header nav ul li + li {
+	margin-left: 1em;
+}
+
+header nav ul li a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #2D3A4A;
+}
+
+header nav ul li a:hover {
+	text-decoration: underline;
+}
+
+main .message {
+	padding: 0 0 var(--ck-sample-base-spacing);
+	background: var(--ck-sample-color-green);
+	color: var(--ck-sample-color-white);
+}
+
+main .message::after {
+	content: "";
+	z-index: -1;
+	display: block;
+	height: 10em;
+	width: 100%;
+	background: var(--ck-sample-color-green);
+	position: absolute;
+	left: 0;
+}
+
+main .message h2 {
+	position: relative;
+	padding-top: 1em;
+	font-size: 2em;
+}
+
+.centered {
+	/* Hide overlapping comments. */
+	overflow: hidden;
+	max-width: var(--ck-sample-container-width);
+	margin: 0 auto;
+	padding: 0 var(--ck-sample-base-spacing);
+}
+
+.row {
+	display: flex;
+	position: relative;
+}
+
+.btn {
+	cursor: pointer;
+	padding: 8px 16px;
+	font-size: 1rem;
+	user-select: none;
+	border-radius: 4px;
+	transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out,opacity .2s ease-in-out;
+	background-color: var(--ck-sample-color-button-blue);
+	border-color: var(--ck-sample-color-button-blue);
+	color: var(--ck-sample-color-white);
+	display: inline-block;
+}
+
+.btn--tiny {
+	padding: 6px 12px;
+	font-size: .8rem;
+}
+
+footer {
+	margin: calc(2*var(--ck-sample-base-spacing)) var(--ck-sample-base-spacing);
+	font-size: .8em;
+	text-align: center;
+	color: rgba(0,0,0,.4);
+}
+
+/* --------- RWD --------------------------------------------------------------------------------------------------- */
+@media screen and ( max-width: 800px ) {
+	:root {
+		--ck-sample-base-spacing: 1em;
+	}
+
+	header h1 {
+		width: 100%;
+	}
+
+	header h1 img {
+		height: 40px;
+	}
+
+	header nav ul {
+		text-align: right;
+	}
+
+	main .message h2 {
+		font-size: 1.5em;
+	}
+}
