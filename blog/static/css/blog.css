@@ -42,10 +42,10 @@
 #id_cover {
     display: none;
 }
+
 .hideit {
     display: none;
 }
-
 
 .blogcoverimage {
     cursor: pointer;
@@ -110,25 +110,73 @@ blockquote:before {
 blockquote p {
     display: inline;
 }
+
 cite {
     margin-left: 35px;
 }
-.code{
+
+.code {
     background-color: rgb(170, 170, 170);
 }
+
 .image {
     width: 100%;
 }
-figure.image img{
+
+figure.image img {
     width: 100%;
 }
-div.comment-body img{
+
+div.comment-body img {
     width: 100%;
 }
-.ck-editor__editable{
+
+.ck-editor__editable {
     background: transparent;
 }
-.btn-primary{
+
+.btn-primary {
     color: tomato !important;
-    border: 1px solid rgb(48, 48, 48)  !important;
+    border: 1px solid rgb(48, 48, 48) !important;
+}
+
+.float {
+    top: 40%;
+    margin-left: -22px;
+
+}
+.align-center{
+    align-self: center;
+}
+.post__body{
+    margin-left: -10px;
+}
+
+.post__body p img{
+    width: 100%;
+}
+.post__body img{
+    width: 100%;
+}
+#newForm{
+    border-left: 2px solid rgb(189, 189, 189);
+}
+.re_form {
+    margin-left: 10px;
+}
+.re_form_textarea{
+    height: 100px;
+    width: 100%;
+    background: transparent;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: inherit;
+    line-height: inherit;
+    border: inherit;
+}
+.re_form_close {
+    float: right;
+    padding: 2px;
 }

@@ -1,0 +1,19 @@
+{% extends "blog_base.html" %}
+
+<form id="newForm" method="post">
+  <div class="re_form">
+    <h2>Replay:</h2>
+    <p>
+      <select name="parent" class="d-none" id="id_parentt">
+        <option value="{{node.id}}" selected="{{node.id}}"></option>
+      </select>
+    </p>
+    <p>
+      <textarea placeholder="Comment here" name="body"id="id_body" class="re_form_textarea"></textarea>
+    </p>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary btn-lg btn-block bg-olive">
+      Submit
+    </button>
+  </div>
+</form>

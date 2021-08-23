@@ -20,8 +20,9 @@ class PostForm(forms.ModelForm):
             'title', 'body', 'tags', 'cover'
         )
         widgets = {
-            'title': forms.TextInput(
-                attrs={'class': 'myfieldclass', 'autocomplete': 'off'}
+            'title': forms.Textarea(
+                attrs={'class': 'myfieldclass', 'autocomplete': 'off',
+                'rows': "2"}
             ),
             'body': forms.Textarea(
 

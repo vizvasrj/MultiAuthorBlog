@@ -1,51 +1,51 @@
 .bg-navy {
-    background-color: #001f3f;
-    color: hsla(210, 100%, 75%, 1.0);
+    background-color: #001f3f!important ;
+    color: hsla(210, 100%, 75%, 1.0)!important ;
 }
 .bg-blue {
-    background-color: #0074D9;
-    color: hsla(208, 100%, 85%, 1.0);
+    background-color: #0074D9!important ;
+    color: hsla(208, 100%, 85%, 1.0)!important ;
 }
 .bg-aqua {
-    background-color: #7FDBFF;
-    color: hsla(197, 100%, 20%, 1.0);
+    background-color: #7FDBFF!important ;
+    color: hsla(197, 100%, 20%, 1.0)!important ;
 }
 .bg-teal {
-    background-color: #39CCCC;
+    background-color: #39CCCC!important ;
 }
 .bg-purple {
-    background-color: #B10DC9;
-    color: hsla(292, 88%, 82%, 1.0);
+    background-color: #B10DC9!important ;
+    color: hsla(292, 88%, 82%, 1.0)!important ;
 }
 .bg-fuchisa{
-    background-color: #F012BE ;
-    color: hsla(314, 88%, 21%, 1.0);
+    background-color: #F012BE !important ;
+    color: hsla(314, 88%, 21%, 1.0)!important ;
 }
 .bg-maroon{
-    background-color: #85144b;
-    color: hsla(331, 74%, 70%, 1.0);
+    background-color: #85144b!important ;
+    color: hsla(331, 74%, 70%, 1.0)!important ;
 }
 .bg-red {
-    background-color: #FF4136;
-    color: hsla(3, 100%, 25%, 1.0);
+    background-color: #FF4136!important ;
+    color: hsla(3, 100%, 25%, 1.0)!important ;
 }
 .bg-orange {
-    background-color: #FF851B;
-    color: hsla(28, 100%, 20%, 1.0);
+    background-color: #FF851B!important ;
+    color: hsla(28, 100%, 20%, 1.0)!important ;
 }
 .bg-yellow{
-    background-color: #FFDC00;
-    color: hsla(52, 100%, 20%, 1.0);
+    background-color: #FFDC00!important ;
+    color: hsla(52, 100%, 20%, 1.0) !important ;
 }
 .bg-olive{
-    background-color: #3D9970;
-    color: hsla(153, 43%, 15%, 1.0);
+    background-color: #3D9970!important ;
+    color: hsla(153, 43%, 15%, 1.0)!important ;
 }
 .bg-green{
-    background-color: #2ECC40;
-    color: hsla(127, 63%, 15%, 1.0);
+    background-color: #2ECC40!important ;
+    color: hsla(127, 63%, 15%, 1.0)!important ;
 }
 .bg-lime {
-    background-color: #01FF70;
-    color: hsla(146, 100%, 20%, 1.0);
+    background-color: #01FF70!important ;
+    color: hsla(146, 100%, 20%, 1.0)!important ;
 }

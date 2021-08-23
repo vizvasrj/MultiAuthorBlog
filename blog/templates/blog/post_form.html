@@ -2,6 +2,12 @@
 {% load crispy_forms_tags %}
 {% load editorjs %}
 
+{% block style %} 
+:root {
+	--ck-sample-editor-min-height: 400px;
+}
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">

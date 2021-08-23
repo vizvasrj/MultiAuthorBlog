@@ -1,9 +1,9 @@
 from django.contrib import admin
 from .models import Post, Comment
-admin.site.register(Post)
 
 
 # Register your models here.
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'author', 'publish', 'status')
     list_filter = ('status', 'created', 'publish', 'author')
@@ -13,4 +13,7 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'publish'
     ordering = ('status', 'publish')
 
-admin.site.register(Comment)
+
+@admin.register(Comment)
+class CommedntAdmin(admin.ModelAdmin):
+    ordering = ('-created',)

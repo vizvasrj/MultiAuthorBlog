@@ -38,7 +38,11 @@
   <script src="{% static 'colorfield/jscolor/jscolor.js' %}"></script>
   <script src="{% static 'colorfield/jscolor/jscolor.min.js' %}"></script>
 
-
+  <style>
+    {% block style %} 
+    
+    {% endblock %}
+  </style>
 </head>
 <section>
   <div class="wrapper">
@@ -191,7 +195,9 @@
 
 </script>
 
+{% block comment %} 
 
+{% endblock %}
 
 </body>
 
