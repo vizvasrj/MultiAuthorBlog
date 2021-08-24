@@ -1,18 +1,65 @@
-{% load blog_tags %}
-{% load thumbnail %}
-{% load no_code_editorjs %}
-
+{% load blog_tags %} {% load thumbnail %} {% load no_code_editorjs %}
 {{user.profiles.all}}
 {% for post in posts %}
-<div class="">
-  <a class="post_title" href="{% url 'post_detail' post.slug %}">
-    <h3 class="post_title mt-1">{{post.title|capfirst}}</h3>
-  </a>
-</div>
-{% thumbnail post.cover "400x200" crop="100%" as im  %}
+<div class="row bg-mint-lite {% cycle 'bg-blue-lite' 'bg-teal-lite' 'bg-purple-lite' 'bg-aqua-lite' 'bg-red-lite' 'bg-green-lite' 'bg-yellow-lite' 'bg-olive-lite' 'bg-navy-lite' 'bg-fuchisa-lite' 'bg-orange-lite' 'bg-lime-lite' %} mb-2">
+  <div class="col-1">
+    <div class="blog__list__float sticky-top">
+      <div class="bookmark">
+        {% with bookmark=post.bookmark_list.all %}
 
-<img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="">
-<p class="post_body mt-1">
-{{post.body|xssprotect|removeimage|truncatewords:100 }}
-</p>
-{% endfor %}
+        {% if user.is_authenticated %}
+        
+        <a data-id="{{ post.id }}" data-action="{% if request.user in bookmark %}un{% endif %}bookmark" class="bookmark">
+            <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <path class="{% if request.user in bookmark %}king{% endif %} {{ post.id }} icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262"/>
+            </svg>
+          </a>
+
+        {% else %}
+
+        <a href="{% url 'login' %}?next={{ request.path }}" class="bookmark_unauthenticated">
+            <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <path class="icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262"/>
+            </svg>
+        </a>
+
+        {% endif %}
+
+
+        {% endwith %}
+      </div>
+      <div class="dot_menu">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-icon="mdi:dots-vertical" data-inline="false" style="transform: rotate(360deg);"><path d="M12 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0-6a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2z" fill="currentColor"></path></svg>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-11">
+
+    <div
+      class=" mb-5"
+    >
+      <div class="mt-2">
+        <a class="post_title" href="{% url 'post_detail' post.slug %}">
+          <h3 class="post_title mt-1">{{post.title|capfirst}}</h3>
+        </a>
+      </div>
+      <hr>
+      <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+      </p>
+
+      <p class="detail_readtime">{{ post.body|readtime }}</p>
+      {% thumbnail post.cover "400x200" crop="100%" as im %}
+
+      <img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="" />
+      <p class="mt-1 post__list__body">
+        {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+      </p>
+      <a class="link0" href="{{post.get_absolute_url}}">
+        <p class="read_more">Read more</p>
+      </a>
+    </div>
+  </div>
+</div>
+    {% endfor %}

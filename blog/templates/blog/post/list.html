@@ -42,11 +42,6 @@ $(window).scroll(function () {
 });
 
 <!-- bla -->
-
-{% endblock %}
-
-
-{% block domready2 %} 
 <!-- bookmark -->
 $('#post-list').on("click", "a.bookmark", function(event){
     {% if request.user.is_authenticated %}
@@ -57,7 +52,7 @@ $('#post-list').on("click", "a.bookmark", function(event){
 
     console.log( $(this).data('id') );
     var a = $(this).data('id');
-    $.post('{% url "blog:bookmark" %}',
+    $.post('{% url "bookmark" %}',
   {
       id: $(this).data('id'),
       action: $(this).data('action')
@@ -84,3 +79,5 @@ $('#post-list').on("click", "a.bookmark", function(event){
 
 
 {% endblock %}
+
+

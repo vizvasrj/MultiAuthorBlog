@@ -1,4 +1,5 @@
 {% extends "blog_base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% load editorjs %}
 
@@ -56,6 +57,13 @@
 
 
 
+
+{% endblock %}
+
+{% block script %} 
+<script  src="{% static 'js/ckeditor.js' %}"></script>
+<script src="{% static 'js/ckeditor.config.js' %}"></script>
+
 {% endblock %}
 
 {% block domready %}
@@ -77,6 +85,3 @@ $('#myImg').attr('src', e.target.result);
 
 {% endblock %}
 
-{% block script %}
-
-{% endblock %}

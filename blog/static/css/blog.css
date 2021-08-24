@@ -191,3 +191,11 @@ div.comment-body img {
 .read_more{
     font-size: 12px;
 }
+.blog__list__float {
+    top: 40%;
+    font-size: 25px;
+
+}
+.post__list__body{
+    word-break: break-word;
+}
