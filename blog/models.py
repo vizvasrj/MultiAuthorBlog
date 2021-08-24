@@ -66,6 +66,8 @@ class Category(models.Model):
     class Meta:
         ordering = ('-created',)
 
+
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),

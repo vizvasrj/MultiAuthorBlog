@@ -315,7 +315,7 @@ def tag_list(request):
         return render(
             request,
             'blog/tag/list_ajax.html',{
-                'tags': tags
+                'tags': tags,
             }
         )
     return render(
