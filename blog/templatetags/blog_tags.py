@@ -5,7 +5,10 @@ from django.db.models import Count
 from django.utils.safestring import mark_safe
 
 from django.utils.html import format_html
-from lxml.html.clean import clean_html
+from lxml.html.clean import (
+    clean_html, Cleaner
+)
+
 
 import markdown
 import readtime
@@ -61,3 +64,11 @@ def xssprotect(html):
 
     return mark_safe(''.join(htmlone))
 
+
+import re
+
+@register.filter(is_safe=True, name='removeimage')
+def removeimage(html):
+    string = re.sub('<a.*?>|</a> ', ' ', html)
+    string2 = re.sub('<img.*?>', ' ', string)
+    return string2

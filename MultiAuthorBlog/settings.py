@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'mptt',
     'django_editorjs_fields',
     'ckeditor_uploader',
+    'django_extensions',
 
     # local
     'blog',

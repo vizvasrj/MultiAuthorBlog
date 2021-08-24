@@ -3,6 +3,38 @@
 {% load no_code_editorjs %}
 
 {% for post in posts %}
-Title: {{post.title}}
-<br>
+<div class="container similar_posts {% cycle 'bg-red-lite' 'bg-olive-lite' 'bg-fuchisa-lite' 'bg-teal-lite' %}">
+  <div class="row">
+      <div class="col-lg-2">
+
+      </div>
+      <div class="col-lg-8">
+          <div class="container">
+              <div class="row">
+                  <div class="col-1">
+                  </div>
+                  <div class="col-11 post__body">
+                      <a class="post_title" href="{{post.get_absolute_url}}">
+                        <h1 class="posttitle">{{ post.title|capfirst }}</h1>
+                      </a>
+                      <p class="detail_readtime">{{post.body|readtime}}</p>
+                      <p class="date">
+                          Published {{ post.publish }} by {{ post.author }}
+                      </p>
+                      <hr class="hr-line">
+                      {% thumbnail post.cover "800x400" crop="100%" as im %}
+                      <img class="mb-3" width="100%" src="{{im.url}}" alt="">
+                      <p class="post-body">{{ post.body|xssprotect|truncatewords:100 }}</p>
+                      <a class="link0" href="{{post.get_absolute_url}}">
+                        <p class="read_more">Read more</p>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-lg-2"></div>
+  </div>
+</div>
+</div>
 {% endfor %}

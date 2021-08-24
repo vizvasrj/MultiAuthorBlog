@@ -53,7 +53,7 @@ def create_post(request):
 
 
 
-def post_list(request, tag_slug=None, category_slug=None):
+def post_list(request, tag_slug=None):
     posts = Post.published.all()
     object_list = Post.published.all()
     tag = None
@@ -77,7 +77,7 @@ def post_list(request, tag_slug=None, category_slug=None):
     if request.is_ajax():
         return render(
             request,
-            'blog/post/list_ajax_main.html',{
+            'blog/post/list_ajax.html',{
                 'posts': posts,
                 'tag': tag
             }
@@ -297,3 +297,30 @@ def delete_post(request, pk=None):
             reverse('404')
         )
 
+
+
+def tag_list(request):
+    tags = Tag.objects.all()
+    paginator = Paginator(tags, 10)
+    page = request.GET.get('page')
+    try:
+        tags = paginator.page(page)
+    except PageNotAnInteger:
+        tags = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            return HttpResponse('')
+        posts = paginator.page(paginator.num_pages)
+    if request.is_ajax():
+        return render(
+            request,
+            'blog/tag/list_ajax.html',{
+                'tags': tags
+            }
+        )
+    return render(
+        request,
+        'blog/tag/list.html', {
+            'tags': tags
+        }
+    )

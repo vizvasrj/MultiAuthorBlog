@@ -13,6 +13,6 @@
 
 <img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="">
 <p class="post_body mt-1">
-{{post.body|xssprotect|truncatewords:100 }}
+{{post.body|xssprotect|removeimage|truncatewords:100 }}
 </p>
 {% endfor %}

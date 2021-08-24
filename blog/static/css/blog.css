@@ -78,6 +78,8 @@
     width: 100%;
     margin: 30px 0;
     padding: 0;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .bookmark_like {
@@ -124,7 +126,7 @@ cite {
 }
 
 figure.image img {
-    width: 100%;
+    max-width: 100%;
 }
 
 div.comment-body img {
@@ -153,10 +155,10 @@ div.comment-body img {
 }
 
 .post__body p img{
-    width: 100%;
+    max-width: 100%;
 }
 .post__body img{
-    width: 100%;
+    max-width: 100%;
 }
 #newForm{
     border-left: 2px solid rgb(189, 189, 189);
@@ -179,4 +181,13 @@ div.comment-body img {
 .re_form_close {
     float: right;
     padding: 2px;
+}
+.link0{
+    color: inherit;
+}
+.link0:hover{
+    color: inherit;
+}
+.read_more{
+    font-size: 12px;
 }

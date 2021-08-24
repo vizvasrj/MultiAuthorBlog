@@ -1,0 +1,44 @@
+{% extends "blog_base.html" %}
+{% load blog_tags %}
+{% block title %} Tags | Vizvasrj.com {% endblock %}
+
+{% block content %} 
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            All tags
+        </div>
+        <div class="col-md-6">
+            <div id="tag-list">
+                {% include "blog/tag/list_ajax.html" %}
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block domready %}
+var page = 1;
+var empty_page = false;
+var block_request = false;
+
+$(window).scroll(function () {
+    var margin = $(document).height() - $(window).height() - 200;
+    if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+        block_request = true;
+        page += 1;
+        $.get('?page=' + page, function (data) {
+            if (data == '') {
+                empty_page = true;
+            } else {
+                block_request = false;
+                $('#tag-list').append(data);
+            }
+        });
+    }
+});
+
+<!-- bla -->
+
+{% endblock %}
