@@ -299,8 +299,19 @@ def delete_post(request, pk=None):
 
 
 
-def tag_list(request):
+def tag_list(request, post_id=None):
     tags = Tag.objects.all()
+    object_list = Tag.objects.all()
+    post = None
+    if post_id:
+        post = get_object_or_404(
+            Post,
+            id=post_id
+        )
+        object_list = object_list.filter(
+            post__in=[post]
+        )
+
     paginator = Paginator(tags, 10)
     page = request.GET.get('page')
     try:
@@ -310,17 +321,28 @@ def tag_list(request):
     except EmptyPage:
         if request.is_ajax():
             return HttpResponse('')
-        posts = paginator.page(paginator.num_pages)
+        tags = paginator.page(paginator.num_pages)
     if request.is_ajax():
         return render(
             request,
             'blog/tag/list_ajax.html',{
                 'tags': tags,
+                'post': post,
             }
         )
     return render(
         request,
         'blog/tag/list.html', {
-            'tags': tags
+            'tags': tags,
+            'post': post
         }
     )
+
+
+def tag_detail(request, tag):
+    tag = get_object_or_404(
+        Tag,
+        slug=tag,
+    )
+
+    

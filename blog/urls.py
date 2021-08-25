@@ -13,8 +13,8 @@ urlpatterns = [
     path('list/', post_list, name='post_list'),
     path('<slug:post>/',
          post_detail, name='post_detail'),
-    # path('tag/<slug:tag_slug>/', post_list, 
-    #     name='post_list_by_tag'),
+    path('tag/<slug:tag_slug>/', post_list, 
+        name='post_list_by_tag'),
     path('search/', post_search, name='post_search'),
     path('post/like/', post_like, name='like'),
     path('comment/like/', comment_like, name='comment_like'),
@@ -27,6 +27,6 @@ urlpatterns = [
     ), name='404'),
     path('update_comment/<int:pk>/', edit_comment,
         name='edit_comment'),
-    path('tag/list/', tag_list, name='tag_list'),
+    path('tags/list/', tag_list, name='tag_list'),
 
 ]

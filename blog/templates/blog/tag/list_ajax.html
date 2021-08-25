@@ -1,4 +1,10 @@
+
 {% for tag in tags %}
-    <h1 class="tags_title">{{ tag.name }}</h1>
-<br>
+<div class="d-flex flex-row underline">
+    <a class="link-none post_title" href="{% url 'post_list_by_tag' tag.slug %}">
+      <h1 class="tags_title bg-red-lite">{{ tag }}</h1>
+    </a>
+    <p class="bg-olive-lite underline">{{tag.taggit_taggeditem_items.select_related.count}}</p>
+    <br />
+</div>
 {% endfor %}

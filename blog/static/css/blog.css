@@ -199,3 +199,6 @@ div.comment-body img {
 .post__list__body{
     word-break: break-word;
 }
+.underline {
+    text-decoration: underline;
+}
