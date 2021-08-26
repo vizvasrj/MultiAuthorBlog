@@ -1,0 +1,119 @@
+{% extends "blog_base.html" %}
+{% load blog_tags %}
+{% load thumbnail %}
+{% block title %} 
+    Search 
+{% endblock %}
+
+{% block content %} 
+
+<div class="container">
+    <div class="row">
+        
+        {% if query %}
+        <div class="search">
+            <h1 class="search__query__title">Post Containing "{{ query }}"</h1>
+            
+            <div class="col-lg-9">
+                <div id="post-list">
+                    {% include "blog/search/list_ajax.html" %}
+                </div>
+            </div>
+            <p>
+            <div class="col-lg-3">
+                <div id="user-list">
+                    <h1>Users</h1>
+                    {% for user in re_users %}
+                    <div class="">
+                        {% thumbnail user.profiles.photo "42x42" crop="100%" as im  %}
+                        <a class="a_author_image" href="/{{user}}/">
+                          <img class="author__left__side rounded" src="{{ im.url }}" alt="">
+                        </a>
+                      
+                          <a class="author_name_from_list" href="/{{user}}/">{{ user }}</a>
+                       
+                      </div>              
+                    {% endfor %}
+                </div>
+            </div>
+                <a href="{% url 'post_search' %}">Search again</a>
+            </p>
+        </div>
+        {% else %}
+        <div class="col-3"></div>
+        <div class="col-lg-6 border-top">
+            <form method="GET" class="mt-5">
+                <div class="search mb-2">
+                    <div class="">
+                        {{ form.query }}
+                    </div>
+                </div>
+            
+                <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn bg-olive-lite" value="Search">
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block domready %} 
+var page = 1;
+var empty_page = false;
+var block_request = false;
+
+$(window).scroll(function () {
+    var margin = $(document).height() - $(window).height() - 200;
+    if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+        block_request = true;
+        page += 1;
+        $.get('?query={{query}}&page=' + page, function (data) {
+            if (data == '') {
+                empty_page = true;
+            } else {
+                block_request = false;
+                $('#post-list').append(data);
+            }
+        });
+    }
+});
+
+<!-- Bookmark -->
+$('#post-list').on("click", "a.bookmark", function(event){
+    {% if request.user.is_authenticated %}
+      event.preventDefault();
+  {% else %}
+      console.log("Login First");
+  {% endif %}
+
+    console.log( $(this).data('id') );
+    var a = $(this).data('id');
+    $.post('{% url "bookmark" %}',
+  {
+      id: $(this).data('id'),
+      action: $(this).data('action')
+  },
+  function(data){
+      if (data['status'] == 'ok')
+      {
+          
+          
+          var previous_action = $('a.bookmark').data('action');
+
+          //toggle data-action
+          $('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
+
+          //toggle link text
+          $('a.bookmark svg path.'+a).toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' : '');
+
+      }
+      else{
+          console.log("Error")
+      }
+  });
+});
+
+{% endblock %}

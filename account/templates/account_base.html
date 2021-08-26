@@ -65,7 +65,7 @@
                     {% thumbnail request.user.profiles.photo 42x42 crop as avatar %}
                     <img class="rounded" width="42px" src="{{ avatar.url }}" alt="">
                   </a>
-                  <ul class="dropdown-menu bg-green-lite" aria-labelledby="dropdown01">
+                  <ul class="dropdown-menu bg-green-lite-dropdown" aria-labelledby="dropdown01">
                     <li><a class="dropdown-item" href="{% url 'my_profile' %} ">
                       {{ request.user.username }}</a></li>
                     <li><a class="dropdown-item" href="{% url 'edit' %}">Manage profile</a></li>
@@ -131,9 +131,25 @@
 <!-- <script src="{% static 'js/popper.min.js' %}"></script> -->
 <!-- <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
 <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/js.cookie.min.js' %}"></script>
+
 
 <script>
+        var csrftoken = Cookies.get('csrftoken');
+    function csrfSafeMethod(method) {
+      // These HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+      beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+      }
+    });
+
   {% block domready %}
+  
   {% endblock %}
 </script>
 

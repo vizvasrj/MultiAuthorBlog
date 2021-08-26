@@ -15,7 +15,7 @@ urlpatterns = [
          post_detail, name='post_detail'),
     path('tag/<slug:tag_slug>/', post_list, 
         name='post_list_by_tag'),
-    path('search/', post_search, name='post_search'),
+    path('post/search/', post_search, name='post_search'),
     path('post/like/', post_like, name='like'),
     path('comment/like/', comment_like, name='comment_like'),
     path('post/bookmark/', bookmark, name='bookmark'),

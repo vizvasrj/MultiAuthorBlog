@@ -97,7 +97,7 @@
                         <h1 class="posttitle">{{ post.title }}</h1>
                         <p class="detail_readtime">{{post.body|readtime}}</p>
                         <p class="date">
-                            Published {{ post.publish }} by <a class="post_username" href="/{{user.profiles.get_absolute_url}}/">{{ post.author }}</a>
+                            Published {{ post.publish }} by <a class="post_username" href="/{{post.author.get_absolute_url}}/">{{ post.author }}</a>
                         </p>
                         <hr class="hr-line">
                         {% thumbnail post.cover "800x400" crop="100%" as im %}

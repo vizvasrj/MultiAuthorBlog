@@ -63,8 +63,8 @@
                   <a class="nav-link active navtext" aria-current="page" href="{% url 'post_list' %}">Posts</a>
                 </li>
               </ul>
-              <form class="d-flex">
-                <input class="form-control me-2 bg-green-lite navtext  input-search" type="search" placeholder="Search" aria-label="Search">
+              <form method="GET" class="d-flex" action="/blog/post/search/">
+                <input class="form-control me-2 bg-green-lite navtext  input-search" type="search" name="query" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success bg-green-lite navtext" type="submit">Search</button>
               </form>
               {% if request.user.is_authenticated %}
@@ -75,7 +75,7 @@
                     {% thumbnail request.user.profiles.photo 42x42 crop as avatar %}
                     <img class="rounded" width="42px" src="{{ avatar.url }}" alt="">
                   </a>
-                  <ul class="dropdown-menu bg-olive-lite" aria-labelledby="dropdown01">
+                  <ul class="dropdown-menu bg-green-lite-dropdown" aria-labelledby="dropdown01">
                     <li><a class="dropdown-item" href="{% url 'my_profile' %} ">
                         {{ request.user.username }}</a></li>
                     <li><a class="dropdown-item" href="{% url 'edit' %}">Manage profile</a></li>

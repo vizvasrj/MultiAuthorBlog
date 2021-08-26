@@ -257,3 +257,61 @@ div.comment-body img {
 .input-search {
     overflow: auto;
 }
+
+.myfieldclass-search {
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    width: 100%;
+    padding: .2em;
+    color: rgba(77, 77, 77, 0.767);
+    border: 1px solid rgb(77, 77, 77);
+    background-color: transparent;
+}
+
+.myfieldclass-search:hover {
+    background-color: transparent;
+}
+
+.myfieldclass-search:valid {
+    background-color: transparent;
+}
+
+.search {
+    padding: 2px;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: 400;
+    color: rgb(77, 77, 77);
+}
+.search__query__title {
+    font-family: Work Sans;
+    font-weight: 400;
+    color: rgba(105, 105, 105, 0.877);
+}
+.search__result__total{
+    
+}
+
+.author {
+    /* margin-top: -22px; */
+
+}
+.author__p_name{
+
+}
+.author__avatar{
+    margin-left: 5px;
+}
+.a_author_image{
+    text-decoration: none;
+    color: inherit;
+}
+.author_name_from_list{
+    text-decoration: none;
+    color: inherit;
+}
+.author_name_from_list:hover{
+    text-decoration: none;
+    color: rgb(82, 82, 82);
+}

@@ -159,3 +159,7 @@
 .bg-olive-lite-nav {
     color: hsla(153, 43%, 15%, 0.5)!important ;
 }
+.bg-green-lite-dropdown {
+    color: hsla(127, 63%, 15%, 0.5)!important ;
+    border: 1px solid hsla(127, 63%, 15%, 0.5)!important ;
+}

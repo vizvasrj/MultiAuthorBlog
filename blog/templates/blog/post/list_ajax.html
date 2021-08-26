@@ -1,4 +1,6 @@
-{% load blog_tags %} {% load thumbnail %} {% load no_code_editorjs %}
+{% load blog_tags %}
+{% load thumbnail %} 
+{% load no_code_editorjs %}
 {{user.profiles.all}}
 {% for post in posts %}
 <div class="row bg-mint-lite {% cycle 'bg-blue-lite' 'bg-teal-lite' 'bg-purple-lite' 'bg-aqua-lite' 'bg-red-lite' 'bg-green-lite' 'bg-yellow-lite' 'bg-olive-lite' 'bg-navy-lite' 'bg-fuchisa-lite' 'bg-orange-lite' 'bg-lime-lite' %} mb-2">
@@ -45,10 +47,21 @@
         </a>
       </div>
       <hr>
+      <div class="">
+        {% thumbnail post.author.photo "42x42" crop="100%" as im  %}
+        <a class="a_author_image" href="/{{post.author.get_absolute_url}}/">
+          <img class="author__left__side rounded" src="{{ im.url }}" alt="">
+        </a>
+      
+          <a class="author_name_from_list" href="/{{post.author.get_absolute_url}}/">{{ post.author }}</a>
+       
+      </div>
       <p class="date">
-        Published {{ post.publish }} by {{ post.author }}
+  
+        Published at {{ post.publish }}
+
       </p>
-      <p class="detail_readtime">{{ post.body|readtime }}</p>
+    <p class="detail_readtime">{{ post.body|readtime }}</p>
       {% thumbnail post.cover "400x200" crop="100%" as im %}
 
       <img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="" />

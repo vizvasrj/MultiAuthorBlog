@@ -75,4 +75,10 @@ class CommentForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    query = forms.CharField()
+    query = forms.CharField(label='Search', widget=forms.TextInput(attrs={
+        'class': 'myfieldclass-search',
+        'placeholder': 'Text here',
+        'type': 'text',
+        'name': 'search',
+        'autocomplete': 'off'
+    }))

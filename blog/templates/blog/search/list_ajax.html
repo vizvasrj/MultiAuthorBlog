@@ -1,7 +1,7 @@
 {% load blog_tags %}
-{% load thumbnail %}
-
-{% for post in posts %}
+ {% load thumbnail %} 
+ {% load no_code_editorjs %}
+{% for post in results %}
 <div class="row bg-mint-lite {% cycle 'bg-blue-lite' 'bg-teal-lite' 'bg-purple-lite' 'bg-aqua-lite' 'bg-red-lite' 'bg-green-lite' 'bg-yellow-lite' 'bg-olive-lite' 'bg-navy-lite' 'bg-fuchisa-lite' 'bg-orange-lite' 'bg-lime-lite' %} mb-2">
     <div class="col-1">
       <div class="blog__list__float sticky-top">
@@ -72,7 +72,7 @@
         </a>
         <div class="">
           {% for tag in post.tags.all %}
-          <a href="{% url 'post_list_by_tag' tag.slug %}" class="tags-item 
+          <a href="{% url 'post_list_by_tag' tag.slug %}" class=" tags-item
               {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bg-red-lite' %}">
                   #{{ tag }}
           </a>
@@ -81,4 +81,11 @@
   </div>
     </div>
   </div>
+  {% empty %}
+<div>
+    <p>
+        There are no post related this query
+    </p>
+</div>
+
 {% endfor %}
