@@ -97,15 +97,15 @@
                         <h1 class="posttitle">{{ post.title }}</h1>
                         <p class="detail_readtime">{{post.body|readtime}}</p>
                         <p class="date">
-                            Published {{ post.publish }} by {{ post.author }}
+                            Published {{ post.publish }} by <a class="post_username" href="/{{user.profiles.get_absolute_url}}/">{{ post.author }}</a>
                         </p>
                         <hr class="hr-line">
                         {% thumbnail post.cover "800x400" crop="100%" as im %}
                         <img class="mb-3" width="100%" src="{{im.url}}" alt="">
                         <p class="post-body">{{ post.body|xssprotect }}</p>
-                        <div class="d-flex flex-row justify-content-center">
+                        <div class="">
                             {% for tag in post.tags.all %}
-                            <a href="" class="d-flex my-2 mx-2 
+                            <a href="{% url 'post_list_by_tag' tag.slug %}" class="tags-item
                                 {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bg-red-lite' %}">
                                     #{{ tag }}
                             </a>

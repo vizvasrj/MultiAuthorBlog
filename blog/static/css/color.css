@@ -102,3 +102,60 @@
     background-color: #01FF7010 !important ;
     color: hsla(146, 100%, 20%, 0.5)!important ;
 }
+
+/* 50 opacity */
+.bg-navy-lite-50 {
+    background-color: #001f3f50 !important ;
+    color: hsla(210, 100%, 15%, 0.5)!important ;
+}
+.bg-blue-lite-50 {
+    background-color: #0074D950 !important ;
+    color: hsla(208, 100%, 15%, 0.5)!important ;
+}
+.bg-aqua-lite-50 {
+    background-color: #7FDBFF50 !important ;
+    color: hsla(197, 100%, 20%, 0.5)!important ;
+}
+.bg-teal-lite-50 {
+    background-color: #39CCCC50 !important ;
+}
+.bg-purple-lite-50 {
+    background-color: #B10DC950 !important ;
+    color: hsla(292, 88%, 12%, 0.5)!important ;
+}
+.bg-fuchisa-lite-50 {
+    background-color: #F012BE50 !important ;
+    color: hsla(314, 88%, 21%, 0.5)!important ;
+}
+.bg-maroon-lite-50 {
+    background-color: #85144b50 !important ;
+    color: hsla(331, 74%, 70%, 0.5)!important ;
+}
+.bg-red-lite-50 {
+    background-color: #FF413650 !important ;
+    color: hsla(3, 100%, 25%, 0.5)!important ;
+}
+.bg-orange-lite-50 {
+    background-color: #FF851B50 !important ;
+    color: hsla(28, 100%, 20%, 0.5)!important ;
+}
+.bg-yellow-lite-50 {
+    background-color: #FFDC0050 !important ;
+    color: hsla(52, 100%, 20%, 0.5) !important ;
+}
+.bg-olive-lite-50 {
+    background-color: #3D997050 !important ;
+    color: hsla(153, 43%, 15%, 0.5)!important ;
+}
+.bg-green-lite-50 {
+    background-color: #2ECC4050 !important ;
+    color: hsla(127, 63%, 15%, 0.5)!important ;
+}
+.bg-lime-lite-50 {
+    background-color: #01FF7050 !important ;
+    color: hsla(146, 100%, 20%, 0.5)!important ;
+}
+/* Custome nav */
+.bg-olive-lite-nav {
+    color: hsla(153, 43%, 15%, 0.5)!important ;
+}

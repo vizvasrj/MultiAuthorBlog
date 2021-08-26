@@ -10,6 +10,11 @@
   <title>{% block title %} {% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/account.css' %}">
+  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  <link rel="stylesheet" href="{% static 'css/color.css' %}">
+  <link rel="stylesheet" href="{% static 'css/utility.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 
   <!-- Google fonts -->
   <link
@@ -21,6 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
+
 
   <!-- colorfield -->
   <script src="{% static 'colorfield/colorfield.js' %}"></script>
@@ -34,9 +40,9 @@
     <body class="bg-light">
       <div class="container">
         <nav class="navbar navbar-expand-sm left150px">
-          <div class="container-fluid navbackgroundcolor">
-            <a class=" navbar-brand navtext " href="#">MultiUserBlog</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          <div class="container-fluid">
+            <a class=" navbar-brand navtext " href="/">Vizvasrj</a>
+            <button class="navbar-toggler bg-olive-lite-nav" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -44,28 +50,28 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-lg-0">
                 <li class="nav-item text-center">
-                  <a class="nav-link active navtext" aria-current="page" href="#">Home</a>
+                  <a class="nav-link active navtext" aria-current="page" href="{% url 'post_list' %}">Posts</a>
                 </li>
               </ul>
               <form class="d-flex">
-                <input class="form-control me-2 navtext" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success navtext" type="submit">Search</button>
+                <input class="form-control me-2 bg-green-lite navtext input-search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success  bg-green-lite navtext" type="submit">Search</button>
               </form>
               {% if request.user.is_authenticated %}
               <!-- Settings Profile -->
               <ul class="navbar-nav right150px mb-lg-0">
                 <li class="nav-item dropdown text-center">
                   <a class="nav-link dropdown" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
-                    {% thumbnail request.user.profiles.photo 30x30 crop as avatar %}
-                    <img class="rounded" width="30px" src="{{ avatar.url }}" alt="">
+                    {% thumbnail request.user.profiles.photo 42x42 crop as avatar %}
+                    <img class="rounded" width="42px" src="{{ avatar.url }}" alt="">
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                  <ul class="dropdown-menu bg-green-lite" aria-labelledby="dropdown01">
                     <li><a class="dropdown-item" href="{% url 'my_profile' %} ">
                       {{ request.user.username }}</a></li>
                     <li><a class="dropdown-item" href="{% url 'edit' %}">Manage profile</a></li>
                     <li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-                    <li><a class="dropdown-item" href="{ % url 'blog:post_new' % }">Create Post</a></li>
+                    <li><a class="dropdown-item" href="{% url 'post_new' %}">Create Post</a></li>
 
                     <li><a class="dropdown-item" href="{ % url 'dashboard' % }">Dashbord</a></li>
 

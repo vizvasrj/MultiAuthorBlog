@@ -54,7 +54,7 @@ def create_post(request):
 
 
 def post_list(request, tag_slug=None):
-    posts = Post.published.all()
+    # posts = Post.published.all()
     object_list = Post.published.all()
     tag = None
     if tag_slug:

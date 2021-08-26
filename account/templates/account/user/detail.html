@@ -10,28 +10,75 @@
 <div class="container">
     <div class="row">
         {% include "account/user/left_side.html" %}
-        <div class="col-md-6 theirposts mt-5">
-            <div class="">
-                <h3 class="post_title mt-1">Post Title: !st August 1978</h3>
+        <div class="col-md-9 mt-5">
+            <div id="post-list">
+                {% include "account/user/user_post_list_ajax.html" %}
             </div>
-            <img class="col-sm-12 post-image" src="{% static 'image/demo.jpg' %}" alt="">
-            <p class="post_body mt-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nihil velit quisquam, commodi
-                debitis neque possimus architecto fugiat perferendis laboriosam maiores dolor recusandae fugit beatae
-                exercitationem, quam accusantium sit ut?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam alias iusto facere unde, nihil sequi
-                voluptatem, voluptatum tempora sit cum excepturi eveniet sed adipisci laborum sunt ab aliquam. Amet,
-                quae.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, rerum quis perferendis vitae
-                incidunt eius quo vero mollitia laudantium dolorum quisquam sequi libero et nemo praesentium minima
-                consectetur molestias temporibus.
-            </p>
         </div>
-        <div class="col-md-3 mt-5"></div>
     </div>
 </div>
 {% endblock %}
 
 {% block script %}
 <script src="{% static 'js/fallow.js' %}"></script>
+{% endblock %}
+
+{% block domready %}
+var page = 1;
+var empty_page = false;
+var block_request = false;
+
+$(window).scroll(function () {
+    var margin = $(document).height() - $(window).height() - 200;
+    if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+        block_request = true;
+        page += 1;
+        $.get('?page=' + page, function (data) {
+            if (data == '') {
+                empty_page = true;
+            } else {
+                block_request = false;
+                $('#post-list').append(data);
+            }
+        });
+    }
+});
+
+<!-- bla -->
+<!-- bookmark -->
+$('#post-list').on("click", "a.bookmark", function(event){
+    {% if request.user.is_authenticated %}
+      event.preventDefault();
+  {% else %}
+      console.log("Login First");
+  {% endif %}
+
+    console.log( $(this).data('id') );
+    var a = $(this).data('id');
+    $.post('{% url "bookmark" %}',
+  {
+      id: $(this).data('id'),
+      action: $(this).data('action')
+  },
+  function(data){
+      if (data['status'] == 'ok')
+      {
+          
+          
+          var previous_action = $('a.bookmark').data('action');
+
+          //toggle data-action
+          $('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
+
+          //toggle link text
+          $('a.bookmark svg path.'+a).toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' : '');
+
+      }
+      else{
+          console.log("Error")
+      }
+  });
+});
+
+
 {% endblock %}

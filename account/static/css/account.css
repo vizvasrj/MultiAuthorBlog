@@ -74,16 +74,12 @@
 .navtext {
     font-family: 'Roboto Mono', monospace;
     font-weight: 400;
-    color: hsla(210, 100%, 75%, 1.0);
     font-size: 16px;
-    background: #001f3f;
 }
 .navtext:valid {
     font-family: 'Roboto Mono', monospace;
     font-weight: 400;
-    color: rgb(70, 162, 255);
     font-size: 16px;
-    background: #001f3f;
     
 }
 
