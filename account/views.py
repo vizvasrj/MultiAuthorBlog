@@ -32,6 +32,7 @@ def user_login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+            user_k = cd['username']
             user = authenticate(
                 request,
                 username=cd['username'],
@@ -39,10 +40,16 @@ def user_login(request):
             )
             if user is not None:
                 if user.is_active:
-                    login(request, user)
-                    return HttpResponse(
-                        'Authentication Successfull'
-                    )
+                    last_user_login = User.objects.get(
+                        username=user_k
+                    ).last_login
+                    if last_user_login:
+                        login(request, user)
+                        return redirect(reverse('post_list'))
+                    else:
+                        login(request, user)
+                        return redirect(reverse('edit'))
+
                 else:
                     return HttpResponse(
                         'Disabled Account'
@@ -59,27 +66,30 @@ def user_login(request):
 
 
 def register(request):
-    if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            new_user = user_form.save(commit=False)
-            new_user.set_password(
-                user_form.cleaned_data['password1']
-            )
-            new_user.save()
-            Profile.objects.create(user=new_user)
-            return render(
-                request,
-                'account/register_done.html',
-                {'new_user': new_user}
-            )
+    if request.user.is_authenticated:
+        return redirect(reverse('post_list'))
     else:
-        user_form = UserRegistrationForm()
-    return render(
-        request,
-        'account/register.html',
-        {'user_form': user_form}
-    )
+        if request.method == 'POST':
+            user_form = UserRegistrationForm(request.POST)
+            if user_form.is_valid():
+                new_user = user_form.save(commit=False)
+                new_user.set_password(
+                    user_form.cleaned_data['password1']
+                )
+                new_user.save()
+                Profile.objects.create(user=new_user)
+                return render(
+                    request,
+                    'account/register_done.html',
+                    {'new_user': new_user}
+                )
+        else:
+            user_form = UserRegistrationForm()
+        return render(
+            request,
+            'account/register.html',
+            {'user_form': user_form}
+        )
 
 
 @login_required
@@ -313,31 +323,3 @@ def user_follower(request, username):
         'account/user/follower.html',
         {'follower': follower, 'user': user}
     )
-
-
-# def user_post_list(request, username=None):
-#     user = User.objects.get(username=username)
-#     object_list = user.profiles.blog_posts.all()
-#     paginator = Paginator(object_list, 5)
-#     page = request.GET.get('page')
-#     try:
-#         posts = paginator.page(page)
-#     except PageNotAnInteger:
-#         posts = paginator.page(1)
-#     except EmptyPage:
-#         if request.is_ajax():
-#             return HttpResponse('')
-#         posts = paginator.page(paginator.num_pages)
-#     if request.is_ajax():
-#         return render(
-#             request,
-#             'account/user/user_post_list_ajax.html', {
-#                 'posts': posts
-#             }
-#         )
-#     return render(
-#         request,
-#         'account/user/detail.html', {
-#             'posts': posts
-#         }
-#     )
