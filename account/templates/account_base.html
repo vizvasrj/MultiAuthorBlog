@@ -52,10 +52,11 @@
                 <li class="nav-item text-center">
                   <a class="nav-link active navtext" aria-current="page" href="{% url 'post_list' %}">Posts</a>
                 </li>
+                <li class="nav-item text-center"><a class="nav-link active navtext" href="{% url 'post_new' %}">Create Post</a></li>
               </ul>
-              <form class="d-flex">
-                <input class="form-control me-2 bg-green-lite navtext input-search" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success  bg-green-lite navtext" type="submit">Search</button>
+              <form method="GET" class="d-flex" action="{% url 'post_search' %}">
+                <input class="form-control me-2 bg-green-lite navtext  input-search" type="search" name="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success bg-green-lite navtext" type="submit">Search</button>
               </form>
               {% if request.user.is_authenticated %}
               <!-- Settings Profile -->

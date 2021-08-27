@@ -10,14 +10,14 @@
 
         <p>
         <form class="mt-5" action="" method="POST">
-            <div class="fullname mb-2 border-top">aaa
-                <label class="mt-2 labeltext" for="full_name" class="form-label">{{ form.username }}:</label>
+            <div class="fullname mb-2 border-top">
+                <label class="mt-2 labeltext" for="full_name" class="form-label">{{ form.username.label }}:</label>
                 <div class="">
                     {{ form.username }}
                 </div>
             </div>
             <div class="fullname mb-2 border-top">
-                <label class="mt-2 labeltext" for="full_name" class="form-label">{{ form.password }}:</label>
+                <label class="mt-2 labeltext" for="full_name" class="form-label">{{ form.password.label }}:</label>
                 <div class="">
                     {{ form.password }}
                 </div>

@@ -17,7 +17,6 @@ from common.decorators import ajax_required
 from django.contrib.postgres.search import(
     SearchQuery, SearchVector , SearchRank
 )
-from django.contrib.auth.models import User
 
 # local
 from .models import Post, Category, Comment
@@ -152,35 +151,21 @@ def post_search(request):
                     search_vector, search_query
                 )
             ).filter(search=search_query).order_by('-rank')
-            search_vector_user = SearchVector(
-                'username'
-            )
-            re_users = User.objects.annotate(
-                search=search_vector_user,
-                rank=SearchRank(
-                    search_vector_user, search_query
-                )
-            ).filter(search=search_query).order_by('-rank')
     paginator = Paginator(results, 2)
-    paginator_users = Paginator(re_users, 2)
     page = request.GET.get('page')
     try:
         results = paginator.page(page)
-        re_users = paginator_users.page(page)
     except PageNotAnInteger:
         results = paginator.page(1)
-        re_users = paginator_users.page(1)
     except EmptyPage:
         if request.is_ajax():
             return HttpResponse('')
         results = paginator.page(paginator.num_pages)
-        re_users = paginator_users.page(paginator_users.num_pages)
     if request.is_ajax():
         return render(
             request,
             'blog/search/list_ajax.html', {
                 'results': results,
-                're_users': re_users
             }
         )
     return render(
@@ -188,8 +173,7 @@ def post_search(request):
         'blog/search/search.html',{
             'form': form,
             'query': query,
-            'results': results,
-            're_users': re_users
+            'results': results
         }
     )
 

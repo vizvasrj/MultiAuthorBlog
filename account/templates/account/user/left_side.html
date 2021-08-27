@@ -3,12 +3,12 @@
     <div class="userinfo">
         <h2 class="userfullname">{{ user.profiles.full_name }}</h2>
         <h3 class="userabout">{{ user.profiles.about }}</h3>
-        {% thumbnail user.profiles.photo "300x300" crop="100%" as im300 %}
+        {% thumbnail user.profiles.photo "400x400" crop="100%" as im400 %}
         {% thumbnail user.profiles.photo "600x600" crop="100%" as im600 %}
 
         <picture>
             <source media="(min-width:500px)" srcset="{{im600.url}}">
-            <img class="col-sm-12" src="{{im300.url}}" style="width: 100%;">
+            <img class="col-sm-12" src="{{im400.url}}" style="width: 100%;">
         </picture>
           
     </div>
@@ -40,12 +40,12 @@
                 <div class="d-flex flex-row">
                     {% thumbnail l.user_from.profiles.photo 40x40 crop as im %}
                     <div class="d-flex">
-                        <a class="mt-1 mb-1" href="/{{ l.user_from.profiles.get_absolute_url }}">
+                        <a class="mt-1 mb-1" href="/{{ l.user_from.profiles.get_absolute_url }}/">
                             <img class="small_square_image mx-2" width="40px" src="{{ im.url }}">
                         </a>
                     </div>
                     <div class="d-flex ">
-                        <a class="textnone littledark" href="/{{ l.user_from.profiles.get_absolute_url }}">
+                        <a class="textnone littledark" href="/{{ l.user_from.profiles.get_absolute_url }}/">
                             <h5 class="fallowers_name">{{l.user_from.profiles}}</h5>
                         </a>
                     </div>
@@ -72,12 +72,12 @@
                 <div class="d-flex flex-row">
                     {% thumbnail l.user_to.profiles.photo 40x40 crop as im %}
                     <div class="d-flex mt-1">
-                        <a class="mt-1 mb-1" href="/{{ l.user_to.profiles.get_absolute_url }}">
+                        <a class="mt-1 mb-1" href="/{{ l.user_to.profiles.get_absolute_url }}/">
                             <img class="small_square_image mx-2" width="40px" src="{{ im.url }}">
                         </a>
                     </div>
                     <div class="d-flex mt-1">
-                        <a class="textnone littledark" href="/{{ l.user_to.profiles.get_absolute_url }}">
+                        <a class="textnone littledark" href="/{{ l.user_to.profiles.get_absolute_url }}/">
                             <h5 class="fallowers_name">{{l.user_to.profiles}}</h5>
                         </a>
                     </div>

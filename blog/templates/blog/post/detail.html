@@ -96,10 +96,20 @@
                     <div class="col-11 post__body">
                         <h1 class="posttitle">{{ post.title }}</h1>
                         <p class="detail_readtime">{{post.body|readtime}}</p>
-                        <p class="date">
-                            Published {{ post.publish }} by <a class="post_username" href="/{{post.author.get_absolute_url}}/">{{ post.author }}</a>
-                        </p>
-                        <hr class="hr-line">
+                        <div class="">
+                            {% thumbnail post.author.photo "42x42" crop="100%" as im  %}
+                            <a class="a_author_image" href="/{{post.author.get_absolute_url}}/">
+                              <img class="author__left__side rounded" src="{{ im.url }}" alt="">
+                            </a>
+                          
+                              <a class="author_name_from_list" href="/{{post.author.get_absolute_url}}/">{{ post.author }}</a>
+                           
+                          </div>
+                          <p class="date">
+                      
+                            Published at {{ post.publish }}
+                  
+                          </p>                        <hr class="hr-line">
                         {% thumbnail post.cover "800x400" crop="100%" as im %}
                         <img class="mb-3" width="100%" src="{{im.url}}" alt="">
                         <p class="post-body">{{ post.body|xssprotect }}</p>
