@@ -46,7 +46,7 @@ $(window).scroll(function () {
 
 <!-- bla -->
 <!-- bookmark -->
-$('#post-list').on("click", "a.bookmark", function(event){
+$('#post-list').on("click", "a.bookmark", function(){
     {% if request.user.is_authenticated %}
       event.preventDefault();
   {% else %}
