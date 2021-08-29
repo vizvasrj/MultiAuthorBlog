@@ -247,13 +247,16 @@
                                 </p> \
                                 <p> \
                                      \
-                                    <textarea placeholder="Comment here" name="body" id="id_body" class="re_form_textarea"></textarea>\
+                                    <textarea placeholder="Comment here" name="body" id="id_body" class="re_form_textarea"></textarea>  \
                                 </p> \
                                 {% csrf_token %} \
                                 <button type="submit" class="btn btn-primary btn-lg btn-block bg-olive">Submit</button> \
                                 </div> \
                                 </form> \
                             ');
+                            // CKEDITOR.replace("id_body");
+                            // var textarea = document.body.appendChild( document.createElement( 'textarea' ) );
+                            // CKEDITOR.replace( textarea );
                         }
                         // $('#myForm').trigger("reset");
                     </script>
