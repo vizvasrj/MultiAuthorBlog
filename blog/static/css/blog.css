@@ -82,6 +82,7 @@
     hyphens: auto;
     color: rgb(105, 105, 105);
 }
+
 .posttitle:hover {
     font-size: 1.6em;
     line-height: 1.25em;
@@ -155,28 +156,33 @@ div.comment-body img {
 .float {
     top: 40%;
     margin-left: -22px;
-
 }
-.align-center{
+
+.align-center {
     align-self: center;
 }
-.post__body{
+
+.post__body {
     margin-left: -10px;
 }
 
-.post__body p img{
+.post__body p img {
     max-width: 100%;
 }
-.post__body img{
+
+.post__body img {
     max-width: 100%;
 }
-#newForm{
+
+#newForm {
     border-left: 2px solid rgb(189, 189, 189);
 }
+
 .re_form {
     margin-left: 10px;
 }
-.re_form_textarea{
+
+.re_form_textarea {
     height: 100px;
     width: 100%;
     background: transparent;
@@ -188,41 +194,51 @@ div.comment-body img {
     line-height: inherit;
     border: inherit;
 }
+
 .re_form_close {
     float: right;
     padding: 2px;
 }
-.link0{
+
+.link0 {
     color: inherit;
 }
-.link0:hover{
+
+.link0:hover {
     color: inherit;
 }
-.read_more{
+
+.read_more {
     font-size: 12px;
 }
+
 .blog__list__float {
     top: 40%;
     font-size: 25px;
-
 }
-.post__list__body{
+
+.post__list__body {
     word-break: break-word;
 }
+
 .underline {
     text-decoration: underline;
 }
-.tags-item{
+
+.tags-item {
     display: inline-block;
 }
-.post_username{
+
+.post_username {
     color: inherit;
 }
-.bookmark{
+
+.bookmark {
     cursor: pointer;
 }
 
 /* Account page ie header navbar nav  */
+
 @media screen and (min-width: 576px) {
     .navbar-expand-sm .navbar-nav .dropdown-menu {
         margin-left: -100px;
@@ -239,21 +255,24 @@ div.comment-body img {
     border: 0px solid;
     text-align: center;
 }
+
 .dropdown-item {
     color: inherit;
     text-decoration: none;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     border: 0px solid transparent;
     border-radius: 0px;
     background-color: teal;
 }
+
 .navbar-toggler:focus {
     outline: 0;
     box-shadow: 0 0 0 0;
     text-decoration: none;
 }
+
 .input-search {
     overflow: auto;
 }
@@ -284,34 +303,73 @@ div.comment-body img {
     font-weight: 400;
     color: rgb(77, 77, 77);
 }
+
 .search__query__title {
     font-family: Work Sans;
     font-weight: 400;
     color: rgba(105, 105, 105, 0.877);
 }
-.search__result__total{
-    
-}
+
+.search__result__total {}
 
 .author {
     /* margin-top: -22px; */
-
 }
-.author__p_name{
 
-}
-.author__avatar{
+.author__p_name {}
+
+.author__avatar {
     margin-left: 5px;
 }
-.a_author_image{
+
+.a_author_image {
     text-decoration: none;
     color: inherit;
 }
-.author_name_from_list{
+
+.author_name_from_list {
     text-decoration: none;
     color: inherit;
 }
-.author_name_from_list:hover{
+
+.author_name_from_list:hover {
     text-decoration: none;
     color: rgb(82, 82, 82);
+}
+
+.your_date {
+    color: hsl(0, 0%, 27.1%);
+    font-weight: 400;
+    font-family: Work Sans;
+}
+
+.status {
+    padding: 5px;
+    font-weight: 700;
+    border: 1px solid;
+    text-decoration: none;
+}
+
+.status-a {
+    padding: 5px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.datetimeinput {
+    background: transparent;
+    border: none;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid red;
+    font-size: 14px;
+    width: 135px;
+}
+.publish__b{
+    padding: 1px !important;
+    font-size: 14px;
+}
+.date_format{
+    font-size: 14px;
 }

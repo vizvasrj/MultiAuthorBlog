@@ -1,0 +1,19 @@
+{% if re_users %}
+<div id="user-list">
+    <h1>Users</h1>
+    {% for user in re_users %}
+    <div class="">
+        {% thumbnail user.profiles.photo "42x42" crop="100%" as im  %}
+        <a class="a_author_image" href="/{{user}}/">
+          <img class="author__left__side rounded" src="{{ im.url }}" alt="">
+        </a>
+      
+          <a class="author_name_from_list" href="/{{user}}/">{{ user }}</a>
+       
+      </div>              
+    {% endfor %}
+</div>
+
+{% else %}
+    zzzzzzzzzzzzzzzzzzzzzzz
+{% endif %}
