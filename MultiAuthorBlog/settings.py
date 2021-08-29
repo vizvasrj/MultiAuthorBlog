@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     # 3rd party
     'crispy_forms',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'django_editorjs_fields',
     'ckeditor_uploader',
     'django_extensions',
+    'tempus_dominus',
 
     # local
     'blog',
@@ -102,7 +104,7 @@ WSGI_APPLICATION = 'MultiAuthorBlog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vizvasrj0003',
+        'NAME': 'vizvasrj0004',
         'USER': 'root',
         'PASSWORD': 'icandoit10!',
         'HOST': '127.0.0.1',
