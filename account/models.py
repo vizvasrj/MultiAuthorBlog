@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 
 from colorfield.fields import ColorField
 
+
 class Profile(models.Model):
     user = models.OneToOneField(
         User,
@@ -36,7 +37,7 @@ class Profile(models.Model):
     )
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user.id)
 
     def get_absolute_url(self):
         return self.user
