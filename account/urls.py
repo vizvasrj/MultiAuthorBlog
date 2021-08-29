@@ -15,8 +15,8 @@ urlpatterns = [
     path('login/',
          views.user_login, name='login'),
 
-#     path('login/',
-#          auth_views.LoginView.as_view(), name='login'),
+    #     path('login/',
+    #          auth_views.LoginView.as_view(), name='login'),
     path('logout/',
          auth_views.LogoutView.as_view(
              template_name='registration/logout.html'
@@ -78,5 +78,16 @@ urlpatterns = [
 
     path('<str:username>/follower/',
          views.user_follower, name='user_follower'),
+
+    path('my/published/', views.my_published_stories, name='my_published_story'),
+    path('my/drafted/', views.my_drafted_stories, name='my_drafted_story'),
+    path('my/trashed/', views.my_trashed_stories, name='my_trashed_story'),
+
+    path('my/published/trash/', views.trash_post, name='trash_published_post'),
+    path('my/drafted/trash/', views.trash_post, name='trash_drafted_post'),
+    path('my/trashed/delete/', views.delete_post, name='delete_trashed_post'),
+
+    path('my/drafted/publish/', views.publish_post, name='publish_drafted_post'),
+    path('my/trashed/untrash/', views.untrash_post, name='untrash_trashed_post'),
 
 ]
