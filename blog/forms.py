@@ -1,5 +1,6 @@
 # core
 from django import forms
+from django.forms import widgets
 
 # local
 from .models import Post, Comment
@@ -7,12 +8,26 @@ from .models import Post, Comment
 # 3rd party
 from taggit.forms import TagWidget
 from mptt.forms import TreeNodeChoiceField
-
+from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 
 class PostForm(forms.ModelForm):
     # publish = forms.DateField(
     #     widget=DatePickerInput(format='%m/%d/%Y')
     # )
+    publish = forms.DateTimeField(
+        widget = DateTimePicker(
+            options={
+                'useCurrent': True,
+                'collapse': False,
+                # 'minDate': '2021-08-28',
+                # 'maxDate': '2021-11-20',            
+            },
+            attrs={
+                'append': 'fa fa-calendar',
+                'icon_toggle': True,
+            }
+        )
+    )
 
     class Meta:
         model = Post

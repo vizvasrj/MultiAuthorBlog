@@ -24,7 +24,16 @@ class PublishedManager(models.Manager):
             # publish__lte=now
             status='published'
         )
-    
+
+class TrashedManager(models.Manager):
+    def get_queryset(self):
+        return super(
+            TrashedManager, self
+        ).get_queryset().filter(
+            # publish__lte=now
+            status='trashed'
+        )
+
 
 class DraftedManager(models.Manager):
     def get_queryset(self):
@@ -72,6 +81,7 @@ class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
         ('published', 'Published'),
+        ('trashed', 'Trashed'),
     )
     title = models.CharField(max_length=256)
     category = models.ForeignKey(
@@ -105,6 +115,7 @@ class Post(models.Model):
     objects = models.Manager()
     published = PublishedManager()
     drafted = DraftedManager()
+    trashed = TrashedManager()
     tags = TaggableManager()
     users_like = models.ManyToManyField(
         User,
@@ -132,6 +143,7 @@ class Post(models.Model):
             'post_detail',
             args = [self.slug]
         )
+    
 
 class Comment(MPTTModel):
     post = models.ForeignKey(

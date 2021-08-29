@@ -1,4 +1,6 @@
-from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http.response import(
+    HttpResponse, HttpResponseRedirect, JsonResponse
+)
 from django.shortcuts import render
 from django.shortcuts import (
     get_object_or_404, render, redirect
@@ -15,8 +17,9 @@ from django.urls import reverse
 from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 from django.contrib.postgres.search import(
-    SearchQuery, SearchVector , SearchRank
+    SearchQuery, SearchVector, SearchRank
 )
+from django.utils import timezone
 
 # local
 from .models import Post, Category, Comment
@@ -29,7 +32,8 @@ from taggit.models import Tag
 
 @login_required
 def create_post(request):
-    user=request.user.id
+    user = request.user
+    # start_dt = timezone.now()
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -37,25 +41,35 @@ def create_post(request):
             new_item = cd['tags']
             new_item = form.save(commit=False)
             new_item.author_id = request.user.id
-            new_item.save()
-            form.save_m2m()
-            return redirect(new_item.get_absolute_url())
+            print(new_item.publish)
+            print(timezone.localtime(timezone.now()))
+            deltatime = new_item.publish + timezone.timedelta(minutes=4)
+            if deltatime >= timezone.localtime(timezone.now()):
+                new_item.save()
+                form.save_m2m()
+                return redirect(new_item.get_absolute_url())
+            else:
+                new_item.publish = timezone.localtime(timezone.now())
+                new_item.save()
+                form.save_m2m()
+                return redirect(new_item.get_absolute_url())
     else:
         form = PostForm(request.POST, request.FILES)
-    
+
     return render(
         request,
-        'blog/post_form.html',{
+        'blog/post_form.html', {
             'form': form,
             'user': user,
         }
     )
 
 
-
 def post_list(request, tag_slug=None):
     # posts = Post.published.all()
-    object_list = Post.published.all()
+    object_list = Post.published.filter(
+        status="published").filter(
+        publish__lte=timezone.now()).all()
     tag = None
     if tag_slug:
         tag = get_object_or_404(
@@ -77,14 +91,14 @@ def post_list(request, tag_slug=None):
     if request.is_ajax():
         return render(
             request,
-            'blog/post/list_ajax.html',{
+            'blog/post/list_ajax.html', {
                 'posts': posts,
                 'tag': tag
             }
         )
     return render(
         request,
-        'blog/post/list.html',{
+        'blog/post/list.html', {
             'posts': posts,
             'tag': tag,
 
@@ -100,7 +114,7 @@ def post_detail(request, post):
     )
     comments = post.comments.filter(active=True)
     new_comment = None
-    if request.method=='POST':
+    if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
@@ -123,7 +137,7 @@ def post_detail(request, post):
 
     return render(
         request,
-        'blog/post/detail.html',{
+        'blog/post/detail.html', {
             'post': post,
             'comments': comments,
             'new_comment': new_comment,
@@ -145,7 +159,11 @@ def post_search(request):
                 'title', 'body'
             )
             search_query = SearchQuery(query)
-            results = Post.published.annotate(
+            results = Post.published.filter(
+                status="published"
+            ).filter(
+                publish__lte=timezone.now()
+            ).annotate(
                 search=search_vector,
                 rank=SearchRank(
                     search_vector, search_query
@@ -170,12 +188,13 @@ def post_search(request):
         )
     return render(
         request,
-        'blog/search/search.html',{
+        'blog/search/search.html', {
             'form': form,
             'query': query,
             'results': results
         }
     )
+
 
 @login_required
 def edit_comment(request, pk):
@@ -200,7 +219,7 @@ def edit_comment(request, pk):
             form = CommentForm(instance=comment)
         return render(
             request,
-            'blog/comment/update.html',{
+            'blog/comment/update.html', {
                 'form': form,
                 'post': post
             }
@@ -247,7 +266,6 @@ def post_like(request):
     return JsonResponse({'status': 'ok'})
 
 
-
 @ajax_required
 @login_required
 @require_POST
@@ -256,7 +274,7 @@ def bookmark(request):
     action = request.POST.get('action')
     if post_id:
         try:
-            post=Post.objects.get(id=post_id)
+            post = Post.objects.get(id=post_id)
             post.title
             if action == 'bookmark':
                 post.bookmark_list.add(request.user)
@@ -269,7 +287,6 @@ def bookmark(request):
         except:
             pass
     return JsonResponse({'status': 'ok'})
-
 
 
 @login_required
@@ -305,7 +322,7 @@ def delete_post(request, pk=None):
     if request.user.id == instance.author_id:
         instance.delete()
         return HttpResponseRedirect(
-            reverse('user_detail',args=[
+            reverse('user_detail', args=[
                 request.user.username
             ])
         )
@@ -313,7 +330,6 @@ def delete_post(request, pk=None):
         return HttpResponseRedirect(
             reverse('404')
         )
-
 
 
 def tag_list(request, post_id=None):
@@ -342,7 +358,7 @@ def tag_list(request, post_id=None):
     if request.is_ajax():
         return render(
             request,
-            'blog/tag/list_ajax.html',{
+            'blog/tag/list_ajax.html', {
                 'tags': tags,
                 'post': post,
             }
@@ -361,5 +377,3 @@ def tag_detail(request, tag):
         Tag,
         slug=tag,
     )
-
-    
