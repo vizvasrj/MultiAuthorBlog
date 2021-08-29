@@ -222,8 +222,8 @@ section {
     color: rgb(48, 48, 48);
 }
 .post-image{
-    border: rgb(48, 48, 48);
-    border-style: solid;
+    /* border: rgb(48, 48, 48);
+    border-style: solid; */
     width: inherit;
     width: 100%;
 }

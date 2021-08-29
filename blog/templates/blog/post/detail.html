@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-1">
                         <div class="float sticky-top">
-                            <h1>Hi</h1>
+                            <h1></h1>
                             <div class="bookmark_like d-flex flex-column">
                                 {% with total_likes=post.users_like.count users_like=post.users_like.all %}
                                 <div class="info d-flex">
@@ -102,7 +102,7 @@
                               <img class="author__left__side rounded" src="{{ im.url }}" alt="">
                             </a>
                           
-                              <a class="author_name_from_list" href="/{{post.author.get_absolute_url}}/">{{ post.author }}</a>
+                              <a class="author_name_from_list" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a>
                            
                           </div>
                           <p class="date">
