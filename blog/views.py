@@ -30,6 +30,7 @@ from .forms import (
 from taggit.models import Tag
 
 
+
 @login_required
 def create_post(request):
     user = request.user
@@ -377,3 +378,42 @@ def tag_detail(request, tag):
         Tag,
         slug=tag,
     )
+
+
+@ajax_required
+@require_POST
+def post_ajax_search(request):
+    if request.is_ajax():
+        res = None
+        post = request.POST.get('post')
+        print(post)
+        query = post
+        search_vector = SearchVector(
+            'title', 'body', 'author'
+        )
+        search_query = SearchQuery(query)
+        results = Post.published.annotate(
+            search=search_vector,
+            rank=SearchRank(
+                search_vector, search_query
+            )
+        ).filter(search=search_query).filter(
+            publish__lte=timezone.now()    
+        ).order_by('-rank')
+        qs = results
+        print(qs)
+        if len(qs) > 0 and len(post) > 0:
+            data = []
+            for pos in qs:
+                item = {
+                    'slug': pos.slug,
+                    'title': pos.title,
+                    # 'cover': str(pos.cover.url),
+                    # 'author': pos.author.user,
+                }
+                data.append(item)
+            res = data[:10]
+        else:
+            res = "No posts found ..."
+        return JsonResponse({'data': res})
+    return JsonResponse({})

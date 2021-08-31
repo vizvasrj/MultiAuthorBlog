@@ -66,10 +66,24 @@
                 </li>
                 <li class="nav-item text-center"><a class="nav-link active navtext" href="{% url 'post_new' %}">Create Post</a></li>
               </ul>
-              <form method="GET" class="d-flex" action="/blog/post/search/">
-                <input class="form-control me-2 bg-green-lite navtext  input-search" type="search" name="query" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success bg-green-lite navtext" type="submit">Search</button>
-              </form>
+              <button type="button" class="btn-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1c-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z" fill="currentColor"/></svg>
+              </button>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <form id="search-form" autocomplete="off" method="GET" class="d-flex" action="{% url 'post_search' %}">
+                      <input id="search-input" class="form-control me-2 navtext  input-search" type="search" name="query" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success navtext" style="background: aliceblue;" type="submit">Search</button>
+                    </form>
+                    <div id="results-box" class="results none">
+                      {% csrf_token %}
+                    </div>      
+                  </div>
+                </div>
+              </div>
               {% if request.user.is_authenticated %}
               <!-- Settings Profile -->
               <ul class="navbar-nav right150px mb-lg-0">
@@ -86,7 +100,6 @@
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                     <li><a class="dropdown-item" href="{% url 'post_new' %}">Create Post</a></li>
                     <li><a class="dropdown-item" href="{% url 'my_published_story' %}">My Stories</a></li>
-                    <li><a class="dropdown-item" href="{ % url 'dashboard' % }">Dashbord</a></li>
 
 
                   </ul>
@@ -147,6 +160,8 @@
 <!-- <script src="{% static 'js/popper.min.js' %}"></script> -->
 <!-- <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
 <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/search.js' %}"></script>
+
 
 
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> -->

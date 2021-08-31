@@ -7,6 +7,7 @@ from .views import (
     delete_post, edit_comment, tag_list
 )
 
+from . import views
 
 urlpatterns = [
     path('create/', create_post, name='post_new'),
@@ -28,5 +29,6 @@ urlpatterns = [
     path('update_comment/<int:pk>/', edit_comment,
         name='edit_comment'),
     path('tags/list/', tag_list, name='tag_list'),
+    path('post/search-ajax/', views.post_ajax_search, name='search_ajax'),
 
 ]

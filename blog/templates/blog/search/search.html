@@ -11,20 +11,21 @@
     <div class="row">
         
         {% if query %}
-        <div class="search">
-            <h1 class="search__query__title">Post Containing "{{ query }}"</h1>
+        <div class="col-lg-10">
+            <div class="search">
+                <h1 class="search__query__title">Post Containing "{{ query }}"</h1>
             
-            <div class="col-lg-9">
-                <div id="post-list">
-                    {% include "blog/search/list_ajax.html" %}
+                <div class="col-lg-9">
+                    <div id="post-list">
+                        {% include "blog/search/list_ajax.html" %}
+                    </div>
                 </div>
+                <p>
+                <div class="col-lg-3">
+                </div>
+                    <a href="{% url 'post_search' %}">Search again</a>
+                </p>
             </div>
-            <p>
-            <div class="col-lg-3">
-
-            </div>
-                <a href="{% url 'post_search' %}">Search again</a>
-            </p>
         </div>
         {% else %}
         <div class="col-3"></div>

@@ -14,20 +14,20 @@ class PostForm(forms.ModelForm):
     # publish = forms.DateField(
     #     widget=DatePickerInput(format='%m/%d/%Y')
     # )
-    publish = forms.DateTimeField(
-        widget = DateTimePicker(
-            options={
-                'useCurrent': True,
-                'collapse': False,
-                # 'minDate': '2021-08-28',
-                # 'maxDate': '2021-11-20',            
-            },
-            attrs={
-                'append': 'fa fa-calendar',
-                'icon_toggle': True,
-            }
-        )
-    )
+    # publish = forms.DateTimeField(
+    #     widget = DateTimePicker(
+    #         options={
+    #             'useCurrent': True,
+    #             'collapse': False,
+    #             # 'minDate': '2021-08-28',
+    #             # 'maxDate': '2021-11-20',            
+    #         },
+    #         attrs={
+    #             'append': 'fa fa-calendar',
+    #             'icon_toggle': True,
+    #         }
+    #     )
+    # )
 
     class Meta:
         model = Post
@@ -36,20 +36,21 @@ class PostForm(forms.ModelForm):
         )
         widgets = {
             'title': forms.Textarea(
-                attrs={'class': 'myfieldclass', 'autocomplete': 'off',
-                'rows': "2"}
+                attrs={'class': 'myfieldclass border-bottom', 'autocomplete': 'off',
+                'rows': "2", 'placeholder': 'Title'}
             ),
             'body': forms.Textarea(
-
                 # config={'minHeight': 100}
-                # attrs={
+                attrs={
+                'placeholder': 'Type containt here.',
                 #     'class': 'myfieldclass ',
-                # }
+                }
             ),
             'tags': TagWidget(
                 attrs={
-                    'class': 'myfieldclass'
-                    , 'autocomplete': 'off'
+                    'class': 'myfieldclass border-bottom'
+                    , 'autocomplete': 'off',
+                    'placeholder': 'Tags'
                 }
             ),
             'cover': forms.FileInput(

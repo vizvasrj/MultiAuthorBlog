@@ -246,7 +246,7 @@ div.comment-body img {
         border: 0;
     }
     .dropdown-item {
-        text-align: center;
+        text-align: center in !important;
     }
 }
 
@@ -372,4 +372,26 @@ div.comment-body img {
 }
 .date_format{
     font-size: 14px;
+}
+.results {
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.25);
+    transition: 0.5ms;
+    border-radius: 7px;
+    padding: 15px 15px;
+    z-index: 1;
+    background-color: #AAAAAA;
+}
+.none {
+    display: none;
+}
+.modal-content {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+.btn-outline-success:hover {
+    color: hsl(0, 0%, 27.1%);
+}
+.btn-none {
+    border: none;
+    background-color: transparent;
 }

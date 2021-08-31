@@ -54,6 +54,7 @@ def user_login(request):
                         ).last_login
                         if last_user_login:
                             if next != "":
+                                login(request, user)
                                 return HttpResponseRedirect(request.GET['next'])
                             else:
                                 login(request, user)
