@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.core import paginator
 from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -15,6 +15,7 @@ from django.core.paginator import (
     Paginator)
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
+from django.contrib.auth.hashers import check_password
 
 # 3rd party
 
@@ -22,7 +23,7 @@ from django.urls import reverse
 # local
 from .models import Profile, Contact
 from .forms import (
-    LoginForm, UserRegistrationForm,
+    LoginForm, UserDeleteForm, UserRegistrationForm,
     UserEditForm, ProfileEditForm
 )
 from django.views.decorators.http import require_POST
@@ -512,3 +513,28 @@ def untrash_post(request):
         except Post.DoesNotExist:
             return JsonResponse({'status': 'not found'}, status=404)
     return JsonResponse({'status': 'error'}, status=404)
+
+
+def delete_profile(request):
+    user = request.user
+    if request.method == 'POST':
+        form = UserDeleteForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            passwd = cd['password']
+            if check_password(passwd, request.user.password):
+                user.is_active = False
+                user.save()
+                logout(request)
+                return redirect('register')
+            else:
+                HttpResponse({'message': 'Wrong password'})
+    else:
+        form = UserDeleteForm(request.POST)
+    return render(
+        request,
+        'account/utils/delete.html',{
+            'form': form
+        }
+    )
+

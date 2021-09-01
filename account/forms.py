@@ -4,7 +4,13 @@ from django.forms import widgets
 from django.forms.fields import CharField
 from django.contrib.auth.forms import (
     PasswordResetForm, PasswordChangeForm
+
 )
+from django.contrib.auth.hashers import check_password
+from django.utils import timezone
+from django.contrib.auth import logout
+from django.contrib import messages
+from django.shortcuts import redirect
 
 
 from .models import Profile
@@ -145,3 +151,14 @@ class UserPasswordChangeForm(PasswordChangeForm):
     }))
     
     
+
+class UserDeleteForm(forms.Form):
+    password = forms.CharField(
+        label='Enter Your password to delete your account',
+        widget=forms.PasswordInput(attrs={
+            'class': 'delete_password',
+            'placeholder': 'Enter your password to delete your account',
+            'type': 'password',
+            'name': 'password'
+        })
+    )

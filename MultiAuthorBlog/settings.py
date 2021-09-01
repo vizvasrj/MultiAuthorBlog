@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'tempus_dominus',
 
+
     # local
     'blog',
 ]
@@ -214,3 +215,10 @@ TAGGIT_CASE_INSENSITIVE = True
 
 # tempus_dominus
 TEMPUS_DOMINUS_LOCALIZE = True
+
+
+# Redis
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
+

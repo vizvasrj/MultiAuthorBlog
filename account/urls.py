@@ -90,4 +90,6 @@ urlpatterns = [
     path('my/drafted/publish/', views.publish_post, name='publish_drafted_post'),
     path('my/trashed/untrash/', views.untrash_post, name='untrash_trashed_post'),
 
+    path('account/delete/', views.delete_profile, name='delete_profile'),
+
 ]
