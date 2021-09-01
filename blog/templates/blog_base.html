@@ -76,7 +76,7 @@
                   <div class="modal-content">
                     <form id="search-form" autocomplete="off" method="GET" class="d-flex" action="{% url 'post_search' %}">
                       <input id="search-input" class="form-control me-2 navtext  input-search" type="search" name="query" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success navtext" style="background: aliceblue;" type="submit">Search</button>
+                      <button class="btn btn-outline-success navtext bg-red" type="submit">Search</button>
                     </form>
                     <div id="results-box" class="results none">
                       {% csrf_token %}

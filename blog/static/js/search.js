@@ -26,7 +26,10 @@ const sendSearchData = (post) => {
                     resultsBox.innerHTML += `
                         <a href="/blog/${post.slug}/" class="item">
                             <div class="row" mt-2 mb-3 p-3>
-                                <div class="col-12 post_title">
+                                <div class="col-2">
+                                    <img src=${post.cover}>
+                                </div>
+                                <div class="col-10 ajax-post-title">
                                     <h5>${post.title}</h5>
                                 </div>
                             </div>

@@ -28,6 +28,14 @@ from .forms import (
 )
 # 3rd party
 from taggit.models import Tag
+import redis
+from django.conf import settings
+# Connect to redis
+r = redis.Redis(
+    host=settings.REDIS_HOST,
+    port=settings.REDIS_PORT,
+    db=settings.REDIS_DB
+)
 
 
 
@@ -113,6 +121,7 @@ def post_detail(request, post):
         slug=post,
         status='published',
     )
+    total_views = r.incr(f'post:{post.id}:views')
     comments = post.comments.filter(active=True)
     new_comment = None
     if request.method == 'POST':
@@ -143,7 +152,8 @@ def post_detail(request, post):
             'comments': comments,
             'new_comment': new_comment,
             'comment_form': comment_form,
-            'similar_posts': similar_posts
+            'similar_posts': similar_posts,
+            'total_views': total_views,
         }
     )
 
@@ -379,6 +389,7 @@ def tag_detail(request, tag):
         slug=tag,
     )
 
+from easy_thumbnails.files import get_thumbnailer
 
 @ajax_required
 @require_POST
@@ -408,7 +419,10 @@ def post_ajax_search(request):
                 item = {
                     'slug': pos.slug,
                     'title': pos.title,
-                    # 'cover': str(pos.cover.url),
+                    'cover': get_thumbnailer(pos.cover).get_thumbnail({
+                        'size': (50, 50),
+                        'crop': True,
+                    }).url
                     # 'author': pos.author.user,
                 }
                 data.append(item)

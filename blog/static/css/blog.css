@@ -395,3 +395,9 @@ div.comment-body img {
     border: none;
     background-color: transparent;
 }
+
+.ajax-post-title {
+    color: #e2e2e2;
+    font-family: sans-serif;
+    font-size: 17px;
+}

@@ -120,6 +120,9 @@
                                     #{{ tag }}
                             </a>
                             {% endfor %}
+                            <div class="total_views">
+                                <strong>views:</strong> {{total_views}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,6 +210,7 @@
                             {% endrecursetree %}
                         </div>
                         {% if request.user.is_authenticated %}
+                        <div id="comment"></div>
                         <form id="myForm" method="post">
                             <div class="cover mb-2 ">
                                 <label class="mt-2 labeltext" for="body" class="form-label">Hit a comment</label>
@@ -218,9 +222,15 @@
                             <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">Submit</button>
                         </form>
                         {% else %}
-                        <form id="disabledInput" method="post" disabled>
-                            <textarea id="disabledInput" name="body" cols="40" rows="10" required="" disabled></textarea>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" disabled>Submit</button>
+                        <form action="/login/?next={% url 'post_detail' post.slug %}#comment" method="post">
+                            <div class="cover mb-2 ">
+                                <label class="mt-2 labeltext" for="body" class="form-label">Hit a comment</label>
+                                <div class="">
+                                    <textarea name="id_body" id="id_body" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">Submit</button>
                         </form>
                         {% endif %}
                     </div>

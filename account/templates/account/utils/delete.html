@@ -1,0 +1,11 @@
+{% extends "blog_base.html" %}
+
+{% block content %} 
+<h1>Delete Account yes </h1>
+<form action="" method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit">
+</form>
+
+{% endblock %}
