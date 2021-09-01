@@ -500,3 +500,16 @@ footer {
 		font-size: 1.5em;
 	}
 }
+@media screen and (max-width: 576px) {
+	.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+		padding: 10px;
+	}
+	.ck-rounded-corners .ck.ck-editor__main > .ck-editor__editable, .ck.ck-editor__main > .ck-editor__editable.ck-rounded-corners {
+		padding: 10px;
+	
+	}
+}
+
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) :valid {
+	border: 5px solid red;
+}

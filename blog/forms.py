@@ -36,19 +36,19 @@ class PostForm(forms.ModelForm):
         )
         widgets = {
             'title': forms.Textarea(
-                attrs={'class': 'myfieldclass border-bottom', 'autocomplete': 'off',
+                attrs={'class': 'myfieldclass padding-15 border-bottom', 'autocomplete': 'off',
                 'rows': "2", 'placeholder': 'Title'}
             ),
             'body': forms.Textarea(
                 # config={'minHeight': 100}
                 attrs={
                 'placeholder': 'Type containt here.',
-                #     'class': 'myfieldclass ',
+                    # 'class': 'myfieldclass ',
                 }
             ),
             'tags': TagWidget(
                 attrs={
-                    'class': 'myfieldclass border-bottom'
+                    'class': 'myfieldclass padding-15 border-bottom tag_label'
                     , 'autocomplete': 'off',
                     'placeholder': 'Tags'
                 }

@@ -13,9 +13,17 @@ from autoslug import AutoSlugField
 from taggit.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
 
-
-
 now = timezone.now()
+
+
+class ActiveUserPublishedManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveUserPublishedManager, self).get_queryset().filter(
+            author__user__is_active=True
+        ).filter(publish__lte=timezone.now()).filter(
+            status='published'
+        )
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(
@@ -114,6 +122,7 @@ class Post(models.Model):
     )
     objects = models.Manager()
     published = PublishedManager()
+    aupm = ActiveUserPublishedManager()
     drafted = DraftedManager()
     trashed = TrashedManager()
     tags = TaggableManager()

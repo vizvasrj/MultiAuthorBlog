@@ -20,22 +20,10 @@
 }
 
 .myfieldclass:hover {
-    font-family: 'Varela Round', sans-serif;
-    font-family: 400;
-    font-size: 20px;
-    width: 100%;
-    border: rgb(77, 77, 77);
-    border-style: none;
     background-color: transparent;
 }
 
 .myfieldclass:valid {
-    font-family: 'Varela Round', sans-serif;
-    font-family: 400;
-    font-size: 20px;
-    width: 100%;
-    border: rgb(77, 77, 77);
-    border-style: none;
     background-color: transparent;
 }
 
@@ -400,4 +388,25 @@ div.comment-body img {
     color: #e2e2e2;
     font-family: sans-serif;
     font-size: 17px;
+}
+
+.padding-15 {
+    padding: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+@media screen and (max-width: 576px) {
+    .padding-15 {
+        padding: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.tag_label {
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 400;
+    color: rgba(105, 105, 105, 0.877);
 }

@@ -14,61 +14,73 @@
 {# Django Tempus Dominus assets are included in `{{ form.media }}` #}
 {% endblock %}
 
+
 {% block style %} 
 :root {
 	--ck-sample-editor-min-height: 400px;
 }
 {% endblock %}
 
+
+{% block menu %} 
+    <!-- <button for="submit" value="Submit">Submit</button> -->
+{% endblock %}
+
 {% block content %}
-<div class="container">
-    <div class="row">
-        <!-- <h1 class="maintitle">New post {{user}}</h1> -->
+<!-- <h1 class="maintitle">New post {{user}}</h1> -->
 
-        <form method="POST" class="post-form" enctype="multipart/form-data">
-            {{form.media }}
-
-            <div class="title mb-2 ">
-                <!-- <label class="mt-2 labeltext" for="title" class="form-label">{{form.title.label}}:</label> -->
-                <div class="">
-                    {{ form.title }}
+<form method="POST" class="post-form" enctype="multipart/form-data">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                {{form.media }}
+                <div class="title mb-2 ">
+                    <!-- <label class="mt-2 labeltext" for="title" class="form-label">{{form.title.label}}:</label> -->
+                    <div class="">
+                        {{ form.title }}
+                    </div>
+                </div>
+                <div class="body mb-2 ">
+                    <!-- <label class="mt-2 labeltext" for="body" class="form-label">{{form.body.label}}:</label> -->
+                    <div class="" style="padding: 0px;">
+                        {{ form.body }}
+                    </div>
+                </div>
+                {% csrf_token %}
+                {{media}}
+                <br>
+            </div>
+            <div class="col-md-4 border">
+                <div class="publish mt-2">
+                    <button name="submit" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">Publish</button>
+                </div>
+                <div class="tags bg-aqua-lite">
+                    <label class="mt-2 tag_label d-flex justify-content-center" for="tags" class="form-label">Please provie some tags</label>
+                    <div class="">
+                        {{ form.tags }}
+            
+                    </div>
+                </div>
+                <div class="cover bg-aqua-lite ">
+                    <label class="mt-2 tag_label d-flex justify-content-center" for="cover" class="form-label">{{form.cover.label}}:</label>
+                    <div class="">
+                        <label id="remove" class="uploadcover" for="id_cover">
+                            <img class="blogcoverimage" width="100%" id="myImg" src='' alt="Upload" />
+                        </label>
+                        {{ form.cover }}
+                    </div>
                 </div>
             </div>
-            <div class="body mb-2 ">
-                <!-- <label class="mt-2 labeltext" for="body" class="form-label">{{form.body.label}}:</label> -->
-                <div class="" style="padding: 0px;">
-                    {{ form.body }}
-                </div>
-            </div>
-            <div class="cover mb-2 ">
-                <label class="mt-2 labeltext" for="cover" class="form-label">{{form.cover.label}}:</label>
-                <div class="">
-                    <label id="remove" class="uploadcover" for="id_cover">
-                        <img class="blogcoverimage" width="100%" id="myImg" src='' alt="Upload" />
-                    </label>
-                    {{ form.cover }}
-                </div>
-            </div>
-            <div class="tags mb-2 ">
-                <!-- <label class="mt-2 labeltext" for="tags" class="form-label">{{form.tags.label}}:</label> -->
-                <div class="">
-                    {{ form.tags }}
-                    
-                </div>
-            </div>
-
-
-            {% csrf_token %}
-
-            {{media}}
-            <br>
-            <button type="submit" formnovalidate="formnovalidate" class="save btn btn-primary">Save</button>
-        </form>
+        </div>
     </div>
-</div>
+
+</form>    
 
 
 
+{% endblock %}
+
+{% block footer %} 
 
 {% endblock %}
 

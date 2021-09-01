@@ -76,9 +76,7 @@ def create_post(request):
 
 def post_list(request, tag_slug=None):
     # posts = Post.published.all()
-    object_list = Post.published.filter(
-        status="published").filter(
-        publish__lte=timezone.now()).all()
+    object_list = Post.aupm.all()
     tag = None
     if tag_slug:
         tag = get_object_or_404(
