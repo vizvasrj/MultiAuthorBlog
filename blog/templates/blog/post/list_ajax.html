@@ -53,7 +53,7 @@
           <img class="author__left__side rounded" src="{{ im.url }}" alt="">
         </a>
       
-          <a class="author_name_from_list" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a>
+          <a class="author_name_from_list vizvasrj" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a>
        
       </div>
       <p class="date">
@@ -64,7 +64,7 @@
     <p class="detail_readtime">{{ post.body|readtime }}</p>
       {% thumbnail post.cover "400x200" crop="100%" as im %}
 
-      <img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="" />
+      <a href="{{post.get_absolute_url}}"><img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="" /></a>
       <p class="mt-1 post__list__body">
         {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}
       </p>

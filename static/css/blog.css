@@ -20,26 +20,18 @@
 }
 
 .myfieldclass:hover {
-    font-family: 'Varela Round', sans-serif;
-    font-family: 400;
-    font-size: 20px;
-    width: 100%;
-    border: rgb(77, 77, 77);
-    border-style: none;
     background-color: transparent;
 }
 
 .myfieldclass:valid {
-    font-family: 'Varela Round', sans-serif;
-    font-family: 400;
-    font-size: 20px;
-    width: 100%;
-    border: rgb(77, 77, 77);
-    border-style: none;
     background-color: transparent;
 }
 
 #id_cover {
+    display: none;
+}
+
+.hideit {
     display: none;
 }
 
@@ -74,6 +66,19 @@
     width: 100%;
     margin: 30px 0;
     padding: 0;
+    word-break: break-word;
+    hyphens: auto;
+    color: rgb(105, 105, 105);
+}
+
+.posttitle:hover {
+    font-size: 1.6em;
+    line-height: 1.25em;
+    width: 100%;
+    margin: 30px 0;
+    padding: 0;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .bookmark_like {
@@ -106,9 +111,321 @@ blockquote:before {
 blockquote p {
     display: inline;
 }
+
 cite {
     margin-left: 35px;
 }
-.code{
+
+.code {
     background-color: rgb(170, 170, 170);
 }
+
+.image {
+    width: 100%;
+}
+
+figure.image img {
+    max-width: 100%;
+}
+
+div.comment-body img {
+    width: 100%;
+}
+
+.ck-editor__editable {
+    background: transparent;
+}
+
+.btn-primary {
+    color: tomato !important;
+    border: 1px solid rgb(48, 48, 48) !important;
+}
+
+.float {
+    top: 40%;
+    margin-left: -22px;
+}
+
+.align-center {
+    align-self: center;
+}
+
+.post__body {
+    margin-left: -10px;
+}
+
+.post__body p img {
+    max-width: 100%;
+}
+
+.post__body img {
+    max-width: 100%;
+}
+
+#newForm {
+    border-left: 2px solid rgb(189, 189, 189);
+}
+
+.re_form {
+    margin-left: 10px;
+}
+
+.re_form_textarea {
+    height: 100px;
+    width: 100%;
+    background: transparent;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: inherit;
+    line-height: inherit;
+    border: inherit;
+}
+
+.re_form_close {
+    float: right;
+    padding: 2px;
+}
+
+.link0 {
+    color: inherit;
+}
+
+.link0:hover {
+    color: inherit;
+}
+
+.read_more {
+    font-size: 12px;
+}
+
+.blog__list__float {
+    top: 40%;
+    font-size: 25px;
+}
+
+.post__list__body {
+    word-break: break-word;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.tags-item {
+    display: inline-block;
+}
+
+.post_username {
+    color: inherit;
+}
+
+.bookmark {
+    cursor: pointer;
+}
+
+/* Account page ie header navbar nav  */
+
+@media screen and (min-width: 576px) {
+    .navbar-expand-sm .navbar-nav .dropdown-menu {
+        margin-left: -100px;
+        position: absolute;
+        border: 0;
+    }
+    .dropdown-item {
+        text-align: center in !important;
+    }
+}
+
+.dropdown-menu {
+    background-color: #f8f9fa;
+    border: 0px solid;
+    text-align: center;
+}
+
+.dropdown-item {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar-toggler {
+    border: 0px solid transparent;
+    border-radius: 0px;
+    background-color: teal;
+}
+
+.navbar-toggler:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    text-decoration: none;
+}
+
+.input-search {
+    overflow: auto;
+}
+
+.myfieldclass-search {
+    font-family: 'Varela Round', sans-serif;
+    font-family: 400;
+    font-size: 20px;
+    width: 100%;
+    padding: .2em;
+    color: rgba(77, 77, 77, 0.767);
+    border: 1px solid rgb(77, 77, 77);
+    background-color: transparent;
+}
+
+.myfieldclass-search:hover {
+    background-color: transparent;
+}
+
+.myfieldclass-search:valid {
+    background-color: transparent;
+}
+
+.search {
+    padding: 2px;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: 400;
+    color: rgb(77, 77, 77);
+}
+
+.search__query__title {
+    font-family: Work Sans;
+    font-weight: 400;
+    color: rgba(105, 105, 105, 0.877);
+}
+
+.search__result__total {}
+
+.author {
+    /* margin-top: -22px; */
+}
+
+.author__p_name {}
+
+.author__avatar {
+    margin-left: 5px;
+}
+
+.a_author_image {
+    text-decoration: none;
+    color: inherit;
+}
+
+.author_name_from_list {
+    text-decoration: none;
+    color: inherit;
+}
+
+.author_name_from_list:hover {
+    text-decoration: none;
+    color: rgb(82, 82, 82);
+}
+
+.your_date {
+    color: hsl(0, 0%, 27.1%);
+    font-weight: 400;
+    font-family: Work Sans;
+}
+
+.status {
+    padding: 5px;
+    font-weight: 700;
+    border: 1px solid;
+    text-decoration: none;
+}
+
+.status-a {
+    padding: 5px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.datetimeinput {
+    background: transparent;
+    border: none;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid red;
+    font-size: 14px;
+    width: 135px;
+}
+.publish__b{
+    padding: 1px !important;
+    font-size: 14px;
+}
+.date_format{
+    font-size: 14px;
+}
+.results {
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.25);
+    transition: 0.5ms;
+    border-radius: 7px;
+    padding: 15px 15px;
+    z-index: 1;
+    background-color: #AAAAAA;
+}
+.none {
+    display: none;
+}
+.modal-content {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+.btn-outline-success:hover {
+    color: hsl(0, 0%, 27.1%);
+}
+.btn-none {
+    border: none;
+    background-color: transparent;
+}
+
+.ajax-post-title {
+    color: #e2e2e2;
+    font-family: sans-serif;
+    font-size: 17px;
+}
+
+.padding-15 {
+    padding: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+@media screen and (max-width: 576px) {
+    .padding-15 {
+        padding: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.tag_label {
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 400;
+    color: rgba(105, 105, 105, 0.877);
+}
+.mb-32-px{
+    margin-bottom: 32px;
+}
+.rounded {
+    border-radius: 0 !important;
+}
+.text-center {
+    text-align: center;
+}
+.vizvasrj {
+    font-family: 'Libre Barcode 39 Text', cursive;
+    
+    font-size: 32px !important;
+    color: rgb(77, 77, 77);
+}
+.vizvasrj:hover {
+    color: rgb(36, 36, 36);
+}
+

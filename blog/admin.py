@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Post, Comment
 
-
 # Register your models here.
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -16,3 +15,4 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Comment)
 class CommedntAdmin(admin.ModelAdmin):
     ordering = ('-created',)
+

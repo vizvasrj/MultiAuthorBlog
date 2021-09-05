@@ -24,7 +24,7 @@
                           <img class="author__left__side rounded" src="{{ im.url }}" alt="">
                         </a>
                       
-                          <a class="author_name_from_list" href="/{{post.author.get_absolute_url}}/">{{ post.author }}</a>
+                          <a class="author_name_from_list vizvasrj" href="/{{post.author.get_absolute_url}}/">{{ post.author }}</a>
                        
                       </div>
                       <p class="date">
@@ -34,7 +34,7 @@
                       </p>
                                     <hr class="hr-line">
                       {% thumbnail post.cover "800x400" crop="100%" as im %}
-                      <img class="mb-3" width="100%" src="{{im.url}}" alt="">
+                      <a href="{{post.get_absolute_url}}"><img class="mb-3" width="100%" src="{{im.url}}" alt=""></a>
                       <p class="post-body">{{ post.body|xssprotect|truncatewords:100 }}</p>
                       <a class="link0" href="{{post.get_absolute_url}}">
                         <p class="read_more">Read more</p>

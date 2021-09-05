@@ -16,6 +16,9 @@ from django.core.paginator import (
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.hashers import check_password
+from django.utils.dateparse import parse_datetime
+from django.utils.timezone import make_aware
+from django.utils import timezone
 
 # 3rd party
 
@@ -28,6 +31,8 @@ from .forms import (
 )
 from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
+
+
 
 from blog.models import Post
 
@@ -466,9 +471,7 @@ def delete_post(request):
             return JsonResponse({'status': 'not found'}, status=404)
     return JsonResponse({'status': 'error'}, status=404)
 
-from django.utils.dateparse import parse_datetime
-from django.utils.timezone import make_aware
-from django.utils import timezone
+
 
 @ajax_required
 @require_POST
@@ -538,3 +541,93 @@ def delete_profile(request):
         }
     )
 
+
+@login_required
+def shared_post_by_other(request):
+    user_id = request.user.id
+    me = User.objects.get(id=user_id).other_authors.all()
+    # me_posts = me.objects.all()
+    paginator = Paginator(me, 4)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            return HttpResponse('')
+        posts = paginator.page(paginator.num_pages)
+    if request.is_ajax():
+        return render(
+            request,
+            'account/me/shared_ajax_list.html', {
+                'posts': posts
+            }
+        )
+    return render(
+        request,
+        'account/me/shared.html', {
+            'posts': posts,
+            'status': 'shared'
+        }
+    )
+
+@ajax_required
+@login_required
+@require_POST
+def remove_shared_post_by_other(request):
+    post_id = request.POST.get('id')
+    post = Post.objects.get(id=post_id)
+    if post_id:
+        try:
+            post.other_author.remove(request.user.id)
+            return JsonResponse({'status': 'removed'}, status=200)
+        except Post.DoesNotExist:
+            return JsonResponse({'status': 'already removed'}, status=404)
+    return JsonResponse({'status': 'error'}, status=404)
+
+
+@login_required
+def shared_post_by_me(request):
+    user_id = request.user.id
+    my_shared = Post.objects.all().filter(author=user_id).exclude(
+        other_author=None
+    )
+    # me_posts = me.objects.all()
+    paginator = Paginator(my_shared, 4)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            return HttpResponse('')
+        posts = paginator.page(paginator.num_pages)
+    if request.is_ajax():
+        return render(
+            request,
+            'account/me/my_shared_ajax_list.html', {
+                'posts': posts
+            }
+        )
+    return render(
+        request,
+        'account/me/my_shared.html', {
+            'posts': posts,
+        }
+    )
+
+@ajax_required
+@login_required
+@require_POST
+def remove_shared_post_by_me(request):
+    post_id = request.POST.get('id')
+    post = Post.objects.get(id=post_id)
+    if post_id:
+        try:
+            post.other_author.remove(request.user.id)
+            return JsonResponse({'status': 'removed'}, status=200)
+        except Post.DoesNotExist:
+            return JsonResponse({'status': 'already removed'}, status=404)
+    return JsonResponse({'status': 'error'}, status=404)

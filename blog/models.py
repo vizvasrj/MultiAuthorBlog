@@ -11,6 +11,7 @@ from account.models import Profile
 # 3rd party
 from autoslug import AutoSlugField
 from taggit.managers import TaggableManager
+# from taggit_autosuggest.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
 
 now = timezone.now()
@@ -85,11 +86,16 @@ class Category(models.Model):
 
 
 
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
         ('published', 'Published'),
         ('trashed', 'Trashed'),
+    )
+    STATUS_CREATE = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
     )
     title = models.CharField(max_length=256)
     category = models.ForeignKey(
@@ -110,6 +116,11 @@ class Post(models.Model):
         Profile,
         on_delete=models.CASCADE,
         related_name='blog_posts'
+    )
+    other_author = models.ManyToManyField(
+        User,
+        related_name='other_authors',
+        blank=True
     )
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)

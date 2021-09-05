@@ -4,14 +4,7 @@
 {% load editorjs %}
 
 {% block head %} 
-{# Include FontAwesome; required for icon display #}
-<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
-
-{# Include Bootstrap 4 and jQuery #}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-{# Django Tempus Dominus assets are included in `{{ form.media }}` #}
+{{ form.media.css }}
 {% endblock %}
 
 {% block style %} 
@@ -21,51 +14,69 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <!-- <h1 class="maintitle">update {{id}}</h1> -->
-
-        <form method="POST" class="post-form" enctype="multipart/form-data">
-            {{form.media }}
-
-            <div class="title mb-2 ">
-                <!-- <label class="mt-2 labeltext" for="title" class="form-label">{{form.title.label}}:</label> -->
-                <div class="">
-                    {{ form.title }}
+<form id="formid" method="POST" class="post-form" enctype="multipart/form-data">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                {{form.media }}
+                <div class="title mb-2 ">
+                    <!-- <label class="mt-2 labeltext" for="title" class="form-label">{{form.title.label}}:</label> -->
+                    <div class="">
+                        {{ form.title }}
+                    </div>
+                </div>
+                <div class="body mb-2 ">
+                    <!-- <label class="mt-2 labeltext" for="body" class="form-label">{{form.body.label}}:</label> -->
+                    <div class="" style="padding: 0px;">
+                        {{ form.body }}
+                    </div>
+                </div>
+                {% csrf_token %}
+                {{media}}
+                <br>
+            </div>
+            <div class="col-md-4 border mb-32-px">
+                <div class="publish mt-2">
+                    <button name="submit" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">{{status}}</button>
+                </div>
+                <div class="tags bg-aqua-lite">
+                    <label class="mt-2 tag_label d-flex bg-green-lite justify-content-center" for="tags" class="form-label">Please provie some tags</label>
+                    <div class="">
+                        {{ form.tags }}
+                    </div>
+                </div>
+                <div class="status bg-aqua-lite">
+                    <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">Please provide when to publish</label>
+                    <div class="">
+                        {{ form.status }}
+                    </div>
+                </div>
+                <div id="h_publish" class="none status bg-aqua-lite">
+                    <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">YYYY:MM:DD HH:MM</label>
+                    <div class=" ">
+                        {{ form.publish }}
+                    </div>
+                </div>
+                <div class="cover bg-aqua-lite ">
+                    <label class="mt-2 tag_label d-flex bg-green-lite justify-content-center" for="cover" class="form-label">Upload cover image</label>
+                    <div class="">
+                        <label id="remove" class="uploadcover d-flex " for="id_cover">
+                            <img class="blogcoverimage d-flex justify-content-center" width="100%" id="myImg" src='{{ cover_image }}' alt="Upload (Click here)" />
+                        </label>
+                        {{ form.cover }}
+                    </div>
+                </div>
+                <div class="tags bg-aqua-lite">
+                    <label class="mt-2 tag_label d-flex justify-content-center" for="tags" class="form-label">Share to edit with others</label>
+                    <div class="">
+                        {{ form.other_author }}
+                    </div>
                 </div>
             </div>
-            <div class="body mb-2 ">
-                <!-- <label class="mt-2 labeltext" for="body" class="form-label">{{form.body.label}}:</label> -->
-                <div class="" style="padding: 0px;">
-                    {{ form.body }}
-                </div>
-            </div>
-            <div class="cover mb-2 ">
-                <label class="mt-2 labeltext" for="cover" class="form-label">{{form.cover.label}}:</label>
-                <div class="">
-                    <label id="remove" class="uploadcover" for="id_cover">
-                        <img class="blogcoverimage" width="100%" id="myImg" src='' alt="Upload" />
-                    </label>
-                    {{ form.cover }}
-                </div>
-            </div>
-            <div class="tags mb-2 ">
-                <!-- <label class="mt-2 labeltext" for="tags" class="form-label">{{form.tags.label}}:</label> -->
-                <div class="">
-                    {{ form.tags }}
-                    
-                </div>
-            </div>
-
-
-            {% csrf_token %}
-
-            {{media}}
-            <br>
-            <button type="submit" formnovalidate="formnovalidate" class="save btn btn-primary">Save</button>
-        </form>
+        </div>
     </div>
-</div>
+
+</form> 
 
 
 
@@ -73,6 +84,9 @@
 {% endblock %}
 
 {% block script %} 
+
+{{ form.media.js }}
+
 <script  src="{% static 'js/ckeditor.js' %}"></script>
 <script src="{% static 'js/ckeditor.config.js' %}"></script>
 
@@ -80,20 +94,44 @@
 
 {% block domready %}
 $(function () {
-$(":file").change(function () {
-if (this.files && this.files[0]) {
-var reader = new FileReader();
-reader.onload = imageIsLoaded;
-reader.readAsDataURL(this.files[0]);
-}
-});
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
 });
 
 function imageIsLoaded(e) {
-$('#myImg').attr('src', e.target.result);
-<!-- $('#remove').remove(); -->
-};
+    $('#myImg').attr('src', e.target.result); 
+    // $('#remove').remove(); 
+
+}
+
+// Check 
+
+$("#formid").on('click', 'option', function(event){
+
+
+    
+    var dataText = $(this).attr('value');
+    var before = $(this)
+    console.log(dataText)
+    if (dataText=='published'){
+        $('#h_publish').removeClass('none');
+    }
+    else {
+        $('#h_publish').addClass('none');
+    }
+
+
+
+});
+
+
+
+
 
 
 {% endblock %}
-

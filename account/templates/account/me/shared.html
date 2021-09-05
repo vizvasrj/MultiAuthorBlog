@@ -1,0 +1,85 @@
+{% extends "blog_base.html" %}
+
+{% load blog_tags %}
+{% load thumbnail %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="alert d-flex justify-content-center" style="z-index: 99999999; position: absolute; margin-top: -88px;">
+        </div>
+        <div class="col-lg-1">
+            {% csrf_token %}
+        </div>
+        <div class="col-lg-8">
+            <div id="post-list">
+                {% include "account/me/shared_ajax_list.html" %}
+            </div>
+        </div>
+        <div class="col-lg-3">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block domready %}
+var page = 1;
+var empty_page = false;
+var block_request = false;
+
+$(window).scroll(function () {
+    var margin = $(document).height() - $(window).height() - 200;
+    if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+        block_request = true;
+        page += 1;
+        $.get('?page=' + page, function (data) {
+            if (data == '') {
+                empty_page = true;
+            } else {
+                block_request = false;
+                $('#post-list').append(data);
+            }
+        });
+    }
+});
+
+<!-- bla -->
+
+    var csrfToken = $("input[name=csrfmiddlewaretoken]").val();
+
+
+    $("#post-list").on('click', 'a.delete__a', function(event){
+        event.stopPropagation();
+
+
+        
+        var dataId = $(this).data('id');
+        var dataTitle = $(this).data('title');
+
+        $.ajax({
+            url: 'remove_me/' ,
+            data: {
+                csrfmiddlewaretoken: csrfToken,
+                id: dataId
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function() {
+                $('#postbox[data-id="' + dataId + '"]').remove();
+                window.setTimeout(function() {
+                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong> removing you from</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
+                        $(this).remove(); 
+                    });;
+                }, 1);
+            },
+            error: function(data){
+                console.log("Its Already deleted");
+            }
+        })
+    })
+
+
+
+{% endblock %}

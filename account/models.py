@@ -37,7 +37,7 @@ class Profile(models.Model):
     )
 
     def __str__(self):
-        return str(self.user.id)
+        return self.user.username
 
     def get_absolute_url(self):
         return self.user

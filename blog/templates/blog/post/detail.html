@@ -102,12 +102,16 @@
                               <img class="author__left__side rounded" src="{{ im.url }}" alt="">
                             </a>
                           
-                              <a class="author_name_from_list" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a>
+                              <a class="author_name_from_list vizvasrj" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a>
                            
                           </div>
                           <p class="date">
-                      
+                            {% if post.status == 'published' %}
+                            
                             Published at {{ post.publish }}
+                            {% else %}
+                            Its a draft you can publish and edit here <a href="{% url 'edit_post' post.id %}"> click</a>
+                            {% endif %}
                   
                           </p>                        <hr class="hr-line">
                         {% thumbnail post.cover "800x400" crop="100%" as im %}

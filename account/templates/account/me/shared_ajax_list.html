@@ -1,0 +1,79 @@
+{% load blog_tags %}
+{% load humanize %}
+{% load thumbnail %}
+
+{% for post in posts %}
+<div id="postbox" data-id="{{ post.id }}"
+    class="row bg-mint-lite {% cycle 'bg-blue-lite' 'bg-teal-lite' 'bg-purple-lite' 'bg-aqua-lite' 'bg-red-lite' 'bg-green-lite' 'bg-yellow-lite' 'bg-olive-lite' 'bg-navy-lite' 'bg-fuchisa-lite' 'bg-orange-lite' 'bg-lime-lite' %} mb-2">
+    <div class="col-1">
+        <div class="blog__list__float sticky-top">
+            <div class="delete">
+
+                <a data-id="{{ post.id }}" data-title="{{post.title}}" class="delete__a" data-toggle="tooltip"
+                    data-placement="top" title="remove yourself from this post">
+                    <svg class="changesize2" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
+                        height="1em"
+                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 1792 1792">
+                        <path class=""
+                            d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"
+                            fill="#dd4646" />
+                    </svg>
+                </a>
+
+            </div>
+            <a data-id="{{ post.id }}" data-title="{{post.title}}" href="{% url 'edit_post' post.id %}" class="edit__a"
+                data-toggle="tooltip" data-placement="top" title="Edit post">
+                <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    aria-hidden="true" focusable="false" width="1em" height="1em"
+                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                    preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                    <path class=""
+                        d="M16.474 5.408l2.118 2.117m-.756-3.982L12.109 9.27a2.118 2.118 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621z"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3" fill="#626262" />
+                </svg>
+            </a>
+
+
+        </div>
+
+    </div>
+    <div class="col-11">
+
+        <div class=" mb-2">
+            <div class="mt-2">
+                <a class="post_title" href="{% url 'post_detail' post.slug %}">
+                    <h3 class="post_title mt-1">{{post.title|capfirst}}</h3>
+                </a>
+            </div>
+            <hr>
+            {% thumbnail post.author.photo "42x42" crop="100%" as im %}
+            <a class="a_author_image" href="/{{post.author.get_absolute_url}}/">
+                <img class="author__left__side rounded" src="{{ im.url }}" alt="">
+            </a>
+
+            <a class="author_name_from_list vizvasrj" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a>
+
+        </div>
+        <p class="date">
+
+            Published at {{ post.publish }}
+
+        </p>
+        <hr class="hr-line">
+
+        <p class="mt-1 post__list__body">
+            {{ post.body|xssprotect|removeimage|striptags|truncatewords:20 }}
+        </p>
+        {% if status == 'drafted' %}
+        <h3>
+            <input id="datetimeinput" class="datetimeinput" type="datetime-local" value="{% now 'Y-m-j H:i' %}" />
+            <button data-title="{{post.title}}" data-id="{{ post.id }}" class="publish__b btn bg-navy">Publish</button>
+            <label class="date_format" for="button">YYYY-MM-DD HH:MM</label>
+        </h3>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}

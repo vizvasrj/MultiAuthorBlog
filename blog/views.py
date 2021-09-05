@@ -1,3 +1,4 @@
+import re
 from django.http.response import(
     HttpResponse, HttpResponseRedirect, JsonResponse
 )
@@ -42,7 +43,6 @@ r = redis.Redis(
 @login_required
 def create_post(request):
     user = request.user
-    # start_dt = timezone.now()
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -50,9 +50,8 @@ def create_post(request):
             new_item = cd['tags']
             new_item = form.save(commit=False)
             new_item.author_id = request.user.id
-            print(new_item.publish)
-            print(timezone.localtime(timezone.now()))
-            deltatime = new_item.publish + timezone.timedelta(minutes=4)
+            # eltetime ok iwill set now
+            deltatime = new_item.publish + timezone.timedelta(minutes=1)
             if deltatime >= timezone.localtime(timezone.now()):
                 new_item.save()
                 form.save_m2m()
@@ -117,7 +116,6 @@ def post_detail(request, post):
     post = get_object_or_404(
         Post,
         slug=post,
-        status='published',
     )
     total_views = r.incr(f'post:{post.id}:views')
     comments = post.comments.filter(active=True)
@@ -297,10 +295,31 @@ def bookmark(request):
             pass
     return JsonResponse({'status': 'ok'})
 
+from django.utils.timezone import localtime
+from django.utils import timezone, dateformat
+
+
+lt = localtime(timezone.now())
+
+
+# this will be usedn in publish value 
+fomated_time = dateformat.format(lt, 'Y-m-d H:i')
+
+
 
 @login_required
 def update_data(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    post.publish = fomated_time
+    post.save()
+    if post.cover:
+        cover_image = post.cover.url
+    else:
+        cover_image = 'No image'
+    main_author_id = post.author.id
+    shared_user = []
+    for s_user in Post.objects.get(id=pk).other_author.all():
+        shared_user.append(s_user.id)
     form = PostForm(
         request.POST or None,
         request.FILES or None,
@@ -319,7 +338,23 @@ def update_data(request, pk):
         return render(
             request,
             'blog/post_update.html',
-            {'form': form}
+            {'form': form, 'cover_image': cover_image, 'status': 'Publish'}
+        )
+    elif request.user.id in shared_user:
+        if request.method == 'POST':
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.author_id = main_author_id
+                post.status = 'draft'
+                post.save()
+                form.save_m2m()
+                return HttpResponseRedirect(reverse('shared_post'))
+        else:
+            form = PostForm(instance=post)
+        return render(
+            request,
+            'blog/post_update.html',
+            {'form': form, 'cover_image': cover_image, 'status': 'Save'}
         )
     else:
         return HttpResponseRedirect(reverse('404'))

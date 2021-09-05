@@ -410,3 +410,22 @@ div.comment-body img {
     font-weight: 400;
     color: rgba(105, 105, 105, 0.877);
 }
+.mb-32-px{
+    margin-bottom: 32px;
+}
+.rounded {
+    border-radius: 0 !important;
+}
+.text-center {
+    text-align: center;
+}
+.vizvasrj {
+    font-family: 'Libre Barcode 39 Text', cursive;
+    
+    font-size: 32px !important;
+    color: rgb(77, 77, 77);
+}
+.vizvasrj:hover {
+    color: rgb(36, 36, 36);
+}
+

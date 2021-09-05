@@ -50,11 +50,13 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'autoslug',
     'taggit',
+    'taggit_autosuggest',
     'mptt',
     'django_editorjs_fields',
     'ckeditor_uploader',
     'django_extensions',
     'tempus_dominus',
+    'django_select2',
 
 
     # local
@@ -222,3 +224,22 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 0
 
+
+# for django_Select2
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+    },
+    "select2": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+    },
+}
+
+SELECT2_CACHE_BACKEND = "select2"
+
+SELECT2_CSS = 'css/select2.css'
+# SELECT2_JS = ''

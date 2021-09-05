@@ -9,6 +9,27 @@ from .models import Post, Comment
 from taggit.forms import TagWidget
 from mptt.forms import TreeNodeChoiceField
 from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
+from django_select2 import forms as s2forms
+
+from django.utils import timezone, dateformat
+from django.utils.timezone import localtime
+
+
+lt = localtime(timezone.now())
+
+
+# this will be usedn in publish value 
+fomated_time = dateformat.format(lt, 'Y-m-d H:i')
+
+
+
+# Select2
+
+class CoAuthorsWidget(s2forms.ModelSelect2MultipleWidget):
+    search_fields = ["username__istartswith", "email__icontains"]
+
+
+
 
 class PostForm(forms.ModelForm):
     # publish = forms.DateField(
@@ -28,11 +49,17 @@ class PostForm(forms.ModelForm):
     #         }
     #     )
     # )
+    STATUS_CHOICES = (
+        ('draft', 'Draft'),
+        ('published', 'Publish'),
+    )
+    status = forms.ChoiceField(choices=STATUS_CHOICES, widget=forms.Select(attrs={'class': 'myfieldclass bg-red-lite'}))
 
     class Meta:
         model = Post
         fields = (
-            'title', 'body', 'tags', 'cover'
+            'title', 'body', 'tags', 'cover', 'status', 'publish',
+            'other_author'
         )
         widgets = {
             'title': forms.Textarea(
@@ -59,6 +86,25 @@ class PostForm(forms.ModelForm):
                     'required': False
                 }
             ),
+            'status': forms.Select(
+                attrs={
+                    'class': 'bg-red',
+                }
+            ),
+            'publish': forms.TextInput(
+                attrs={
+                    'class': 'myfieldclass text-center',
+                    'value': fomated_time
+                }
+            ),
+
+            'other_author': CoAuthorsWidget(
+                attrs={
+                    'class': 'bg-olive-lite',
+                    'style': 'width: 100%',
+                }
+            )
+            
         }
 
 
