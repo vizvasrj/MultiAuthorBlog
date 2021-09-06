@@ -30,6 +30,7 @@ urlpatterns = [
     path('select2/', include('django_select2.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
 
+
 ]
 if settings.DEBUG:
     urlpatterns += static(

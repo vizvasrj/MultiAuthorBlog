@@ -163,7 +163,8 @@ class Post(models.Model):
             'post_detail',
             args = [self.slug]
         )
-    
+
+
 
 class Comment(MPTTModel):
     post = models.ForeignKey(

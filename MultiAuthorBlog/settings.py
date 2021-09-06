@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'tempus_dominus',
     'django_select2',
 
-
     # local
     'blog',
 ]
