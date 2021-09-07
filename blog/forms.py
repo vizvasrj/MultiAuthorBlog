@@ -7,12 +7,15 @@ from .models import Post, Comment
 
 # 3rd party
 from taggit.forms import TagWidget
+from taggit_autosuggest.widgets import TagAutoSuggest
 from mptt.forms import TreeNodeChoiceField
 from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 from django_select2 import forms as s2forms
 
 from django.utils import timezone, dateformat
 from django.utils.timezone import localtime
+
+from django.contrib.auth.models import User
 
 
 lt = localtime(timezone.now())
@@ -73,11 +76,12 @@ class PostForm(forms.ModelForm):
                     # 'class': 'myfieldclass ',
                 }
             ),
-            'tags': TagWidget(
+            'tags': TagAutoSuggest('tagmodel',
                 attrs={
-                    'class': 'myfieldclass padding-15 border-bottom tag_label'
-                    , 'autocomplete': 'off',
-                    'placeholder': 'Tags'
+                    'class': 'myfieldclass border-bottom p-2 tag_label',
+                    'autocomplete': 'off',
+                    'placeholder': 'Tags',
+                    'required': False,
                 }
             ),
             'cover': forms.FileInput(

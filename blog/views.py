@@ -312,10 +312,14 @@ def update_data(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish = fomated_time
     post.save()
+    # loading cover image to edit post page
     if post.cover:
         cover_image = post.cover.url
     else:
         cover_image = 'No image'
+    # main author is the one who created the post
+    # in this i am checking that auther is present in shared post
+    # if user is present then give the permission to edit it.
     main_author_id = post.author.id
     shared_user = []
     for s_user in Post.objects.get(id=pk).other_author.all():

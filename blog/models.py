@@ -10,11 +10,13 @@ from account.models import Profile
 
 # 3rd party
 from autoslug import AutoSlugField
-from taggit.managers import TaggableManager
-# from taggit_autosuggest.managers import TaggableManager
+# from taggit.managers import TaggableManager
+from taggit_autosuggest.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
 
 now = timezone.now()
+
+
 
 
 class ActiveUserPublishedManager(models.Manager):
@@ -24,6 +26,8 @@ class ActiveUserPublishedManager(models.Manager):
         ).filter(publish__lte=timezone.now()).filter(
             status='published'
         )
+
+
 
 class PublishedManager(models.Manager):
     def get_queryset(self):

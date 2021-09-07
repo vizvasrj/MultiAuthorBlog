@@ -38,9 +38,18 @@
   <script src="{% static 'colorfield/colorfield.js' %}"></script>
   <script src="{% static 'colorfield/jscolor/jscolor.js' %}"></script>
   <script src="{% static 'colorfield/jscolor/jscolor.min.js' %}"></script>
-{% block head %} 
 
-{% endblock %}
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+
+<link rel="stylesheet" href="{% static 'css/autoSuggest.css' %}">
+<link rel="stylesheet" href="{% static 'css/select2.css' %}">
+<link rel="stylesheet" href="{% static 'django_select2/django_select2.css' %}">
+
+
+
+  {% block head %} 
+  {% endblock %}
   <style>
     {% block style %} 
     
@@ -65,9 +74,9 @@
               <ul class="navbar-nav me-auto mb-lg-0">
                 {% block menu %} 
                 <li class="nav-item text-center">
-                  <a class="nav-link active navtext" aria-current="page" href="{% url 'post_list' %}">Posts</a>
+                  <a class="nav-link navtext" aria-current="page" href="{% url 'post_list' %}">Posts</a>
                 </li>
-                <li class="nav-item text-center"><a class="nav-link active navtext" href="{% url 'post_new' %}">Create Post</a></li>
+                <li class="nav-item text-center"><a class="nav-link navtext" href="{% url 'post_new' %}">Create Post</a></li>
                 {% endblock %}
               </ul>
               <button type="button" class="btn-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -104,6 +113,7 @@
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                     <li><a class="dropdown-item" href="{% url 'post_new' %}">Create Post</a></li>
                     <li><a class="dropdown-item" href="{% url 'my_published_story' %}">My Stories</a></li>
+                    <li><a class="dropdown-item" href="{% url 'my_shared_post' %}">My Shared</a></li>
 
 
                   </ul>
@@ -163,7 +173,13 @@
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <!-- <script src="{% static 'js/popper.min.js' %}"></script> -->
 <!-- <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+{% if '/create/' in request.path  or '/update/' in request.path %}
+
+{% else %}
 <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+
+{% endif %}
+
 <script src="{% static 'js/search.js' %}"></script>
 
 
@@ -196,26 +212,44 @@
 
 
 
+{% if '/create/' in request.path or '/update/' in request.path %}
 <script>
-      var csrftoken = Cookies.get('csrftoken');
-    function csrfSafeMethod(method) {
-      // These HTTP methods do not require CSRF protection
-      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-    }
-    $.ajaxSetup({
-      beforeSend: function (xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-          xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
-      }
-    });
+  (function( $ ){
+    {% block domready2 %}
+    
+    {% endblock %}
 
-    $(document).ready(function () {
-      {% block domready %}
-      {% endblock %}
-    });
+  })( django.jQuery );
+
 
 </script>
+
+{% else %}
+<script>
+  var csrftoken = Cookies.get('csrftoken');
+function csrfSafeMethod(method) {
+  // These HTTP methods do not require CSRF protection
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+  beforeSend: function (xhr, settings) {
+    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    }
+  }
+});
+
+$(document).ready(function () {
+  {% block domready %}
+  {% endblock %}
+});
+
+</script>
+{% endif %}
+
+
+
+
 
 {% block comment %} 
 

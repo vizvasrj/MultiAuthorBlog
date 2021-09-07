@@ -13,6 +13,7 @@
             {% csrf_token %}
         </div>
         <div class="col-lg-8">
+            <a class="linknone bg-cyan-lite border"  href="{% url 'their_shared_post' %}">There shared</a>
             <div id="post-list">
                 {% include "account/me/my_shared_ajax_list.html" %}
             </div>
