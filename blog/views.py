@@ -336,6 +336,8 @@ def update_data(request, pk):
                 post.author_id = request.user.id
                 post.save()
                 form.save_m2m()
+                for x in post.other_author.all():
+                    print(x)
                 return redirect(post.get_absolute_url())
         else:
             form = PostForm(instance=post)

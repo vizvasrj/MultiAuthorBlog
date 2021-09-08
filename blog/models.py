@@ -4,6 +4,7 @@ import time
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.db.models import Q
 
 # local
 from account.models import Profile
@@ -13,10 +14,14 @@ from autoslug import AutoSlugField
 # from taggit.managers import TaggableManager
 from taggit_autosuggest.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
+from django.db.models.signals import m2m_changed, post_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
+from django.contrib.sites.models import Site
 
 now = timezone.now()
-
-
+current_site = Site.objects.get_current()
+domain = current_site.domain
 
 
 class ActiveUserPublishedManager(models.Manager):
@@ -208,3 +213,49 @@ class Comment(MPTTModel):
 
     def __str__(self):
         return f'comment by {self.commentor} on {self.post}'
+
+
+    
+
+@receiver(post_save, sender=Post)
+def post_save_receiver(sender, instance, created, *args, **kwargs):
+    if created:
+        print("Send email to ", instance.author)
+        instance.save()
+    else:
+        print(instance.title, " was just saved")
+
+
+@receiver(m2m_changed, sender=Post.other_author.through)
+def user_liked_changed(reverse, instance, action, pk_set, model, *args, **kwargs):
+    if action == 'pre_add':
+        print(action)
+        for x in instance.other_author.all():
+            print(x.username)
+    if action == 'post_add':
+        print(action)
+        for x in instance.other_author.all():
+            subject = f"{instance.author.full_name} make you " \
+                f"co-editor in his/her post {instance.title}."
+            message = f"you can go to {domain}/blog/update/{instance.id}/ or "\
+                f" <a href='{domain}/blog/update/{instance.id}/'>Click here</a>" \
+                    f" {domain}/blog/{instance.slug}/ at  {instance}"
+            send_mail(
+                subject, message, 'root@vizvasrj.com', (x.email,), fail_silently=False
+            )
+            
+
+    elif action == 'post_remove':
+        print(action)
+        for x in instance.other_author.all():
+            print(x.username)
+
+
+# @receiver(m2m_changed, sender=User.other_authors.through)
+# def user_add(sender, reverse, instance, action, pk_set, model, *args, **kwargs):
+#     print(action)
+#     print(sender)
+#     for x in instance.other_author.all():
+#         print(x.username)
+
+

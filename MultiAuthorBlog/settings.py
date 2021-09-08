@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
 
     # 3rd party
     'crispy_forms',
@@ -57,6 +58,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'tempus_dominus',
     'django_select2',
+    'actions',
+
 
     # local
     'blog',
@@ -244,3 +247,7 @@ SELECT2_CSS = 'css/select2.css'
 # SELECT2_JS = ''
 
 TAGGIT_AUTOSUGGEST_MAX_SUGGESTIONS = 8
+
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

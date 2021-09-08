@@ -1,6 +1,7 @@
 {% load blog_tags %}
 {% load humanize %}
 {% load thumbnail %}
+{% load account_tags %}
 
 {% for post in posts %}
 <div id="postbox" data-id="{{ post.id }}"
@@ -50,7 +51,7 @@
             </div>
             <hr>
             
-            {% for x in post.other_author.all %}
+            {% for x in post.other_author.all|slice:":3" %}
 
                 {% thumbnail x.profiles.photo "42x42" crop="100%" as im %}
                 <a class="a_author_image" href="/{{x.profiles.get_absolute_url}}/">
@@ -58,8 +59,15 @@
                 </a>
                 
                 <a class="author_name_from_list vizvasrj" href="/{{x.profiles.get_absolute_url}}/">{{ x.profiles.user }}</a>
+
+            
                 
             {% endfor %}
+            {% if post.other_author.count > 3 %}
+                <a href="{% url 'edit_post' post.id %}" class="more">
+                    more ({{post.other_author.count|add:"-3"}})
+                </a>
+            {% endif %}
         </div>
         <p class="date">
 
@@ -78,6 +86,7 @@
             <label class="date_format" for="button">YYYY-MM-DD HH:MM</label>
         </h3>
         {% endif %}
+
     </div>
 </div>
 {% endfor %}

@@ -77,3 +77,5 @@ user_model.add_to_class(
         symmetrical=False
     )
 )
+
+
