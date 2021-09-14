@@ -63,15 +63,22 @@
             
                 
             {% endfor %}
+            
             {% if post.other_author.count > 3 %}
                 <a href="{% url 'edit_post' post.id %}" class="more">
                     more ({{post.other_author.count|add:"-3"}})
                 </a>
             {% endif %}
+
         </div>
+        {% if post.last_editeduser %}
+            {{ post.last_editeduser }} 
+        {% else %}
+            You edited
+        {% endif %}
         <p class="date">
 
-            Published at {{ post.publish }}
+            Published at {{ post.publish }} 
 
         </p>
         <hr class="hr-line">

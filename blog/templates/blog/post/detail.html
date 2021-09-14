@@ -21,7 +21,9 @@
                 <div class="row">
                     <div class="col-1">
                         <div class="float sticky-top">
-                            <h1></h1>
+                            <sperms class="brains" data-toggle='tooltip' data-html='true' title='helps you remember more'>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><g fill="none"><path d="M6.13 2.793A3.91 3.91 0 0 1 8.5 2c.24 0 .431.125.542.211c.124.098.24.223.344.348a.5.5 0 0 1 .114.318V6.5H8.415a1.5 1.5 0 1 0 0 1H9.5v9.415a.5.5 0 0 1-.183.387C8.855 17.68 8.237 18 7.5 18c-1.186 0-2.069-.598-2.64-1.313a4.057 4.057 0 0 1-.819-1.752a2.68 2.68 0 0 1-1.054-.555C2.435 13.907 2 13.14 2 12c0-.557.037-1.06.12-1.5h3.13c.636 0 1.16.475 1.24 1.089a1.5 1.5 0 1 0 1.004-.006A2.25 2.25 0 0 0 5.25 9.5H2.441c.153-.298.358-.55.625-.729a1.58 1.58 0 0 1 .212-.118c-.284-.832-.21-1.806.064-2.571c.175-.492.453-.957.835-1.267c.252-.205.552-.34.88-.366c.144-.683.549-1.248 1.074-1.656zM10.5 14.5h.75a2.25 2.25 0 0 0 2.25-2.25v-1.835a1.5 1.5 0 1 0-1 0v1.835c0 .69-.56 1.25-1.25 1.25h-.75V2.877a.5.5 0 0 1 .114-.318c.103-.125.22-.25.344-.348c.11-.086.301-.211.542-.211a3.91 3.91 0 0 1 2.37.793c.525.408.93.973 1.073 1.656c.328.025.628.161.88.366c.382.31.66.775.835 1.267c.274.765.348 1.74.064 2.57c.072.034.143.074.212.12c.275.183.484.445.638.754c.303.605.428 1.449.428 2.474c0 1.141-.435 1.907-.987 2.38a2.68 2.68 0 0 1-1.054.555c-.1.558-.38 1.204-.819 1.752C14.57 17.402 13.686 18 12.5 18c-.736 0-1.355-.32-1.816-.698a.5.5 0 0 1-.184-.387V14.5zM7 6.5a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1zm0 6a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1zm6-3a.5.5 0 1 0 0-1a.5.5 0 0 0 0 1z" fill="currentColor"/></g></svg>                            
+                            </sperms>
                             <div class="bookmark_like d-flex flex-column">
                                 {% with total_likes=post.users_like.count users_like=post.users_like.all %}
                                 <div class="info d-flex">
@@ -116,7 +118,9 @@
                           </p>                        <hr class="hr-line">
                         {% thumbnail post.cover "800x400" crop="100%" as im %}
                         <img class="mb-3" width="100%" src="{{im.url}}" alt="">
-                        <p class="post-body">{{ post.body|xssprotect }}</p>
+                        <div class="post-body">
+                            {{ post.body|xssprotect }}
+                        </div>
                         <div class="">
                             {% for tag in post.tags.all %}
                             <a href="{% url 'post_list_by_tag' tag.slug %}" class="tags-item
@@ -146,9 +150,9 @@
                 <div class="col-11 post__body">
                     <div id="comment-list" class="">
                         {% with allcomments.count as total_comments %}
-                        <h2>
+                        <strong>
                             {{ total_comments }} comment{{ total_comments|pluralize }}
-                        </h2>
+                        </strong>
                         {% endwith %}
                         {% load mptt_tags %}
                         <div>
@@ -297,114 +301,118 @@
 {% endblock %}
 
 {% block domready %}
-<!--  -->
+
 console.log("aa");
-$('a.like').click(function(e){
-e.preventDefault();
-$.post('{% url "like" %}',
-{
-id: $(this).data('id'),
-action: $(this).data('action')
-},
-function(data){
-if (data['status'] == 'ok')
-{
-var previous_action = $('a.like').data('action');
+$('a.like').click(function (e) {
+    e.preventDefault();
+    $.post('{% url "like" %}',
+        {
+            id: $(this).data('id'),
+            action: $(this).data('action')
+        },
+        function (data) {
+            if (data['status'] == 'ok') {
+                var previous_action = $('a.like').data('action');
 
-//toggle data-action
-$('a.like').data('action', previous_action == 'like' ? 'unlike' : 'like');
+                //toggle data-action
+                $('a.like').data('action', previous_action == 'like' ? 'unlike' : 'like');
 
-$('a.like svg path.icad').toggleClass(previous_action == 'like' || previous_action == 'unlike' ? 'red' : '');
+                $('a.like svg path.icad').toggleClass(previous_action == 'like' || previous_action == 'unlike' ? 'red' : '');
 
 <!-- removing users like  image profile -->
-$('div.userlikes div.{{ user.profiles.id }}').toggleClass(previous_action == 'like' || previous_action == 'unlike' ?
-'hideme' : '');
+                    $('div.userlikes div.{{ user.profiles.id }}').toggleClass(previous_action == 'like' || previous_action == 'unlike' ?
+                        'hideme' : '');
 
-if (previous_action == 'like' || previous_action == 'unlike'){
-$('div.userlikes div.{{ user.profiles.id }}').toggle()
-}
+                if (previous_action == 'like' || previous_action == 'unlike') {
+                    $('div.userlikes div.{{ user.profiles.id }}').toggle()
+                }
 
 
 
-//update total likes
-var previous_likes = parseInt($('span.count .total').text());
-$('span.count span.total').text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
+                //update total likes
+                var previous_likes = parseInt($('span.count .total').text());
+                $('span.count span.total').text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
 
-}
-});
-});
-
-<!-- bookmark -->
-$('a.bookmark').click(function(e){
-e.preventDefault();
-$.post('{% url "bookmark" %}',
-{
-id: $(this).data('id'),
-action: $(this).data('action')
-},
-function(data){
-if (data['status'] == 'ok')
-{
-
-console.log("ok");
-var previous_action = $('a.bookmark').data('action');
-
-//toggle data-action
-$('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
-
-//toggle link text
-$('a.bookmark svg path.icad').toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' :
-'');
-
-}
-else{
-console.log("Error")
-}
-});
+            }
+        });
 });
 
-<!-- Comment Like -->
-$('#comment-list').on("click", "a.c_like", function(event){
-{% if request.user.is_authenticated %}
-event.preventDefault();
-{% else %}
-console.log("Login First");
-{% endif %}
+<!-- bookmark  -->
+    $('a.bookmark').click(function (e) {
+        e.preventDefault();
+        $.post('{% url "bookmark" %}',
+            {
+                id: $(this).data('id'),
+                action: $(this).data('action')
+            },
+            function (data) {
+                if (data['status'] == 'ok') {
 
-var ba = $(this).data('id');
-console.log(ba);
-$.post('{% url "comment_like" %}',
-{
-id: $(this).data('id'),
-action: $(this).data('action')
-},
-function(data){
-if (data['status'] == 'ok' )
-{
-previous_action = $('a.c_like.'+ba).data('action');
-//toggle data-action
-//$('a.c_like.'+ba).data('action', previous_action == 'like' ? 'unlike' : 'like');
-$('a.c_like.'+ba).attr('data-action', $('a.c_like.'+ba).attr('data-action') == 'like' ? 'unlike' : 'like')
-if ($('a.c_like.'+ba).attr('data-action') == 'like'){
-console.log("unlike");
-previous_likes = parseInt($('span.c_total.'+ba).text());
-$('span.c_total.'+ba).text(previous_likes - 1);
-}
-else{
-console.log("like");
-previous_likes = parseInt($('span.c_total.'+ba).text());
-$('span.c_total.'+ba).text(previous_likes + 1);
-}
-//toggle class
-$('a.c_like svg path.'+ba).toggleClass(previous_action == 'like' || previous_action == 'unlike' ? 'red' : '')
+                    console.log("ok");
+                    var previous_action = $('a.bookmark').data('action');
 
-//update total likes
-//var previous_likes = parseInt($('div.c_count span.c_count span.c_total.'+ba).text());
-//$('span.c_total.'+ba).text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
+                    //toggle data-action
+                    $('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
+
+                    //toggle link text
+                    $('a.bookmark svg path.icad').toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' :
+                        '');
+
+                }
+                else {
+                    console.log("Error")
+                }
+            });
+    });
+
+<!-- Comment like -->
+    $('#comment-list').on("click", "a.c_like", function (event) {
+        {% if request.user.is_authenticated %}
+        event.preventDefault();
+        {% else %}
+        console.log("Login First");
+        {% endif %}
+
+        var ba = $(this).data('id');
+        console.log(ba);
+        $.post('{% url "comment_like" %}',
+            {
+                id: $(this).data('id'),
+                action: $(this).data('action')
+            },
+            function (data) {
+                if (data['status'] == 'ok') {
+                    previous_action = $('a.c_like.' + ba).data('action');
+                    //toggle data-action
+                    //$('a.c_like.'+ba).data('action', previous_action == 'like' ? 'unlike' : 'like');
+                    $('a.c_like.' + ba).attr('data-action', $('a.c_like.' + ba).attr('data-action') == 'like' ? 'unlike' : 'like')
+                    if ($('a.c_like.' + ba).attr('data-action') == 'like') {
+                        console.log("unlike");
+                        previous_likes = parseInt($('span.c_total.' + ba).text());
+                        $('span.c_total.' + ba).text(previous_likes - 1);
+                    }
+                    else {
+                        console.log("like");
+                        previous_likes = parseInt($('span.c_total.' + ba).text());
+                        $('span.c_total.' + ba).text(previous_likes + 1);
+                    }
+                    //toggle class
+                    $('a.c_like svg path.' + ba).toggleClass(previous_action == 'like' || previous_action == 'unlike' ? 'red' : '')
+
+                    //update total likes
+                    //var previous_likes = parseInt($('div.c_count span.c_count span.c_total.'+ba).text());
+                    //$('span.c_total.'+ba).text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
 
 
-}
-});
-});
+                }
+            });
+    });
+
+    $( "sperms" ).click(function() {
+       // $( "div .post__body > div > div > p" ).toggleClass( "iamhigh" );
+       // $( "div .post__body > div > h1,h2,h3,h4,h5,h6,ul,li" ).toggleClass( "iamhigh" );
+        $( "div .post__body > div.post-body > div" ).toggleClass( "iamhigh" );
+        $( this ).toggleClass( "glow" );
+      });
 
 {% endblock %}

@@ -1,0 +1,32 @@
+{% extends "blog_base.html" %}
+
+{% block content %} 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-8 ">
+            {% for post in posts %}
+
+            <a href="{{post.get_absolute_url}}">
+                {{post.title}}
+            </a>
+        
+            {% endfor %}
+
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block domready %} 
+  var height = ( "window", $( window ).height() );
+  var nav_height = $( "nav" ).height()
+  var footer_height = $( "footer" ).height()
+    console.log(height);
+    $('.col-lg-8').css({height: height-nav_height-footer_height});
+{% endblock %}

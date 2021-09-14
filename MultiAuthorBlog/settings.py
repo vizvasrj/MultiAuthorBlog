@@ -63,6 +63,8 @@ INSTALLED_APPS = [
 
     # local
     'blog',
+    'comment',
+    'about',
 ]
 
 MIDDLEWARE = [
@@ -251,3 +253,9 @@ TAGGIT_AUTOSUGGEST_MAX_SUGGESTIONS = 8
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Celery configurations
+CELERY_TIMEZONE = "Asia/Kolkata"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60

@@ -1,0 +1,164 @@
+{% extends "blog_base.html" %}
+{% load editorjs %}
+
+{% load thumbnail %}
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <h1>{{about_post.title}}</h1>
+            <picture>
+                {% thumbnail about_post.cover "500x300" crop="100%" as im %}
+                <img width="100%" src="{{im.url}}" alt="">
+            </picture>
+            <p>{{about_post.body|editorjs}}</p>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+
+    <!-- Comments -->
+    <div class="row">
+        <div class="col-lg-3"></div>
+
+        <div class="col-lg-6">
+            <div id="comment-list" class="">
+                {% load mptt_tags %}
+                <div>
+                    {% recursetree comments %}
+                    <div id="{{ node.id }}" class="my-2 p-2" style="border: 1px solid grey;">
+                        <div class="d-flex justify-content-between">
+                            {% thumbnail node.commentor.photo "20x20" crop="100%" as im %}
+                            <strong>
+                                <img width="20px" src="{{ im.url }}" alt="">
+                                {{node.name}} {{ node.commentor.user }}
+                            </strong>
+                            <div>
+                                {{ node.created }} 
+                                    {% if request.user.id == node.commentor.id %}
+                                    <a href="{% url 'edit_comment' node.id %}">Edit</a> 
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="comment-body">
+                            {{ node.id }}: {{ node.body }}
+                        </div>
+                        <div id="">
+                            {% with total_likes=node.users_like.count users_like=node.users_like.all %}
+                            <div class="c_count" data-action="">
+                                <span class="c_count">
+                                    <span class="c_total {{ node.id }}">{{ total_likes }}</span>
+                                    like{{ total_likes|pluralize }}
+                                </span>
+                                {% if request.user.is_authenticated %}
+                                <a data-id="{{ node.id }}"
+                                    data-action="{% if request.user in users_like %}un{% endif %}like"
+                                    class="c_like {{ node.id }}" style="font-size: 20px;">
+                                    <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
+                                        width="1em" height="1em"
+                                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                        <path
+                                            class="{% if request.user in users_like %}red{% endif %} {{ node.id }} icad"
+                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+                                            fill="#626262" />
+                                    </svg>
+                                </a>
+                                {% else %}
+                                <a href="{% url 'login' %}?next={{ request.path }}" class="likes">
+                                    <svg class="changesize" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
+                                        width="1em" height="1em"
+                                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                        <path class="icad"
+                                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+                                            fill="#626262" />
+                                    </svg>
+                                </a>
+                                {% endif %}
+                            </div>
+                            <!-- end count and like -->
+                            {% endwith %}
+                        </div>
+                        <hr>
+                        <button class="comment__button" onClick="myFunction({{ node.id }})">Reply</button>
+                    </div>
+                    {% if not node.is_leaf_node %}
+                    <div class="children pl-2 pl-md-5" style="margin-left: 15px;">
+                        {{ children }}
+                    </div>
+                    {% endif %}
+                    {% endrecursetree %}
+                </div>
+                {% if request.user.is_authenticated %}
+                <div id="comment"></div>
+                <form id="myForm" method="post">
+                    <div class="cover mb-2 ">
+                        <label class="mt-2 labeltext" for="body" class="form-label">Hit a comment</label>
+                        <div class="">
+                            <textarea class="comment__textarea" name="body" id="id_body"></textarea>
+                        </div>
+                    </div>
+                    {% csrf_token %}
+                    <button type="submit" class="comment__button">Submit</button>
+                </form>
+                {% else %}
+                <form action="/login/?next={% url 'post_detail' post.slug %}#comment" method="post">
+                    <div class="cover mb-2 ">
+                        <label class="mt-2 labeltext" for="body" class="form-label">Hit a comment</label>
+                        <div class="">
+                            <textarea name="id_body" id="id_body" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                    {% csrf_token %}
+                    <button type="submit" class="comment__button">Submit</button>
+                </form>
+                {% endif %}
+            </div>
+            <script type="text/javascript">
+                function formExit() {
+                    document.getElementById('newForm').remove();
+                }
+                function myFunction(id) {
+                    if (document.contains(document.getElementById("newForm"))) {
+                        document.getElementById("newForm").remove();
+                    }
+                    var a = document.getElementById(id);
+                    a.insertAdjacentHTML('afterend', ' \
+                    <form id="newForm" method="post"> \
+                        <div class="re_form"> \
+                        <h2>Replay:</h2> \
+                        <button type="button" class="comment__button bg-red" onclick="formExit()"> \
+                            Close \
+                        </button> \
+                        <p> \
+                            <select name="parent" class="d-none" id="id_parent"> \
+                                <option value="' + id + '" selected="' + id + '"></option> \
+                            </select> \
+                        </p> \
+                        <p> \
+                             \
+                            <textarea placeholder="Comment here" name="body" id="id_body" class="re_form_textarea"></textarea>  \
+                        </p> \
+                        {% csrf_token %} \
+                        <button type="submit" class="comment__button bg-olive">Submit</button> \
+                        </div> \
+                        </form> \
+                    ');
+                    // CKEDITOR.replace("id_body");
+                    // var textarea = document.body.appendChild( document.createElement( 'textarea' ) );
+                    // CKEDITOR.replace( textarea );
+                }
+                // $('#myForm').trigger("reset");
+            </script>
+        </div>
+        <div class="col-lg-3"></div>
+
+    </div>
+</div>
+
+
+{% endblock %}

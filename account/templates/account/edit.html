@@ -83,5 +83,10 @@ $('#myImg').attr('src', e.target.result);
 };
 
 
+var height = ( "window", $( window ).height() );
+var nav_height = $( "nav" ).height()
+var footer_height = $( "footer" ).height()
+  console.log(height);
+  $('.col-lg-8').css({height: height-nav_height-footer_height});
 
 {% endblock %}

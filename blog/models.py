@@ -5,6 +5,13 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.db.models import Q
+from django.db.models.signals import m2m_changed, post_save, pre_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
+from django.contrib.sites.models import Site
+from django.utils.text import slugify
+from django.core.signals import request_finished
+
 
 # local
 from account.models import Profile
@@ -12,12 +19,14 @@ from account.models import Profile
 # 3rd party
 from autoslug import AutoSlugField
 # from taggit.managers import TaggableManager
-from taggit_autosuggest.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
-from django.db.models.signals import m2m_changed, post_save
-from django.dispatch import receiver
-from django.core.mail import send_mail
-from django.contrib.sites.models import Site
+from taggit_autosuggest.managers import TaggableManager
+# language detector for slug ie en, hi, de, fr etc
+from polyglot.detect import Detector
+# for slug to change it name for diffrent 
+# language i am using unidecode
+from unidecode import unidecode
+
 
 now = timezone.now()
 current_site = Site.objects.get_current()
@@ -160,6 +169,13 @@ class Post(models.Model):
         db_index=True,
         default=0
     )
+    last_editeduser = models.ForeignKey(
+        User,
+        related_name='last_edited',
+        on_delete=models.PROTECT,
+        blank=True,
+        null=True
+    )
     
     class Meta:
         ordering = ('-publish',)
@@ -172,6 +188,18 @@ class Post(models.Model):
             'post_detail',
             args = [self.slug]
         )
+
+
+# pre_save #
+from .signals import pre_save_receiver
+
+@receiver(post_save, sender=Post)
+def post_save_receiver(sender, created, instance, *args, **kwargs):
+
+    if created:
+        print("created did slug changed?")    
+        print(instance.slug, " was just saved")
+
 
 
 
@@ -217,21 +245,20 @@ class Comment(MPTTModel):
 
     
 
-@receiver(post_save, sender=Post)
-def post_save_receiver(sender, instance, created, *args, **kwargs):
-    if created:
-        print("Send email to ", instance.author)
-        instance.save()
-    else:
-        print(instance.title, " was just saved")
+# @receiver(post_save, sender=Post)
+# def post_save_receiver(sender, instance, created, *args, **kwargs):
+#     if created:
+#         print("Send email to ", instance.author)
+#         instance.save()
+#     else:
+#         print(instance.title, " was just saved")
 
 
+# This is to send email when author add post
+# ie create post and add author to it 
+# it send email to added author
 @receiver(m2m_changed, sender=Post.other_author.through)
 def user_liked_changed(reverse, instance, action, pk_set, model, *args, **kwargs):
-    if action == 'pre_add':
-        print(action)
-        for x in instance.other_author.all():
-            print(x.username)
     if action == 'post_add':
         print(action)
         for x in instance.other_author.all():
@@ -245,17 +272,70 @@ def user_liked_changed(reverse, instance, action, pk_set, model, *args, **kwargs
             )
             
 
-    elif action == 'post_remove':
-        print(action)
-        for x in instance.other_author.all():
-            print(x.username)
 
 
-# @receiver(m2m_changed, sender=User.other_authors.through)
+# @receiver(m2m_changed, sender=Post.other_author.through)
 # def user_add(sender, reverse, instance, action, pk_set, model, *args, **kwargs):
 #     print(action)
-#     print(sender)
-#     for x in instance.other_author.all():
-#         print(x.username)
+#     if action == 'post_save':
+#         print(action)
+#         print(instance.title)
+#         print("ccccccccccccccccccccccc")
+#         # for x in instance.other_author.all():
+#         #     print(x.username)
 
 
+
+class PostBackup(models.Model):
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='post_backup'
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='author_post_backup'
+    )
+    title = models.CharField(
+        max_length=250
+    )
+    body = models.TextField()
+    created = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    
+
+@receiver(post_save, sender=Post)
+def post_save_receiver(sender, instance, created, *args, **kwargs):
+
+    if created:
+        print(instance.id, " Created")
+    
+    else:
+        print(instance.id, " was just saved and have a backup")
+        PostBackup.objects.create(
+            post_id=instance.id,
+            author_id=instance.author.id,
+            title=instance.title,
+            body=instance.body
+        )
+
+# from django.core.exceptions import ObjectDoesNotExist
+
+# @receiver(post_save, sender=Post)
+# def create_profile(sender, instance, created, **kwargs):
+#     if created:
+#         print("Hello ", instance.title)
+
+
+# @receiver(post_save, sender=Post)
+# def save_profile(sender, instance,  **kwargs):
+#     try:
+#         # instance.profile.save()
+#         print("save", instance.title)
+#     except ObjectDoesNotExist:
+#         Profile.objects.create(user=instance)
+#         print("objects not exists yet wait i am creating", instance.title)

@@ -310,8 +310,8 @@ fomated_time = dateformat.format(lt, 'Y-m-d H:i')
 @login_required
 def update_data(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.publish = fomated_time
-    post.save()
+    # post.publish = fomated_time
+    # post.save()
     # loading cover image to edit post page
     if post.cover:
         cover_image = post.cover.url
@@ -334,6 +334,7 @@ def update_data(request, pk):
             if form.is_valid():
                 post = form.save(commit=False)
                 post.author_id = request.user.id
+                post.last_editeduser_id = request.user.id
                 post.save()
                 form.save_m2m()
                 for x in post.other_author.all():
@@ -351,10 +352,11 @@ def update_data(request, pk):
             if form.is_valid():
                 post = form.save(commit=False)
                 post.author_id = main_author_id
+                post.last_editeduser_id = request.user.id
                 post.status = 'draft'
                 post.save()
                 form.save_m2m()
-                return HttpResponseRedirect(reverse('shared_post'))
+                return redirect(post.get_absolute_url())
         else:
             form = PostForm(instance=post)
         return render(

@@ -56,7 +56,9 @@
 }
 
 .post-body {
-    font-family: 'Andada Pro', serif;
+    /* font-family: 'Andada Pro', serif; */
+    font-family: 'Noto Sans', sans-serif;
+    
     font-weight: 400;
 }
 
@@ -477,4 +479,77 @@ div.comment-body img {
 .dropdown-item:active{
     background-color: #e9ecef;
     color: rgb(36, 36, 36);
+}
+.forgetica {
+    font-family: Sans Forgetica Regular;
+    font-size: 30px;
+    font-weight: inherit;
+    color: white;
+}
+
+div .post__body > div > div > p {
+    /* font-family: Sans Forgetica Regular; */
+    /* font-size: 30px; */
+    font-weight: inherit;
+    /* color: white; */
+}
+
+div .post__body > div > h1,h2,h3,h4,h5,h6,ul,li {
+    /* font-family: Sans Forgetica Regular; */
+    /* font-size: 30px; */
+    font-weight: inherit;
+    /* color: white; */
+}
+div .post__body > p.post-body + p {
+    /* font-family: Sans Forgetica Regular; */
+    /* font-size: 30px; */
+    font-weight: inherit;
+    /* color: white; */
+}
+
+.oooo {
+    color:mediumslateblue;
+}
+.brains {
+    color:mediumslateblue;
+    cursor: pointer;
+}
+.glow {
+    color:mediumvioletred;
+    cursor: pointer;
+}
+.iamhigh {
+    font-family: Sans Forgetica Regular;
+
+}
+.comment__textarea {
+    width: 100%;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    border: 1px solid silver;
+}
+.comment__button {
+    padding: 0;
+    color: mediumvioletred;
+    background-color: mediumslateblue;
+    border-radius: 2px;
+    border: 1px solid transparent;
+}
+.comment__button:hover {
+    padding: 0;
+    color: midnightblue;
+    background-color: mediumvioletred;
+}
+
+::selection {
+	color: #d2c5b5;
+	background-color: #2d3a4a;
+}
+
+/* for firefox */
+::moz-selection {
+	color: #d2c5b5;
+	background-color: #2d3a4a;
 }
