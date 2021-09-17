@@ -4,7 +4,11 @@ from django.contrib.auth import get_user_model
 
 
 from colorfield.fields import ColorField
-
+from django.db.models.signals import (
+    post_save, m2m_changed, pre_save
+)
+from django.dispatch import receiver
+from .tasks import print_full_name
 
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -41,6 +45,18 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return self.user
+
+
+
+@receiver(post_save, sender=Profile)
+def post_save_receiver(sender, created, instance, *args, **kwargs):
+
+    if created:
+        print("created did slug changed?")
+    else:
+        print("updated", instance.full_name)
+        print_full_name.delay(name=instance.full_name)
+        
 
 
 class Contact(models.Model):

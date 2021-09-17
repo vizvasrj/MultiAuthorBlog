@@ -154,6 +154,7 @@ div.comment-body img {
 
 .post__body {
     margin-left: -10px;
+    word-break: break-word;
 }
 
 .post__body p img {

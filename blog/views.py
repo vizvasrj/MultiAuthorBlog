@@ -31,6 +31,7 @@ from .forms import (
 from taggit.models import Tag
 import redis
 from django.conf import settings
+
 # Connect to redis
 r = redis.Redis(
     host=settings.REDIS_HOST,

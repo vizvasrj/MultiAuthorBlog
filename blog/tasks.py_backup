@@ -1,0 +1,111 @@
+# bs_wp BeautifulSoup Without pre tag
+# t_t = translated_text ie def translate_text()
+# t_t_n = translated_Text_replace 00-00 data to null
+# t_t_n_s is translated text null beautifulsoup
+# t_t_n_s_t is translated text null beautifulsoup only text
+# t_t_sp = translated text speech
+# t_t_p = translated text with pre tag
+# t_t_p_c = translated text with pre content
+from celery import shared_task
+from .models import Post
+from hindi_translate.models import HindiTranslatedPost
+from bs4 import BeautifulSoup
+import os
+from google.cloud import (
+    translate,
+    texttospeech_v1,
+    texttospeech
+) 
+from django.core.files import File
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Project/texttospeech/speech/serviceacc.json'
+
+
+def translate_text(text, project_id="quick-yen-321916"):
+    # Translating text
+    client = translate.TranslationServiceClient()
+    location = 'global'
+    parent = f"projects/{project_id}/locations/{location}"
+    response = client.translate_text(
+        request={
+            "parent": parent,
+            "contents": [text],
+            "mime_type": "text/html",  # mime types: text/plain, text/html
+            "source_language_code": "en-US",
+            "target_language_code": "hi",
+        }
+    )
+    for translation in response.translations:
+        return translation.translated_text
+
+
+def text_to_speech(text, pk):
+    client = texttospeech_v1.TextToSpeechClient()
+    synthesis_input = texttospeech_v1.SynthesisInput(text=text)
+    voice = texttospeech_v1.VoiceSelectionParams(
+        language_code = 'en-IN',
+        name = 'en-IN-Wavenet-D',
+        ssml_gender = texttospeech_v1.SsmlVoiceGender.FEMALE
+    )
+    audio_config = texttospeech_v1.AudioConfig(
+        audio_encoding = texttospeech.AudioEncoding.MP3
+    )
+    response = client.synthesize_speech(
+        input = synthesis_input,
+        voice = voice,
+        audio_config = audio_config
+    )
+    with open(f'{pk}.mp3', 'wb') as output:
+        output.write(response.audio_content) 
+
+@shared_task
+def print_title(pk):
+    print(pk)
+    post = Post.objects.get(id=pk)
+    body = post.body
+    soup = BeautifulSoup(body, 'html.parser')
+    codes = {}
+    count = 1000
+    list = []
+    for x in soup:
+        if x.name == 'pre':
+            count += 1
+            love = f'00-00-{count}'
+            codes[love] = x
+            list.append(f'{str(love)} ')
+        else:
+            list.append(f'{str(x)} ')
+    join = "".join(map(str, list))
+    bs_wp = BeautifulSoup(join, 'html.parser')
+    t_t = translate_text(text=str(bs_wp))
+
+    # speech need only text, replace with null
+    t_t_n = t_t
+    for key, value in codes.items():
+        t_t_n = t_t_n.replace(str(key), '')
+
+    t_t_n_s = BeautifulSoup(t_t_n, 'html.parser')
+    t_t_n_s_t = t_t_n_s.get_text()
+    t_t_sp = text_to_speech(text=t_t_n_s_t, pk=pk)
+
+    # before uploading to hindi_tra.. replace it with pre
+    t_t_p = t_t
+    for ke, val in codes.items():
+        t_t_p = t_t_p.replace(str(ke), str(val))
+
+    t_t_p_c = t_t_p
+
+    # saving to translate models ie Hindi
+    file = open(f'{pk}.mp3', 'rb')
+    fileU = File(file)
+    
+    HindiTranslatedPost.objects.create(
+        post_id=pk,
+        title=post.title,
+        body=t_t_p_c,
+        audio=fileU
+    )
+    return t_t_p_c
+
+
+

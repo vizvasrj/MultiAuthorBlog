@@ -36,6 +36,8 @@ from common.decorators import ajax_required
 
 from blog.models import Post
 
+
+
 def user_login(request):
     if request.user.is_authenticated:
         return redirect(reverse('post_list'))
@@ -123,8 +125,7 @@ def edit(request):
             data=request.POST,
             files=request.FILES
         )
-        if user_form.is_valid() and \
-                profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(

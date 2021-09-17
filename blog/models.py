@@ -191,14 +191,6 @@ class Post(models.Model):
 
 
 # pre_save #
-from .signals import pre_save_receiver
-
-@receiver(post_save, sender=Post)
-def post_save_receiver(sender, created, instance, *args, **kwargs):
-
-    if created:
-        print("created did slug changed?")    
-        print(instance.slug, " was just saved")
 
 
 

@@ -10,7 +10,7 @@ from polyglot.detect import Detector
 from unidecode import unidecode
 
 from .models import Post
-
+from .tasks import print_title
 # the translate function importing
 
 @receiver(m2m_changed, sender=Post.users_like.through)
@@ -31,8 +31,36 @@ def pre_save_receiver(sender, instance, created=False,  *args, **kwargs):
         # unidecode to change it from slug of diffrent language other
         # than english to slug
         instance.slug = f'{slugify(unidecode(instance.title))}-{hex(last_id)}-{ln}'
+        print("#33##################")
+        
+        print(instance.title)
+        print("#33##################")
 
         # This will be used to translate and speech translation
 
     else:
         print("Only updating")
+        # no translation for now
+
+        # print_title.delay(pk=instance.id)
+        
+        for x in instance.tags.all():
+            print(x)
+
+
+        
+
+
+@receiver(post_save, sender=Post)
+def post_save_receiver(sender, created, instance, *args, **kwargs):
+
+    if created:
+        print("created <post save>")
+
+        print_title.delay(pk=instance.id)
+        print("created did slug changed?")
+        # mail = mail_post.delay(post_id=instance.id, title=instance.title, status=instance.status)
+        # print(mail)
+        print(instance.slug, " was just saved")
+
+

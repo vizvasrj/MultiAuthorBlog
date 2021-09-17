@@ -20,7 +20,8 @@ from blog.models import Post
 class HindiTranslatedPost(models.Model):
     post = models.ForeignKey(
         Post,
-        related_name='hindi_translated_post'
+        related_name='hindi_translated_post',
+        on_delete=models.PROTECT
     )
     title = models.CharField(
         max_length=256
@@ -36,7 +37,6 @@ class HindiTranslatedPost(models.Model):
     )
     edited_by = models.ManyToManyField(
         User,
-        on_delete=models.PROTECT,
         related_name='hindi_translate_edited_by'
     )
     created = models.DateTimeField(auto_now_add=True)

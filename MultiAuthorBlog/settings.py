@@ -60,11 +60,11 @@ INSTALLED_APPS = [
     'django_select2',
     'actions',
 
-
     # local
     'blog',
     'comment',
     'about',
+    'hindi_translate',
 ]
 
 MIDDLEWARE = [
@@ -254,8 +254,3 @@ SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
-# Celery configurations
-CELERY_TIMEZONE = "Asia/Kolkata"
-CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 30 * 60
