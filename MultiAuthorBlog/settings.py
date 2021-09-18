@@ -65,6 +65,20 @@ INSTALLED_APPS = [
     'comment',
     'about',
     'hindi_translate',
+    'french_translate',
+    'chinese_translate',
+    'spanish_translate',
+    'arabic_translate',
+    'indonesian_translate',
+    'portuguese_translate',
+    'japanese_translate',
+    'russian_translate',
+    'german_translate',
+    'korean_translate',
+    'norwegian_translate',
+    'vietnamese_translate',
+    'filipino_translate',
+    'italian_translate',
 ]
 
 MIDDLEWARE = [
