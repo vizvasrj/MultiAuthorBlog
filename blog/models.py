@@ -22,7 +22,7 @@ from autoslug import AutoSlugField
 from mptt.models import MPTTModel, TreeForeignKey
 from taggit_autosuggest.managers import TaggableManager
 # language detector for slug ie en, hi, de, fr etc
-from polyglot.detect import Detector
+# from polyglot.detect import Detector
 # for slug to change it name for diffrent 
 # language i am using unidecode
 from unidecode import unidecode

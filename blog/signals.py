@@ -23,8 +23,11 @@ def users_like_changed(sender, instance, **kwargs):
 @receiver(pre_save, sender=Post)
 def pre_save_receiver(sender, instance, created=False,  *args, **kwargs):
     if instance._state.adding:
-            
-        last_id = Post.objects.latest('id').id + 1
+        try:
+
+            last_id = Post.objects.latest('id').id + 1
+        except Post.DoesNotExist:
+            last_id = 1
         # ln as language code
         # ln = Detector(instance.title).language.code
         ln = 'en'

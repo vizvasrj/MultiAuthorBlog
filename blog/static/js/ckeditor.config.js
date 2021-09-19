@@ -89,6 +89,7 @@ class MyUploadAdapter {
         // a POST request with JSON as a data structure but your configuration
         // could be different.
         xhr.open('POST', 'http://127.0.0.1:8000/ckeditor5/image_upload/', true);
+        let csrftoken = Cookies.get('csrftoken');
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
         xhr.responseType = 'json';
     }
