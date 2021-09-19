@@ -69,6 +69,9 @@ INSTALLED_APPS = [
     'blog',
     'comment',
     'about',
+    'image_uploader',
+
+    # translates
     'hindi_translate',
     'french_translate',
     'chinese_translate',

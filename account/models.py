@@ -55,7 +55,7 @@ def post_save_receiver(sender, created, instance, *args, **kwargs):
         print("created did slug changed?")
     else:
         print("updated", instance.full_name)
-        print_full_name.delay(name=instance.full_name)
+        # print_full_name.delay(name=instance.full_name)
         
 
 

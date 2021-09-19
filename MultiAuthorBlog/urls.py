@@ -10,7 +10,7 @@ urlpatterns = [
     path('', include('account.urls')),
     path('blog/', include('blog.urls')),
     path('editorjs/', include('django_editorjs_fields.urls')),
-    path('ckeditor5/', include('django_ckeditor_5.urls')),
+    path('my_uploader/', include('image_uploader.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('select2/', include('django_select2.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
