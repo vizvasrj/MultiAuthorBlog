@@ -11,16 +11,20 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+from pathlib import Path
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+filepath = Path(".secret.py")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 from .secret import SECRET_KEY as key
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = key
+
+if filepath.is_file():
+    SECRET_KEY = key
+else:
+    SECRET_KEY = 'opk#ocn6$638cwa&&w(_v^&$e-%_8f2=^ph+ok!+9v1bb64fu^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -122,7 +126,22 @@ WSGI_APPLICATION = 'MultiAuthorBlog.wsgi.application'
 #     }
 # }
 from .secret import DATABASES
-DATABASES = DATABASES
+
+if filepath.is_file():
+    DATABASES = DATABASES
+
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vizvasrj0004',
+        'USER': 'root',
+        'PASSWORD': 'icandoit10!',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+
 
 
 
