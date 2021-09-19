@@ -18,10 +18,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 filepath = Path(".secret.py")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-from .secret import SECRET_KEY as key
 # SECURITY WARNING: keep the secret key used in production secret!
 
 if filepath.is_file():
+    from .secret import SECRET_KEY as key
     SECRET_KEY = key
 else:
     SECRET_KEY = 'opk#ocn6$638cwa&&w(_v^&$e-%_8f2=^ph+ok!+9v1bb64fu^'
@@ -125,9 +125,9 @@ WSGI_APPLICATION = 'MultiAuthorBlog.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-from .secret import DATABASES
 
 if filepath.is_file():
+    from .secret import DATABASES
     DATABASES = DATABASES
 
 else:
@@ -279,9 +279,13 @@ SITE_ID = 1
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # mail
-from .secret import (EMAIL_HOST, EMAIL_HOST_PASSWORD, EMAIL_HOST_USER, EMAIL_PORT, EMAIL_USE_TLS)
-EMAIL_HOST = EMAIL_HOST
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-EMAIL_PORT = EMAIL_PORT
-EMAIL_USE_TLS = EMAIL_USE_TLS
+if filepath.is_file():
+    from .secret import (EMAIL_HOST, EMAIL_HOST_PASSWORD, EMAIL_HOST_USER, EMAIL_PORT, EMAIL_USE_TLS)
+    EMAIL_HOST = EMAIL_HOST
+    EMAIL_HOST_USER = EMAIL_HOST_USER
+    EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+    EMAIL_PORT = EMAIL_PORT
+    EMAIL_USE_TLS = EMAIL_USE_TLS
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
