@@ -29,8 +29,6 @@ from unidecode import unidecode
 
 
 now = timezone.now()
-current_site = Site.objects.get_current()
-domain = current_site.domain
 
 
 class ActiveUserPublishedManager(models.Manager):
@@ -256,9 +254,9 @@ def user_liked_changed(reverse, instance, action, pk_set, model, *args, **kwargs
         for x in instance.other_author.all():
             subject = f"{instance.author.full_name} make you " \
                 f"co-editor in his/her post {instance.title}."
-            message = f"you can go to {domain}/blog/update/{instance.id}/ or "\
-                f" <a href='{domain}/blog/update/{instance.id}/'>Click here</a>" \
-                    f" {domain}/blog/{instance.slug}/ at  {instance}"
+            message = f"you can go to 127.0.0.1:8000/blog/update/{instance.id}/ or "\
+                f" <a href='127.0.0.1:8000/blog/update/{instance.id}/'>Click here</a>" \
+                    f" 127.0.0.1:8000/blog/{instance.slug}/ at  {instance}"
             send_mail(
                 subject, message, 'root@vizvasrj.com', (x.email,), fail_silently=False
             )

@@ -24,6 +24,7 @@ if filepath.is_file():
     from .secret import SECRET_KEY as key
     SECRET_KEY = key
 else:
+    os.system('touch .secret.py')
     SECRET_KEY = 'opk#ocn6$638cwa&&w(_v^&$e-%_8f2=^ph+ok!+9v1bb64fu^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
