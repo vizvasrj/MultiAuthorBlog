@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'tempus_dominus',
     'django_select2',
     'actions',
+    'parler',
 
     # local
     'blog',
@@ -293,3 +294,53 @@ if filepath.is_file():
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('ar', _('Arabic')),
+    ('zh', _('Chinese')),
+    ('tl', _('Filipino')),
+    ('fr', _('French')),
+    ('de', _('German')),
+    ('hi', _('Hindi')),
+    ('id', _('Indonesian')),
+    ('it', _('Italian')),
+    ('jp', _('Japanese')),
+    ('ko', _('Korean')),
+    ('no', _('Norwegian')),
+    ('pt', _('Portuguese')),
+    ('ru', _('Russian')),
+    ('es', _('Spanish')),
+    ('vi', _('Vietnamese')),
+
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
+PARLER_LANGUAGES = {
+    None:(
+        {'code': 'en'},
+        {'code': 'ar'},
+        {'code': 'zh'},
+        {'code': 'tl'},
+        {'code': 'fr'},
+        {'code': 'de'},
+        {'code': 'hi'},
+        {'code': 'id'},
+        {'code': 'it'},
+        {'code': 'jp'},
+        {'code': 'ko'},
+        {'code': 'no'},
+        {'code': 'pt'},
+        {'code': 'ru'},
+        {'code': 'es'},
+        {'code': 'vi'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}

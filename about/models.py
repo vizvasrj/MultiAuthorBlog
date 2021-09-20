@@ -7,12 +7,17 @@ from django.contrib.contenttypes.fields import GenericRelation
 from account.models import Profile
 from comment.models import Comment
 from taggit_autosuggest.managers import TaggableManager
+from parler.models import TranslatableModel, TranslatedFields
+
 
 # Create your models here.
-class AboutPost(models.Model):
-    title = models.CharField(max_length=256)
-    slug = AutoSlugField(populate_from='title')
-    body = EditorJsTextField()
+class AboutPost(TranslatableModel):
+    translations = TranslatedFields(
+        title = models.CharField(max_length=256, db_index=True),
+        slug = models.SlugField(max_length=256, db_index=True),
+        body = EditorJsTextField()
+    )
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     tags = TaggableManager()

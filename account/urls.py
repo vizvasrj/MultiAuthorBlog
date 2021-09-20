@@ -10,8 +10,8 @@ from .forms import (
 )
 
 urlpatterns = [
-     path('',
-          TemplateView.as_view(template_name="account_base.html")),
+     # path('',
+     #      TemplateView.as_view(template_name="account_base.html")),
      path('login/',
           views.user_login, name='login'),
 

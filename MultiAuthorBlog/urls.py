@@ -1,13 +1,16 @@
+from os import name
 from blog.models import Post
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from .views import read_file
+from blog.views import post_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('account.urls')),
+    path('', post_list),
     path('blog/', include('blog.urls')),
     path('editorjs/', include('django_editorjs_fields.urls')),
     path('my_uploader/', include('image_uploader.urls')),
@@ -15,6 +18,7 @@ urlpatterns = [
     path('select2/', include('django_select2.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
     path('about/', include('about.urls')),
+    path('.well-known/pki-validation/', read_file)
 
 
 ]
