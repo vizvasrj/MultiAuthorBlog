@@ -61,6 +61,9 @@ class MyUploadAdapter {
     constructor(loader) {
         // The file loader instance to use during the upload.
         this.loader = loader;
+        var fileUpload = document.getElementById("id_upload");
+        console.log(fileUpload)
+
     }
 
     // Starts the upload process.
@@ -88,7 +91,8 @@ class MyUploadAdapter {
         // integration to choose the right communication channel. This example uses
         // a POST request with JSON as a data structure but your configuration
         // could be different.
-        xhr.open('POST', 'http://127.0.0.1:8000/ckeditor5/image_upload/', true);
+        xhr.open('POST', 'https://'+ (document.location.host) +'/my_uploader/image_upload/', true);
+        let csrftoken = Cookies.get('csrftoken');
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
         xhr.responseType = 'json';
     }
@@ -98,6 +102,9 @@ class MyUploadAdapter {
         const xhr = this.xhr;
         const loader = this.loader;
         const genericErrorText = `Couldn't upload file: ${file.name}.`;
+        if (file.size > 1011000 ){
+            console.log("file size is greater than 1.1 mb");
+        }
 
         xhr.addEventListener('error', () => reject(genericErrorText));
         xhr.addEventListener('abort', () => reject());

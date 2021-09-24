@@ -122,6 +122,11 @@
                             {{ post.body|xssprotect }}
                         </div>
                         <div class="">
+                            <hr>
+                            {{ hi_p.slug }}
+                            <hr>
+                            {{ cn_p.slug }}
+                            <hr>
                             {% for tag in post.tags.all %}
                             <a href="{% url 'post_list_by_tag' tag.slug %}" class="tags-item
                                 {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bg-red-lite' %}">

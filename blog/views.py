@@ -118,6 +118,22 @@ def post_detail(request, post):
         Post,
         slug=post,
     )
+    cn_p = post.chinese_translated_post.last()
+    hi_p = post.hindi_translated_post.last()
+    ar_p = post.arabic_translated_post.last()
+    tl_p = post.filipino_translated_post.last()
+    fr_p = post.french_translated_post.last()
+    de_p = post.german_translated_post.last()
+    id_p = post.indonesian_translated_post.last()
+    it_p = post.italian_translated_post.last()
+    jp_p = post.japanese_translated_post.last()
+    ko_p = post.korean_translated_post.last()
+    no_p = post.norwegian_translated_post.last()
+    pt_p = post.portuguese_translated_post.last()
+    ru_p = post.russian_translated_post.last()
+    es_p = post.spanish_translated_post.last()
+    vi_p = post.vietnamese_translated_post.last()
+
     total_views = r.incr(f'post:{post.id}:views')
     comments = post.comments.filter(active=True)
     new_comment = None
@@ -151,6 +167,21 @@ def post_detail(request, post):
             'comment_form': comment_form,
             'similar_posts': similar_posts,
             'total_views': total_views,
+            'cn_p': cn_p,
+            'hi_p': hi_p,
+            'ar_p': ar_p,
+            'tl_p': tl_p,
+            'fr_p': fr_p,
+            'de_p': de_p,
+            'id_p': id_p,
+            'it_p': it_p,
+            'jp_p': jp_p,
+            'ko_p': ko_p,
+            'no_p': no_p,
+            'pt_p': pt_p,
+            'ru_p': ru_p,
+            'es_p': es_p,
+            'vi_p': vi_p
         }
     )
 
@@ -473,3 +504,64 @@ def post_ajax_search(request):
             res = "No posts found ..."
         return JsonResponse({'data': res})
     return JsonResponse({})
+
+
+
+# from translates.hindi_translate.models import HindiTranslatedPost as hi_p
+# from translates.arabic_translate.models import ArabicTranslatedPost as ar_p
+# from translates.chinese_translate.models import ChineseTranslatedPost as cn_p
+# from translates.filipino_translate.models import FilipinoTranslatedPost as tl_p
+# from translates.french_translate.models import FrenchTranslatedPost as fr_p
+# from translates.german_translate.models import GermanTranslatedPost as de_p
+# from translates.indonesian_translate.models import IndonesianTranslatedPost as id_p
+# from translates.italian_translate.models import ItalianTranslatedPost as it_p
+# from translates.japanese_translate.models import JapaneseTranslatedPost as jp_p
+# from translates.korean_translate.models import KoreanTranslatedPost as ko_p
+# from translates.norwegian_translate.models import NorwegianTranslatedPost as no_p
+# from translates.portuguese_translate.models import PortugueseTranslatedPost as pt_p
+# from translates.russian_translate.models import RussianTranslatedPost  as ru_p
+# from translates.spanish_translate.models import SpanishTranslatedPost as es_p
+# from translates.vietnamese_translate.models import VietnameseTranslatedPost as vi_p
+
+
+def translate_listview(request, post):
+    post = get_object_or_404(
+        Post,
+        slug=post,
+    )
+    cn_p = post.chinese_translated_post.last()
+    hi_p = post.hindi_translated_post.last()
+    ar_p = post.arabic_translated_post.last()
+    tl_p = post.filipino_translated_post.last()
+    fr_p = post.french_translated_post.last()
+    de_p = post.german_translated_post.last()
+    id_p = post.indonesian_translated_post.last()
+    it_p = post.italian_translated_post.last()
+    jp_p = post.japanese_translated_post.last()
+    ko_p = post.korean_translated_post.last()
+    no_p = post.norwegian_translated_post.last()
+    pt_p = post.portuguese_translated_post.last()
+    ru_p = post.russian_translated_post.last()
+    es_p = post.spanish_translated_post.last()
+    vi_p = post.vietnamese_translated_post.last()
+
+    return render(
+        request,
+        'blog/post/detail.html', {
+            'cn_p': cn_p,
+            'hi_p': hi_p,
+            'ar_p': ar_p,
+            'tl_p': tl_p,
+            'fr_p': fr_p,
+            'de_p': de_p,
+            'id_p': id_p,
+            'it_p': it_p,
+            'jp_p': jp_p,
+            'ko_p': ko_p,
+            'no_p': no_p,
+            'pt_p': pt_p,
+            'ru_p': ru_p,
+            'es_p': es_p,
+            'vi_p': vi_p
+        }
+    )

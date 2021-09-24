@@ -71,23 +71,24 @@ INSTALLED_APPS = [
     'comment',
     'about',
     'image_uploader',
+    'flag',
 
     # translates
-    'hindi_translate',
-    'french_translate',
-    'chinese_translate',
-    'spanish_translate',
-    'arabic_translate',
-    'indonesian_translate',
-    'portuguese_translate',
-    'japanese_translate',
-    'russian_translate',
-    'german_translate',
-    'korean_translate',
-    'norwegian_translate',
-    'vietnamese_translate',
-    'filipino_translate',
-    'italian_translate',
+    'translates.hindi_translate',
+    'translates.french_translate',
+    'translates.chinese_translate',
+    'translates.spanish_translate',
+    'translates.arabic_translate',
+    'translates.indonesian_translate',
+    'translates.portuguese_translate',
+    'translates.japanese_translate',
+    'translates.russian_translate',
+    'translates.german_translate',
+    'translates.korean_translate',
+    'translates.norwegian_translate',
+    'translates.vietnamese_translate',
+    'translates.filipino_translate',
+    'translates.italian_translate',
 ]
 
 MIDDLEWARE = [
@@ -300,16 +301,16 @@ from django.utils.translation import gettext_lazy as _
 LANGUAGES = (
     ('en', _('English')),
     ('ar', _('Arabic')),
-    ('zh', _('Chinese')),
-    ('tl', _('Filipino')),
+    ('zh-hans', _('Chinese')),
+    ('ta', _('Filipino')),#ta is not tl,  tl is tagalog ta is just another lanugae 
     ('fr', _('French')),
     ('de', _('German')),
     ('hi', _('Hindi')),
     ('id', _('Indonesian')),
     ('it', _('Italian')),
-    ('jp', _('Japanese')),
+    ('ja', _('Japanese')),
     ('ko', _('Korean')),
-    ('no', _('Norwegian')),
+    ('nn', _('Norwegian')),
     ('pt', _('Portuguese')),
     ('ru', _('Russian')),
     ('es', _('Spanish')),
@@ -321,19 +322,19 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
 )
 PARLER_LANGUAGES = {
-    None:(
+    1:(
         {'code': 'en'},
         {'code': 'ar'},
-        {'code': 'zh'},
-        {'code': 'tl'},
+        {'code': 'zh-hans'},
+        {'code': 'ta'},
         {'code': 'fr'},
         {'code': 'de'},
         {'code': 'hi'},
         {'code': 'id'},
         {'code': 'it'},
-        {'code': 'jp'},
+        {'code': 'ja'},
         {'code': 'ko'},
-        {'code': 'no'},
+        {'code': 'nn'},
         {'code': 'pt'},
         {'code': 'ru'},
         {'code': 'es'},
@@ -344,3 +345,6 @@ PARLER_LANGUAGES = {
         'hide_untranslated': False,
     }
 }
+
+# My uploader
+IMAGE_UPLOADER_MAX_FILE_SIZE = 3011000

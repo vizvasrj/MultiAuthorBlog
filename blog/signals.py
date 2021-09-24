@@ -6,7 +6,7 @@ from django.db.models.signals import (
 from django.utils.text import slugify
 from django.core.signals import request_finished
 
-from polyglot.detect import Detector
+
 from unidecode import unidecode
 
 from .models import Post
@@ -29,11 +29,10 @@ def pre_save_receiver(sender, instance, created=False,  *args, **kwargs):
         except Post.DoesNotExist:
             last_id = 1
         # ln as language code
-        # ln = Detector(instance.title).language.code
         ln = 'en'
         # unidecode to change it from slug of diffrent language other
         # than english to slug
-        instance.slug = f'{slugify(unidecode(instance.title))}-{hex(last_id)}-{ln}'
+        instance.slug = f'{slugify(unidecode(instance.title))}-{hex(last_id)}-en'
         print("#33##################")
         
         print(instance.title)

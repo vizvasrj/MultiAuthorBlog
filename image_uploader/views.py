@@ -9,7 +9,14 @@ from .forms import UploadFileForm
 from PIL import Image
 
 
+if hasattr(settings, 'IMAGE_UPLOADER_MAX_FILE_SIZE'):
+    max_size = settings.IMAGE_UPLOADER_MAX_FILE_SIZE
+else:
+    max_size = 1011000
+    # pass
+
 class NoImageException(Exception):
+    print("here")
     pass
 
 
@@ -24,7 +31,12 @@ storage = get_storage_class()
 
 def image_verify(f):
     try:
-        Image.open(f).verify()
+        size = len((Image.open(f)).fp.read())
+        if size < max_size:
+            Image.open(f).verify()
+        else:
+            raise NoImageException
+        
     except IOError:
         raise NoImageException
 
@@ -40,12 +52,13 @@ def handle_uploaded_file(f):
 def upload_file(request):
     if request.method == 'POST' and request.user.is_active:
         form = UploadFileForm(request.POST, request.FILES)
+        print(form)
         try:
             image_verify(request.FILES['upload'])
         except NoImageException as ex:
             return JsonResponse({
                 "error": {
-                    "message": "{}".format(str(ex))
+                    "message": "File size is greater than {} {} bytes".format(str(ex), max_size)
                 }
             })
         if form.is_valid():

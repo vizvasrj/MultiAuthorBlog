@@ -61,6 +61,9 @@ class MyUploadAdapter {
     constructor(loader) {
         // The file loader instance to use during the upload.
         this.loader = loader;
+        var fileUpload = document.getElementById("id_upload");
+        console.log(fileUpload)
+
     }
 
     // Starts the upload process.
@@ -99,6 +102,9 @@ class MyUploadAdapter {
         const xhr = this.xhr;
         const loader = this.loader;
         const genericErrorText = `Couldn't upload file: ${file.name}.`;
+        if (file.size > 1011000 ){
+            console.log("file size is greater than 1.1 mb");
+        }
 
         xhr.addEventListener('error', () => reject(genericErrorText));
         xhr.addEventListener('abort', () => reject());

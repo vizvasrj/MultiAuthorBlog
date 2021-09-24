@@ -56,7 +56,9 @@
 }
 
 .post-body {
-    font-family: 'Andada Pro', serif;
+    /* font-family: 'Andada Pro', serif; */
+    font-family: 'Noto Sans', sans-serif;
+    
     font-weight: 400;
 }
 
@@ -152,6 +154,7 @@ div.comment-body img {
 
 .post__body {
     margin-left: -10px;
+    word-break: break-word;
 }
 
 .post__body p img {
@@ -429,3 +432,125 @@ div.comment-body img {
     color: rgb(36, 36, 36);
 }
 
+#id_tags__tagautosuggest {
+    width: 100% !important;
+    background-color: transparent;
+    margin-top: 3px;
+}
+:-moz-ui-invalid:not(output) {
+    border: none;
+    background-color: transparent;
+
+}
+
+#as-selections-id_tags__tagautosuggest {
+    list-style: none !important;
+    margin-left: -29px;
+    background-color: transparent;
+    width: auto ;
+}
+.as-selection-item {
+    float: left;
+    padding: 2px;
+    border: 1px solid grey;
+    margin: 2px;
+}
+.as-result-item {
+    margin: 2px;
+    border: 1px solid grey;
+    list-style: none;
+    margin-left: -29px;
+    width: auto;
+}
+
+.active {
+    color: black !important;
+    background-color: lightcoral !important;
+}
+
+.as-list{
+    width: 100% !important;
+}
+.as-close {
+    text-decoration: none;
+}
+.as-close:hover {
+    color: rgb(77, 77, 77);
+}
+.dropdown-item:active{
+    background-color: #e9ecef;
+    color: rgb(36, 36, 36);
+}
+.forgetica {
+    font-family: Sans Forgetica Regular;
+    font-size: 30px;
+    font-weight: inherit;
+    color: white;
+}
+
+div .post__body > div > div > p {
+    /* font-family: Sans Forgetica Regular; */
+    /* font-size: 30px; */
+    font-weight: inherit;
+    /* color: white; */
+}
+
+div .post__body > div > h1,h2,h3,h4,h5,h6,ul,li {
+    /* font-family: Sans Forgetica Regular; */
+    /* font-size: 30px; */
+    font-weight: inherit;
+    /* color: white; */
+}
+div .post__body > p.post-body + p {
+    /* font-family: Sans Forgetica Regular; */
+    /* font-size: 30px; */
+    font-weight: inherit;
+    /* color: white; */
+}
+
+.oooo {
+    color:mediumslateblue;
+}
+.brains {
+    color:mediumslateblue;
+    cursor: pointer;
+}
+.glow {
+    color:mediumvioletred;
+    cursor: pointer;
+}
+.iamhigh {
+    font-family: Sans Forgetica Regular;
+
+}
+.comment__textarea {
+    width: 100%;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    border: 1px solid silver;
+}
+.comment__button {
+    padding: 0;
+    color: mediumvioletred;
+    background-color: mediumslateblue;
+    border-radius: 2px;
+    border: 1px solid transparent;
+}
+.comment__button:hover {
+    padding: 0;
+    color: midnightblue;
+    background-color: mediumvioletred;
+}
+
+::selection {
+	color: #d2c5b5;
+	background-color: #2d3a4a;
+}
+
+/* for firefox */
+::moz-selection {
+	color: #d2c5b5;
+	background-color: #2d3a4a;
+}
