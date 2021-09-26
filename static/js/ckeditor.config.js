@@ -32,6 +32,9 @@ ClassicEditor
                 'redo'
             ]
         },
+        mediaEmbed: {
+            elementName: 'embed'
+        },
         language: 'hi',
         image: {
             toolbar: [
@@ -91,7 +94,7 @@ class MyUploadAdapter {
         // integration to choose the right communication channel. This example uses
         // a POST request with JSON as a data structure but your configuration
         // could be different.
-        xhr.open('POST', 'https://'+ (document.location.host) +'/my_uploader/image_upload/', true);
+        xhr.open('POST', 'http://'+ (document.location.host) +'/my_uploader/image_upload/', true);
         let csrftoken = Cookies.get('csrftoken');
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
         xhr.responseType = 'json';
@@ -201,6 +204,9 @@ ClassicEditor
                 'undo',
                 'redo'
             ]
+        },
+        mediaEmbed: {
+            elementName: 'embed'
         },
         language: 'hi',
         image: {

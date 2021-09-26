@@ -12,11 +12,10 @@ from PIL import Image
 if hasattr(settings, 'IMAGE_UPLOADER_MAX_FILE_SIZE'):
     max_size = settings.IMAGE_UPLOADER_MAX_FILE_SIZE
 else:
-    max_size = 1011000
+    max_size = 5011000
     # pass
 
 class NoImageException(Exception):
-    print("here")
     pass
 
 
