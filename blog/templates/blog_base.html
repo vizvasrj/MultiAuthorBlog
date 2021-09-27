@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{% static 'css/color.css' %}">
   <link rel="stylesheet" href="{% static 'css/utility.css' %}">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-tagsinput.css' %}">
 
   
   <!-- icons -->
@@ -160,6 +161,7 @@
             <h3 class="footertitle">
               Copyright© 2021
             </h3>
+            <input type="text" id=inputTag>
             <a class="linkfooter" href="/sitemap.xml">Sitemap</a>
           </div>
           <div class="col-md-4 mt-5 mb-5">
@@ -182,7 +184,6 @@
 
 {% else %}
 <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
-
 {% endif %}
 
 <script src="{% static 'js/search.js' %}"></script>
@@ -196,17 +197,15 @@
 {% endblock %}
 <script>
   
-  if (navigator.userAgent.match(/Mobile/)) {
-    document.getElementById('changeMe').innerHTML = 'Mobile';
-  }
+  //if (navigator.userAgent.match(/Mobile/)) {
+    //document.getElementById('changeMe').innerHTML = 'Mobile';
+  //}
   
   
 </script>
 
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/balloon/ckeditor.js"></script> -->
 <script>
-
-
 
 
 </script>

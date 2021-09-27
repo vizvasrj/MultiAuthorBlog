@@ -349,6 +349,10 @@ def update_data(request, pk):
         cover_image = post.cover.url
     else:
         cover_image = 'No image'
+    tags = []
+    for tag in post.tags.all():
+        tags.append(tag.name)
+    tags = ",".join(tags)
     # main author is the one who created the post
     # in this i am checking that auther is present in shared post
     # if user is present then give the permission to edit it.
@@ -377,7 +381,12 @@ def update_data(request, pk):
         return render(
             request,
             'blog/post_update.html',
-            {'form': form, 'cover_image': cover_image, 'status': 'Publish'}
+            {
+                'form': form,
+                'cover_image': cover_image,
+                'status': 'Publish',
+                'tags': tags
+            }
         )
     elif request.user.id in shared_user:
         if request.method == 'POST':
@@ -394,7 +403,12 @@ def update_data(request, pk):
         return render(
             request,
             'blog/post_update.html',
-            {'form': form, 'cover_image': cover_image, 'status': 'Save'}
+            {
+                'form': form,
+                'cover_image': cover_image,
+                'status': 'Save',
+                'tags': tags
+            }
         )
     else:
         return HttpResponseRedirect(reverse('404'))

@@ -554,3 +554,13 @@ div .post__body > p.post-body + p {
 	color: #d2c5b5;
 	background-color: #2d3a4a;
 }
+
+.bootstrap-tagsinput {
+    background: transparent;
+    width: 100%;
+
+}
+.tag .label .label-info {
+    color: teal;
+    background: #aaaaaa;
+}

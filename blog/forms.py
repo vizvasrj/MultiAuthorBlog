@@ -78,7 +78,7 @@ class PostForm(forms.ModelForm):
             ),
             'tags': TagAutoSuggest('tagmodel',
                 attrs={
-                    'class': 'myfieldclass border-bottom p-2 tag_label',
+                    'class': 'myfieldclass border-bottom p-2 tag_label inputTag',
                     'autocomplete': 'off',
                     'placeholder': 'Tags',
                     'required': False,

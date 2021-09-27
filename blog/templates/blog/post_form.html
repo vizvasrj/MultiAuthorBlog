@@ -6,6 +6,8 @@
 {% block head %} 
 
 <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/bootstrap-tagsinput.js' %}"></script>
+
 <script src="{% static 'js/select2.min.js' %}"></script>
 <script src="{% static 'js/select2.js' %}"></script>
 <script src="{% static 'js/jquery.init.js' %}"></script>
@@ -51,7 +53,12 @@
                 <div class="tags bg-aqua-lite">
                     <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">Please provie some tags</label>
                     <div class="">
-                        {{ form.tags }}
+                        {% if request.user_agent.is_mobile %}
+                        <input name="tags" class="myfieldclass border-bottom p-2 tag_label inputTag" autocomplete="off" placeholder="Tags" required="" id="id_tags" >
+                        {% else %}
+                            {{ form.tags }}
+                        {% endif %}
+
                     </div>
                 </div>
                 <div class="status bg-aqua-lite">
@@ -147,6 +154,18 @@ $("#formid").on('click', 'option', function(event){
 
 
 $('#id_tags__tagautosuggest').removeAttr("required");
+
+
+
+
+if (navigator.userAgent.match(/Mobile/)) {
+
+
+    $('#id_tags__tagautosuggest').attr('type', 'hidden');
+    $('#id_tags').removeAttr('type');
+    $("#id_tags").tagsinput('items');
+
+  }
 
 
 

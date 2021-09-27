@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'django_select2',
     'actions',
     'parler',
+    'django_user_agents',
 
     # local
     'blog',
@@ -98,6 +99,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'MultiAuthorBlog.urls'
