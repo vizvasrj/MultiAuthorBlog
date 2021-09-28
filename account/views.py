@@ -92,20 +92,28 @@ def register(request):
     else:
         if request.method == 'POST':
             user_form = UserRegistrationForm(request.POST)
-            if user_form.is_valid():
-                new_user = user_form.save(commit=False)
-                new_user.set_password(
-                    user_form.cleaned_data['password1']
-                )
-                new_user.save()
-                Profile.objects.create(user=new_user)
-                return render(
-                    request,
-                    'account/register_done.html',
-                    {'new_user': new_user}
-                )
+            try:
+                user_exists = User.objects.get(username=request.POST['username'])
+                return JsonResponse({"message":"User already exists"}, status=200)
+            except User.DoesNotExist:
+                # pass           
+                if user_form.is_valid():
+                    print("valid")
+                    new_user = user_form.save(commit=False)
+                    new_user.set_password(
+                        user_form.cleaned_data['password1']
+                    )
+                    print("new_user")
+                    new_user.save()
+                    Profile.objects.create(user=new_user)
+                    return render(
+                        request,
+                        'account/register_done.html',
+                        {'new_user': new_user}
+                    )
         else:
             user_form = UserRegistrationForm()
+            print("else")
         return render(
             request,
             'account/register.html',
@@ -632,3 +640,19 @@ def remove_shared_post_by_me(request):
         except Post.DoesNotExist:
             return JsonResponse({'status': 'already removed'}, status=404)
     return JsonResponse({'status': 'error'}, status=404)
+
+
+def validate_username(request):
+    username = request.GET.get('username', None)
+    response = {
+        'is_taken': User.objects.filter(username__iexact=username).exists()
+    }
+    return JsonResponse(response)
+
+
+def validate_email(request):
+    email = request.GET.get('email', None)
+    response = {
+        'is_taken': User.objects.filter(email__iexact=email).exists()
+    }
+    return JsonResponse(response)

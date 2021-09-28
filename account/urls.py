@@ -99,5 +99,7 @@ urlpatterns = [
      path('my/shared/remove_me/', views.remove_shared_post_by_me, name='remove_my_shared_post'),
 
 
-
+     # Validates
+     path('account/validate_username', views.validate_username, name='validate_username'),
+     path('account/validate_email', views.validate_email, name='validate_email'),
 ]

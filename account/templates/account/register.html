@@ -26,14 +26,19 @@
         </div>
         <div class="fullname mb-2 border-top">
             <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.password2.label}}:</label>
-            <div class="">
+            <div class="d-flex flex-row" id="show_hide_password">
                 {{user_form.password2}}
+                <div class="input-group-addon">
+                    <a class="input-group-text" href=""><i class="bi bi-eye-fill"></i></a>
+                </div>
             </div>
         </div>
+        <div id="message" class="message">
 
+        </div>
 {% csrf_token %}
         <p>
-            <input class="mt-2 btn btn-primary" type="submit" value="Create">
+            <input id="create" class="mt-2 btn btn-primary" type="submit" value="Create">
             <a class="mt-2 btn btn-secondary" href="{% url 'login' %}">Login Here</a>
         </p>
 
@@ -41,6 +46,169 @@
 </div>
 <div class="roboto already d-flex justify-content-center">
 </div>
+
+{% endblock %}
+
+{% block domready %} 
+
+$('#id_password2').on('keyup', function () {
+    if ($('#id_password1').val() == $('#id_password2').val()) {
+      $('#message').html('Matching').css('color', 'green');
+    } else 
+      $('#message').html('Not Matching').css('color', 'red');
+  });
+
+
+  <!-- validate username -->
+  function delay(callback, ms) {
+    var timer = 0;
+    return function() {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+  }
+
+    $('#id_username').on('focus', function(){
+        if ( $(this).val() == '' ){
+            $(this).attr('oldValue','');
+        }
+        else {
+
+            $(this).attr('oldValue',$(this).val());
+        }
+    });
+
+  $('#id_username').keyup(delay(function () {
+    var currValue = $(this).val();
+    var oldValue = $(this).attr('oldValue');
+    if (currValue == oldValue){
+        // Not sending ...
+    }
+    else{
+        
+    
+        // create an AJAX call
+        $.ajax({
+            data: $(this).serialize(), // get the form data
+            url: "{% url 'validate_username' %}",
+            // on success
+            success: function (response) {
+                if (response.is_taken == true) {
+                    $('#id_username').removeClass('is-valid').addClass('is-invalid');
+                    $('#usernameError').remove();
+                    $('#id_username').after('<div class="invalid-feedback d-block" id="usernameError">This username is not available!</div>')
+                }
+                else {
+                    if ( $('#id_username').val().length >= 4 ) {
+
+                        $('#id_username').removeClass('is-invalid').addClass('is-valid');
+                        $('#usernameError').remove();
+                        $('#id_username').after('<div class="valid-feedback d-block" id="usernameError">This username is available!</div>')
+                    }
+                    else if ( $('#id_username').val().length <= 4 ) {
+                        $('#usernameError').remove();
+                        $('#id_username').after('<div class="valid-feedback d-block" id="usernameError">Enter valid username character <br /> should be more than 4 letters !</div>')
+                    }
+
+
+                }
+
+            },
+            // on error
+            error: function (response) {
+                // alert the error if any error occured
+                console.log(response.responseJSON.errors)
+            }
+        });
+
+    }
+
+    return false;
+}, 1000));
+
+<!-- email validate -->
+function validateEmail($email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailReg.test( $email );
+  }
+
+
+$('#id_email').on('focus', function(){
+    if ( $(this).val() == '' ){
+        $(this).attr('oldValue','');
+    }
+    else {
+
+        $(this).attr('oldValue',$(this).val());
+    }
+});
+
+$('#id_email').keyup(delay(function () {
+var currEValue = $(this).val();
+
+var emailaddress = $(this).val();
+    console.log(emailaddress);
+
+    var oldEValue = $(this).attr('oldValue');
+if (currEValue == oldEValue ){
+    // Not sending ...
+}
+else if ( validateEmail(emailaddress) &&  $(this).val() != '' ) {
+    
+    var emailaddress = $(this).val();
+    console.log(emailaddress);
+
+    // create an AJAX call
+    $.ajax({
+        data: $(this).serialize(), // get the form data
+        url: "{% url 'validate_email' %}",
+        // on success
+        success: function (response) {
+            if (response.is_taken == true) {
+                $('#id_email').removeClass('is-valid').addClass('is-invalid');
+                $('#emailError').remove();
+                $('#id_email').after('<div class="invalid-feedback d-block" id="emailError">This email is not available!</div>')
+            }
+            else {
+                $('#id_email').removeClass('is-invalid').addClass('is-valid');
+                $('#emailError').remove();
+                $('#id_email').after('<div class="valid-feedback d-block" id="emailError">This email is available!</div>')
+
+
+
+            }
+
+        },
+        // on error
+        error: function (response) {
+            // alert the error if any error occured
+            console.log(response.responseJSON.errors)
+        }
+    });
+
+}
+
+return false;
+}, 1000));
+
+<!-- Show and hide password -->
+$("#show_hide_password a").on('click', function(event) {
+    event.preventDefault();
+    if($('#show_hide_password input').attr("type") == "text"){
+        $('#show_hide_password input').attr('type', 'password');
+        $('#show_hide_password i').addClass( "bi bi-eye-fill" );
+        $('#show_hide_password i').removeClass( "bi bi-eye-slash-fill" );
+    }else if($('#show_hide_password input').attr("type") == "password"){
+        $('#show_hide_password input').attr('type', 'text');
+        $('#show_hide_password i').removeClass( "bi bi-eye-fill" );
+        $('#show_hide_password i').addClass( "bi bi-eye-slash-fill" );
+    }
+})
+
+
 
 {% endblock %}
 
