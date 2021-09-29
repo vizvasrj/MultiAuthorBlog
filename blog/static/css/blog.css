@@ -554,3 +554,19 @@ div .post__body > p.post-body + p {
 	color: #d2c5b5;
 	background-color: #2d3a4a;
 }
+
+.transparent {
+    background: transparent;
+}
+.zero-border {
+    border: 0;
+}
+
+.eye {
+    font-size: 22px;
+}
+
+.eye:hover {
+    font-size: 22px;
+    color: inherit;
+}

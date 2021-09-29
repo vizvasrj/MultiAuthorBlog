@@ -1,5 +1,6 @@
 # django
 from datetime import date
+import re
 from django.contrib import auth
 from django.core import paginator
 from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -21,7 +22,6 @@ from django.utils.timezone import make_aware
 from django.utils import timezone
 
 # 3rd party
-
 
 # local
 from .models import Profile, Contact
@@ -113,7 +113,6 @@ def register(request):
                     )
         else:
             user_form = UserRegistrationForm()
-            print("else")
         return render(
             request,
             'account/register.html',
@@ -656,3 +655,24 @@ def validate_email(request):
         'is_taken': User.objects.filter(email__iexact=email).exists()
     }
     return JsonResponse(response)
+
+
+from django.db.models import Q
+
+def my_relations_posts(request):
+
+    user = User.objects.get(id=request.user.id)
+    names = []
+    for f in user.following.all():
+        names.append(f.id)
+
+    q_objects = Q()
+    for u in names:
+        q_objects |= Q(author__user=u)
+    
+    posts = Post.aupm.filter(q_objects).order_by('-publish')
+    return render(
+        request,
+        'account/me/fallowing/post.html',
+        {'posts': posts}
+    )

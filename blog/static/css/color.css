@@ -163,3 +163,23 @@
     color: hsla(127, 63%, 15%, 0.5)!important ;
     border: 1px solid hsla(127, 63%, 15%, 0.5)!important ;
 }
+
+/* hover */
+.bg-aqua-lite-08 {
+    background-color: #175d7998 !important ;
+    color: hsla(196, 45%, 10%, 0.849)!important ;
+}
+.bg-aqua-lite-08:hover {
+    background-color: #46c2f340 !important ;
+    color: hsla(187, 100%, 40%, 0.8)!important ;
+}
+
+.bg-fuchisa-lite-08 {
+    background-color: #F012BE80 !important ;
+    color: hsla(314, 88%, 21%, 0.8)!important ;
+}
+
+.bg-fuchisa-lite-08:hover {
+    background-color: #db5dbe80 !important ;
+    color: hsla(314, 55%, 6%, 0.8)!important ;
+}

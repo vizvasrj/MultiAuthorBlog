@@ -29,7 +29,7 @@
             <div class="d-flex flex-row" id="show_hide_password">
                 {{user_form.password2}}
                 <div class="input-group-addon">
-                    <a class="input-group-text" href=""><i class="bi bi-eye-fill"></i></a>
+                    <a class="input-group-text zero-border transparent eye" href=""><i class="bi bi-eye-fill"></i></a>
                 </div>
             </div>
         </div>
@@ -38,8 +38,8 @@
         </div>
 {% csrf_token %}
         <p>
-            <input id="create" class="mt-2 btn btn-primary" type="submit" value="Create">
-            <a class="mt-2 btn btn-secondary" href="{% url 'login' %}">Login Here</a>
+            <input id="create" class="mt-2 btn bg-aqua-lite-08" type="submit" value="Create">
+            <a class="mt-2 btn bg-fuchisa-lite-08" href="{% url 'login' %}">Login Here</a>
         </p>
 
     </form>

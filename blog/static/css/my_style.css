@@ -1,0 +1,14 @@
+.quill {
+/* font-size: 20px; */
+padding-right: 2px;
+fill: black;
+/* background: tomato; */
+}
+.notification {
+    font-size: 20px;
+}
+.header_write{
+    border: 3px solid grey;
+    border-radius: 15px;
+    background: white;
+}
