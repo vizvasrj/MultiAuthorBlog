@@ -1,7 +1,8 @@
-{% extends "blog_base.html" %}
+{% extends "my_base.html" %}
 
 {% load blog_tags %}
 {% load thumbnail %}
+
 
 {% block content %}
 
@@ -25,7 +26,7 @@
 
 {% endblock %}
 
-{% block domready %}
+{% block domready2 %}
 var page = 1;
 var empty_page = false;
 var block_request = false;

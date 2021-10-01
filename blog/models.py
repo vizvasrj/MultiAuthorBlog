@@ -11,6 +11,7 @@ from django.core.mail import send_mail
 from django.contrib.sites.models import Site
 from django.utils.text import slugify
 from django.core.signals import request_finished
+from django.core.validators import FileExtensionValidator
 
 
 # local
@@ -102,6 +103,76 @@ class Category(models.Model):
 
 
 
+class Publication(models.Model):
+    name = models.CharField(max_length=50)
+    image = models.FileField(
+        upload_to='publication',
+        validators=[FileExtensionValidator(['svg','jpg','png','gif'])],
+        null=True
+    )
+    slug = AutoSlugField(populate_from='name')
+    tags = TaggableManager()
+    admin = models.ForeignKey(
+        User,
+        related_name='publication_admin',
+        on_delete=models.CASCADE
+    )
+    editor = models.ManyToManyField(
+        User,
+        related_name='publication_editors'
+    )
+    about = models.TextField()
+    fallowing = models.ManyToManyField(
+        User,
+        through='PublicationContact',
+        related_name='publication_followers',
+        symmetrical=False
+    )
+
+    def __str__(self):
+        return self.name
+
+# @receiver(m2m_changed, sender=Publication.editor.through)
+# def user_liked_changed(instance, action, *args, **kwargs):
+#     # print(action, "action")
+#     # print(kwargs, "kwargs")
+#     if action == 'post_add':
+#         print(action)
+#         publication_id = instance.id
+#         print(publication_id)
+#         pub = Publication.objects.get(id=publication_id)
+#         print(pub)
+#         pub.editor.add(pub.admin)
+
+
+
+
+
+
+class PublicationContact(models.Model):
+    user_from = models.ForeignKey(
+        User,
+        related_name='rel_from_user',
+        on_delete=models.CASCADE
+    )
+    to_publication = models.ForeignKey(
+        Publication,
+        related_name='rel_to_publication',
+        on_delete=models.CASCADE
+    )
+    created = models.DateTimeField(
+        auto_now_add=True,
+        db_index=True
+    )
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __str__(self):
+        return f'{self.user_from} follows {self.to_publication}'
+
+
+
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -119,6 +190,13 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
+    )
+    publication = models.ForeignKey(
+        Publication,
+        on_delete=models.CASCADE,
+        related_name='publications',
+        blank=True,
+        null=True
     )
     cover = models.ImageField(
         upload_to='cover/%Y/%m/%d',
@@ -186,7 +264,6 @@ class Post(models.Model):
             'post_detail',
             args = [self.slug]
         )
-
 
 # pre_save #
 
@@ -329,3 +406,4 @@ def post_save_receiver(sender, instance, created, *args, **kwargs):
 #     except ObjectDoesNotExist:
 #         Profile.objects.create(user=instance)
 #         print("objects not exists yet wait i am creating", instance.title)
+

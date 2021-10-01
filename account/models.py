@@ -9,6 +9,24 @@ from django.db.models.signals import (
 )
 from django.dispatch import receiver
 from .tasks import print_full_name
+from django.core.validators import FileExtensionValidator
+
+
+class Theme(models.Model):
+    name = models.CharField(max_length=50)
+    header = ColorField(format='hexa')
+    sidebar = ColorField(format='hexa')
+    text = ColorField(format='hexa')
+    menu = ColorField(format='hexa')
+    selected = ColorField(format='hexa')
+    hover_background = ColorField(format='hexa')
+    hover_text = ColorField(format='hexa')
+    image = models.FileField(upload_to='theme', validators=[FileExtensionValidator(['svg'])])
+
+    def __str__(self):
+        return self.name
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -39,7 +57,11 @@ class Profile(models.Model):
     color = ColorField(
         format='hexa'
     )
-
+    my_theme = models.ForeignKey(
+        Theme,
+        related_name='themes',
+        on_delete=models.CASCADE
+    )
     def __str__(self):
         return self.user.username
 
@@ -93,5 +115,6 @@ user_model.add_to_class(
         symmetrical=False
     )
 )
+
 
 

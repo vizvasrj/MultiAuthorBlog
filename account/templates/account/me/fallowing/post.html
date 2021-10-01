@@ -1,7 +1,16 @@
 {% extends "my_base.html" %}
+
 {% block content %}
-{% for post in posts %}
-<h1>{{post.title}}</h1>
-<p>{{post.body}}</p>
-{% endfor %}
+<div class="row">
+
+    <div class="col-xl-8">
+        <div class="post-list">
+            {% include "account/me/fallowing/ajax_list.html" %}
+        </div>
+    </div>
+    <div class=" border col-xl-4">
+
+    </div>
+</div>
+
 {%endblock%}

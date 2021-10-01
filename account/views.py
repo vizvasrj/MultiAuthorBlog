@@ -120,6 +120,7 @@ def register(request):
         )
 
 
+
 @login_required
 def edit(request):
     if request.method == 'POST':

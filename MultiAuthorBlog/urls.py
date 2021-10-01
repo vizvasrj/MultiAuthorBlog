@@ -6,6 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import read_file
 from blog.views import post_list
+import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -18,7 +19,8 @@ urlpatterns = [
     path('select2/', include('django_select2.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
     path('about/', include('about.urls')),
-    path('.well-known/pki-validation/', read_file)
+    path('.well-known/pki-validation/', read_file),
+    path('__debug__/', include(debug_toolbar.urls)),
 
 
 ]

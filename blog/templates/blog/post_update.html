@@ -4,6 +4,9 @@
 {% load editorjs %}
 
 {% block head %} 
+<link rel="stylesheet" href="{% static 'css/autoSuggest.css' %}">
+<link rel="stylesheet" href="{% static 'css/select2.css' %}">
+<link rel="stylesheet" href="{% static 'django_select2/django_select2.css' %}">
 
 <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
 <script src="{% static 'js/bootstrap-tagsinput.js' %}"></script>
@@ -88,6 +91,7 @@
                         {{ form.other_author }}
                     </div>
                 </div>
+                {{form.publication}}
                 <div class="d-flex">
                     <div class="publish mt-2">
                         <button name="submit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">Publish</button>
@@ -115,6 +119,10 @@
 {% endblock %}
 
 {% block domready2 %}
+var pub = document.getElementById("id_publish").value.slice(0,16)
+
+document.getElementById("id_publish").value = pub
+
 $(function () {
     $(":file").change(function () {
         if (this.files && this.files[0]) {

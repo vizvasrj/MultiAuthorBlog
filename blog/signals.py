@@ -9,9 +9,18 @@ from django.core.signals import request_finished
 
 from unidecode import unidecode
 
-from .models import Post
-from .tasks import print_title
+from .models import Post, Publication
+from .tasks import translate_post,add_admin_to_publication
 # the translate function importing
+
+
+@receiver(post_save, sender=Publication)
+def post_save_receiver(sender, created, instance, *args, **kwargs):
+
+    if created:
+        add_admin_to_publication.delay(pk=instance.id)
+
+
 
 @receiver(m2m_changed, sender=Post.users_like.through)
 def users_like_changed(sender, instance, **kwargs):
@@ -52,7 +61,9 @@ def pre_save_receiver(sender, instance, created=False,  *args, **kwargs):
 
         
 
-
+"""
+This is translator of blog
+"""
 @receiver(post_save, sender=Post)
 def post_save_receiver(sender, created, instance, *args, **kwargs):
 

@@ -1,5 +1,6 @@
 # core
 from django import forms
+from django.db.models import query
 from django.forms import widgets
 
 # local
@@ -11,12 +12,14 @@ from taggit_autosuggest.widgets import TagAutoSuggest
 from mptt.forms import TreeNodeChoiceField
 from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 from django_select2 import forms as s2forms
-
+from django_select2.forms import ModelSelect2Widget
 from django.utils import timezone, dateformat
 from django.utils.timezone import localtime
 
 from django.contrib.auth.models import User
 
+
+from .models import Publication
 
 lt = localtime(timezone.now())
 
@@ -30,8 +33,6 @@ fomated_time = dateformat.format(lt, 'Y-m-d H:i')
 
 class CoAuthorsWidget(s2forms.ModelSelect2MultipleWidget):
     search_fields = ["username__istartswith", "email__icontains"]
-
-
 
 
 class PostForm(forms.ModelForm):
@@ -57,12 +58,26 @@ class PostForm(forms.ModelForm):
         ('published', 'Publish'),
     )
     status = forms.ChoiceField(choices=STATUS_CHOICES, widget=forms.Select(attrs={'class': 'myfieldclass bg-red-lite'}))
+    publication = forms.ModelChoiceField(
+        queryset=None, empty_label=None, to_field_name="id"
+    )
+    # other_author = forms.ModelChoiceField(
+    #     queryset=None,
+    #     widget=CoAuthorsWidget(
+    #         model=User,
+    #     )
+    # )
+    def __init__(self, user, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+        self.fields['publication'].queryset = Publication.objects.all().filter(editor=user.id)
+        # if user != None:
+        #     self.fields['other_author'].queryset = User.objects.exclude(id=user.id)
 
     class Meta:
         model = Post
         fields = (
             'title', 'body', 'tags', 'cover', 'status', 'publish',
-            'other_author'
+            'other_author', 'publication'
         )
         widgets = {
             'title': forms.Textarea(

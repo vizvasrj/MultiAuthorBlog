@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.sites',
+    'debug_toolbar',
 
     # 3rd party
     'crispy_forms',
@@ -92,6 +93,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -283,23 +285,23 @@ TAGGIT_AUTOSUGGEST_MAX_SUGGESTIONS = 8
 
 SITE_ID = 1
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # mail
-if filepath.is_file():
-    from .secret import (EMAIL_HOST, 
-    EMAIL_HOST_PASSWORD, EMAIL_HOST_USER,
-    EMAIL_PORT, EMAIL_USE_TLS,
-    DEFAULT_FROM_EMAIL
-    )
-    EMAIL_HOST = EMAIL_HOST
-    EMAIL_HOST_USER = EMAIL_HOST_USER
-    EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-    EMAIL_PORT = EMAIL_PORT
-    EMAIL_USE_TLS = EMAIL_USE_TLS
-    DEFAULT_FROM_EMAIL = DEFAULT_FROM_EMAIL
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# if filepath.is_file():
+#     from .secret import (EMAIL_HOST, 
+#     EMAIL_HOST_PASSWORD, EMAIL_HOST_USER,
+#     EMAIL_PORT, EMAIL_USE_TLS,
+#     DEFAULT_FROM_EMAIL
+#     )
+#     EMAIL_HOST = EMAIL_HOST
+#     EMAIL_HOST_USER = EMAIL_HOST_USER
+#     EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+#     EMAIL_PORT = EMAIL_PORT
+#     EMAIL_USE_TLS = EMAIL_USE_TLS
+#     DEFAULT_FROM_EMAIL = DEFAULT_FROM_EMAIL
+# else:
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 from django.utils.translation import gettext_lazy as _
@@ -354,3 +356,9 @@ PARLER_LANGUAGES = {
 
 # My uploader
 IMAGE_UPLOADER_MAX_FILE_SIZE = 3011000
+
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]

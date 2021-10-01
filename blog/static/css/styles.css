@@ -90,7 +90,7 @@ body[data-editor='DecoupledDocumentEditor'] .sidebar {
 }
 
 /* --------- COMMENTS & TRACK CHANGES FEATURE ---------------------------------------------------------------------- */
-.sidebar {
+/* .sidebar {
 	padding: 0 15px;
 	position: relative;
 	min-width: var(--ck-sample-sidebar-width);
@@ -104,7 +104,6 @@ body[data-editor='DecoupledDocumentEditor'] .sidebar {
 	flex-grow: 1;
 }
 
-/* Do not inherit styles related to the editable editor content. See line 25.*/
 .sidebar .ck-content[role='textbox'],
 .ck.ck-annotation-wrapper .ck-content[role='textbox'] {
 	min-height: unset;
@@ -150,7 +149,7 @@ body[data-editor='DecoupledDocumentEditor'] .sidebar {
 
 #sidebar-display-toggle svg {
 	fill: currentColor;
-}
+} */
 
 /* --------- COLLABORATION FEATURES (USERS) ------------------------------------------------------------------------ */
 .row-presence {

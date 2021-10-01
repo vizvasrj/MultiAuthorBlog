@@ -97,7 +97,7 @@ class ProfileEditForm(forms.ModelForm):
     # photo = forms.ImageField(widget=forms.FileInput,)
     class Meta:
         model = Profile
-        fields = ('about', 'full_name', 'photo', 'color')
+        fields = ('about', 'full_name', 'photo')
 
         widgets = {
             'about': forms.Textarea(

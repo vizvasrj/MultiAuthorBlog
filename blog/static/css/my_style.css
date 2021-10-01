@@ -11,4 +11,80 @@ fill: black;
     border: 3px solid grey;
     border-radius: 15px;
     background: white;
+    color: black;
+}
+
+figure > img {
+    width: 100%;
+}
+.line-height {
+    line-height: 1px;
+    margin-left: -10px;
+}
+.hash {
+    color: teal;
+    font-weight: 700;
+}
+.at {
+    color: tomato;
+}
+.responsive-width{
+    /* width: 300px; */
+}
+.word-break {
+    word-break: break-word;
+    color: inherit;
+}
+.h1-title{
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 1.1;
+    word-spacing: -0.026em;
+}
+.h1-title:hover{
+    opacity: 0.8;
+}
+.top-me:hover {
+    /* z-index: 1;
+    position: relative; */
+}
+.others{
+    margin-top: 5px;
+}
+
+#zero{
+    transition: all 0.3s;
+}
+#rightside {
+    transition: all 0.3s;
+}
+.create-button:hover{
+    background: white;
+    opacity: 0.8;
+}
+.transparent-button {
+    background: transparent;
+    border:none;
+}
+.transparent-button:hover {
+    opacity: 0.8;
+}
+
+
+@media screen and (min-width: 576px) {
+    #write::after {
+        content: "Write";
+    }    
+    #reader::after {
+        content: "Reader";
+    }
+}
+
+.in {
+    color: #88b04b;
+    font-weight: 700;
+}
+.publication {
+    color: #5B5EA6;
+    font-weight: 700;
 }

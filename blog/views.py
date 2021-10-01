@@ -45,7 +45,7 @@ r = redis.Redis(
 def create_post(request):
     user = request.user
     if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(user=request.user , data=request.POST, files=request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
             new_item = cd['tags']
@@ -63,7 +63,7 @@ def create_post(request):
                 form.save_m2m()
                 return redirect(new_item.get_absolute_url())
     else:
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(user=request.user , data=request.POST, files=request.FILES)
 
     return render(
         request,
@@ -332,16 +332,16 @@ from django.utils import timezone, dateformat
 
 
 lt = localtime(timezone.now())
-
-
 # this will be usedn in publish value 
 fomated_time = dateformat.format(lt, 'Y-m-d H:i')
+
 
 
 
 @login_required
 def update_data(request, pk):
     post = get_object_or_404(Post, pk=pk)
+
     # post.publish = fomated_time
     # post.save()
     # loading cover image to edit post page
@@ -360,24 +360,25 @@ def update_data(request, pk):
     shared_user = []
     for s_user in Post.objects.get(id=pk).other_author.all():
         shared_user.append(s_user.id)
-    form = PostForm(
-        request.POST or None,
-        request.FILES or None,
-        instance=post
-    )
+    form = PostForm(user=request.user , data=request.POST, files=request.FILES, instance=post)
     if request.user.id == post.author_id:
         if request.method == 'POST':
             if form.is_valid():
                 post = form.save(commit=False)
                 post.author_id = request.user.id
                 post.last_editeduser_id = request.user.id
-                post.save()
-                form.save_m2m()
-                for x in post.other_author.all():
-                    print(x)
-                return redirect(post.get_absolute_url())
+                deltatime = post.publish + timezone.timedelta(minutes=1)
+                if deltatime >= timezone.localtime(timezone.now()):
+                    post.save()
+                    form.save_m2m()
+                    return redirect(post.get_absolute_url())
+                else:
+                    post.publish = timezone.localtime(timezone.now())
+                    post.save()
+                    form.save_m2m()
+                    return redirect(post.get_absolute_url())
         else:
-            form = PostForm(instance=post)
+            form = PostForm(user=request.user, instance=post)
         return render(
             request,
             'blog/post_update.html',
@@ -385,7 +386,8 @@ def update_data(request, pk):
                 'form': form,
                 'cover_image': cover_image,
                 'status': 'Publish',
-                'tags': tags
+                'tags': tags,
+                'fomated_time': fomated_time,
             }
         )
     elif request.user.id in shared_user:
@@ -395,11 +397,18 @@ def update_data(request, pk):
                 post.author_id = main_author_id
                 post.last_editeduser_id = request.user.id
                 post.status = 'draft'
-                post.save()
-                form.save_m2m()
-                return redirect(post.get_absolute_url())
+                deltatime = post.publish + timezone.timedelta(minutes=1)
+                if deltatime >= timezone.localtime(timezone.now()):
+                    post.save()
+                    form.save_m2m()
+                    return redirect(post.get_absolute_url())
+                else:
+                    post.publish = timezone.localtime(timezone.now())
+                    post.save()
+                    form.save_m2m()
+                    return redirect(post.get_absolute_url())
         else:
-            form = PostForm(instance=post)
+            form = PostForm(user=request.user, instance=post)
         return render(
             request,
             'blog/post_update.html',
@@ -407,7 +416,8 @@ def update_data(request, pk):
                 'form': form,
                 'cover_image': cover_image,
                 'status': 'Save',
-                'tags': tags
+                'tags': tags,
+                'fomated_time': fomated_time
             }
         )
     else:

@@ -16,3 +16,7 @@ class PostAdmin(admin.ModelAdmin):
 class CommedntAdmin(admin.ModelAdmin):
     ordering = ('-created',)
 
+from .models import PublicationContact, Publication
+admin.site.register(Publication)
+
+admin.site.register(PublicationContact)
