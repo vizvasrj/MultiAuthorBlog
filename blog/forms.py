@@ -59,7 +59,12 @@ class PostForm(forms.ModelForm):
     )
     status = forms.ChoiceField(choices=STATUS_CHOICES, widget=forms.Select(attrs={'class': 'myfieldclass bg-red-lite'}))
     publication = forms.ModelChoiceField(
-        queryset=None, empty_label=None, to_field_name="id"
+        queryset=None, to_field_name="id", empty_label="No Publication",
+        widget=forms.Select(
+                attrs={
+                    'class': 'myfieldclass bg-red-lite',
+                }
+            ),
     )
     # other_author = forms.ModelChoiceField(
     #     queryset=None,
@@ -87,8 +92,8 @@ class PostForm(forms.ModelForm):
             'body': forms.Textarea(
                 # config={'minHeight': 100}
                 attrs={
-                'placeholder': 'Type containt here.',
-                    # 'class': 'myfieldclass ',
+                'placeholder': 'Type content here.',
+                    'class': 'myfieldclass ',
                 }
             ),
             'tags': TagAutoSuggest('tagmodel',
@@ -122,7 +127,12 @@ class PostForm(forms.ModelForm):
                     'class': 'bg-olive-lite',
                     'style': 'width: 100%',
                 }
-            )
+            ),
+            'publication': forms.Select(
+                attrs={
+                    'class': 'myfieldclass bg-red-lite',
+                }
+            ),
             
         }
 
@@ -163,3 +173,43 @@ class SearchForm(forms.Form):
         'name': 'search',
         'autocomplete': 'off'
     }))
+
+
+class PublicationForm(forms.ModelForm):
+    
+    class Meta:
+        model = Publication
+        fields = ('name', 'tags', 'image', 'editor', 'about')
+        widgets = {
+            'name': forms.TextInput(
+                attrs={'class': 'myfieldclass border padding-15 border-bottom', 'autocomplete': 'off',
+                'placeholder': 'Name'}
+            ),
+            'tags': TagAutoSuggest('tagmodel',
+                attrs={
+                    'class': 'myfieldclass border-bottom p-2 tag_label inputTag',
+                    'autocomplete': 'off',
+                    'placeholder': 'Tags',
+                    'required': False,
+                }
+            ),
+            'image': forms.FileInput(
+                attrs={
+                    'class': ' border btn myfieldclass',
+                    'required': False
+                }
+            ),
+            'about': forms.Textarea(
+                # config={'minHeight': 100}
+                attrs={
+                'placeholder': 'What\'s your Publication about of.',
+                    'class': 'myfieldclass padding-15',
+                }
+            ),
+            'editor': CoAuthorsWidget(
+                attrs={
+                    'class': '',
+                    'style': 'width: 100%',
+                }
+            ),
+        }

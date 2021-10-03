@@ -88,3 +88,8 @@ figure > img {
     color: #5B5EA6;
     font-weight: 700;
 }
+.publication:hover {
+    color: #5B5EA6;
+    opacity: 0.8;
+    font-weight: 700;
+}

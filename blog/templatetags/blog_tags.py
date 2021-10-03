@@ -211,3 +211,17 @@ def removeimage(html):
     string = re.sub('<a.*?>|</a> ', ' ', html)
     string2 = re.sub('<img.*?>', ' ', string)
     return string2
+
+
+@register.filter
+def div( value, arg ):
+    '''
+    Divides the value; argument is the divisor.
+    Returns empty string on any error.
+    '''
+    try:
+        value = int( value )
+        arg = int( arg )
+        if arg: return value / arg
+    except: pass
+    return ''

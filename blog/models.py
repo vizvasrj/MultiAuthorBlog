@@ -105,10 +105,9 @@ class Category(models.Model):
 
 class Publication(models.Model):
     name = models.CharField(max_length=50)
-    image = models.FileField(
+    image = models.ImageField(
         upload_to='publication',
-        validators=[FileExtensionValidator(['svg','jpg','png','gif'])],
-        null=True
+        null=True,
     )
     slug = AutoSlugField(populate_from='name')
     tags = TaggableManager()
@@ -122,15 +121,24 @@ class Publication(models.Model):
         related_name='publication_editors'
     )
     about = models.TextField()
-    fallowing = models.ManyToManyField(
+    followers = models.ManyToManyField(
         User,
         through='PublicationContact',
-        related_name='publication_followers',
+        related_name='publication_following',
         symmetrical=False
     )
+    created = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-created',)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("publication_detail", kwargs={"slug": self.slug})
+    
 
 # @receiver(m2m_changed, sender=Publication.editor.through)
 # def user_liked_changed(instance, action, *args, **kwargs):
@@ -194,7 +202,7 @@ class Post(models.Model):
     publication = models.ForeignKey(
         Publication,
         on_delete=models.CASCADE,
-        related_name='publications',
+        related_name='posts',
         blank=True,
         null=True
     )

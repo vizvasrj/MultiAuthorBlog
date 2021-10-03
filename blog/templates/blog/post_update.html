@@ -91,7 +91,12 @@
                         {{ form.other_author }}
                     </div>
                 </div>
-                {{form.publication}}
+                <div class="status bg-aqua-lite mt-2">
+                    <label class=" tag_label bg-green-lite d-flex justify-content-center" for="publication" class="form-label">If publication?</label>
+                    <div class="">
+                        {{form.publication}}
+                    </div>
+                </div>
                 <div class="d-flex">
                     <div class="publish mt-2">
                         <button name="submit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">Publish</button>
@@ -119,6 +124,7 @@
 {% endblock %}
 
 {% block domready2 %}
+
 var pub = document.getElementById("id_publish").value.slice(0,16)
 
 document.getElementById("id_publish").value = pub

@@ -1,0 +1,126 @@
+{% extends "blog_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} 
+New Publication
+{% endblock %}
+
+<!-- Head -->
+{% block head %} 
+<link rel="stylesheet" href="{% static 'css/autoSuggest.css' %}">
+<link rel="stylesheet" href="{% static 'css/select2.css' %}">
+<link rel="stylesheet" href="{% static 'django_select2/django_select2.css' %}">
+
+
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/bootstrap-tagsinput.js' %}"></script>
+
+<script src="{% static 'js/select2.min.js' %}"></script>
+<script src="{% static 'js/select2.js' %}"></script>
+<script src="{% static 'js/jquery.init.js' %}"></script>
+<script src="{% static 'js/jquery.autoSuggest.js' %}"></script>
+
+{% endblock %}
+<!-- End head -->
+
+<!-- start style -->
+{% block style %} 
+
+:root {
+	--ck-sample-editor-min-height: 400px;
+}
+#myImg {
+    max-height: 100%;
+    max-width: 100%;
+}
+#id_image {
+    display: none;
+}
+.height__100% {
+    height: 100%;
+}
+{% endblock %}
+
+<!-- end style -->
+
+
+
+{% block content %} 
+            <div class="container mb-5">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <h3 class="title">Create Publication</h3>
+                        <form method="POST" class="post-form" enctype="multipart/form-data" id="formid">
+                                    <div class="">
+                                        <div class="title mb-2 ">
+                                            <div class="">
+                                                {{ form.name }}
+                                            </div>
+                                        </div>
+                                        <div class="body mb-2 ">
+                                            <div class="" style="padding: 0px;">
+                                                {{ form.about }}
+                                            </div>
+                                        </div>
+                                        {% csrf_token %}
+                                        <br>
+                                        <div class="tags ">
+                                            <label class="mt-2 tag_label  d-flex justify-content-center" for="tags" class="form-label">Please provie some tags</label>
+                                            <div class="height__100%">
+                                                {% if request.user_agent.is_mobile %}
+                                                <input name="tags" class="myfieldclass border-bottom p-2 tag_label inputTag" autocomplete="off" placeholder="Tags" required="" id="id_tags" >
+                                                {% else %}
+                                                    {{ form.tags }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="cover ">
+                                            <label class="mt-2 tag_label d-flex  justify-content-center" for="image" class="form-label">Upload cover image</label>
+                                            <div class="">
+                                                <label id="remove" class="uploadcover d-flex " for="id_image">
+                                                    <img class="blogcoverimage d-flex justify-content-center" width="100%" id="myImg" src='{{post.cover.url}}' alt="Upload (Click here)" />
+                                                </label>
+                                                {{ form.image }}
+                                            </div>
+                                        </div>
+                                        <div class="tags">
+                                            <label class="mt-2 tag_label d-flex justify-content-center" for="tags" class="form-label">Share to edit with others</label>
+                                            <div class="">
+                                                {{ form.editor }}
+                                            </div>
+                                        </div>
+                                        <div class="d-flex mt-2">
+                                            <div class="publish mt-2">
+                                                <button name="submit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="btn  bg-green">Save Publicication</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                        </form>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+{% endblock %}
+
+
+{% block domready2 %} 
+$(function () {
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+});
+
+function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result); 
+    // $('#remove').remove(); 
+
+}
+
+$('#id_tags__tagautosuggest').removeAttr("required");
+
+{% endblock %}

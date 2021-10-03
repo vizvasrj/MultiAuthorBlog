@@ -1,0 +1,101 @@
+{% load thumbnail %}
+
+{% for post in posts %}
+{% thumbnail post.author.photo 30x30 crop as avatar %}
+
+<div class="d-flex flex-row">
+    <div class="py-2 d-flex justify-content-start">
+        <a href="/{{post.author.get_absolute_url}}/">
+            <img class="top-me rounded-pill border border-3" src="{{ avatar.url }}" alt="">
+        </a>
+
+    </div>
+    <div class="p-2 line-height flex-fill">
+        <div class="d-flex flex-column">
+            <div class="p-2 ">
+                <a class="a_author_image" href="/{{post.author.get_absolute_url}}/">
+                    <strong class="post_author_user">
+                        <span class="at">@</span>
+                        {{ post.author.user }}
+                    </strong>
+                </a>
+                {% if post.publication %}
+                <span class="in">in</span> 
+                <a href="{{ post.publication.get_absolute_url }}">
+                    <span class="publication">{{post.publication}}</span>
+                </a>
+                
+                {% else %}
+                {% endif %}
+                <!-- <span>Other some</span> -->
+            </div>
+            <div class="p-2 ">
+                {% for tag in post.tags.all %}
+            
+                <span>
+                    <a class="a_author_image" href="/tag/{{tag}}"><span class="hash">#</span>{{ tag }}</a>
+                </span>
+                {% endfor %}
+            
+            </div>
+        </div>
+    </div>
+    <div class="p-2 d-flex justify-content-end">{{ post.publish }}</div>
+</div>
+<div class="others">
+    {% for other in post.other_author.all %}
+    {% thumbnail other.profiles.photo 30x30 crop as other_photo %}
+        <a href="/{{other.get_absolute_url}}/">
+            <img class="top-me rounded-pill border border-3" src="{{ other_photo.url }}" alt="">
+        </a>
+        <a href="/{{other.get_absolute_url}}/">
+            <strong class="">
+                <span class="at">@</span>
+                {{ other }}
+            </strong>
+        </a>
+    {% endfor %}
+
+</div>
+
+
+<!-- <div class="row">
+    <div class="col-1">
+        <img class="rounded-pill" src="{{ avatar.url }}" alt="">
+    </div>
+    <div class="col-5 line-height">
+        <div class="col-12">
+            <a href="/{{post.author.get_absolute_url}}/">
+                <strong class="">
+                    <span class="at">@</span>
+                    {{ post.author.user }}
+                </strong>
+            </a>
+        </div>
+        <div class="col-12">
+            {% for tag in post.tags.all %}
+            
+            <span>
+                <a href="/tag/{{tag}}"><span class="hash">#</span>{{ tag }}</a>
+            </span>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-6 ">
+        <div class="d-flex flex-fill justify-content-end">{{ post.publish }}</div>
+    </div>
+</div> -->
+
+<a href="{{post.get_absolute_url}}">
+    <h1 class="h1-title">{{post.title}}</h1>
+</a>
+{% thumbnail post.cover 735x300 crop as cover %}
+
+<a href="">
+    <img width="100%" src="{{ cover.url }}" alt="">
+</a>
+<p class="word-break">{{post.body|truncatewords_html:50}}</p>
+<p>{{ post.total_likes }} like{{ post.total_likes|pluralize }}</p>
+<hr>
+
+{% endfor %}
