@@ -21,6 +21,7 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('.well-known/pki-validation/', read_file),
     path('__debug__/', include(debug_toolbar.urls)),
+    path('publication/', include('publication.urls')),
 
 
 ]

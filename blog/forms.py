@@ -20,6 +20,7 @@ from django.contrib.auth.models import User
 
 
 from .models import Publication
+from publication.models import Publication as Pub
 
 lt = localtime(timezone.now())
 
@@ -74,7 +75,7 @@ class PostForm(forms.ModelForm):
     # )
     def __init__(self, user, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['publication'].queryset = Publication.objects.all().filter(editor=user.id)
+        self.fields['publication'].queryset = Pub.objects.all().filter(content_creater=user.id)
         # if user != None:
         #     self.fields['other_author'].queryset = User.objects.exclude(id=user.id)
 
@@ -175,11 +176,11 @@ class SearchForm(forms.Form):
     }))
 
 
-class PublicationForm(forms.ModelForm):
+class PubForm(forms.ModelForm):
     
     class Meta:
-        model = Publication
-        fields = ('name', 'tags', 'image', 'editor', 'about')
+        model = Pub
+        fields = ('name', 'tags', 'image', 'content_creater', 'about')
         widgets = {
             'name': forms.TextInput(
                 attrs={'class': 'myfieldclass border padding-15 border-bottom', 'autocomplete': 'off',

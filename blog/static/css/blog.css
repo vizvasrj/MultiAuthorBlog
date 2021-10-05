@@ -551,7 +551,7 @@ div.comment-body img {
 .none {
     display: none;
 }
-.modal-content {
+.search-modal-content {
     background-color: transparent !important;
     border: 0 !important;
 }
@@ -749,6 +749,7 @@ div .post__body > p.post-body + p {
 .pub__follow {
     background-color: var(--bg-navy-background--color);
     color: var(--tx--navy-color);
+    max-height: 42px;
 }
 .pub__follow:hover {
     background-color: var(--bg-navy-lite-50-background--color);
@@ -770,4 +771,75 @@ div .post__body > p.post-body + p {
 }
 .number_of_follower {
     color: var(--bg-olive-background--color);
+}
+
+.publication_tagline {
+    text-decoration: none;
+    color: inherit;
+    font-family: Work Sans;
+    hyphens: auto;
+    word-break: break-word;
+}
+@media (max-width: 576px) {
+    .publication_tagline {
+        text-decoration: none;
+        color: inherit;
+        font-family: Work Sans;
+        hyphens: auto;
+        word-break: break-word;
+        display: none;
+    }
+}
+
+.publication_tagline:hover {
+    opacity: 0.9;
+    color: inherit;
+}
+.title{
+    font-size: 20px;
+    text-decoration: none;
+    color: inherit;
+    font-family: Roboto;
+}
+.title:hover{
+    opacity: 0.9;
+    color: inherit;
+}
+.user {
+    font-size: 17px;
+    text-decoration: none;
+    color: inherit;
+    font-family: Roboto;
+
+}
+.user:hover {
+    text-decoration: none;
+    color: inherit;
+
+}
+.padd-0 {
+    padding: 0;
+}
+
+.robo {
+    font-family: Roboto mono, Roboto;
+}
+#undo {
+    position: fixed;
+    bottom: 73px;
+    left: 24px;
+    display: none;
+}
+
+.inline {
+    display: inline-block;
+}
+.navy-text {
+    color: var(--bg-navy-background--color);
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+}
+.td-n {
+    text-decoration: none;
 }

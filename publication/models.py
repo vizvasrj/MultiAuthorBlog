@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 # 3rd party
 from autoslug import AutoSlugField
-from taggit.managers import TaggableManager
+from taggit_autosuggest.managers import TaggableManager
 from django.urls import reverse
 
 
@@ -13,21 +13,23 @@ class Publication(models.Model):
         null=True
     )
     slug = AutoSlugField(populate_from='name')
-    tags = TaggableManager()
+    tags = TaggableManager(
+        related_name='publications_tag'
+    )
     publisher  = models.ForeignKey(
         User,
         related_name='publications',
         on_delete=models.CASCADE
     )
-    editors = models.ManyToManyField(
+    content_creater = models.ManyToManyField(
         User,
-        related_name='publications_editors'
+        related_name='publications_cc'
     )
     about = models.TextField()
     followers = models.ManyToManyField(
         User,
         through='PublicationContact',
-        related_name='publications_following',
+        related_name='p_following',
         symmetrical=False
     )
     created = models.DateTimeField(auto_now_add=True)
@@ -41,3 +43,27 @@ class Publication(models.Model):
 
     def get_absolute_url(self):
         return reverse("publication_detail", kwargs={"slug": self.slug})
+
+
+class PublicationContact(models.Model):
+    user_from = models.ForeignKey(
+        User,
+        related_name='from_user',
+        on_delete=models.CASCADE
+    )
+    to_publication = models.ForeignKey(
+        Publication,
+        related_name='to_publication',
+        on_delete=models.CASCADE
+    )
+    created = models.DateTimeField(
+        auto_now_add=True,
+        db_index=True
+    )
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __str__(self):
+        return f'{self.user_from} follows {self.to_publication}'
+

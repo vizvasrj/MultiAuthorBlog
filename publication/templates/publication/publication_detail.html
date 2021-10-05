@@ -25,13 +25,19 @@
             <h2 class="title">{{ pub.name }}</h2>
             
             <p class="paragraph">{{pub.about}}</p>
+            <p>{{pub.publisher}}</p>
 
             <div class="d-flex number_of_follower">
                 <span class="flex-fill">
+                    {% if pub.followers.all.count < 1 %}
+                        0 followers
+                    {% else %}
+
                     <span id="youand">{% if request.user in pub.followers.all %} You and {% endif %}</span>
                         <span class="">{{ pub.followers.all.count|add:-1 }} </span>
                         <span id="more">{% if request.user in pub.followers.all %} more {% endif %}</span>
                         follower{{pub.followers.all.count|add:-1|pluralize}}
+                    {% endif %}
                 </span>
                 <a href="#" data-url="{% url 'publication_follow' %}" data-id="{{ pub.id }}"
                 data-action="{% if request.user in pub.followers.all %}un{% endif %}follow"
@@ -46,7 +52,7 @@
         
             <hr style="height: 2px;">
             <div id="post-list">
-                {% include "blog/publication/pub_post_list_ajax.html"  %}
+                {% include "publication/pub_post_list_ajax.html"  %}
             </div>
         </div>
         <div class="col-md-1"></div>

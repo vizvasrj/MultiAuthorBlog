@@ -48,26 +48,33 @@ New Publication
 {% block content %} 
             <div class="container mb-5">
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
                         <h3 class="title">Create Publication</h3>
                         <form method="POST" class="post-form" enctype="multipart/form-data" id="formid">
                                     <div class="">
-                                        <div class="title mb-2 ">
-                                            <div class="">
-                                                {{ form.name }}
+                                        <div class="d-flex flex-column">
+                                            <label class="mt-2 tag_label " for="tags" class="form-label">{{form.name.label}}</label>
+                                            <div class="title mb-2 justify-content-end">
+                                                <div class="">
+                                                    {{ form.name }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="body mb-2 ">
-                                            <div class="" style="padding: 0px;">
-                                                {{ form.about }}
+                                        <div class="d-flex flex-column">
+
+                                            <label class="mt-2 tag_label " for="tags" class="form-label">{{form.about.label}}</label>
+                                            <div class="body mb-2 ">
+                                                <div class="" style="padding: 0px;">
+                                                    {{ form.about }}
+                                                </div>
                                             </div>
                                         </div>
                                         {% csrf_token %}
                                         <br>
-                                        <div class="tags ">
-                                            <label class="mt-2 tag_label  d-flex justify-content-center" for="tags" class="form-label">Please provie some tags</label>
-                                            <div class="height__100%">
+                                        <div class="d-flex flex-column tags">
+                                            <label class="mt-2 tag_label" for="tags" class="form-label">Please provie some tags: max(5) every others will be removed</label>
+                                            <div class="">
                                                 {% if request.user_agent.is_mobile %}
                                                 <input name="tags" class="myfieldclass border-bottom p-2 tag_label inputTag" autocomplete="off" placeholder="Tags" required="" id="id_tags" >
                                                 {% else %}
@@ -75,19 +82,19 @@ New Publication
                                                 {% endif %}
                                             </div>
                                         </div>
-                                        <div class="cover ">
-                                            <label class="mt-2 tag_label d-flex  justify-content-center" for="image" class="form-label">Upload cover image</label>
+                                        <div class="d-flex flex-column cover ">
+                                            <label class="mt-2 tag_label" for="image" class="form-label">Upload cover image</label>
                                             <div class="">
-                                                <label id="remove" class="uploadcover d-flex " for="id_image">
-                                                    <img class="blogcoverimage d-flex justify-content-center" width="100%" id="myImg" src='{{post.cover.url}}' alt="Upload (Click here)" />
+                                                <label id="remove" class="uplokeyupadcover d-flex " for="id_image">
+                                                    <img class="blogcoverimage" width="100%" id="myImg" src='{{pub.image.url}}' alt="Upload (Click here)" />
                                                 </label>
                                                 {{ form.image }}
                                             </div>
                                         </div>
-                                        <div class="tags">
-                                            <label class="mt-2 tag_label d-flex justify-content-center" for="tags" class="form-label">Share to edit with others</label>
+                                        <div class="d-flex flex-column">
+                                            <label class="mt-2 tag_label" for="tags" class="form-label">Share to edit with others</label>
                                             <div class="">
-                                                {{ form.editor }}
+                                                {{ form.content_creater }}
                                             </div>
                                         </div>
                                         <div class="d-flex mt-2">
@@ -98,13 +105,14 @@ New Publication
                                         </div>
                         </form>
                     </div>
-                    <div class="col-md-3"></div>
+                    <div class="col-lg-2"></div>
                 </div>
             </div>
 {% endblock %}
 
 
-{% block domready2 %} 
+{% block domready %} 
+console.log("Hi");
 $(function () {
     $(":file").change(function () {
         if (this.files && this.files[0]) {
@@ -123,4 +131,39 @@ function imageIsLoaded(e) {
 
 $('#id_tags__tagautosuggest').removeAttr("required");
 
+
+$("#id_tags__tagautosuggest").on("change", function(e) {
+    
+    console.log("Hissd");
+    var len = $("#as-selections-id_tags__tagautosuggest li").length
+    console.log(len)
+    if (len > 5) {
+        console.log("I will disable it.")
+        $('#id_tags__tagautosuggest').prop('disabled', true);
+        $('#id_tags__tagautosuggest').attr('placeholder', "Max 5 tags");
+    }
+    else {
+        $("#as-selections-id_tags__tagautosuggest li").on("click", function(e) {
+            console.log("click")
+            var len = $("#as-selections-id_tags__tagautosuggest li").length
+            console.log(len)
+            if ( len > 5 ) {
+                console.log("Enabling")
+            }
+            
+        
+        } )
+    }
+
+
+
+    
+
+
+})
+
+
+
 {% endblock %}
+
+

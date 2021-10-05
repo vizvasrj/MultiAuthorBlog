@@ -16,7 +16,7 @@ from django.core.validators import FileExtensionValidator
 
 # local
 from account.models import Profile
-
+from publication.models import Publication as Pub
 # 3rd party
 from autoslug import AutoSlugField
 # from taggit.managers import TaggableManager
@@ -200,7 +200,7 @@ class Post(models.Model):
         null=True,
     )
     publication = models.ForeignKey(
-        Publication,
+        Pub,
         on_delete=models.CASCADE,
         related_name='posts',
         blank=True,

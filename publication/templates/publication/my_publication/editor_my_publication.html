@@ -1,26 +1,19 @@
 {% extends "blog_base.html" %}
-{% load static %}
-{% block title %}
-Publications Lists
-{% endblock %}
 
-{% block content %}
+{% load thumbnail %}
+
+{% block title %} My Publications {% endblock %}
+
+{% block content %} 
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div id="publication-list">
-                {% include "blog/publication/pub_list_ajax.html" %}
+                {% include "publication/my_publication/my_pub_as_editor_list_ajax.html" %}
             </div>
         </div>
         <div class="col-md-3"></div>
     </div>
 </div>
-
-{% endblock %}
-
-{% block script %} 
-
-<script src="{% static 'js/publication_follow.js' %}"></script>
-
 {% endblock %}

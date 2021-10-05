@@ -36,8 +36,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Andada+Pro&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=WindSong&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"> 
-
-  <!-- local FOnts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">   <!-- local FOnts -->
   <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}">
 
   <!-- brand font -->
@@ -93,7 +92,7 @@
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                  <div class="modal-content">
+                  <div class="modal-content search-modal-content">
                     <form id="search-form" autocomplete="off" method="GET" class="d-flex" action="{% url 'post_search' %}">
                       <input id="search-input" class="form-control me-2 navtext  input-search" type="search" name="query" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success navtext bg-red" type="submit">Search</button>
@@ -121,6 +120,9 @@
                     <li><a class="dropdown-item" href="{% url 'post_new' %}">Create Post</a></li>
                     <li><a class="dropdown-item" href="{% url 'my_published_story' %}">My Stories</a></li>
                     <li><a class="dropdown-item" href="{% url 'my_shared_post' %}">My Shared</a></li>
+                    <hr>
+                    <li><a class="dropdown-item" href="{% url 'my_publication_list' %}">My Publications</a></li>
+                    
 
 
                   </ul>

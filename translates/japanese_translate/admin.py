@@ -4,4 +4,4 @@ from django.contrib import admin
 from .models import JapaneseTranslatedPost
 
 
-admin.site.register(JapaneseTranslatedPost)
+#admin.site.register(JapaneseTranslatedPost)

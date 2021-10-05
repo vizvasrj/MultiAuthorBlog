@@ -24,10 +24,11 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 # local
-from .models import Post, Category, Comment, Publication, PublicationContact
+from .models import Post, Category, Comment
+from publication.models import Publication as Pub, PublicationContact
 from .forms import (
     PostForm, CommentForm, SearchForm,
-    PublicationForm
+    PubForm
 )
 # 3rd party
 from taggit.models import Tag
@@ -592,122 +593,3 @@ def translate_listview(request, post):
         }
     )
 
-@login_required
-def publication_create_view(request):
-    if request.method == 'POST':
-        form = PublicationForm(
-            data=request.POST, files=request.FILES
-        )
-        if form.is_valid():
-            cd = form.cleaned_data
-            new_item = cd['tags']
-            new_item = form.save(commit=False)
-            new_item.admin_id = request.user.id
-            new_item.save()
-            form.save_m2m()
-            return redirect(new_item.get_absolute_url())
-    else:
-        form = PublicationForm(
-            data=request.POST, files=request.FILES
-        )
-    return render(
-        request,
-        'blog/publication/publication_create.html',
-        {'form': form,}
-    )
-
-
-def publication_list_view(request):
-    pub = Publication.objects.all()
-    return render(
-        request,
-        'blog/publication/publication_list.html',{
-            'pub': pub,
-        }
-    )
-
-def publication_detail_view(request, slug):
-    pub = get_object_or_404(
-        Publication,
-        slug=slug,
-    )
-    ratio = pub.image.height/pub.image.width
-    # This will help to make not view trashed posts
-    posts = Post.aupm.all().filter(publication=pub)
-    # posts = pub.posts.all()
-    paginator = Paginator(posts, 2)
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        if request.is_ajax():
-            return HttpResponse('')
-        posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
-        return render(
-            request,
-            'blog/publication/pub_post_list_ajax.html',{
-                'posts': posts
-            }
-        )
-    
-    return render(
-        request,
-        'blog/publication/publication_detail.html',{
-            'pub': pub,
-            'ratio': ratio,
-            'posts': posts
-        }
-    )
-
-
-@ajax_required
-@require_POST
-@login_required
-def publication_follow(request):
-    pub_id = request.POST.get('id')
-    action = request.POST.get('action')
-    if pub_id and action:
-        try:
-            pub = Publication.objects.get(id=pub_id)
-            if action == 'follow':
-                PublicationContact.objects.get_or_create(
-                    user_from=request.user,
-                    to_publication=pub
-                )
-            else:
-                PublicationContact.objects.filter(
-                    user_from=request.user,
-                    to_publication=pub
-                ).delete()
-            return JsonResponse({'status': 'ok'})
-        except Publication.DoesNotExist:
-            return JsonResponse({'status': 'error'})
-    return JsonResponse({'status': 'error'})
-
-
-@login_required
-def editor_as_my_publication(request):
-    pub = Publication.objects.all().filter(
-        editor=request.user.id
-    ).exclude(admin=request.user.id)
-    return render(
-        request,
-        'blog/publication/my_publication/editor_my_publication.html', {
-            'pub': pub
-        }
-    )
-
-@login_required
-def admin_as_my_publication(request):
-    pub = Publication.objects.all().filter(
-        admin=request.user.id
-    )
-    return render(
-        request,
-        'blog/publication/my_publication/admin_my_publication.html',{
-            'pub': pub
-        }
-    )

@@ -183,3 +183,11 @@
     background-color: #db5dbe80 !important ;
     color: hsla(314, 55%, 6%, 0.8)!important ;
 }
+.bg-inkwell {
+    background-color: #363945;
+    color: white;
+}
+.bg-ultimate-gray {
+    background-color: #939597;
+    color: white;
+}

@@ -55,7 +55,7 @@
             <div class="col-md-4 border mb-32-px">
                 <div class="tags bg-aqua-lite">
                     <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">Please provie some tags</label>
-                    <div class="">
+                    <div class="height__100">
                         {% if request.user_agent.is_mobile %}
                         <input name="tags" class="myfieldclass border-bottom p-2 tag_label inputTag" autocomplete="off" placeholder="Tags" required="" id="id_tags" value="{{ tags }}">
                         {% else %}

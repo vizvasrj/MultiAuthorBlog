@@ -32,17 +32,4 @@ urlpatterns = [
     path('post/search-ajax/', views.post_ajax_search, name='search_ajax'),
 
 
-    # publication
-    path('publication/create/', views.publication_create_view, name='publication_create'),
-    path('publication/list/', views.publication_list_view, name='publication_list'),
-    path('publication/<slug:slug>', views.publication_detail_view, name='publication_detail'),
-
-    # publication fallow
-    path('publication/fallow/', views.publication_follow, name='publication_follow'),
-
-    # my publication as editor
-    path('publication/addedby/', views.editor_as_my_publication, name='editor_as_my_publication'),
-    path('publication/my/', views.admin_as_my_publication, name='admin_as_my_publication'),
-
-
 ]

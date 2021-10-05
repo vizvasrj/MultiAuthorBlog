@@ -103,8 +103,13 @@
                             <a class="a_author_image" href="/{{post.author.get_absolute_url}}/">
                               <img class="author__left__side rounded" src="{{ im.url }}" alt="">
                             </a>
+                          {% if post.publication %}
                           
-                              <a class="author_name_from_list vizvasrj" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a>
+                          <a class="author_name_from_list vizvasrj" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a> 
+                          in <div class="inline ">
+                              <a class=" td-n"  href="{{post.publication.get_absolute_url}}"><div class="navy-text ">{{post.publication}}</div></a>
+                            </div>
+                          {% endif %}
                            
                           </div>
                           <p class="date">

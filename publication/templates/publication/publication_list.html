@@ -1,0 +1,30 @@
+{% extends "blog_base.html" %}
+{% load static %}
+{% block title %}
+Publications Lists
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div>
+                <h3 class="p-2" style="border-bottom: 1px solid;"> Publications Lists</h3>
+            </div>
+            <div id="publication-list">
+                
+                {% include "publication/pub_list_ajax.html" %}
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %} 
+
+<script src="{% static 'js/publication_follow.js' %}"></script>
+
+{% endblock %}
