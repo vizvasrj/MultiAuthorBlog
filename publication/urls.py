@@ -12,8 +12,11 @@ urlpatterns = [
     path('addedby/', views.editor_as_my_publication, name='editor_as_my_publication'),
     path('myy/', views.admin_as_my_publication, name='admin_as_my_publication'),
 
-    path('my/', views.my_publication_list, name='my_publication_list'),
+    path('me/', views.my_publication_list, name='my_publication_list'),
     path('leave/', views.publication_leave, name='publication_leave'),
 
     path('mange/<int:pk>', views.manage_publication, name='manage_publication'),
+    path('me/writer/', views.me_writer, name='me_writer'),
+    path('me/publisher/', views.me_publisher, name='me_publisher'),
+
 ]

@@ -60,7 +60,8 @@ class Profile(models.Model):
     my_theme = models.ForeignKey(
         Theme,
         related_name='themes',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        default=1
     )
     def __str__(self):
         return self.user.username

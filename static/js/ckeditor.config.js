@@ -32,9 +32,6 @@ ClassicEditor
                 'redo'
             ]
         },
-        mediaEmbed: {
-            elementName: 'embed'
-        },
         language: 'hi',
         image: {
             toolbar: [
@@ -175,60 +172,3 @@ function MyCustomUploadAdapterPlugin(editor) {
 
 // ...
 
-ClassicEditor
-    .create(document.querySelector("#editor"), {
-        extraPlugins: [MyCustomUploadAdapterPlugin],
-
-
-        toolbar: {
-            items: [
-                'heading',
-                '|',
-                'bold',
-                'italic',
-                'link',
-                'bulletedList',
-                'numberedList',
-                '|',
-                'horizontalLine',
-                'outdent',
-                'indent',
-                'highlight',
-                '|',
-                'imageUpload',
-                'codeBlock',
-                'code',
-                'blockQuote',
-                'insertTable',
-                'mediaEmbed',
-                'undo',
-                'redo'
-            ]
-        },
-        mediaEmbed: {
-            elementName: 'embed'
-        },
-        language: 'hi',
-        image: {
-            toolbar: [
-                'imageTextAlternative',
-                'imageStyle:inline',
-                'imageStyle:block',
-                'imageStyle:side'
-            ]
-        },
-        table: {
-            contentToolbar: [
-                'tableColumn',
-                'tableRow',
-                'mergeTableCells'
-            ]
-        },
-            licenseKey: '',
-            
-            
-            
-        } )
-            .catch(error => {
-        console.error(error)
-    });

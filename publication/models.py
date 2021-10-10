@@ -21,9 +21,9 @@ class Publication(models.Model):
         related_name='publications',
         on_delete=models.CASCADE
     )
-    content_creater = models.ManyToManyField(
+    writer = models.ManyToManyField(
         User,
-        related_name='publications_cc'
+        related_name='publications_cc',
     )
     about = models.TextField()
     followers = models.ManyToManyField(

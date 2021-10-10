@@ -6,12 +6,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import read_file
 from blog.views import post_list
-import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('account.urls')),
-    path('', post_list),
+    # path('', post_list),
     path('blog/', include('blog.urls')),
     path('editorjs/', include('django_editorjs_fields.urls')),
     path('my_uploader/', include('image_uploader.urls')),
@@ -20,7 +19,6 @@ urlpatterns = [
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
     path('about/', include('about.urls')),
     path('.well-known/pki-validation/', read_file),
-    path('__debug__/', include(debug_toolbar.urls)),
     path('publication/', include('publication.urls')),
 
 

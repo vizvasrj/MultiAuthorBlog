@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Publication as Pub, PublicationContact
+from .models import Publication as Publication, PublicationContact
 from django.shortcuts import (
     get_object_or_404, render, redirect
 )
@@ -19,10 +19,14 @@ from blog.models import Post
 from .forms import PubForm, ManageForm
 # Create your views here.
 
+
+
 @login_required
 def publication_create_view(request):
     if request.method == 'POST':
         form = PubForm(
+            user=request.user,
+
             data=request.POST, files=request.FILES
         )
         if form.is_valid():
@@ -35,6 +39,8 @@ def publication_create_view(request):
             return redirect(new_item.get_absolute_url())
     else:
         form = PubForm(
+            user=request.user,
+
             data=request.POST, files=request.FILES
         )
     return render(
@@ -45,7 +51,7 @@ def publication_create_view(request):
 
 
 def publication_list_view(request):
-    pub = Pub.objects.all()
+    pub = Publication.objects.all()
     return render(
         request,
         'publication/publication_list.html',{
@@ -55,7 +61,7 @@ def publication_list_view(request):
 
 def publication_detail_view(request, slug):
     pub = get_object_or_404(
-        Pub,
+        Publication,
         slug=slug,
     )
     ratio = pub.image.height/pub.image.width
@@ -98,7 +104,7 @@ def publication_follow(request):
     action = request.POST.get('action')
     if pub_id and action:
         try:
-            pub = Pub.objects.get(id=pub_id)
+            pub = Publication.objects.get(id=pub_id)
             if action == 'follow':
                 PublicationContact.objects.get_or_create(
                     user_from=request.user,
@@ -110,15 +116,15 @@ def publication_follow(request):
                     to_publication=pub
                 ).delete()
             return JsonResponse({'status': 'ok'})
-        except Pub.DoesNotExist:
+        except Publication.DoesNotExist:
             return JsonResponse({'status': 'error'})
     return JsonResponse({'status': 'error'})
 
 
 @login_required
 def editor_as_my_publication(request):
-    pub = Pub.objects.all().filter(
-        content_creater=request.user.id
+    pub = Publication.objects.all().filter(
+        writer=request.user.id
     ).exclude(publisher=request.user.id)
     return render(
         request,
@@ -129,7 +135,7 @@ def editor_as_my_publication(request):
 
 @login_required
 def admin_as_my_publication(request):
-    pub = Pub.objects.all().filter(
+    pub = Publication.objects.all().filter(
         publisher=request.user.id
     )
     return render(
@@ -142,13 +148,13 @@ def admin_as_my_publication(request):
 
 @login_required
 def my_publication_list(request):
-    p_owner = Pub.objects.all().filter(
+    p_owner = Publication.objects.all().filter(
         publisher=request.user.id
     )
-    p_writer = Pub.objects.all().filter(
-        content_creater=request.user.id
+    p_writer = Publication.objects.all().filter(
+        writer=request.user.id
     ).exclude(publisher=request.user.id)
-    p_following = Pub.objects.all().filter(
+    p_following = Publication.objects.all().filter(
         followers=request.user.id
     )
 
@@ -165,14 +171,14 @@ def my_publication_list(request):
     if request.is_ajax():
         return render(
             request,
-            'publication/my/publication_follow_list_ajax.html',{
+            'publication/me/publication_follow_list_ajax.html',{
                 'p_following': p_following
             }
         )
 
     return render(
         request,
-        'publication/my/publications.html', {
+        'publication/me/publications.html', {
             'p_following': p_following,
             'p_owner': p_owner,
             'p_writer': p_writer
@@ -187,10 +193,10 @@ def publication_leave(request):
     pub_id = request.POST.get('id')
     if pub_id:
         try:
-            pub = Pub.objects.get(id=pub_id)
-            pub.content_creater.remove(request.user.id)
+            pub = Publication.objects.get(id=pub_id)
+            pub.writer.remove(request.user.id)
             return JsonResponse({'status': 'ok'})
-        except Pub.DoesNotExist:
+        except Publication.DoesNotExist:
             return JsonResponse({'status': 'error'})
     return JsonResponse({'status': 'error'})
 
@@ -198,12 +204,12 @@ def publication_leave(request):
 @login_required
 def manage_publication(request, pk):
     pub = get_object_or_404(
-        Pub,
+        Publication,
         # slug=slug
         pk = pk
     )
     form = ManageForm(
-        # user=request.user,
+        user=request.user,
         data=request.POST,
         files=request.FILES,
         instance=pub
@@ -218,7 +224,7 @@ def manage_publication(request, pk):
                 return redirect(pub.get_absolute_url())
         else:
             form = ManageForm(
-                # user=request.user,
+                user=request.user,
                 instance=pub
             )
         return render(
@@ -231,3 +237,30 @@ def manage_publication(request, pk):
     else:
         return HttpResponseRedirect(reverse('publication_list'))
     
+
+@login_required
+def me_writer(request):
+    pub = Publication.objects.all().filter(
+        writer=request.user.id
+    )
+    return render(
+        request,
+        'publication/me/writer/writer.html',{
+            'pub': pub
+        }
+    )
+
+
+@login_required
+def me_publisher(request):
+    pub = Publication.objects.all().filter(
+        publisher=request.user.id
+    )
+    return render(
+        request,
+        'publication/me/writer/writer.html',{
+            'pub': pub
+        }
+    )
+
+

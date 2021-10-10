@@ -103,5 +103,5 @@ urlpatterns = [
      path('account/validate_username', views.validate_username, name='validate_username'),
      path('account/validate_email', views.validate_email, name='validate_email'),
 
-     path('my/friends/posts', views.my_relations_posts, name='my_relations_posts'),
+     path('', views.my_relations_posts, name='my_relations_posts'),
 ]

@@ -116,10 +116,9 @@
                             {% if post.status == 'published' %}
                             
                             Published at {{ post.publish }}
-                            {% else %}
+                            {% elif post.author_id == request.user.id %}
                             Its a draft you can publish and edit here <a href="{% url 'edit_post' post.id %}"> click</a>
                             {% endif %}
-                  
                           </p>                        <hr class="hr-line">
                         {% thumbnail post.cover "800x400" crop="100%" as im %}
                         <img class="mb-3" width="100%" src="{{im.url}}" alt="">

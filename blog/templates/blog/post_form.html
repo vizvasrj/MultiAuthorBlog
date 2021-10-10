@@ -1,12 +1,16 @@
-{% extends "my_base.html" %}
+{% extends "blog_base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% load editorjs %}
+{% load compress %}
 
 {% block head %} 
+
+
 <link rel="stylesheet" href="{% static 'css/autoSuggest.css' %}">
 <link rel="stylesheet" href="{% static 'css/select2.css' %}">
 <link rel="stylesheet" href="{% static 'django_select2/django_select2.css' %}">
+
 
 
 <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
@@ -16,6 +20,7 @@
 <script src="{% static 'js/select2.js' %}"></script>
 <script src="{% static 'js/jquery.init.js' %}"></script>
 <script src="{% static 'js/jquery.autoSuggest.js' %}"></script>
+
 
 {% endblock %}
 
@@ -104,7 +109,7 @@
 
                 <div class="d-flex mt-2">
                     <div class="publish mt-2">
-                        <button name="submit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">Publish</button>
+                        <button name="btnsubmit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">Publish</button>
                     </div>
                 </div>  
             </div>

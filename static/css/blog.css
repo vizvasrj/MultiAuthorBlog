@@ -1,3 +1,176 @@
+:root {
+    --bg-navy-background--color: #001f3f!important;
+
+    --bg-blue-background--color: #0074D9!important;
+
+    --bg-aqua-background--color: #7FDBFF!important;
+
+    --bg-teal-background--color: #39CCCC!important;
+
+    --bg-purple-background--color: #B10DC9!important;
+
+    --bg-fuchisa-background--color: #F012BE !important;
+
+    --bg-maroon-background--color: #85144b!important;
+
+    --bg-red-background--color: #FF4136!important;
+
+    --bg-orange-background--color: #FF851B!important;
+
+    --bg-yellow-background--color: #FFDC00!important;
+
+    --bg-olive-background--color: #3D9970!important;
+
+    --bg-green-background--color: #2ECC40!important;
+
+    --bg-lime-background--color: #01FF70!important;
+
+    --bg-navy-lite-background--color: #001f3f10 !important;
+
+    --bg-blue-lite-background--color: #0074D910 !important;
+
+    --bg-aqua-lite-background--color: #7FDBFF10 !important;
+
+    --bg-teal-lite-background--color: #39CCCC10 !important;
+
+    --bg-purple-lite-background--color: #B10DC910 !important;
+
+    --bg-fuchisa-lite-background--color: #F012BE10 !important;
+
+    --bg-maroon-lite-background--color: #85144b10 !important;
+
+    --bg-red-lite-background--color: #FF413610 !important;
+
+    --bg-orange-lite-background--color: #FF851B10 !important;
+
+    --bg-yellow-lite-background--color: #FFDC0010 !important;
+
+    --bg-olive-lite-background--color: #3D997010 !important;
+
+    --bg-green-lite-background--color: #2ECC4010 !important;
+
+    --bg-lime-lite-background--color: #01FF7010 !important;
+
+    --bg-navy-lite-50-background--color: #001f3f50 !important;
+
+    --bg-blue-lite-50-background--color: #0074D950 !important;
+
+    --bg-aqua-lite-50-background--color: #7FDBFF50 !important;
+
+    --bg-teal-lite-50-background--color: #39CCCC50 !important;
+
+    --bg-purple-lite-50-background--color: #B10DC950 !important;
+
+    --bg-fuchisa-lite-50-background--color: #F012BE50 !important;
+
+    --bg-maroon-lite-50-background--color: #85144b50 !important;
+
+    --bg-red-lite-50-background--color: #FF413650 !important;
+
+    --bg-orange-lite-50-background--color: #FF851B50 !important;
+
+    --bg-yellow-lite-50-background--color: #FFDC0050 !important;
+
+    --bg-olive-lite-50-background--color: #3D997050 !important;
+
+    --bg-green-lite-50-background--color: #2ECC4050 !important;
+
+    --bg-lime-lite-50-background--color: #01FF7050 !important;
+
+    --bg-aqua-lite-08-background--color: #175d7998 !important;
+
+    --bg-aqua-lite-08:hover-background--color: #46c2f340 !important;
+
+    --bg-fuchisa-lite-08-background--color: #F012BE80 !important;
+
+    --bg-fuchisa-lite-08:hover-background--color: #db5dbe80 !important;
+
+
+    --tx--navy-color: hsla(210, 100%, 75%, 1.0)!important;
+
+    --tx--blue-color: hsla(208, 100%, 85%, 1.0)!important;
+
+    --tx--aqua-color: hsla(197, 100%, 20%, 1.0)!important;
+
+    --tx--purple-color: hsla(292, 88%, 82%, 1.0)!important;
+
+    --tx--fuchisa-color: hsla(314, 88%, 21%, 1.0)!important;
+
+    --tx--maroon-color: hsla(331, 74%, 70%, 1.0)!important;
+
+    --tx--red-color: hsla(3, 100%, 25%, 1.0)!important;
+
+    --tx--orange-color: hsla(28, 100%, 20%, 1.0)!important;
+
+    --tx--yellow-color: hsla(52, 100%, 20%, 1.0) !important;
+
+    --tx--olive-color: hsla(153, 43%, 15%, 1.0)!important;
+
+    --tx--green-color: hsla(127, 63%, 15%, 1.0)!important;
+
+    --tx--lime-color: hsla(146, 100%, 20%, 1.0)!important;
+
+    --tx--navy-lite-color: hsla(210, 100%, 15%, 0.5)!important;
+
+    --tx--blue-lite-color: hsla(208, 100%, 15%, 0.5)!important;
+
+    --tx--aqua-lite-color: hsla(197, 100%, 20%, 0.5)!important;
+
+    --tx--purple-lite-color: hsla(292, 88%, 12%, 0.5)!important;
+
+    --tx--fuchisa-lite-color: hsla(314, 88%, 21%, 0.5)!important;
+
+    --tx--maroon-lite-color: hsla(331, 74%, 70%, 0.5)!important;
+
+    --tx--red-lite-color: hsla(3, 100%, 25%, 0.5)!important;
+
+    --tx--orange-lite-color: hsla(28, 100%, 20%, 0.5)!important;
+
+    --tx--yellow-lite-color: hsla(52, 100%, 20%, 0.5) !important;
+
+    --tx--olive-lite-color: hsla(153, 43%, 15%, 0.5)!important;
+
+    --tx--green-lite-color: hsla(127, 63%, 15%, 0.5)!important;
+
+    --tx--lime-lite-color: hsla(146, 100%, 20%, 0.5)!important;
+
+    --tx--navy-lite-50-color: hsla(210, 100%, 15%, 0.5)!important;
+
+    --tx--blue-lite-50-color: hsla(208, 100%, 15%, 0.5)!important;
+
+    --tx--aqua-lite-50-color: hsla(197, 100%, 20%, 0.5)!important;
+
+    --tx--purple-lite-50-color: hsla(292, 88%, 12%, 0.5)!important;
+
+    --tx--fuchisa-lite-50-color: hsla(314, 88%, 21%, 0.5)!important;
+
+    --tx--maroon-lite-50-color: hsla(331, 74%, 70%, 0.5)!important;
+
+    --tx--red-lite-50-color: hsla(3, 100%, 25%, 0.5)!important;
+
+    --tx--orange-lite-50-color: hsla(28, 100%, 20%, 0.5)!important;
+
+    --tx--yellow-lite-50-color: hsla(52, 100%, 20%, 0.5) !important;
+
+    --tx--olive-lite-50-color: hsla(153, 43%, 15%, 0.5)!important;
+
+    --tx--green-lite-50-color: hsla(127, 63%, 15%, 0.5)!important;
+
+    --tx--lime-lite-50-color: hsla(146, 100%, 20%, 0.5)!important;
+
+    --tx--olive-lite-nav-color: hsla(153, 43%, 15%, 0.5)!important;
+
+    --tx--green-lite-dropdown-color: hsla(127, 63%, 15%, 0.5)!important;
+
+    --tx--aqua-lite-08-color: hsla(196, 45%, 10%, 0.849)!important;
+
+    --tx--aqua-lite-08:hover-color: hsla(187, 100%, 40%, 0.8)!important;
+
+    --tx--fuchisa-lite-08-color: hsla(314, 88%, 21%, 0.8)!important;
+
+    --tx--fuchisa-lite-08:hover-color: hsla(314, 55%, 6%, 0.8)!important;
+
+}
 .controls {
     border: rgb(48, 48, 48);
     border-style: solid;
@@ -14,8 +187,8 @@
     font-family: 400;
     font-size: 20px;
     width: 100%;
-    border: rgb(77, 77, 77);
-    border-style: none;
+    border: 1px solid rgb(77, 77, 77);
+    border-style: solid;
     background-color: transparent;
 }
 
@@ -37,6 +210,9 @@
 
 .blogcoverimage {
     cursor: pointer;
+    max-height: 300px;
+    max-width: 300px;
+    border: 5px solid transparent;
 }
 
 .uploadcover {
@@ -375,7 +551,7 @@ div.comment-body img {
 .none {
     display: none;
 }
-.modal-content {
+.search-modal-content {
     background-color: transparent !important;
     border: 0 !important;
 }
@@ -463,10 +639,10 @@ div.comment-body img {
     width: auto;
 }
 
-.active {
+/* .active {
     color: black !important;
     background-color: lightcoral !important;
-}
+} */
 
 .as-list{
     width: 100% !important;
@@ -555,12 +731,115 @@ div .post__body > p.post-body + p {
 	background-color: #2d3a4a;
 }
 
-.bootstrap-tagsinput {
+.transparent {
     background: transparent;
-    width: 100%;
+}
+.zero-border {
+    border: 0;
+}
+
+.eye {
+    font-size: 22px;
+}
+
+.eye:hover {
+    font-size: 22px;
+    color: inherit;
+}
+.pub__follow {
+    background-color: var(--bg-navy-background--color);
+    color: var(--tx--navy-color);
+    max-height: 42px;
+}
+.pub__follow:hover {
+    background-color: var(--bg-navy-lite-50-background--color);
+    color: var(--tx--olive-color);
+}
+
+.pub__following {
+    background-color: var(--bg-green-background--color);
+    color: var(--tx--fuchisa-color);
+}
+.pub__following:hover {
+    background-color: var(--bg-green-lite-50-background--color);
+    color: var(--tx--fuchisa-color);
+}
+.post_author_user {
+    /* color: var(--bg); */
+    text-decoration: none;
 
 }
-.tag .label .label-info {
-    color: teal;
-    background: #aaaaaa;
+.number_of_follower {
+    color: var(--bg-olive-background--color);
+}
+
+.publication_tagline {
+    text-decoration: none;
+    color: inherit;
+    font-family: Work Sans;
+    hyphens: auto;
+    word-break: break-word;
+}
+@media (max-width: 576px) {
+    .publication_tagline {
+        text-decoration: none;
+        color: inherit;
+        font-family: Work Sans;
+        hyphens: auto;
+        word-break: break-word;
+        display: none;
+    }
+}
+
+.publication_tagline:hover {
+    opacity: 0.9;
+    color: inherit;
+}
+.title{
+    font-size: 20px;
+    text-decoration: none;
+    color: inherit;
+    font-family: Roboto;
+}
+.title:hover{
+    opacity: 0.9;
+    color: inherit;
+}
+.user {
+    font-size: 17px;
+    text-decoration: none;
+    color: inherit;
+    font-family: Roboto;
+
+}
+.user:hover {
+    text-decoration: none;
+    color: inherit;
+
+}
+.padd-0 {
+    padding: 0;
+}
+
+.robo {
+    font-family: Roboto mono, Roboto;
+}
+#undo {
+    position: fixed;
+    bottom: 73px;
+    left: 24px;
+    display: none;
+}
+
+.inline {
+    display: inline-block;
+}
+.navy-text {
+    color: var(--bg-navy-background--color);
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+}
+.td-n {
+    text-decoration: none;
 }

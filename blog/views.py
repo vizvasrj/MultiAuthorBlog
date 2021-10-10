@@ -1,3 +1,6 @@
+from easy_thumbnails.files import get_thumbnailer
+from django.utils.timezone import localtime
+from django.utils import timezone, dateformat
 import re
 from django.http.response import(
     HttpResponse, HttpResponseRedirect, JsonResponse
@@ -22,18 +25,18 @@ from django.contrib.postgres.search import(
 )
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # local
-from .models import Post, Category, Comment
+from .models import Post, Category, Comment, SharedOrOtherEdit
 from publication.models import Publication as Pub, PublicationContact
 from .forms import (
-    PostForm, CommentForm, SearchForm,
-    PubForm
+    OtherEditForm, PostForm, CommentForm, SearchForm,
+    PubForm, SharedOrOtherEdit
 )
 # 3rd party
 from taggit.models import Tag
 import redis
-from django.conf import settings
 
 # Connect to redis
 r = redis.Redis(
@@ -42,31 +45,32 @@ r = redis.Redis(
     db=settings.REDIS_DB
 )
 
-
+# delta time check on time given by user
+def delta_time(time):
+    delta = time + timezone.timedelta(minutes=1)
+    if delta >= timezone.localtime(timezone.now()):
+        return time
+    else:
+        return timezone.localtime(timezone.now())
 
 @login_required
 def create_post(request):
     user = request.user
     if request.method == 'POST':
-        form = PostForm(user=request.user , data=request.POST, files=request.FILES)
+        form = PostForm(user=request.user, data=request.POST,
+                        files=request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
             new_item = cd['tags']
             new_item = form.save(commit=False)
             new_item.author_id = request.user.id
-            # eltetime ok iwill set now
-            deltatime = new_item.publish + timezone.timedelta(minutes=1)
-            if deltatime >= timezone.localtime(timezone.now()):
-                new_item.save()
-                form.save_m2m()
-                return redirect(new_item.get_absolute_url())
-            else:
-                new_item.publish = timezone.localtime(timezone.now())
-                new_item.save()
-                form.save_m2m()
-                return redirect(new_item.get_absolute_url())
+            new_item.publish = delta_time(time=new_item.publish)
+            new_item.save()
+            form.save_m2m()
+            return redirect(new_item.get_absolute_url())
     else:
-        form = PostForm(user=request.user , data=request.POST, files=request.FILES)
+        form = PostForm(user=request.user, data=request.POST,
+                        files=request.FILES)
 
     return render(
         request,
@@ -79,16 +83,16 @@ def create_post(request):
 
 def post_list(request, tag_slug=None):
     # posts = Post.published.all()
-    object_list = Post.aupm.all()
+    posts = Post.aupm.all()
     tag = None
     if tag_slug:
         tag = get_object_or_404(
             Tag, slug=tag_slug
         )
-        object_list = object_list.filter(
+        posts = posts.filter(
             tags__in=[tag]
         )
-    paginator = Paginator(object_list, 10)
+    paginator = Paginator(posts, 10)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -116,10 +120,11 @@ def post_list(request, tag_slug=None):
     )
 
 
-def post_detail(request, post):
+def post_detail(request, slug):
+    
     post = get_object_or_404(
         Post,
-        slug=post,
+        slug=slug,
     )
     cn_p = post.chinese_translated_post.last()
     hi_p = post.hindi_translated_post.last()
@@ -330,15 +335,10 @@ def bookmark(request):
             pass
     return JsonResponse({'status': 'ok'})
 
-from django.utils.timezone import localtime
-from django.utils import timezone, dateformat
-
 
 lt = localtime(timezone.now())
-# this will be usedn in publish value 
+# this will be usedn in publish value
 fomated_time = dateformat.format(lt, 'Y-m-d H:i')
-
-
 
 
 @login_required
@@ -362,24 +362,24 @@ def update_data(request, pk):
     main_author_id = post.author.id
     shared_user = []
     for s_user in Post.objects.get(id=pk).other_author.all():
-        shared_user.append(s_user.id)
-    form = PostForm(user=request.user , data=request.POST, files=request.FILES, instance=post)
-    if request.user.id == post.author_id:
+        shared_user.append(s_user.username)
+    form = PostForm(user=request.user, data=request.POST,
+                    files=request.FILES, instance=post)
+    if (request.user.id == post.author_id or request.user.username in shared_user):
         if request.method == 'POST':
             if form.is_valid():
                 post = form.save(commit=False)
-                post.author_id = request.user.id
-                post.last_editeduser_id = request.user.id
-                deltatime = post.publish + timezone.timedelta(minutes=1)
-                if deltatime >= timezone.localtime(timezone.now()):
-                    post.save()
-                    form.save_m2m()
-                    return redirect(post.get_absolute_url())
+                if request.user.id == post.author_id:
+                    post.status = 'publish'
+                    post.author_id = main_author_id
                 else:
-                    post.publish = timezone.localtime(timezone.now())
-                    post.save()
-                    form.save_m2m()
-                    return redirect(post.get_absolute_url())
+                    post.author_id = main_author_id
+                    post.status = 'draft'
+                post.last_editeduser_id = request.user.id
+                post.publish = delta_time(time=post.publish)
+                post.save()
+                form.save_m2m()
+                return redirect(post.get_absolute_url())
         else:
             form = PostForm(user=request.user, instance=post)
         return render(
@@ -388,43 +388,13 @@ def update_data(request, pk):
             {
                 'form': form,
                 'cover_image': cover_image,
-                'status': 'Publish',
+                # 'status': 'Publish',
                 'tags': tags,
                 'fomated_time': fomated_time,
             }
         )
-    elif request.user.id in shared_user:
-        if request.method == 'POST':
-            if form.is_valid():
-                post = form.save(commit=False)
-                post.author_id = main_author_id
-                post.last_editeduser_id = request.user.id
-                post.status = 'draft'
-                deltatime = post.publish + timezone.timedelta(minutes=1)
-                if deltatime >= timezone.localtime(timezone.now()):
-                    post.save()
-                    form.save_m2m()
-                    return redirect(post.get_absolute_url())
-                else:
-                    post.publish = timezone.localtime(timezone.now())
-                    post.save()
-                    form.save_m2m()
-                    return redirect(post.get_absolute_url())
-        else:
-            form = PostForm(user=request.user, instance=post)
-        return render(
-            request,
-            'blog/post_update.html',
-            {
-                'form': form,
-                'cover_image': cover_image,
-                'status': 'Save',
-                'tags': tags,
-                'fomated_time': fomated_time
-            }
-        )
     else:
-        return HttpResponseRedirect(reverse('404'))
+        return HttpResponse('Your are not authorized to edit :)')
 
 
 @login_required
@@ -489,7 +459,6 @@ def tag_detail(request, tag):
         slug=tag,
     )
 
-from easy_thumbnails.files import get_thumbnailer
 
 @ajax_required
 @require_POST
@@ -509,7 +478,7 @@ def post_ajax_search(request):
                 search_vector, search_query
             )
         ).filter(search=search_query).filter(
-            publish__lte=timezone.now()    
+            publish__lte=timezone.now()
         ).order_by('-rank')
         qs = results
         print(qs)
@@ -531,7 +500,6 @@ def post_ajax_search(request):
             res = "No posts found ..."
         return JsonResponse({'data': res})
     return JsonResponse({})
-
 
 
 # from translates.hindi_translate.models import HindiTranslatedPost as hi_p
@@ -593,3 +561,22 @@ def translate_listview(request, post):
         }
     )
 
+
+# def shared_or_others(request, pk):
+#     post = get_object_or_404(
+#         Post,
+#         pk=pk
+#     )
+#     form = OtherEditForm(
+#         data=request.POST
+#     )
+#     if request.method == 'POST':
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.post_id = pk
+#             post.editor_id = request.user.id
+#             post.save()
+#             form.save_m2m()
+#             return redirect(post.get_absolute_url())
+#         else:
+#             form = OtherEditForm()

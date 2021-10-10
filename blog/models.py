@@ -102,86 +102,6 @@ class Category(models.Model):
         ordering = ('-created',)
 
 
-
-class Publication(models.Model):
-    name = models.CharField(max_length=50)
-    image = models.ImageField(
-        upload_to='publication',
-        null=True,
-    )
-    slug = AutoSlugField(populate_from='name')
-    tags = TaggableManager()
-    admin = models.ForeignKey(
-        User,
-        related_name='publication_admin',
-        on_delete=models.CASCADE
-    )
-    editor = models.ManyToManyField(
-        User,
-        related_name='publication_editors'
-    )
-    about = models.TextField()
-    followers = models.ManyToManyField(
-        User,
-        through='PublicationContact',
-        related_name='publication_following',
-        symmetrical=False
-    )
-    created = models.DateTimeField(auto_now_add=True)
-    update = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ('-created',)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse("publication_detail", kwargs={"slug": self.slug})
-    
-
-# @receiver(m2m_changed, sender=Publication.editor.through)
-# def user_liked_changed(instance, action, *args, **kwargs):
-#     # print(action, "action")
-#     # print(kwargs, "kwargs")
-#     if action == 'post_add':
-#         print(action)
-#         publication_id = instance.id
-#         print(publication_id)
-#         pub = Publication.objects.get(id=publication_id)
-#         print(pub)
-#         pub.editor.add(pub.admin)
-
-
-
-
-
-
-class PublicationContact(models.Model):
-    user_from = models.ForeignKey(
-        User,
-        related_name='rel_from_user',
-        on_delete=models.CASCADE
-    )
-    to_publication = models.ForeignKey(
-        Publication,
-        related_name='rel_to_publication',
-        on_delete=models.CASCADE
-    )
-    created = models.DateTimeField(
-        auto_now_add=True,
-        db_index=True
-    )
-
-    class Meta:
-        ordering = ('-created',)
-
-    def __str__(self):
-        return f'{self.user_from} follows {self.to_publication}'
-
-
-
-
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -238,7 +158,7 @@ class Post(models.Model):
     aupm = ActiveUserPublishedManager()
     drafted = DraftedManager()
     trashed = TrashedManager()
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
     users_like = models.ManyToManyField(
         User,
         related_name='posts_liked',
@@ -361,42 +281,42 @@ def user_liked_changed(reverse, instance, action, pk_set, model, *args, **kwargs
 
 
 
-class PostBackup(models.Model):
-    post = models.ForeignKey(
-        Post,
-        on_delete=models.CASCADE,
-        related_name='post_backup'
-    )
-    author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='author_post_backup'
-    )
-    title = models.CharField(
-        max_length=250
-    )
-    body = models.TextField()
-    created = models.DateTimeField(auto_now=True)
+# class PostBackup(models.Model):
+#     post = models.ForeignKey(
+#         Post,
+#         on_delete=models.CASCADE,
+#         related_name='post_backup'
+#     )
+#     author = models.ForeignKey(
+#         User,
+#         on_delete=models.CASCADE,
+#         related_name='author_post_backup'
+#     )
+#     title = models.CharField(
+#         max_length=250
+#     )
+#     body = models.TextField()
+#     created = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.title
+#     def __str__(self):
+#         return self.title
 
     
 
-@receiver(post_save, sender=Post)
-def post_save_receiver(sender, instance, created, *args, **kwargs):
+# @receiver(post_save, sender=Post)
+# def post_save_receiver(sender, instance, created, *args, **kwargs):
 
-    if created:
-        print(instance.id, " Created")
+#     if created:
+#         print(instance.id, " Created")
     
-    else:
-        print(instance.id, " was just saved and have a backup")
-        PostBackup.objects.create(
-            post_id=instance.id,
-            author_id=instance.author.id,
-            title=instance.title,
-            body=instance.body
-        )
+#     else:
+#         print(instance.id, " was just saved and have a backup")
+#         PostBackup.objects.create(
+#             post_id=instance.id,
+#             author_id=instance.author.id,
+#             title=instance.title,
+#             body=instance.body
+#         )
 
 # from django.core.exceptions import ObjectDoesNotExist
 
@@ -414,4 +334,26 @@ def post_save_receiver(sender, instance, created, *args, **kwargs):
 #     except ObjectDoesNotExist:
 #         Profile.objects.create(user=instance)
 #         print("objects not exists yet wait i am creating", instance.title)
+
+
+class SharedOrOtherEdit(models.Model):
+    post = models.ForeignKey(
+        Post,
+        related_name='others_edited_posts',
+        on_delete=models.CASCADE
+    )
+    title = models.CharField(max_length=150)
+    editor = models.ForeignKey(
+        User,
+        related_name='share_editor',
+        on_delete=models.CASCADE
+    )
+    body = models.TextField()
+    tags = TaggableManager(blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    edit_summary = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.title
 

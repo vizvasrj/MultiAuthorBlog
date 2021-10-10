@@ -9,16 +9,16 @@ from django.core.signals import request_finished
 
 from unidecode import unidecode
 
-from .models import Post, Publication
-from .tasks import translate_post,add_admin_to_publication
+from .models import Post
+from .tasks import translate_post
 # the translate function importing
 
 
-@receiver(post_save, sender=Publication)
-def post_save_receiver(sender, created, instance, *args, **kwargs):
+# @receiver(post_save, sender=Publication)
+# def post_save_receiver(sender, created, instance, *args, **kwargs):
 
-    if created:
-        add_admin_to_publication.delay(pk=instance.id)
+#     if created:
+#         add_admin_to_publication.delay(pk=instance.id)
 
 
 

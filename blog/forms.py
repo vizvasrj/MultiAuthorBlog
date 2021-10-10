@@ -17,10 +17,10 @@ from django.utils import timezone, dateformat
 from django.utils.timezone import localtime
 
 from django.contrib.auth.models import User
+from django.db.models import Q
 
-
-from .models import Publication
 from publication.models import Publication as Pub
+from blog.models import SharedOrOtherEdit
 
 lt = localtime(timezone.now())
 
@@ -60,7 +60,10 @@ class PostForm(forms.ModelForm):
     )
     status = forms.ChoiceField(choices=STATUS_CHOICES, widget=forms.Select(attrs={'class': 'myfieldclass bg-red-lite'}))
     publication = forms.ModelChoiceField(
-        queryset=None, to_field_name="id", empty_label="No Publication",
+        queryset=None, 
+        required=False,
+        to_field_name="id", 
+        empty_label="No Publication",
         widget=forms.Select(
                 attrs={
                     'class': 'myfieldclass bg-red-lite',
@@ -75,7 +78,7 @@ class PostForm(forms.ModelForm):
     # )
     def __init__(self, user, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['publication'].queryset = Pub.objects.all().filter(content_creater=user.id)
+        self.fields['publication'].queryset = Pub.objects.all().filter( Q(writer=user.id) | Q(publisher=user.id))
         # if user != None:
         #     self.fields['other_author'].queryset = User.objects.exclude(id=user.id)
 
@@ -180,7 +183,7 @@ class PubForm(forms.ModelForm):
     
     class Meta:
         model = Pub
-        fields = ('name', 'tags', 'image', 'content_creater', 'about')
+        fields = ('name', 'tags', 'image', 'writer', 'about')
         widgets = {
             'name': forms.TextInput(
                 attrs={'class': 'myfieldclass border padding-15 border-bottom', 'autocomplete': 'off',
@@ -214,3 +217,10 @@ class PubForm(forms.ModelForm):
                 }
             ),
         }
+
+class OtherEditForm(forms.ModelForm):
+
+    class Meta:
+        model = SharedOrOtherEdit
+        fields = ('title', 'body', 'edit_summary', 'tags')
+        

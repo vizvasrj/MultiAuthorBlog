@@ -20,6 +20,9 @@ from django.contrib.auth.hashers import check_password
 from django.utils.dateparse import parse_datetime
 from django.utils.timezone import make_aware
 from django.utils import timezone
+from django.views.decorators.http import require_POST
+from common.decorators import ajax_required
+from django.db.models import Q
 
 # 3rd party
 
@@ -29,12 +32,8 @@ from .forms import (
     LoginForm, UserDeleteForm, UserRegistrationForm,
     UserEditForm, ProfileEditForm
 )
-from django.views.decorators.http import require_POST
-from common.decorators import ajax_required
-
-
-
 from blog.models import Post
+from publication.models import Publication
 
 
 
@@ -658,22 +657,55 @@ def validate_email(request):
     return JsonResponse(response)
 
 
-from django.db.models import Q
 
 def my_relations_posts(request):
+    if request.user.is_authenticated:
+        user = User.objects.get(id=request.user.id)
+        names = []
+        for f in user.following.all():
+            names.append(f.id)
 
-    user = User.objects.get(id=request.user.id)
-    names = []
-    for f in user.following.all():
-        names.append(f.id)
+        q_objects = Q()
+        for u in names:
+            q_objects |= Q(author__user=u)
+        
+        # For Publication
+        all_pub = user.p_following.all()
+        if all_pub:
+            publications = []
+            for p in all_pub:
+                publications.append(p.id)
+        
+            p_objects = Q()
+            for x in publications:
+                p_objects |= Q(publication=x)
+            posts = Post.aupm.filter(p_objects|q_objects).order_by('-publish')
+        else:
+            posts = Post.aupm.all().order_by('-publish')
 
-    q_objects = Q()
-    for u in names:
-        q_objects |= Q(author__user=u)
-    
-    posts = Post.aupm.filter(q_objects).order_by('-publish')
-    return render(
-        request,
-        'account/me/fallowing/post.html',
-        {'posts': posts}
-    )
+
+        paginator = Paginator(posts, 10)
+        page = request.GET.get('page')
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            if request.is_ajax():
+                return HttpResponse('')
+            posts = paginator.page(paginator.num_pages)
+        if request.is_ajax():
+            return render(
+                request,
+                'account/me/fallowing/ajax_list.html',{
+                    'posts': posts
+                }
+            )
+        return render(
+            request,
+            'account/me/fallowing/post.html', {
+                'posts': posts
+            }
+        )
+    else:
+        return redirect(reverse('post_list'))

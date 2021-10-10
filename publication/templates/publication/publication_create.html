@@ -48,8 +48,8 @@ New Publication
 {% block content %} 
             <div class="container mb-5">
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
                         <h3 class="title">Create Publication</h3>
                         <form method="POST" class="post-form" enctype="multipart/form-data" id="formid">
                                     <div class="">
@@ -87,7 +87,7 @@ New Publication
                                         <div class="tags">
                                             <label class="mt-2 tag_label d-flex justify-content-center" for="tags" class="form-label">Share to edit with others</label>
                                             <div class="">
-                                                {{ form.content_creater }}
+                                                {{ form.writer }}
                                             </div>
                                         </div>
                                         <div class="d-flex mt-2">
@@ -98,14 +98,13 @@ New Publication
                                         </div>
                         </form>
                     </div>
-                    <div class="col-md-3"></div>
+                    <div class="col-lg-3"></div>
                 </div>
             </div>
 {% endblock %}
 
 
-{% block domready2 %} 
-console.log("Hi");
+{% block domready2 %}
 $(function () {
     $(":file").change(function () {
         if (this.files && this.files[0]) {

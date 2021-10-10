@@ -1,0 +1,27 @@
+{% extends "blog_base.html" %}
+{% load  %}
+{% load thumbnail %}
+
+{% block title %} Me Writers {% endblock %}
+
+{% block content %} 
+<div class="container">
+    <div class="ro">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h1> {{ request.resolver_match.url_name }} </h1>
+
+            <div id="publication-list">
+                {% include "publication/me/writer/writer_ajax.html" %}
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %} 
+<script src="{% static 'js/publication_leave.js' %}"></script>
+
+{% endblock %}
+

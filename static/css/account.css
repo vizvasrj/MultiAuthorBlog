@@ -57,17 +57,18 @@
     font-family: 'Varela Round', sans-serif;
     font-family: 400;
     font-size: 20px;
-    color: rgb(77, 77, 77);
+    color: inherit;
     border: rgb(77, 77, 77);
     border-style: solid;
     background-color: inherit;
 }
 
 .labeltext {
-    font-family: 'Questrial', sans-serif;
-    font-weight: 400;
+    /* font-family: 'Questrial', sans-serif; */
+    font-weight: 500;
     background-color: inherit;
-    color: #2d3a4a;
+    color: inherit;
+    
     font-size: 20px;
 }
 

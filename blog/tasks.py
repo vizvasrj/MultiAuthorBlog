@@ -16,7 +16,6 @@ from translates.vietnamese_translate.tasks import vietnamese_translate
 from translates.filipino_translate.tasks import filipino_translate
 from translates.italian_translate.tasks import italian_translate
 
-from blog.models import Publication
 
 
 from celery import shared_task
@@ -42,10 +41,10 @@ def translate_post(pk):
     italian_translate(pk)
 
 
-@shared_task
-def add_admin_to_publication(pk):
-    import time
-    time.sleep(2)
-    pub = Publication.objects.get(id=pk)
-    pub.editor.add(pub.admin)
-    return True
+# @shared_task
+# def add_admin_to_publication(pk):
+#     import time
+#     time.sleep(2)
+#     pub = Publication.objects.get(id=pk)
+#     pub.editor.add(pub.admin)
+#     return True

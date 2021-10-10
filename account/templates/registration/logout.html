@@ -1,4 +1,5 @@
 {% extends "blog_base.html" %}
+{% load static %}
 {% block title %}
   Logged out
 {% endblock title %}
@@ -23,7 +24,6 @@
 {% endblock %}
 
 {% block domready %} 
-var height = window.innerHeight - document.querySelector('body').offsetHeight;
-var margin = "margin-top:"+height+"px";
-$("footer").attr("style", margin);
+<script src="{% static 'js/footer_sticky.js' %}"></script>
+
 {% endblock %}

@@ -62,7 +62,7 @@
 
       </p>
     <p class="detail_readtime">{{ post.body|readtime }}</p>
-      {% thumbnail post.cover "400x200" crop="100%" as im %}
+      {% thumbnail post.cover "883x341" crop="100%" as im %}
 
       <a href="{{post.get_absolute_url}}"><img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="" /></a>
       <p class="mt-1 post__list__body">

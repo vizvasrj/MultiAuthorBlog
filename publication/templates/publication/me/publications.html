@@ -6,14 +6,14 @@
 
 {% block content %} 
 <div class="container">
-    <button id="undo" class="btn bg-inkwell robo">
-        Undo
-    </button>
+
     <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
+            <h3><a class="" style="text-decoration: none;" href="{% url 'publication_create' %}">Create Publication</a></h3>
+
             {% if p_owner %}
-                 <h1>owner</h1>
+                 <h1>me_publisher</h1>
                  {% for publication in p_owner %}
                 {% thumbnail publication.image "100x100" crop="100" as img %}
                 <div class="d-flex flex-row p-2">
@@ -105,7 +105,7 @@
             {% endif %}
             
             {% if p_following %}
-                <h1> Following </h1>
+                <h1> me_following </h1>
                     <div class="pub-follow-list">
                         {% include "publication/my/publication_follow_list_ajax.html" %}
                     </div>
@@ -121,6 +121,7 @@
 {% block script %} 
 
 <script src="{% static 'js/publication_leave.js' %}"></script>
+<script src="{% static 'js/footer_sticky.js' %}"></script>
 
 {% endblock %}
 
