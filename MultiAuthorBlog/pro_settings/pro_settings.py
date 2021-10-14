@@ -27,9 +27,9 @@ else:
     SECRET_KEY = 'opk#ocn6$638cwa&&w(_v^&$e-%_8f2=^ph+ok!+9v1bb64fu^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.4', '*', 'ello.com', '.mysite.com', 'www.mysite.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.4', '*', 'ello.com']
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -65,8 +65,7 @@ INSTALLED_APPS = [
     'actions',
     'parler',
     'django_user_agents',
-    'django_hosts',
-    'django_social_share',
+    "compressor",
 
     # local
     'blog',
@@ -95,7 +94,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -104,8 +102,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
-    # 'account.middleware.subdomain_course_middleware',
-    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
 ROOT_URLCONF = 'MultiAuthorBlog.urls'
@@ -113,7 +109,7 @@ ROOT_URLCONF = 'MultiAuthorBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -373,16 +369,3 @@ STATICFILES_FINDERS = (
 )
 COMPRESS_ENABLED = True
 
-# DEBUG = False
-# SECURE_HSTS_SECONDS = 60
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_SSL_REDIRECT = False
-# SECURE_HSTS_PRELOAD = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-
-
-ROOT_HOSTCONF = 'MultiAuthorBlog.hosts'
-
-
-DEFAULT_HOST = 'www'

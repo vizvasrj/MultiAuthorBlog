@@ -14,8 +14,6 @@ from . import views
 urlpatterns = [
     path('create/', create_post, name='post_new'),
     path('list/', post_list, name='post_list'),
-    path('<slug:slug>/',
-         post_detail, name='post_detail'),
     path('tag/<slug:tag_slug>/', post_list, 
         name='post_list_by_tag'),
     path('post/search/', post_search, name='post_search'),

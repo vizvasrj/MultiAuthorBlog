@@ -132,6 +132,7 @@ class Post(models.Model):
     )
     slug = AutoSlugField(
         populate_from='title',
+        max_length=256,
         # slugify=custome_slugify,
     )
     author = models.ForeignKey(
@@ -188,10 +189,8 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse(
-            'post_detail',
-            args = [self.slug]
-        )
+        return reverse("post_detail", kwargs={"slug": self.slug, "author": self.author })
+    
 
 # pre_save #
 

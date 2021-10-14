@@ -2,11 +2,11 @@
 {% load static %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
+{% load social_share %}
 {% load blog_tags %}
 {% load editorjs %}
 
 {% block title %} {{ post.title }} {% endblock %}
-
 {% block style %}
 {% endblock %}
 
@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-2">
-
+            {% post_to_facebook post.get_absolute_url post.title "post.body" %}
         </div>
         <div class="col-lg-8">
             <div class="container">
@@ -239,7 +239,7 @@
                             <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">Submit</button>
                         </form>
                         {% else %}
-                        <form action="/login/?next={% url 'post_detail' post.slug %}#comment" method="post">
+                        <form action="/login/?next={{ post.get_absolute_url }}#comment" method="post">
                             <div class="cover mb-2 ">
                                 <label class="mt-2 labeltext" for="body" class="form-label">Hit a comment</label>
                                 <div class="">

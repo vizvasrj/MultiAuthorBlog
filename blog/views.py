@@ -1,3 +1,4 @@
+from django.contrib import auth
 from easy_thumbnails.files import get_thumbnailer
 from django.utils.timezone import localtime
 from django.utils import timezone, dateformat
@@ -120,12 +121,13 @@ def post_list(request, tag_slug=None):
     )
 
 
-def post_detail(request, slug):
+def post_detail(request, slug, author):
     
     post = get_object_or_404(
         Post,
         slug=slug,
     )
+    
     cn_p = post.chinese_translated_post.last()
     hi_p = post.hindi_translated_post.last()
     ar_p = post.arabic_translated_post.last()

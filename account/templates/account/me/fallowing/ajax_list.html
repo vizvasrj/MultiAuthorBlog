@@ -1,5 +1,6 @@
 {% load blog_tags %}
 {% load thumbnail %}
+{% load blog_tags %}
 {% for post in posts %}
 {% thumbnail post.author.photo 30x30 crop as avatar %}
 
@@ -89,10 +90,10 @@
 </a>
 {% thumbnail post.cover 735x300 crop as cover %}
 
-<a href="">
+<a href="{{ post.get_absolute_url }}">
     <img width="100%" src="{{ cover.url }}" alt="">
 </a>
-<p class="word-break">{{post.body|truncatewords_html:50}}</p>
+<p class="word-break">{{post.body|paragraph|truncatechars_html:500}}</p>
 <p>{{ post.total_likes }} like{{ post.total_likes|pluralize }}</p>
 <hr>
 

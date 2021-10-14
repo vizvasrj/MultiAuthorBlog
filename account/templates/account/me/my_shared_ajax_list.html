@@ -45,7 +45,7 @@
 
         <div class=" mb-2">
             <div class="mt-2">
-                <a class="post_title" href="{% url 'post_detail' post.slug %}">
+                <a class="post_title" href="{{ post.get_absolute_url }}">
                     <h3 class="post_title mt-1">{{post.title|capfirst}}</h3>
                 </a>
             </div>

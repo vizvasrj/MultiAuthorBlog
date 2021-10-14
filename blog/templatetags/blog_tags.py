@@ -155,12 +155,19 @@ def soups(html):
             lists.append(str(x).replace('<',"&lt;").replace('>',"&gt;"))
         if x.name == None:
             pass
-        if x.name != 'script' or x.name != 'figure':
-            # print(x)
-            lists.append(str(x))
+        if x.name != 'script':
+            if 'oembed url=' in str(x):
+                # lists.append(str(x))
+                pass
+            else:
+                lists.append(str(x))
         if x.name == 'figure':
-            from urllib.parse import urlparse, parse_qs
-            url = str(x).split('"')[3]
+
+            from urllib.parse import urlparse
+            if 'https://' in str(x):
+                url = str(x).split('"')[3]
+            else:
+                url = str(x).split('"')[2]
             query = urlparse(url)
             try:
                 if 'youtu' or 'youtube' in query.hostname:
@@ -193,13 +200,16 @@ def soups(html):
                     pass
             except:
                 pass
+
     joined_html = ''.join(lists)
+
     # print(joined_html)
     return joined_html
 
 @register.filter(is_safe=True, name='xssprotect')
 def xssprotect(html):
     htmlone = soups(html)
+    # print(htmlone)
     return mark_safe(htmlone)
 
 
@@ -225,3 +235,21 @@ def div( value, arg ):
         if arg: return value / arg
     except: pass
     return ''
+
+
+def paragraph_soup(html):
+    # This will extract all and only  paragraphs from html
+    soup = BeautifulSoup(html, 'html.parser')
+    paragraphs = []
+    for x in soup:
+        if x.name == 'p':
+            # encoded_html = (str(x).replace('<','&lt;').replace('>','&gt;'))
+            paragraphs.append(str(x))
+    return ''.join(paragraphs)
+
+
+
+@register.filter(is_safe=True, name='paragraph')
+def paragraph(html):
+    html = paragraph_soup(html)
+    return mark_safe(html)

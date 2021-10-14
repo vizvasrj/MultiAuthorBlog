@@ -13,23 +13,23 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 from pathlib import Path
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(
+            os.path.join(__file__, os.pardir)
+        )
+    )
+)
 
-filepath = Path("MultiAuthorBlog/secret.py")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
 
-if filepath.is_file():
-    from .secret import SECRET_KEY as key
-    SECRET_KEY = key
-else:
-    SECRET_KEY = 'opk#ocn6$638cwa&&w(_v^&$e-%_8f2=^ph+ok!+9v1bb64fu^'
+SECRET_KEY = 'opk#ocn6$638cwa&&w(_v^&$e-%_8f2=^ph+ok!+9v1bb64fu^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.4', '*', 'ello.com', '.mysite.com', 'www.mysite.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.4', '*', 'ello.com']
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -65,8 +65,7 @@ INSTALLED_APPS = [
     'actions',
     'parler',
     'django_user_agents',
-    'django_hosts',
-    'django_social_share',
+    "compressor",
 
     # local
     'blog',
@@ -95,7 +94,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -104,8 +102,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
-    # 'account.middleware.subdomain_course_middleware',
-    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
 ROOT_URLCONF = 'MultiAuthorBlog.urls'
@@ -113,7 +109,7 @@ ROOT_URLCONF = 'MultiAuthorBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -138,22 +134,6 @@ WSGI_APPLICATION = 'MultiAuthorBlog.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-
-if filepath.is_file():
-    from .secret import DATABASES
-    DATABASES = DATABASES
-
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vizvasrj0004',
-        'USER': 'root',
-        'PASSWORD': 'icandoit10!',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
 
 
 
@@ -295,22 +275,6 @@ SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# mail
-# if filepath.is_file():
-#     from .secret import (EMAIL_HOST, 
-#     EMAIL_HOST_PASSWORD, EMAIL_HOST_USER,
-#     EMAIL_PORT, EMAIL_USE_TLS,
-#     DEFAULT_FROM_EMAIL
-#     )
-#     EMAIL_HOST = EMAIL_HOST
-#     EMAIL_HOST_USER = EMAIL_HOST_USER
-#     EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-#     EMAIL_PORT = EMAIL_PORT
-#     EMAIL_USE_TLS = EMAIL_USE_TLS
-#     DEFAULT_FROM_EMAIL = DEFAULT_FROM_EMAIL
-# else:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 from django.utils.translation import gettext_lazy as _
 
@@ -373,16 +337,3 @@ STATICFILES_FINDERS = (
 )
 COMPRESS_ENABLED = True
 
-# DEBUG = False
-# SECURE_HSTS_SECONDS = 60
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_SSL_REDIRECT = False
-# SECURE_HSTS_PRELOAD = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-
-
-ROOT_HOSTCONF = 'MultiAuthorBlog.hosts'
-
-
-DEFAULT_HOST = 'www'

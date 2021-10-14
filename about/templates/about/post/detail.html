@@ -106,7 +106,7 @@
                     <button type="submit" class="comment__button">Submit</button>
                 </form>
                 {% else %}
-                <form action="/login/?next={% url 'post_detail' post.slug %}#comment" method="post">
+                <form action="/login/?next={{ post.get_absolute_url }}#comment" method="post">
                     <div class="cover mb-2 ">
                         <label class="mt-2 labeltext" for="body" class="form-label">Hit a comment</label>
                         <div class="">

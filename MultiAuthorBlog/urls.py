@@ -5,7 +5,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import read_file
-from blog.views import post_list
+from blog.views import post_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -20,6 +20,8 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('.well-known/pki-validation/', read_file),
     path('publication/', include('publication.urls')),
+    path('<str:author>/<slug:slug>/',
+         post_detail, name='post_detail'),
 
 
 ]

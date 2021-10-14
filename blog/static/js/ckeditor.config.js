@@ -39,7 +39,8 @@ ClassicEditor
                 'imageStyle:inline',
                 'imageStyle:block',
                 'imageStyle:side'
-            ]
+            ],
+            imageName: 'pic'
         },
         table: {
             contentToolbar: [
@@ -48,7 +49,10 @@ ClassicEditor
                 'mergeTableCells'
             ]
         },
-            licenseKey: '',
+        mediaEmbed: {
+            elementName: 'o-embed'
+        },
+        licenseKey: '',
             
             
             
