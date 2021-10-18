@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Post, Comment
+from taggit.models import Tag
+from .models import Post, Comment, MyCustomTag
 
 # Register your models here.
 @admin.register(Post)
@@ -17,3 +18,7 @@ class CommedntAdmin(admin.ModelAdmin):
     ordering = ('-created',)
 
 # 
+admin.site.register(MyCustomTag)
+
+from .models import TagNameValue
+admin.site.register(TagNameValue)

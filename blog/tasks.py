@@ -17,8 +17,11 @@ from translates.filipino_translate.tasks import filipino_translate
 from translates.italian_translate.tasks import italian_translate
 
 
-
+from django.contrib.auth.models import User
+from .models import MyCustomTag, TagNameValue, Post
+from django.db.models import F
 from celery import shared_task
+
 @shared_task
 # def print_title(pk):
 def translate_post(pk):
@@ -48,3 +51,24 @@ def translate_post(pk):
 #     pub = Publication.objects.get(id=pk)
 #     pub.editor.add(pub.admin)
 #     return True
+
+
+def tag_val_inc(user, slug):
+    user = User.objects.get(id=user)
+    tag = MyCustomTag.objects.get(slug=slug)
+    tag_name = TagNameValue.objects.filter(tag__slug=slug, user=user)
+    if tag_name.exists():
+        tag_name.update(value=F('value')+1)
+    else:
+        tag_name = TagNameValue.objects.get_or_create(
+            tag=tag,
+            user=user,
+            value=1
+        )
+    return True
+
+@shared_task
+def tag_main(user, post):
+    post = Post.objects.get(id=post)
+    for tag in post.tags.all():
+        tag_val_inc(user=user, slug=tag.slug)

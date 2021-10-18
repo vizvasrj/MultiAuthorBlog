@@ -25,6 +25,7 @@ from common.decorators import ajax_required
 from django.db.models import Q
 
 # 3rd party
+from itertools import chain
 
 # local
 from .models import Profile, Contact
@@ -682,9 +683,11 @@ def my_relations_posts(request):
             posts = Post.aupm.filter(p_objects|q_objects).order_by('-publish')
         else:
             posts = Post.aupm.all().order_by('-publish')
+        empty = Post.aupm.all()
 
+        list_chain = list(chain(posts, empty))
 
-        paginator = Paginator(posts, 10)
+        paginator = Paginator(list_chain, 10)
         page = request.GET.get('page')
         try:
             posts = paginator.page(page)
@@ -694,6 +697,7 @@ def my_relations_posts(request):
             if request.is_ajax():
                 return HttpResponse('')
             posts = paginator.page(paginator.num_pages)
+            print(posts)
         if request.is_ajax():
             return render(
                 request,

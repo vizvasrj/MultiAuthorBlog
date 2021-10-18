@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'django_user_agents',
     'django_hosts',
     'django_social_share',
+    'debug_toolbar',
 
     # local
     'blog',
@@ -96,6 +97,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -106,6 +108,7 @@ MIDDLEWARE = [
     'django_user_agents.middleware.UserAgentMiddleware',
     # 'account.middleware.subdomain_course_middleware',
     'django_hosts.middleware.HostsResponseMiddleware',
+    'crum.CurrentRequestUserMiddleware',
 ]
 
 ROOT_URLCONF = 'MultiAuthorBlog.urls'
@@ -386,3 +389,14 @@ ROOT_HOSTCONF = 'MultiAuthorBlog.hosts'
 
 
 DEFAULT_HOST = 'www'
+
+# Django Debug Tool
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
+def show_toolbar_handler(request):
+    if request.user and request.user.id == 1:
+        return True
+    return False

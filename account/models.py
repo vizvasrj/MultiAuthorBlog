@@ -11,7 +11,6 @@ from django.dispatch import receiver
 from .tasks import print_full_name
 from django.core.validators import FileExtensionValidator
 
-
 class Theme(models.Model):
     name = models.CharField(max_length=50)
     header = ColorField(format='hexa')

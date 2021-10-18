@@ -243,8 +243,12 @@ def paragraph_soup(html):
     paragraphs = []
     for x in soup:
         if x.name == 'p':
-            # encoded_html = (str(x).replace('<','&lt;').replace('>','&gt;'))
-            paragraphs.append(str(x))
+            for y in x:
+                if y.name == 'img':
+                    pass
+                else:
+                    # encoded_html = (str(x).replace('<','&lt;').replace('>','&gt;'))
+                    paragraphs.append(str(x))
     return ''.join(paragraphs)
 
 

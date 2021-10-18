@@ -1,18 +1,33 @@
 {% extends "blog_base.html" %}
+{% block style %} 
+.tags__home {
+    display: list-item !important;
+    list-style: none !important;
+    margin-top: -20px !important;
+}
+.publish__home {
+    margin-top: -20px !important;
+}
 
+{% endblock %}
 {% block content %}
-<div class="row">
-
-    <div class="col-xl-8">
-        <div id="post-list">
-            {% include "account/me/fallowing/ajax_list.html" %}
-            <!-- {% for post in posts %}
-            {{post}} <br>
-            {% endfor %} -->
+<div class="container">
+    <div class="row">
+    
+        <div class="col-xl-8">
+            <div id="post-list">
+                {% include "account/me/fallowing/ajax_list.html" %}
+            </div>
         </div>
-    </div>
-    <div class=" border col-xl-4">
-
+        <div class=" border col-xl-4">
+            <div class="">
+                <h6>Sorted</h6>
+                <br>
+                {% for s_tags in sorted_related_tags %}
+                <div  style="display: inline-block; padding: 3px;" class=" ln bg-olive-lite">#<a class="ln" href="{{ s_tags.get_absolute_url }}">{{ s_tags }}</a></div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 
@@ -37,6 +52,40 @@ $(window).scroll(function () {
             }
         });
     }
+});
+
+$('#post-list').on("click", "a.bookmark", function(event){
+    {% if request.user.is_authenticated %}
+      event.preventDefault();
+  {% else %}
+      console.log("Login First");
+  {% endif %}
+
+    console.log( $(this).data('id') );
+    var a = $(this).data('id');
+    $.post('{% url "bookmark" %}',
+  {
+      id: $(this).data('id'),
+      action: $(this).data('action')
+  },
+  function(data){
+      if (data['status'] == 'ok')
+      {
+          
+          
+          var previous_action = $('a.bookmark').data('action');
+
+          //toggle data-action
+          $('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
+
+          //toggle link text
+          $('a.bookmark svg path.'+a).toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' : '');
+
+      }
+      else{
+          console.log("Error")
+      }
+  });
 });
 
 

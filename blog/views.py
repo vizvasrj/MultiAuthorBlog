@@ -1,3 +1,4 @@
+from datetime import timedelta
 from django.contrib import auth
 from easy_thumbnails.files import get_thumbnailer
 from django.utils.timezone import localtime
@@ -10,7 +11,7 @@ from django.shortcuts import render
 from django.shortcuts import (
     get_object_or_404, render, redirect
 )
-from django.db.models import Count
+from django.db.models import Count, F
 from django.core.paginator import (
     Page,
     Paginator,
@@ -29,7 +30,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 # local
-from .models import Post, Category, Comment, SharedOrOtherEdit
+from .models import MyCustomTag, Post, Category, Comment, SharedOrOtherEdit, TagContact, TagNameValue
 from publication.models import Publication as Pub, PublicationContact
 from .forms import (
     OtherEditForm, PostForm, CommentForm, SearchForm,
@@ -38,6 +39,14 @@ from .forms import (
 # 3rd party
 from taggit.models import Tag
 import redis
+
+
+from django.core.cache import cache
+a_timedelta = timedelta(days=1)
+
+on_day_in_seconds = a_timedelta.total_seconds()
+
+from .tasks import tag_main
 
 # Connect to redis
 r = redis.Redis(
@@ -91,7 +100,7 @@ def post_list(request, tag_slug=None):
             Tag, slug=tag_slug
         )
         posts = posts.filter(
-            tags__in=[tag]
+            tags__slug__in=[tag]
         )
     paginator = Paginator(posts, 10)
     page = request.GET.get('page')
@@ -120,14 +129,38 @@ def post_list(request, tag_slug=None):
         }
     )
 
+# This is used to increase tag value
+# def tag_val_inc(request, slug):
+#     user = User.objects.get(id=request.user.id)
+#     print(slug, "slug")
+#     tag = MyCustomTag.objects.get(slug=slug)
+#     tag_name = TagNameValue.objects.filter(tag__slug=slug, user=user)
+#     if tag_name.exists():
+#         tag_name.update(value=F('value')+1)
+#     else:
+#         tag_name = TagNameValue.objects.get_or_create(
+#             tag=tag,
+#             user=user,
+#             value=1
+#         )
+
 
 def post_detail(request, slug, author):
-    
-    post = get_object_or_404(
-        Post,
-        slug=slug,
-    )
-    
+    user = request.user
+    post = cache.get(f'post-{slug}')        
+    if not post:
+        post = get_object_or_404(
+            Post,
+            slug=slug,
+        )
+        print(f'{slug} not in cache')
+        cache.set(f'post-{slug}', post, on_day_in_seconds) 
+    else:
+        print(f'{slug} get from cache')
+    # i think this is better on celery
+    # background task slow tasks
+    tag_main.delay(user=user.id, post=post.id)
+    # r.set(f"idid_post", bytes(post))
     cn_p = post.chinese_translated_post.last()
     hi_p = post.hindi_translated_post.last()
     ar_p = post.arabic_translated_post.last()
@@ -143,6 +176,8 @@ def post_detail(request, slug, author):
     ru_p = post.russian_translated_post.last()
     es_p = post.spanish_translated_post.last()
     vi_p = post.vietnamese_translated_post.last()
+    
+    ip = request.META.get("REMOTE_ADDR")
 
     total_views = r.incr(f'post:{post.id}:views')
     comments = post.comments.filter(active=True)
@@ -346,6 +381,7 @@ fomated_time = dateformat.format(lt, 'Y-m-d H:i')
 @login_required
 def update_data(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    cache.delete(f'post-{post.slug}')   
 
     # post.publish = fomated_time
     # post.save()
@@ -468,7 +504,7 @@ def post_ajax_search(request):
     if request.is_ajax():
         res = None
         post = request.POST.get('post')
-        print(post)
+        # print(post)
         query = post
         search_vector = SearchVector(
             'title', 'body', 'author'
@@ -582,3 +618,167 @@ def translate_listview(request, post):
 #             return redirect(post.get_absolute_url())
 #         else:
 #             form = OtherEditForm()
+
+from nltk.corpus import wordnet
+from django.db.models import Q
+from django.db import models
+
+
+def tags_posts_lists(request, slug):
+    # cache.delete(f'tags_posts_lists-{slug}')
+    tag = cache.get(f'tags_posts_lists-{slug}')
+    if not tag:
+        tag = get_object_or_404(
+            MyCustomTag,
+            slug=slug
+        )
+        cache.set(f'tags_posts_lists-{slug}', tag, on_day_in_seconds)
+        print(f'tags_posts_lists-{slug} not in cache')
+        syn = []
+        ant = []
+        for synset in wordnet.synsets(tag.name):
+            for idx, lemma in enumerate(synset.lemmas()):
+                syn.append(lemma.name())
+                if lemma.antonyms():
+                    ant.append(lemma.antonyms()[0].name())
+        set_syn = set(syn)
+        set_syn.remove(tag.slug)
+        # print(syn)
+        # print("Set")
+        suggested_tags = []
+        for word in set_syn:
+            try:
+                if MyCustomTag.objects.get(slug=word).slug == word:
+                    # print(word, "@@@@::Exists in tags")
+                    suggested_tags.append(word)
+            except MyCustomTag.DoesNotExist:
+                # print(word, "####::Not")
+                pass
+        for word in set(ant):
+            try:
+                if MyCustomTag.objects.get(slug=word).slug == word:
+                    # print(word, "@@@@::Exists in tags")
+                    suggested_tags.append(word)
+            except MyCustomTag.DoesNotExist:
+                # print(word, "####::Not")
+                pass
+        
+        try:
+            first_word = wordnet.synset(f'{tag.slug}.n.01')
+        except:
+            try:
+                first_word = wordnet.synset(f'{tag.slug}.v.01')
+            except:
+                try:
+                    first_word = wordnet.synset(f'{tag.slug}.r.01')
+                except:
+                    try:
+                        first_word = wordnet.synset(f'{tag.slug}.a.01')
+                    except:
+                        first_word = wordnet.synset(f'{tag.slug}.s.01')
+
+        sort = {}
+        for word in suggested_tags:
+            try:
+                second_word = wordnet.synset(f'{word}.v.01')
+                sort[word] = first_word.wup_similarity(second_word)
+            except:
+                second_word = wordnet.synset(f'{word}.n.01')
+                sort[word] = first_word.wup_similarity(second_word)
+            # print(first_word.wup_similarity(second_word),word)
+        
+        import operator
+        des = sorted(sort.items(), key=operator.itemgetter(1), reverse=True)
+        
+        tag_items = []
+        for item, key in des:
+            # print(item, 'item')
+            tag_items.append(item)
+        
+        # t_objects = Q()
+        # for item in tag_items:
+        #     t_objects |= Q(slug=item)
+        
+        # related_tags = MyCustomTag.objects.filter(t_objects)
+            
+        whens = []
+        try:
+            for sort_index, value in enumerate(tag_items):
+                whens.append(models.When(slug=value, then=sort_index))
+                qs = MyCustomTag.objects.filter(slug__in=tag_items).annotate(
+                    _sort_index=models.Case(*whens, output_field=models.IntegerField())
+                )
+                print("Here")
+            
+            sorted_related_tags = qs.order_by('_sort_index')[:10]
+            cache.set(f'sorted_related_tags-{tag}', sorted_related_tags, on_day_in_seconds)
+        except:
+            sorted_related_tags = MyCustomTag.objects.all()[:10]
+        
+
+
+    else:
+        print(f'tags_posts_lists-{slug} get from cache')
+
+    sorted_related_tags = cache.get(f'sorted_related_tags-{tag}')
+
+
+    posts = Post.aupm.all().filter(tags__slug__in=[tag.slug])
+    # posts = Post.objects.all().filter(tags__slug__in=[tag.slug])
+
+
+    paginator = Paginator(posts, 10)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            return HttpResponse('')
+        posts = paginator.page(paginator.num_pages)
+        print(posts)
+    if request.is_ajax():
+        return render(
+            request,
+            'account/me/fallowing/ajax_list.html',{
+                'posts': posts
+            }
+        )
+    return render(
+        request,
+        'account/me/fallowing/post.html', {
+            'posts': posts,
+            'sorted_related_tags': sorted_related_tags,
+        }
+    )
+
+
+@ajax_required
+@require_POST
+@login_required
+
+def tag_follow(request):
+    tag_id = request.POST.get('id')
+    action = request.POST.get('action')
+    if tag_id and action:
+        try:
+            tag = MyCustomTag.objects.get(id=tag_id)
+            if action == 'fallow':
+                TagContact.objects.get_or_create(
+                    t_user_from=request.user,
+                    to_tag=tag
+                )
+            else:
+                TagContact.objects.filter(
+                    t_user_from=request.user,
+                    to_tag=tag
+                ).delete()
+            return JsonResponse({'status': 'ok'})
+        except MyCustomTag.DoesNotExist:
+            return JsonResponse({'status': 'error'})
+    return JsonResponse({'status': 'error'})
+
+
+
+
