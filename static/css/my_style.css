@@ -40,8 +40,11 @@ figure > img {
     font-weight: 500;
     line-height: 1.1;
     word-spacing: -0.026em;
+    color: inherit;
 }
 .h1-title:hover{
+    opacity: 0.8;
+    color: inherit;
     opacity: 0.8;
 }
 .top-me:hover {
@@ -87,6 +90,7 @@ figure > img {
 .publication {
     color: #5B5EA6;
     font-weight: 700;
+    position: absolute;
 }
 .publication:hover {
     color: #5B5EA6;

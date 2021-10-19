@@ -20,5 +20,6 @@ class CommedntAdmin(admin.ModelAdmin):
 # 
 admin.site.register(MyCustomTag)
 
-from .models import TagNameValue
+from .models import TagNameValue, TagContact
 admin.site.register(TagNameValue)
+admin.site.register(TagContact)

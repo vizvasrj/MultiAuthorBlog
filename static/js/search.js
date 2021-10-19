@@ -23,6 +23,7 @@ const sendSearchData = (post) => {
             if (Array.isArray(data)) {
                 resultsBox.innerHTML = ""
                 data.forEach(post=> {
+                    console.log(post.slug);
                     resultsBox.innerHTML += `
                         <a href="/blog/${post.slug}/" class="item">
                             <div class="row" mt-2 mb-3 p-3>

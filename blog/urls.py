@@ -30,6 +30,6 @@ urlpatterns = [
         name='edit_comment'),
     path('tags/list/', tag_list, name='tag_list'),
     path('post/search-ajax/', views.post_ajax_search, name='search_ajax'),
-    path('tag/fallow/', views.tag_follow, name='tag_follow'),
+    path('tags/tag/follow/', views.tag_follow, name='tag_follow'),
 
 ]

@@ -33,7 +33,7 @@ from .forms import (
     LoginForm, UserDeleteForm, UserRegistrationForm,
     UserEditForm, ProfileEditForm
 )
-from blog.models import Post
+from blog.models import Post, TagNameValue
 from publication.models import Publication
 
 
@@ -684,7 +684,7 @@ def my_relations_posts(request):
         else:
             posts = Post.aupm.all().order_by('-publish')
         empty = Post.aupm.all()
-
+        my_tags = TagNameValue.objects.all().filter(user=request.user).order_by('-value')
         list_chain = list(chain(posts, empty))
 
         paginator = Paginator(list_chain, 10)
@@ -708,7 +708,8 @@ def my_relations_posts(request):
         return render(
             request,
             'account/me/fallowing/post.html', {
-                'posts': posts
+                'posts': posts,
+                'my_tags': my_tags
             }
         )
     else:

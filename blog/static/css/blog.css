@@ -850,6 +850,6 @@ div .post__body > p.post-body + p {
 .ln:hover {
     color: inherit;
     opacity: 0.9;
-    background-color: var(--bg-fuchisa-background--color) !important;
-    color: white !important;
 }
+
+

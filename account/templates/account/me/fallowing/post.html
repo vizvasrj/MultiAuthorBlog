@@ -1,30 +1,85 @@
+
 {% extends "blog_base.html" %}
-{% block style %} 
+{% load static %}
+{% block style %}
+
 .tags__home {
-    display: list-item !important;
-    list-style: none !important;
-    margin-top: -20px !important;
+display: list-item !important;
+list-style: none !important;
+margin-top: -20px !important;
 }
 .publish__home {
-    margin-top: -20px !important;
+margin-top: -20px !important;
 }
 
 {% endblock %}
 {% block content %}
+
 <div class="container">
     <div class="row">
-    
-        <div class="col-xl-8">
-            <div id="post-list">
+
+            <div class="col-xl-8">
+                {% if tag %}
+                <div class=" ln mb-5">
+                    <div class="bg-olive-lite">
+                        
+                        <a class="ln"
+                            href="{{ tag.get_absolute_url }}"><strong># </strong> {{ tag }}
+                        </a>
+                        <a data-url="{% url 'tag_follow' %}" data-id="{{ tag.id }}"
+                        data-action="{% if request.user in tag.followers.all %}un{% endif %}follow" 
+                        href="" class="tag__follow {{ tag.id }}">
+        
+                        {% if request.user not in tag.followers.all %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
+                        {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 13.482L15.508 21L12 17.4l1.412-1.388l2.106 2.188l6.094-6.094L23 13.482zm-7.455 1.862L20 10.889V2H2v14c0 1.1.9 2 2 2h4.538l4.913-4.832l2.094 2.176zM8 13H4v-1h4v1zm3-2H4v-1h7v1zm0-2H4V8h7v1zm7-3H4V4h14v2z" fill="currentColor"/></svg>
+                        {% endif %}
+                        </a>
+        
+                    </div>
+                </div>
+            {% else %}
+            {% endif %}
+                <div id="post-list">
                 {% include "account/me/fallowing/ajax_list.html" %}
             </div>
         </div>
-        <div class=" border col-xl-4">
-            <div class="">
-                <h6>Sorted</h6>
-                <br>
+        <div class="border col-xl-4">
+            <div id="tags" class="">
+                <h6 class="px-3 py-3 mt-2 bg-red-lite">Related tags</h6>
                 {% for s_tags in sorted_related_tags %}
-                <div  style="display: inline-block; padding: 3px;" class=" ln bg-olive-lite">#<a class="ln" href="{{ s_tags.get_absolute_url }}">{{ s_tags }}</a></div>
+                <div style="display: inline-block; padding: 3px;" class=" ln p-1">
+                    <div class="bg-olive-lite">
+                        
+                        <a class="ln"
+                            href="{{ s_tags.get_absolute_url }}"><strong># </strong> {{ s_tags }}
+                        </a>
+                        <a data-url="{% url 'tag_follow' %}" data-id="{{ s_tags.id }}"
+                        data-action="{% if request.user in s_tags.followers.all %}un{% endif %}follow" 
+                        href="" class="tag__follow {{ s_tags.id }}">
+
+                        {% if request.user not in s_tags.followers.all %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
+                        {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 13.482L15.508 21L12 17.4l1.412-1.388l2.106 2.188l6.094-6.094L23 13.482zm-7.455 1.862L20 10.889V2H2v14c0 1.1.9 2 2 2h4.538l4.913-4.832l2.094 2.176zM8 13H4v-1h4v1zm3-2H4v-1h7v1zm0-2H4V8h7v1zm7-3H4V4h14v2z" fill="currentColor"/></svg>
+                        {% endif %}
+                        </a>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% for s_tags in my_tags %}
+                <div style="display: inline-block; padding: 3px;" class=" ln p-1">
+                    <div class="bg-olive-lite">
+                        
+                        <a class="ln"
+                            href="{{ s_tags.tag.get_absolute_url }}"><strong># </strong> {{ s_tags.tag.slug|capfirst }}
+                        </a>
+
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>
@@ -33,59 +88,65 @@
 
 {% endblock %}
 
-{% block domready %} 
+{% block script %} 
+<script src="{% static 'js/tag_follow.js' %}"></script>
+
+{% endblock %}
+
+
+{% block domready %}
 var page = 1;
 var empty_page = false;
 var block_request = false;
 
 $(window).scroll(function () {
-    var margin = $(document).height() - $(window).height() - 200;
-    if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
-        block_request = true;
-        page += 1;
-        $.get('?page=' + page, function (data) {
-            if (data == '') {
-                empty_page = true;
-            } else {
-                block_request = false;
-                $('#post-list').append(data);
-            }
-        });
-    }
+var margin = $(document).height() - $(window).height() - 200;
+if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+block_request = true;
+page += 1;
+$.get('?page=' + page, function (data) {
+if (data == '') {
+empty_page = true;
+} else {
+block_request = false;
+$('#post-list').append(data);
+}
+});
+}
 });
 
 $('#post-list').on("click", "a.bookmark", function(event){
-    {% if request.user.is_authenticated %}
-      event.preventDefault();
-  {% else %}
-      console.log("Login First");
-  {% endif %}
+{% if request.user.is_authenticated %}
+event.preventDefault();
+{% else %}
+console.log("Login First");
+{% endif %}
 
-    console.log( $(this).data('id') );
-    var a = $(this).data('id');
-    $.post('{% url "bookmark" %}',
-  {
-      id: $(this).data('id'),
-      action: $(this).data('action')
-  },
-  function(data){
-      if (data['status'] == 'ok')
-      {
-          
-          
-          var previous_action = $('a.bookmark').data('action');
+console.log( $(this).data('id') );
+var a = $(this).data('id');
+$.post('{% url "bookmark" %}',
+{
+id: $(this).data('id'),
+action: $(this).data('action')
+},
+function(data){
+if (data['status'] == 'ok')
+{
 
-          //toggle data-action
-          $('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
 
-          //toggle link text
-          $('a.bookmark svg path.'+a).toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' : '');
+var previous_action = $('a.bookmark').data('action');
 
-      }
-      else{
-          console.log("Error")
-      }
-  });
+//toggle data-action
+$('a.bookmark').data('action', previous_action == 'bookmark' ? 'unbookmark' : 'bookmark');
+
+//toggle link text
+$('a.bookmark svg path.'+a).toggleClass(previous_action == 'bookmark' || previous_action == 'unbookmark' ? 'king' : '');
+
+}
+else{
+console.log("Error")
+}
+});
 });
 
 

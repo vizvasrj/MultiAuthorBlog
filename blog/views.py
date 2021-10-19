@@ -28,17 +28,18 @@ from django.contrib.postgres.search import(
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.db.models import Q
+from django.db import models
 
 # local
-from .models import MyCustomTag, Post, Category, Comment, SharedOrOtherEdit, TagContact, TagNameValue
-from publication.models import Publication as Pub, PublicationContact
+from .models import MyCustomTag, Post, Comment, TagContact
 from .forms import (
-    OtherEditForm, PostForm, CommentForm, SearchForm,
-    PubForm, SharedOrOtherEdit
-)
+    PostForm, CommentForm, SearchForm,
+    )
 # 3rd party
 from taggit.models import Tag
 import redis
+from nltk.corpus import wordnet
 
 
 from django.core.cache import cache
@@ -507,7 +508,7 @@ def post_ajax_search(request):
         # print(post)
         query = post
         search_vector = SearchVector(
-            'title', 'body', 'author'
+            'title',
         )
         search_query = SearchQuery(query)
         results = Post.published.annotate(
@@ -523,13 +524,17 @@ def post_ajax_search(request):
         if len(qs) > 0 and len(post) > 0:
             data = []
             for pos in qs:
-                item = {
-                    'slug': pos.slug,
-                    'title': pos.title,
-                    'cover': get_thumbnailer(pos.cover).get_thumbnail({
+                try:
+                    pos_cover = get_thumbnailer(pos.cover).get_thumbnail({
                         'size': (50, 50),
                         'crop': True,
                     }).url
+                except:
+                    pos_cover = None
+                item = {
+                    'slug': pos.slug,
+                    'title': pos.title,
+                    'cover': pos_cover,
                     # 'author': pos.author.user,
                 }
                 data.append(item)
@@ -619,10 +624,7 @@ def translate_listview(request, post):
 #         else:
 #             form = OtherEditForm()
 
-from nltk.corpus import wordnet
-from django.db.models import Q
-from django.db import models
-
+from .models import TagNameValue
 
 def tags_posts_lists(request, slug):
     # cache.delete(f'tags_posts_lists-{slug}')
@@ -725,8 +727,6 @@ def tags_posts_lists(request, slug):
 
     posts = Post.aupm.all().filter(tags__slug__in=[tag.slug])
     # posts = Post.objects.all().filter(tags__slug__in=[tag.slug])
-
-
     paginator = Paginator(posts, 10)
     page = request.GET.get('page')
     try:
@@ -750,6 +750,7 @@ def tags_posts_lists(request, slug):
         'account/me/fallowing/post.html', {
             'posts': posts,
             'sorted_related_tags': sorted_related_tags,
+            'tag' : tag,
         }
     )
 
@@ -757,21 +758,23 @@ def tags_posts_lists(request, slug):
 @ajax_required
 @require_POST
 @login_required
-
 def tag_follow(request):
     tag_id = request.POST.get('id')
     action = request.POST.get('action')
+    print(action)
     if tag_id and action:
         try:
             tag = MyCustomTag.objects.get(id=tag_id)
-            if action == 'fallow':
+            if action == 'follow':
+                print("action Follow")
                 TagContact.objects.get_or_create(
-                    t_user_from=request.user,
+                    user_from=request.user,
                     to_tag=tag
                 )
             else:
+                print("action Un Follow")
                 TagContact.objects.filter(
-                    t_user_from=request.user,
+                    user_from=request.user,
                     to_tag=tag
                 ).delete()
             return JsonResponse({'status': 'ok'})

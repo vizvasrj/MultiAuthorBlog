@@ -843,15 +843,13 @@ div .post__body > p.post-body + p {
 .td-n {
     text-decoration: none;
 }
-.t-m-top-20 {
-    position: absolute;
-    margin-top: 20px;
-}
-.m-t-16 {
-    margin-top: -20px;
-}
-.user__name__home {
-    font-family: Roboto mono;
+.ln {
     text-decoration: none;
     color: inherit;
 }
+.ln:hover {
+    color: inherit;
+    opacity: 0.9;
+}
+
+

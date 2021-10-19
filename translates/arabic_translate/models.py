@@ -9,7 +9,6 @@ from django.utils.text import slugify
 from taggit_autosuggest.managers import TaggableManager
 from autoslug import AutoSlugField
 from unidecode import unidecode
-from polyglot.detect import Detector
 
 # Create your models here.
 from blog.models import Post
