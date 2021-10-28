@@ -1,7 +1,10 @@
 {% extends "blog_base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% load editorjs %}
+
+{% block title %}	{% trans 'Create post' %}	{% endblock %}
 
 {% block head %} 
 
@@ -62,10 +65,10 @@
             </div>
             <div class="col-md-4 border mb-32-px">
                 <div class="tags bg-aqua-lite">
-                    <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">Please provie some tags</label>
+                    <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">{% trans 'Please provie some tags' %}</label>
                     <div class="height__100">
                         {% if request.user_agent.is_mobile %}
-                        <input name="tags" class="myfieldclass border-bottom p-2 tag_label inputTag" autocomplete="off" placeholder="Tags" required="" id="id_tags" >
+                        <input name="tags" class="myfieldclass border-bottom p-2 tag_label inputTag" autocomplete="off" placeholder="{% trans 'Tags' %}" required="" id="id_tags" >
                         {% else %}
                             {{ form.tags }}
                         {% endif %}
@@ -73,7 +76,7 @@
                     </div>
                 </div>
                 <div class="status bg-aqua-lite">
-                    <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">Please provide when to publish</label>
+                    <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">{% trans 'Please provide when to publish' %}</label>
                     <div class="">
                         {{ form.status }}
                     </div>
@@ -85,22 +88,22 @@
                     </div>
                 </div>
                 <div class="cover bg-aqua-lite ">
-                    <label class="mt-2 tag_label d-flex bg-green-lite justify-content-center" for="cover" class="form-label">Upload cover image</label>
+                    <label class="mt-2 tag_label d-flex bg-green-lite justify-content-center" for="cover" class="form-label">{% trans 'Upload cover image' %}</label>
                     <div class="">
                         <label id="remove" class="uploadcover d-flex " for="id_cover">
-                            <img class="blogcoverimage d-flex justify-content-center" width="100%" id="myImg" src='{{post.cover.url}}' alt="Upload (Click here)" />
+                            <img class="blogcoverimage d-flex justify-content-center" width="100%" id="myImg" src='{{post.cover.url}}' alt="{% trans 'Upload (Click here)' %}" />
                         </label>
                         {{ form.cover }}
                     </div>
                 </div>
                 <div class="tags bg-aqua-lite">
-                    <label class="mt-2 tag_label d-flex justify-content-center" for="tags" class="form-label">Share to edit with others</label>
+                    <label class="mt-2 tag_label d-flex justify-content-center" for="tags" class="form-label">{% trans 'Share to edit with others' %}</label>
                     <div class="">
                         {{ form.other_author }}
                     </div>
                 </div>
                 <div class="status bg-aqua-lite mt-2">
-                    <label class=" tag_label bg-green-lite d-flex justify-content-center" for="publication" class="form-label">If publication?</label>
+                    <label class=" tag_label bg-green-lite d-flex justify-content-center" for="publication" class="form-label">{% trans 'If publication?' %}</label>
                     <div class="">
                         {{form.publication}}
                     </div>
@@ -108,7 +111,7 @@
 
                 <div class="d-flex mt-2">
                     <div class="publish mt-2">
-                        <button name="btnsubmit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">Publish</button>
+                        <button name="btnsubmit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">{% trans 'Publish' %}</button>
                     </div>
                 </div>  
             </div>

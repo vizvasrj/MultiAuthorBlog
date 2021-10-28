@@ -1,12 +1,13 @@
 {% extends "blog_base.html" %}
 {% load blog_tags %}
-{% block title %} Tags | Vizvasrj.com {% endblock %}
+{% load i18n %}
+{% block title %} {% trans 'Tags' %} | Vizvasrj.com {% endblock %}
 
 {% block content %} 
 <div class="container">
     <div class="row">
         <div class="col-md-2">
-            All tags
+            {% trans 'All tags' %}
         </div>
         <div class="col-md-6">
             <div id="tag-list">

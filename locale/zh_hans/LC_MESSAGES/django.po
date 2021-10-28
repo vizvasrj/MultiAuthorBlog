@@ -1,0 +1,761 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-28 10:44+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:322
+msgid "English"
+msgstr "英语"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:323
+msgid "Arabic"
+msgstr "阿拉伯"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:324
+msgid "Chinese"
+msgstr "中国人"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:325
+msgid "Filipino"
+msgstr "菲律宾语"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:326
+msgid "French"
+msgstr "法语"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:327
+msgid "German"
+msgstr "德语"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:328
+msgid "Hindi"
+msgstr "印地语"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:329
+msgid "Indonesian"
+msgstr "印度尼西亚"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:330
+msgid "Italian"
+msgstr "意大利语"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:331
+msgid "Japanese"
+msgstr "日本人"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:332
+msgid "Korean"
+msgstr "韩国人"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:333
+msgid "Norwegian"
+msgstr "挪威"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:334
+msgid "Portuguese"
+msgstr "葡萄牙语"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:335
+msgid "Russian"
+msgstr "俄语"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:336
+msgid "Spanish"
+msgstr "西班牙语"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:337
+msgid "Vietnamese"
+msgstr "越南语"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "用户名"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "密码"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "密码 ..."
+
+#: account/forms.py:44
+msgid "Repeat Password"
+msgstr "重复输入密码"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "重复输入密码 ..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "用户名 ..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "电子邮件"
+
+#: account/forms.py:59
+msgid "Email ..."
+msgstr "电子邮件 ..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "密码不匹配。"
+
+#: account/models.py:36
+msgid "user"
+msgstr "用户"
+
+#: account/models.py:39
+msgid "full name"
+msgstr "全名"
+
+#: account/models.py:45
+msgid "photo"
+msgstr "照片"
+
+#: account/models.py:51 publication/models.py:33
+msgid "about"
+msgstr "关于"
+
+#: account/models.py:64
+msgid "my theme"
+msgstr "我的主题"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "编辑您的帐户"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:38
+msgid "Profile"
+msgstr "轮廓"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "配置"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:126
+msgid "My Stories"
+msgstr "我的故事"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:127
+msgid "My Shared"
+msgstr "我的共享"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "他们共享"
+
+#: account/templates/account/edit.html:46
+msgid "Upload"
+msgstr "上传"
+
+#: account/templates/account/edit.html:74
+msgid "Save changes"
+msgstr "保存更改"
+
+#: account/templates/account/login.html:8
+#: account/templates/account/login.html:28
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:28
+#: blog/templates/blog_base.html:141
+msgid "Login"
+msgstr "登录"
+
+#: account/templates/account/login.html:29
+#: account/templates/registration/login.html:29
+#: blog/templates/blog_base.html:144
+msgid "SignUp"
+msgstr "报名"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "删除"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "立即发布"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "移至草稿"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "编辑帖子"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:114
+#: blog/templates/blog/post_update.html:105
+msgid "Publish"
+msgstr "发布"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "已发表"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "起草"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "垃圾"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "垃圾分类"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "删除"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "出版！"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "移至草稿！"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "有共享"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "独立的"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "从这篇文章中删除自己"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:61
+#: blog/templates/blog/post/detail.html:118
+#: blog/templates/blog/post/list_ajax.html:62
+#: blog/templates/blog/post/list_ajax_similar.html:33
+#: blog/templates/blog/search/list_ajax.html:61
+msgid "Published at %(post_publish)s"
+msgstr "发布于 %(post_publish)s"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "我的分享"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "分离"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "创建一个帐户"
+
+#: account/templates/account/register.html:42
+msgid "Create"
+msgstr "创建"
+
+#: account/templates/account/register.html:43
+msgid "Login Here"
+msgstr "这里登录"
+
+#: account/templates/account/register.html:103
+msgid "This username is not available!"
+msgstr "此用户名不可用！"
+
+#: account/templates/account/register.html:110
+msgid "This username is available!"
+msgstr "此用户名可用！"
+
+#: account/templates/account/register.html:114
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr "输入有效的用户名字符应大于 4 个字母！"
+
+#: account/templates/account/register.html:174
+msgid "This email is not available!"
+msgstr "此电子邮件不可用！"
+
+#: account/templates/account/register.html:179
+msgid "This email is available!"
+msgstr "此邮箱可用！"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "欢迎"
+
+#: account/templates/account/register_done.html:12
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr "欢迎，您的电子邮件 %(new_user_email)s 和用户名是 %(new_user_username)s"
+
+#: account/templates/account/register_done.html:14
+msgid "Your account has been successfully created."
+msgstr "您的帐户已经创建成功。"
+
+#: account/templates/account/register_done.html:15
+msgid "Now your can Login."
+msgstr "现在您可以登录了。"
+
+#: account/templates/account/register_done.html:17
+msgid "But First you have to Verify your account."
+msgstr "但首先您必须验证您的帐户。"
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "用户"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "跟随"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "下列的"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "下列的"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "追随者"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "关注"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "更多的"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "用户列表"
+
+#: account/templates/account/user/user_post_list_ajax.html:72
+#: blog/templates/blog/post/list_ajax.html:73
+#: blog/templates/blog/post/list_ajax_similar.html:41
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "阅读更多"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "删除帐户"
+
+#: account/templates/registration/login.html:8
+msgid "Login Now"
+msgstr "现在登录"
+
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
+msgid "Logged out"
+msgstr "登出"
+
+#: account/templates/registration/logout.html:15
+msgid "You have been successfully logged out."
+msgstr "您已成功注销。"
+
+#: account/templates/registration/logout.html:16
+msgid "You can Login again."
+msgstr "您可以再次登录。"
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "密码更改"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "密码已更改"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "你的密码已成功更改。"
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "更改您的密码"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "更改密码"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:240
+#: blog/templates/blog/post/detail.html:251
+#: blog/templates/blog/post/detail.html:281
+msgid "Submit"
+msgstr "提交"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "重设密码"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "密码设置"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "您的密码已设置。"
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "您现在可以登录"
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "重置您的密码"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "请输入您的新密码两次："
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr "密码重置链接无效，可能是因为它已被使用。请申请重新设置新密码。"
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "我们"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "请务必检查您的垃圾邮件文件夹。"
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "重设密码"
+
+#: account/views.py:77
+msgid "Disabled Account"
+msgstr "禁用帐户"
+
+#: account/views.py:80
+msgid "Invalid login"
+msgstr "登录无效"
+
+#: account/views.py:98
+msgid "User already exists"
+msgstr "用户已存在"
+
+#: account/views.py:142
+msgid "Profile updated successfully"
+msgstr "个人资料更新成功"
+
+#: account/views.py:147
+msgid "Error updating your profile"
+msgstr "更新您的个人资料时出错"
+
+#: account/views.py:544
+msgid "Wrong password"
+msgstr "密码错误"
+
+#: account/views.py:642
+msgid "already removed"
+msgstr "已经移除"
+
+#: blog/forms.py:67
+msgid "No Publication"
+msgstr "没有出版物"
+
+#: blog/forms.py:95
+msgid "Title"
+msgstr "标题"
+
+#: blog/forms.py:100
+msgid "Type content here."
+msgstr "在此处输入内容。"
+
+#: blog/forms.py:108 blog/forms.py:197 blog/templates/blog/post_form.html:71
+#: blog/templates/blog/post_update.html:63 blog/templates/blog/tag/list.html:4
+#: publication/forms.py:50 publication/forms.py:104
+msgid "Tags"
+msgstr "标签"
+
+#: blog/forms.py:176
+msgid "Text here"
+msgstr "在这打字"
+
+#: blog/forms.py:191 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "姓名"
+
+#: blog/forms.py:210 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "你的出版物是关于什么的。"
+
+#: blog/models.py:83 blog/models.py:190
+msgid "title"
+msgstr "标题"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "字幕"
+
+#: blog/models.py:95 blog/models.py:207
+msgid "cover"
+msgstr "覆盖"
+
+#: blog/models.py:196
+msgid "category"
+msgstr "类别"
+
+#: blog/models.py:204
+msgid "publication"
+msgstr "出版物"
+
+#: blog/models.py:220
+msgid "author"
+msgstr "作者"
+
+#: blog/models.py:226
+msgid "other authors"
+msgstr "其他作者"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:267
+msgid "Replay:"
+msgstr "重播："
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "注释"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "标题："
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "更新"
+
+#: blog/templates/blog/post/detail.html:24
+msgid "helps you remember more"
+msgstr "帮助你记住更多"
+
+#: blog/templates/blog/post/detail.html:121
+msgid "Its a draft you can publish and edit here"
+msgstr "它是您可以在此处发布和编辑的草稿"
+
+#: blog/templates/blog/post/detail.html:142
+msgid "views:"
+msgstr "意见："
+
+#: blog/templates/blog/post/detail.html:176
+msgid "Edit"
+msgstr "编辑"
+
+#: blog/templates/blog/post/detail.html:221
+msgid "Reply"
+msgstr "回复"
+
+#: blog/templates/blog/post/detail.html:234
+#: blog/templates/blog/post/detail.html:245
+msgid "Hit a comment"
+msgstr "点击评论"
+
+#: blog/templates/blog/post/detail.html:278
+msgid "Comment here"
+msgstr "在这里评论"
+
+#: blog/templates/blog/post/detail.html:298
+msgid "Similar posts"
+msgstr "类似帖子"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "创建帖子"
+
+#: blog/templates/blog/post_form.html:68
+#: blog/templates/blog/post_update.html:60
+msgid "Please provie some tags"
+msgstr "请提供一些标签"
+
+#: blog/templates/blog/post_form.html:79
+#: blog/templates/blog/post_update.html:71
+msgid "Please provide when to publish"
+msgstr "请提供发布时间"
+
+#: blog/templates/blog/post_form.html:91
+#: blog/templates/blog/post_update.html:83
+msgid "Upload cover image"
+msgstr "上传封面图片"
+
+#: blog/templates/blog/post_form.html:94
+#: blog/templates/blog/post_update.html:86
+msgid "Upload (Click here)"
+msgstr "上传（点击这里）"
+
+#: blog/templates/blog/post_form.html:100
+#: blog/templates/blog/post_update.html:92
+msgid "Share to edit with others"
+msgstr "共享以与他人一起编辑"
+
+#: blog/templates/blog/post_form.html:106
+#: blog/templates/blog/post_update.html:98
+msgid "If publication?"
+msgstr "如果出版？"
+
+#: blog/templates/blog/post_update.html:7
+msgid "Update Post"
+msgstr "更新帖子"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "没有与此查询相关的帖子"
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
+msgid "Search"
+msgstr "搜索"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "帖子包含"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "再次搜索"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "所有标签"
+
+#: blog/templates/blog_base.html:88
+msgid "Posts"
+msgstr "帖子"
+
+#: blog/templates/blog_base.html:90 blog/templates/blog_base.html:125
+msgid "Create Post"
+msgstr "创建帖子"
+
+#: blog/templates/blog_base.html:122
+msgid "Manage profile"
+msgstr "管理个人资料"
+
+#: blog/templates/blog_base.html:123
+msgid "Change password"
+msgstr "更改密码"
+
+#: blog/templates/blog_base.html:124
+msgid "Logout"
+msgstr "登出"
+
+#: blog/templates/blog_base.html:129
+msgid "My Publications"
+msgstr "我的出版物"
+
+#: blog/templates/blog_base.html:130
+msgid "Create Publication"
+msgstr "创建出版物"
+
+#: blog/templates/blog_base.html:167
+msgid "Multi User Blog"
+msgstr "多用户博客"
+
+#: blog/templates/blog_base.html:173
+msgid "Copyright"
+msgstr "版权"
+
+#: blog/views.py:438
+msgid "Your are not authorized to edit :)"
+msgstr "您无权编辑:)"
+
+#: blog/views.py:545
+msgid "No posts found ..."
+msgstr "没有找到帖子..."
+
+#: image_uploader/views.py:66
+msgid "Page not found."
+msgstr "找不到网页。"
+
+#: publication/models.py:11
+msgid "name"
+msgstr "姓名"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "图片"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "蛞蝓"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "标签"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "出版商"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "作家"

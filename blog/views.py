@@ -30,6 +30,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.db.models import Q
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 # local
 from .models import MyCustomTag, Post, Comment, TagContact
@@ -154,10 +155,11 @@ def post_detail(request, slug, author):
             Post,
             slug=slug,
         )
-        print(f'{slug} not in cache')
+        # print(f'{slug} not in cache')
         cache.set(f'post-{slug}', post, on_day_in_seconds) 
     else:
-        print(f'{slug} get from cache')
+        # print(f'{slug} get from cache')
+        pass
     # i think this is better on celery
     # background task slow tasks
     tag_main.delay(user=user.id, post=post.id)
@@ -433,7 +435,7 @@ def update_data(request, pk):
             }
         )
     else:
-        return HttpResponse('Your are not authorized to edit :)')
+        return HttpResponse(_('Your are not authorized to edit :)'))
 
 
 @login_required
@@ -540,7 +542,7 @@ def post_ajax_search(request):
                 data.append(item)
             res = data[:10]
         else:
-            res = "No posts found ..."
+            res = _("No posts found ...")
         return JsonResponse({'data': res})
     return JsonResponse({})
 
@@ -635,7 +637,7 @@ def tags_posts_lists(request, slug):
             slug=slug
         )
         cache.set(f'tags_posts_lists-{slug}', tag, on_day_in_seconds)
-        print(f'tags_posts_lists-{slug} not in cache')
+        # print(f'tags_posts_lists-{slug} not in cache')
         syn = []
         ant = []
         for synset in wordnet.synsets(tag.name):
@@ -710,7 +712,7 @@ def tags_posts_lists(request, slug):
                 qs = MyCustomTag.objects.filter(slug__in=tag_items).annotate(
                     _sort_index=models.Case(*whens, output_field=models.IntegerField())
                 )
-                print("Here")
+                # print("Here")
             
             sorted_related_tags = qs.order_by('_sort_index')[:10]
             cache.set(f'sorted_related_tags-{tag}', sorted_related_tags, on_day_in_seconds)
@@ -720,7 +722,8 @@ def tags_posts_lists(request, slug):
 
 
     else:
-        print(f'tags_posts_lists-{slug} get from cache')
+        # print(f'tags_posts_lists-{slug} get from cache')
+        pass
 
     sorted_related_tags = cache.get(f'sorted_related_tags-{tag}')
 
@@ -766,13 +769,13 @@ def tag_follow(request):
         try:
             tag = MyCustomTag.objects.get(id=tag_id)
             if action == 'follow':
-                print("action Follow")
+                # print("action Follow")
                 TagContact.objects.get_or_create(
                     user_from=request.user,
                     to_tag=tag
                 )
             else:
-                print("action Un Follow")
+                # print("action Un Follow")
                 TagContact.objects.filter(
                     user_from=request.user,
                     to_tag=tag

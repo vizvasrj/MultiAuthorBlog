@@ -1,6 +1,7 @@
 {% extends "blog_base.html" %}
 
 {% load blog_tags %}
+{% load i18n %}
 {% load thumbnail %}
 
 {% block content %}
@@ -17,13 +18,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-4  mb-2">
-                        <a class="status-a" href="{% url 'my_published_story' %}">Published</a>
+                        <a class="status-a" href="{% url 'my_published_story' %}">{% trans 'Published' %}</a>
                     </div>
                     <div class="col-4 mb-2">
-                        <a class="status-a" href="{% url 'my_drafted_story' %}">Drafted</a>
+                        <a class="status-a" href="{% url 'my_drafted_story' %}">{% trans 'Drafted' %}</a>
                     </div>
                     <div class="col-4 mb-2">
-                        <a class="status-a" href="{% url 'my_trashed_story' %}">Trashed</a>
+                        <a class="status-a" href="{% url 'my_trashed_story' %}">{% trans 'Trashed' %}</a>
                     </div>
                     <h1 class="status bg-aqua-lite">{{status}}</h1>
                 </div>
@@ -33,13 +34,14 @@
             </div>
         </div>
         <div class="col-lg-3">
+            col3
         </div>
     </div>
 </div>
 
 {% endblock %}
 
-{% block domready2 %}
+{% block domready %}
 var page = 1;
 var empty_page = false;
 var block_request = false;
@@ -63,7 +65,6 @@ $(window).scroll(function () {
 <!-- bla -->
 
     var csrfToken = $("input[name=csrfmiddlewaretoken]").val();
-
 
     $("#post-list").on('click', 'a.delete__a', function(event){
         event.stopPropagation();
@@ -92,7 +93,7 @@ $(window).scroll(function () {
             success: function() {
                 $('#postbox[data-id="' + dataId + '"]').remove();
                 window.setTimeout(function() {
-                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong>{% if status == 'published' %}"Trashing"{% elif status == 'drafted' %}"Trashing"{% else %}"Deleting"{% endif %}!</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
+                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong>{% if status == 'published' %}"{% trans 'Trashing' %}"{% elif status == 'drafted' %}"{% trans 'Trashing' %}"{% else %}"{% trans 'Deleting' %}"{% endif %}!</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
                         $(this).remove(); 
                     });;
                 }, 1);
@@ -122,7 +123,7 @@ $(window).scroll(function () {
             success: function() {
                 $('#postbox[data-id="' + dataId + '"]').remove();
                 window.setTimeout(function() {
-                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong>Publishing!</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
+                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong>{% trans 'Publishing!' %}</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
                         $(this).remove(); 
                     });;
                 }, 1);
@@ -154,7 +155,7 @@ $(window).scroll(function () {
             success: function() {
                 $('#postbox[data-id="' + dataId + '"]').remove();
                 window.setTimeout(function() {
-                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong>Publishing!</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
+                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong>{% trans 'Publishing!' %}</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
                         $(this).remove(); 
                     });;
                 }, 1);
@@ -184,7 +185,7 @@ $(window).scroll(function () {
             success: function() {
                 $('#postbox[data-id="' + dataId + '"]').remove();
                 window.setTimeout(function() {
-                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong>Moved to Draft!</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
+                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong>{% trans 'Moved to Draft!' %}</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
                         $(this).remove(); 
                     });;
                 }, 1);

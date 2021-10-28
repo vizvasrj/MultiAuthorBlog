@@ -1,0 +1,770 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-27 22:50+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:322
+msgid "English"
+msgstr "английский"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:323
+msgid "Arabic"
+msgstr "арабский"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:324
+msgid "Chinese"
+msgstr "китайский язык"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:325
+msgid "Filipino"
+msgstr "Филиппинский"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:326
+msgid "French"
+msgstr "французкий язык"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:327
+msgid "German"
+msgstr "Немецкий"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:328
+msgid "Hindi"
+msgstr "хинди"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:329
+msgid "Indonesian"
+msgstr "индонезийский"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:330
+msgid "Italian"
+msgstr "Итальянский"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:331
+msgid "Japanese"
+msgstr "Японский"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:332
+msgid "Korean"
+msgstr "корейский язык"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:333
+msgid "Norwegian"
+msgstr "Норвежский"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:334
+msgid "Portuguese"
+msgstr "португальский"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:335
+msgid "Russian"
+msgstr "русский"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:336
+msgid "Spanish"
+msgstr "испанский"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:337
+msgid "Vietnamese"
+msgstr "вьетнамский"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "Пароль"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "Пароль ..."
+
+#: account/forms.py:44
+msgid "Repeat Password"
+msgstr "Повторите пароль"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "Повторите пароль ..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "Имя пользователя ..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "Эл. адрес"
+
+#: account/forms.py:59
+msgid "Email ..."
+msgstr "Эл. адрес ..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "Пароли не совпадают."
+
+#: account/models.py:36
+msgid "user"
+msgstr "Пользователь"
+
+#: account/models.py:39
+msgid "full name"
+msgstr "полное имя"
+
+#: account/models.py:45
+msgid "photo"
+msgstr "Фото"
+
+#: account/models.py:51 publication/models.py:33
+msgid "about"
+msgstr "о"
+
+#: account/models.py:64
+msgid "my theme"
+msgstr "моя тема"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "Отредактируйте свой аккаунт"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:38
+msgid "Profile"
+msgstr "Профиль"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:126
+msgid "My Stories"
+msgstr "Мои истории"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:127
+msgid "My Shared"
+msgstr "Мой общий"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "Они поделились"
+
+#: account/templates/account/edit.html:46
+msgid "Upload"
+msgstr "Загрузить"
+
+#: account/templates/account/edit.html:74
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: account/templates/account/login.html:8
+#: account/templates/account/login.html:28
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:28
+#: blog/templates/blog_base.html:141
+msgid "Login"
+msgstr "Авторизоваться"
+
+#: account/templates/account/login.html:29
+#: account/templates/registration/login.html:29
+#: blog/templates/blog_base.html:144
+msgid "SignUp"
+msgstr "Зарегистрироваться"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "удалять"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "Опубликовать сейчас"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "Переместить в черновик"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "Редактировать пост"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:114
+#: blog/templates/blog/post_update.html:105
+msgid "Publish"
+msgstr "Публиковать"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "Опубликовано"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "Составлен"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "Выброшен"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "Мусор"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "Удаление"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "Издательский!"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "Перемещено в проект!"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "Там поделился"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "Отдельно"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "удали себя из этого сообщения"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:61
+#: blog/templates/blog/post/detail.html:118
+#: blog/templates/blog/post/list_ajax.html:62
+#: blog/templates/blog/post/list_ajax_similar.html:33
+#: blog/templates/blog/search/list_ajax.html:61
+msgid "Published at %(post_publish)s"
+msgstr "Опубликовано на% (post_publish) s"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "Мой общий"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "Отсоединение"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "Завести аккаунт"
+
+#: account/templates/account/register.html:42
+msgid "Create"
+msgstr "Создавать"
+
+#: account/templates/account/register.html:43
+msgid "Login Here"
+msgstr "Войти здесь"
+
+#: account/templates/account/register.html:103
+msgid "This username is not available!"
+msgstr "Это имя пользователя недоступно!"
+
+#: account/templates/account/register.html:110
+msgid "This username is available!"
+msgstr "Это имя пользователя доступно!"
+
+#: account/templates/account/register.html:114
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr ""
+"Введите действительный символ имени пользователя, который должен состоять "
+"более чем из 4 букв!"
+
+#: account/templates/account/register.html:174
+msgid "This email is not available!"
+msgstr "Этот адрес электронной почты недоступен!"
+
+#: account/templates/account/register.html:179
+msgid "This email is available!"
+msgstr "Это письмо доступно!"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: account/templates/account/register_done.html:12
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr ""
+"Добро пожаловать! Ваш адрес электронной почты% (new_user_email) s и имя "
+"пользователя% (new_user_username) s"
+
+#: account/templates/account/register_done.html:14
+msgid "Your account has been successfully created."
+msgstr "Ваша учетная запись была успешно создана."
+
+#: account/templates/account/register_done.html:15
+msgid "Now your can Login."
+msgstr "Теперь вы можете войти в систему."
+
+#: account/templates/account/register_done.html:17
+msgid "But First you have to Verify your account."
+msgstr "Но сначала вы должны подтвердить свою учетную запись."
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "Пользователи"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "Следовать"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "Следующий"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "следующий"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "Подписчики"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "Подписки"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "более"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "Список пользователей"
+
+#: account/templates/account/user/user_post_list_ajax.html:72
+#: blog/templates/blog/post/list_ajax.html:73
+#: blog/templates/blog/post/list_ajax_similar.html:41
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "Подробнее"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "Удалить аккаунт"
+
+#: account/templates/registration/login.html:8
+msgid "Login Now"
+msgstr "Войти сейчас"
+
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
+msgid "Logged out"
+msgstr "Вышли из"
+
+#: account/templates/registration/logout.html:15
+msgid "You have been successfully logged out."
+msgstr "Вы успешно вышли из системы."
+
+#: account/templates/registration/logout.html:16
+msgid "You can Login again."
+msgstr "Вы можете войти снова."
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "Изменение пароля"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "пароль изменен"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "Ваш пароль был успешно изменен."
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "Измените свой пароль"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "Измени пароль"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:240
+#: blog/templates/blog/post/detail.html:251
+#: blog/templates/blog/post/detail.html:281
+msgid "Submit"
+msgstr "Представлять на рассмотрение"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "Восстановление пароля"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "Пароль установлен"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "Ваш пароль установлен."
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "Вы можете войти сейчас"
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "Сбросить пароль"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "Пожалуйста, введите свой новый пароль дважды:"
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Ссылка для сброса пароля недействительна, возможно, потому, что она уже "
+"использовалась. Запросите новый сброс пароля."
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "Мы"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "Обязательно проверьте папку со спамом."
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "Восстановление пароля"
+
+#: account/views.py:77
+msgid "Disabled Account"
+msgstr "Отключенная учетная запись"
+
+#: account/views.py:80
+msgid "Invalid login"
+msgstr "Неправильный логин"
+
+#: account/views.py:98
+msgid "User already exists"
+msgstr "Пользователь уже существует"
+
+#: account/views.py:142
+msgid "Profile updated successfully"
+msgstr "Профиль успешно обновлен"
+
+#: account/views.py:147
+msgid "Error updating your profile"
+msgstr "Ошибка обновления вашего профиля"
+
+#: account/views.py:544
+msgid "Wrong password"
+msgstr "Неправильный пароль"
+
+#: account/views.py:642
+msgid "already removed"
+msgstr "уже удалено"
+
+#: blog/forms.py:67
+msgid "No Publication"
+msgstr "Нет публикации"
+
+#: blog/forms.py:95
+msgid "Title"
+msgstr "Заголовок"
+
+#: blog/forms.py:100
+msgid "Type content here."
+msgstr "Введите здесь контент."
+
+#: blog/forms.py:108 blog/forms.py:197 blog/templates/blog/post_form.html:71
+#: blog/templates/blog/post_update.html:63 blog/templates/blog/tag/list.html:4
+#: publication/forms.py:50 publication/forms.py:104
+msgid "Tags"
+msgstr "Теги"
+
+#: blog/forms.py:176
+msgid "Text here"
+msgstr "Текст здесь"
+
+#: blog/forms.py:191 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "Имя"
+
+#: blog/forms.py:210 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "О чем ваша публикация."
+
+#: blog/models.py:83 blog/models.py:190
+msgid "title"
+msgstr "заглавие"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "подзаголовок"
+
+#: blog/models.py:95 blog/models.py:207
+msgid "cover"
+msgstr "крышка"
+
+#: blog/models.py:196
+msgid "category"
+msgstr "категория"
+
+#: blog/models.py:204
+msgid "publication"
+msgstr "публикация"
+
+#: blog/models.py:220
+msgid "author"
+msgstr "автор"
+
+#: blog/models.py:226
+msgid "other authors"
+msgstr "другие авторы"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:267
+msgid "Replay:"
+msgstr "Воспроизвести:"
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "Комментарии"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "заглавие:"
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "Обновлять"
+
+#: blog/templates/blog/post/detail.html:24
+msgid "helps you remember more"
+msgstr "помогает вам запомнить больше"
+
+#: blog/templates/blog/post/detail.html:121
+msgid "Its a draft you can publish and edit here"
+msgstr "Это черновик, который вы можете опубликовать и отредактировать здесь"
+
+#: blog/templates/blog/post/detail.html:142
+msgid "views:"
+msgstr "Просмотры:"
+
+#: blog/templates/blog/post/detail.html:176
+msgid "Edit"
+msgstr "Редактировать"
+
+#: blog/templates/blog/post/detail.html:221
+msgid "Reply"
+msgstr "Отвечать"
+
+#: blog/templates/blog/post/detail.html:234
+#: blog/templates/blog/post/detail.html:245
+msgid "Hit a comment"
+msgstr "Напишите комментарий"
+
+#: blog/templates/blog/post/detail.html:278
+msgid "Comment here"
+msgstr "Комментарий здесь"
+
+#: blog/templates/blog/post/detail.html:298
+msgid "Similar posts"
+msgstr "Похожие посты"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "Создать сообщение"
+
+#: blog/templates/blog/post_form.html:68
+#: blog/templates/blog/post_update.html:60
+msgid "Please provie some tags"
+msgstr "Пожалуйста, поставьте несколько тегов"
+
+#: blog/templates/blog/post_form.html:79
+#: blog/templates/blog/post_update.html:71
+msgid "Please provide when to publish"
+msgstr "Укажите, когда публиковать"
+
+#: blog/templates/blog/post_form.html:91
+#: blog/templates/blog/post_update.html:83
+msgid "Upload cover image"
+msgstr "Загрузить обложку"
+
+#: blog/templates/blog/post_form.html:94
+#: blog/templates/blog/post_update.html:86
+msgid "Upload (Click here)"
+msgstr "Загрузить (нажмите здесь)"
+
+#: blog/templates/blog/post_form.html:100
+#: blog/templates/blog/post_update.html:92
+msgid "Share to edit with others"
+msgstr "Поделиться для редактирования с другими"
+
+#: blog/templates/blog/post_form.html:106
+#: blog/templates/blog/post_update.html:98
+msgid "If publication?"
+msgstr "Если публикация?"
+
+#: blog/templates/blog/post_update.html:7
+msgid "Update Post"
+msgstr "Обновить сообщение"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "Нет сообщений, связанных с этим запросом"
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
+msgid "Search"
+msgstr "Поиск"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "Сообщение, содержащее"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "Искать снова"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "Все теги"
+
+#: blog/templates/blog_base.html:88
+msgid "Posts"
+msgstr "Сообщения"
+
+#: blog/templates/blog_base.html:90 blog/templates/blog_base.html:125
+msgid "Create Post"
+msgstr "Создать сообщение"
+
+#: blog/templates/blog_base.html:122
+msgid "Manage profile"
+msgstr "Управлять профилем"
+
+#: blog/templates/blog_base.html:123
+msgid "Change password"
+msgstr "Измени пароль"
+
+#: blog/templates/blog_base.html:124
+msgid "Logout"
+msgstr "Выйти"
+
+#: blog/templates/blog_base.html:129
+msgid "My Publications"
+msgstr "Мои публикации"
+
+#: blog/templates/blog_base.html:130
+msgid "Create Publication"
+msgstr "Создать публикацию"
+
+#: blog/templates/blog_base.html:167
+msgid "Multi User Blog"
+msgstr "Многопользовательский блог"
+
+#: blog/templates/blog_base.html:173
+msgid "Copyright"
+msgstr "авторское право"
+
+#: blog/views.py:438
+msgid "Your are not authorized to edit :)"
+msgstr "У вас нет прав на редактирование :)"
+
+#: blog/views.py:545
+msgid "No posts found ..."
+msgstr "Сообщений не найдено ..."
+
+#: image_uploader/views.py:66
+msgid "Page not found."
+msgstr "Страница не найдена."
+
+#: publication/models.py:11
+msgid "name"
+msgstr "имя"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "изображение"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "слизняк"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "теги"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "издатель"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "писатель"

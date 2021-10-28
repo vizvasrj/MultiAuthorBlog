@@ -1,7 +1,9 @@
 {% extends "blog_base.html" %}
+{% load i18n %}
+
 
 {% block title %} 
-    {{ post.title }}'s comments
+    {{ post.title }} {% trans 'comments' %}
 {% endblock %}
 
 {% block content %} 
@@ -11,13 +13,13 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="title">
-                <h3 class="">title:{{post.title}}</h3>
+                <h3 class="">{% trans 'title:' %}{{post.title}}</h3>
             </div>
             <form method="POST">
                 {% csrf_token %}
                 {{form.as_p}}
                 {{media}}
-                <input type="submit" class="btn btn-primary" value='Update'>
+                <input type="submit" class="btn btn-primary" value='{% trans 'Update' %}'>
             </form>
         </div>
         <div class="col-md-3"></div>

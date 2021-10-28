@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load thumbnail %}
 <div class="col-md-3 mt-5">
     <div class="userinfo">
@@ -20,20 +21,17 @@
     <a href="#" data-url="{% url 'user_follow' %}" data-id="{{ user.id }}"
         data-action="{% if request.user in user.followers.all %}un{% endif %}follow"
         class="follow btn btn-outline-primary mt-1">
-        {% if request.user not in user.followers.all %}
-        Follow
-        {% else %}
-        Following
-        {% endif %}
+        {% if request.user not in user.followers.all %}{% trans 'Follow' %}{% else %}{% trans 'Following' %}{% endif %}
     </a>
+    <a style="display: none;" href="" class="following">{% trans 'following' %}</a>
     {% endif %}
     {% else %}
-    <a href="/login/?next={{ request.path }}" class="followsignup btn btn-outline-primary mt-1">Follow</a>
+    <a href="/login/?next={{ request.path }}" class="followsignup btn btn-outline-primary mt-1">{% trans 'Follow' %}</a>
     {% endif %}
     <div class="theyfallow">
         <h2 class="fallowers">
             <li class="listnone followers">
-                <h3 class="mx-1">Followers</h3>
+                <h3 class="mx-1">{% trans 'Followers' %}</h3>
             </li>
             <li class="listnone followers_list">
                 {% for l in user.rel_to_set.all|slice:":5" %}
@@ -65,7 +63,7 @@
     <div class="ifallow">
         <h2 class="fallowers">
             <li class="listnone followings">
-                <h3 class="mx-1">Followings</h3>
+                <h3 class="mx-1">{% trans 'Followings' %}</h3>
             </li>
             <li class="listnone followings_list">
                 {% for l in user.rel_from_set.all|slice:":5" %}
@@ -86,7 +84,7 @@
                 {% if user.following.count > 6 %}
                 <div class="col-sm-2 mx-2 mt-3">
                     <a href="{% url 'user_following' user %}" class="textnone littledark">
-                        <h5 class="">more({{user.following.count|add:"-5"}})</h5>
+                        <h5 class="">{% trans 'more' %}({{user.following.count|add:"-5"}})</h5>
                     </a>
                 </div>
                 {% endif %}

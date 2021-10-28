@@ -10,6 +10,7 @@ from taggit_autosuggest.widgets import TagAutoSuggest
 from django_select2 import forms as s2forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 
 
@@ -40,13 +41,13 @@ class PubForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={'class': 'myfieldclass border padding-15 border-bottom', 'autocomplete': 'off',
-                'placeholder': 'Name'}
+                'placeholder': _('Name')}
             ),
             'tags': TagAutoSuggest('tagmodel',
                 attrs={
                     'class': 'myfieldclass border-bottom p-2 tag_label inputTag',
                     'autocomplete': 'off',
-                    'placeholder': 'Tags',
+                    'placeholder': _('Tags'),
                     'required': False,
                 }
             ),
@@ -59,7 +60,7 @@ class PubForm(forms.ModelForm):
             'about': forms.Textarea(
                 # config={'minHeight': 100}
                 attrs={
-                'placeholder': 'What\'s your Publication about of.',
+                'placeholder': _("What's your Publication about of."),
                     'class': 'myfieldclass padding-15',
                 }
             ),
@@ -94,13 +95,13 @@ class ManageForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={'class': 'myfieldclass border padding-15 border-bottom', 'autocomplete': 'off',
-                'placeholder': 'Name'}
+                'placeholder': _('Name')}
             ),
             'tags': TagAutoSuggest('tagmodel',
                 attrs={
                     'class': 'myfieldclass border-bottom p-2 tag_label inputTag',
                     'autocomplete': 'off',
-                    'placeholder': 'Tags',
+                    'placeholder': _('Tags'),
                     'required': False,
                 }
             ),
@@ -113,7 +114,7 @@ class ManageForm(forms.ModelForm):
             'about': forms.Textarea(
                 # config={'minHeight': 100}
                 attrs={
-                'placeholder': 'What\'s your Publication about of.',
+                'placeholder': _("What's your Publication about of."),
                     'class': 'myfieldclass padding-15',
                 }
             ),

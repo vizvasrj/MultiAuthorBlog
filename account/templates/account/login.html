@@ -1,11 +1,11 @@
 {% extends 'blog_base.html' %}
 {% load crispy_forms_tags %}
-
+{% load i18n %}
 {% block title %} Login {% endblock %}
 
 {% block content %}
 <div class="login mt-5">
-    <h1 class="headercreateaccount d-flex justify-content-center">Login</h1>
+    <h1 class="headercreateaccount d-flex justify-content-center">{% trans 'Login' %}</h1>
     <div class="d-flex mb-5 justify-content-center border">
 
         <p>
@@ -25,8 +25,8 @@
 
             {% csrf_token %}
             <p>
-                <input class="btn btn-square bg-aqua-lite-08 " type="submit" value="Login">
-                <a class="btn bg-fuchisa-lite-08" href="{% url 'register' %}">SignUp</a>
+                <input class="btn btn-square bg-aqua-lite-08 " type="submit" value="{% trans 'Login' %}">
+                <a class="btn bg-fuchisa-lite-08" href="{% url 'register' %}">{% trans 'SignUp' %}</a>
             </p>
         </form>
         </p>

@@ -1,0 +1,767 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-27 22:50+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:322
+msgid "English"
+msgstr "inglese"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:323
+msgid "Arabic"
+msgstr "Arabo"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:324
+msgid "Chinese"
+msgstr "Cinese"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:325
+msgid "Filipino"
+msgstr "filippino"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:326
+msgid "French"
+msgstr "francese"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:327
+msgid "German"
+msgstr "Tedesco"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:328
+msgid "Hindi"
+msgstr "hindi"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:329
+msgid "Indonesian"
+msgstr "indonesiano"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:330
+msgid "Italian"
+msgstr "italiano"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:331
+msgid "Japanese"
+msgstr "giapponese"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:332
+msgid "Korean"
+msgstr "coreano"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:333
+msgid "Norwegian"
+msgstr "norvegese"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:334
+msgid "Portuguese"
+msgstr "portoghese"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:335
+msgid "Russian"
+msgstr "russo"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:336
+msgid "Spanish"
+msgstr "spagnolo"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:337
+msgid "Vietnamese"
+msgstr "vietnamita"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "Nome utente"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "Parola d&#39;ordine"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "Parola d&#39;ordine ..."
+
+#: account/forms.py:44
+msgid "Repeat Password"
+msgstr "Ripeti la password"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "Ripeti la password ..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "Nome utente..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "E-mail"
+
+#: account/forms.py:59
+msgid "Email ..."
+msgstr "E-mail ..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "Le password non corrispondono."
+
+#: account/models.py:36
+msgid "user"
+msgstr "utente"
+
+#: account/models.py:39
+msgid "full name"
+msgstr "nome e cognome"
+
+#: account/models.py:45
+msgid "photo"
+msgstr "foto"
+
+#: account/models.py:51 publication/models.py:33
+msgid "about"
+msgstr "di"
+
+#: account/models.py:64
+msgid "my theme"
+msgstr "il mio tema"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "Modifica il tuo account"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:38
+msgid "Profile"
+msgstr "Profilo"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "Configurazione"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:126
+msgid "My Stories"
+msgstr "Le mie storie"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:127
+msgid "My Shared"
+msgstr "Il mio Condiviso"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "hanno condiviso"
+
+#: account/templates/account/edit.html:46
+msgid "Upload"
+msgstr "Caricamento"
+
+#: account/templates/account/edit.html:74
+msgid "Save changes"
+msgstr "Salvare le modifiche"
+
+#: account/templates/account/login.html:8
+#: account/templates/account/login.html:28
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:28
+#: blog/templates/blog_base.html:141
+msgid "Login"
+msgstr "Login"
+
+#: account/templates/account/login.html:29
+#: account/templates/registration/login.html:29
+#: blog/templates/blog_base.html:144
+msgid "SignUp"
+msgstr "Iscriviti"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "Elimina"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "Pubblica ora"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "Sposta in bozza"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "Modifica post"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:114
+#: blog/templates/blog/post_update.html:105
+msgid "Publish"
+msgstr "Pubblicare"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "Pubblicato"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "redatto"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "Cestinati"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "Cestinare"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "Eliminazione"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "Pubblicazione!"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "Spostato in bozza!"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "ci condiviso"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "Distaccato"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "rimuoviti da questo post"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:61
+#: blog/templates/blog/post/detail.html:118
+#: blog/templates/blog/post/list_ajax.html:62
+#: blog/templates/blog/post/list_ajax_similar.html:33
+#: blog/templates/blog/search/list_ajax.html:61
+msgid "Published at %(post_publish)s"
+msgstr "Pubblicato su %(post_publish)s"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "Il mio condiviso"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "distacco"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "Creare un account"
+
+#: account/templates/account/register.html:42
+msgid "Create"
+msgstr "Creare"
+
+#: account/templates/account/register.html:43
+msgid "Login Here"
+msgstr "Accedi qui"
+
+#: account/templates/account/register.html:103
+msgid "This username is not available!"
+msgstr "Questo nome utente non è disponibile!"
+
+#: account/templates/account/register.html:110
+msgid "This username is available!"
+msgstr "Questo username è disponibile!"
+
+#: account/templates/account/register.html:114
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr "Inserisci un nome utente valido che deve contenere più di 4 lettere!"
+
+#: account/templates/account/register.html:174
+msgid "This email is not available!"
+msgstr "Questa email non è disponibile!"
+
+#: account/templates/account/register.html:179
+msgid "This email is available!"
+msgstr "Questa email è disponibile!"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "Accoglienza"
+
+#: account/templates/account/register_done.html:12
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr ""
+"Benvenuto, la tua email %(new_user_email)s e il tuo nome utente sono "
+"%(new_user_username)s"
+
+#: account/templates/account/register_done.html:14
+msgid "Your account has been successfully created."
+msgstr "Il tuo account è stato creato con successo."
+
+#: account/templates/account/register_done.html:15
+msgid "Now your can Login."
+msgstr "Ora puoi accedere."
+
+#: account/templates/account/register_done.html:17
+msgid "But First you have to Verify your account."
+msgstr "Ma prima devi verificare il tuo account."
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "Utenti"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "Seguire"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "A seguire"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "a seguire"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "Seguaci"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "Seguiti"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "Di più"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "Elenco utenti"
+
+#: account/templates/account/user/user_post_list_ajax.html:72
+#: blog/templates/blog/post/list_ajax.html:73
+#: blog/templates/blog/post/list_ajax_similar.html:41
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "Per saperne di più"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "Eliminare l&#39;account"
+
+#: account/templates/registration/login.html:8
+msgid "Login Now"
+msgstr "Accedi ora"
+
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
+msgid "Logged out"
+msgstr "Disconnesso"
+
+#: account/templates/registration/logout.html:15
+msgid "You have been successfully logged out."
+msgstr "Sei stato disconnesso con successo."
+
+#: account/templates/registration/logout.html:16
+msgid "You can Login again."
+msgstr "Puoi accedere di nuovo."
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "Modifica della password"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "Password cambiata"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "La tua password è stata cambiata con successo."
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "Cambia la tua password"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "Cambia la password"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:240
+#: blog/templates/blog/post/detail.html:251
+#: blog/templates/blog/post/detail.html:281
+msgid "Submit"
+msgstr "Invia"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "Reimpostazione della password"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "Password impostata"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "La tua password è stata impostata."
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "Puoi accedere ora"
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "reimposta la tua password"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "Inserisci la tua nuova password due volte:"
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Il collegamento per la reimpostazione della password non è valido, "
+"probabilmente perché è già stato utilizzato. Richiedi una nuova "
+"reimpostazione della password."
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "Noi"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "assicurati di controllare la cartella spam."
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "Reimpostazione della password"
+
+#: account/views.py:77
+msgid "Disabled Account"
+msgstr "Account disabilitato"
+
+#: account/views.py:80
+msgid "Invalid login"
+msgstr "Login non valido"
+
+#: account/views.py:98
+msgid "User already exists"
+msgstr "L&#39;utente esiste già"
+
+#: account/views.py:142
+msgid "Profile updated successfully"
+msgstr "Profilo aggiornato con successo"
+
+#: account/views.py:147
+msgid "Error updating your profile"
+msgstr "Errore durante l&#39;aggiornamento del tuo profilo"
+
+#: account/views.py:544
+msgid "Wrong password"
+msgstr "Password errata"
+
+#: account/views.py:642
+msgid "already removed"
+msgstr "già rimosso"
+
+#: blog/forms.py:67
+msgid "No Publication"
+msgstr "Nessuna pubblicazione"
+
+#: blog/forms.py:95
+msgid "Title"
+msgstr "Titolo"
+
+#: blog/forms.py:100
+msgid "Type content here."
+msgstr "Digita qui il contenuto."
+
+#: blog/forms.py:108 blog/forms.py:197 blog/templates/blog/post_form.html:71
+#: blog/templates/blog/post_update.html:63 blog/templates/blog/tag/list.html:4
+#: publication/forms.py:50 publication/forms.py:104
+msgid "Tags"
+msgstr "tag"
+
+#: blog/forms.py:176
+msgid "Text here"
+msgstr "Testo quì"
+
+#: blog/forms.py:191 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "Nome"
+
+#: blog/forms.py:210 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "Di cosa tratta la tua pubblicazione."
+
+#: blog/models.py:83 blog/models.py:190
+msgid "title"
+msgstr "titolo"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "sottotitolo"
+
+#: blog/models.py:95 blog/models.py:207
+msgid "cover"
+msgstr "coperchio"
+
+#: blog/models.py:196
+msgid "category"
+msgstr "categoria"
+
+#: blog/models.py:204
+msgid "publication"
+msgstr "pubblicazione"
+
+#: blog/models.py:220
+msgid "author"
+msgstr "autore"
+
+#: blog/models.py:226
+msgid "other authors"
+msgstr "altri autori"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:267
+msgid "Replay:"
+msgstr "Rigiocare:"
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "Commenti"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "titolo:"
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "Aggiornare"
+
+#: blog/templates/blog/post/detail.html:24
+msgid "helps you remember more"
+msgstr "ti aiuta a ricordare di più"
+
+#: blog/templates/blog/post/detail.html:121
+msgid "Its a draft you can publish and edit here"
+msgstr "È una bozza che puoi pubblicare e modificare qui"
+
+#: blog/templates/blog/post/detail.html:142
+msgid "views:"
+msgstr "visualizzazioni:"
+
+#: blog/templates/blog/post/detail.html:176
+msgid "Edit"
+msgstr "Modificare"
+
+#: blog/templates/blog/post/detail.html:221
+msgid "Reply"
+msgstr "rispondere"
+
+#: blog/templates/blog/post/detail.html:234
+#: blog/templates/blog/post/detail.html:245
+msgid "Hit a comment"
+msgstr "Fai un commento"
+
+#: blog/templates/blog/post/detail.html:278
+msgid "Comment here"
+msgstr "Commenta qui"
+
+#: blog/templates/blog/post/detail.html:298
+msgid "Similar posts"
+msgstr "Post simili"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "Crea post"
+
+#: blog/templates/blog/post_form.html:68
+#: blog/templates/blog/post_update.html:60
+msgid "Please provie some tags"
+msgstr "Si prega di fornire alcuni tag"
+
+#: blog/templates/blog/post_form.html:79
+#: blog/templates/blog/post_update.html:71
+msgid "Please provide when to publish"
+msgstr "Si prega di fornire quando pubblicare"
+
+#: blog/templates/blog/post_form.html:91
+#: blog/templates/blog/post_update.html:83
+msgid "Upload cover image"
+msgstr "Carica immagine di copertina"
+
+#: blog/templates/blog/post_form.html:94
+#: blog/templates/blog/post_update.html:86
+msgid "Upload (Click here)"
+msgstr "Carica (clicca qui)"
+
+#: blog/templates/blog/post_form.html:100
+#: blog/templates/blog/post_update.html:92
+msgid "Share to edit with others"
+msgstr "Condividi per modificare con altri"
+
+#: blog/templates/blog/post_form.html:106
+#: blog/templates/blog/post_update.html:98
+msgid "If publication?"
+msgstr "Se pubblicazione?"
+
+#: blog/templates/blog/post_update.html:7
+msgid "Update Post"
+msgstr "Aggiorna post"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "Non ci sono post relativi a questa query"
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
+msgid "Search"
+msgstr "Ricerca"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "Post contenente"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "Cerca ancora"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "Tutti i tag"
+
+#: blog/templates/blog_base.html:88
+msgid "Posts"
+msgstr "Post"
+
+#: blog/templates/blog_base.html:90 blog/templates/blog_base.html:125
+msgid "Create Post"
+msgstr "Crea post"
+
+#: blog/templates/blog_base.html:122
+msgid "Manage profile"
+msgstr "Gestisci profilo"
+
+#: blog/templates/blog_base.html:123
+msgid "Change password"
+msgstr "Cambia la password"
+
+#: blog/templates/blog_base.html:124
+msgid "Logout"
+msgstr "Disconnettersi"
+
+#: blog/templates/blog_base.html:129
+msgid "My Publications"
+msgstr "Le mie pubblicazioni"
+
+#: blog/templates/blog_base.html:130
+msgid "Create Publication"
+msgstr "Crea pubblicazione"
+
+#: blog/templates/blog_base.html:167
+msgid "Multi User Blog"
+msgstr "Blog multiutente"
+
+#: blog/templates/blog_base.html:173
+msgid "Copyright"
+msgstr "Diritto d&#39;autore"
+
+#: blog/views.py:438
+msgid "Your are not authorized to edit :)"
+msgstr "Non sei autorizzato a modificare :)"
+
+#: blog/views.py:545
+msgid "No posts found ..."
+msgstr "Nessun post trovato ..."
+
+#: image_uploader/views.py:66
+msgid "Page not found."
+msgstr "Pagina non trovata."
+
+#: publication/models.py:11
+msgid "name"
+msgstr "nome"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "Immagine"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "lumaca"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "tag"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "editore"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "scrittore"

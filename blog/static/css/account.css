@@ -305,3 +305,9 @@ section {
     color: rgb(37, 37, 37);
 }
 
+
+
+/* verify username */
+vuser {
+    display: table-caption;
+}

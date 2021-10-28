@@ -1,5 +1,6 @@
 {% load blog_tags %}
 {% load thumbnail %}
+{% load i18n %}
 {% load no_code_editorjs %}
 
 {% for post in posts %}
@@ -29,7 +30,7 @@
                       </div>
                       <p class="date">
                   
-                        Published at {{ post.publish }}
+                        {% blocktrans with post_publish=post.publish %}Published at {{ post_publish }}{% endblocktrans %}
               
                       </p>
                                     <hr class="hr-line">
@@ -37,7 +38,7 @@
                       <a href="{{post.get_absolute_url}}"><img class="mb-3" width="100%" src="{{im.url}}" alt=""></a>
                       <p class="post-body">{{ post.body|xssprotect|truncatewords:100 }}</p>
                       <a class="link0" href="{{post.get_absolute_url}}">
-                        <p class="read_more">Read more</p>
+                        <p class="read_more">{% trans 'Read more' %}</p>
                       </a>
                   </div>
               </div>

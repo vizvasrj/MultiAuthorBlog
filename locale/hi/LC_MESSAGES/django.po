@@ -1,0 +1,766 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-27 22:50+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:322
+msgid "English"
+msgstr "अंग्रेज़ी"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:323
+msgid "Arabic"
+msgstr "अरबी"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:324
+msgid "Chinese"
+msgstr "चीनी"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:325
+msgid "Filipino"
+msgstr "filipino"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:326
+msgid "French"
+msgstr "फ्रेंच"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:327
+msgid "German"
+msgstr "जर्मन"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:328
+msgid "Hindi"
+msgstr "हिंदी"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:329
+msgid "Indonesian"
+msgstr "इन्डोनेशियाई"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:330
+msgid "Italian"
+msgstr "इतालवी"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:331
+msgid "Japanese"
+msgstr "जापानी"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:332
+msgid "Korean"
+msgstr "कोरियाई"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:333
+msgid "Norwegian"
+msgstr "नार्वेजियन"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:334
+msgid "Portuguese"
+msgstr "पुर्तगाली"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:335
+msgid "Russian"
+msgstr "रूसी"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:336
+msgid "Spanish"
+msgstr "स्पेनिश"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:337
+msgid "Vietnamese"
+msgstr "वियतनामी"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "उपयोगकर्ता नाम"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "पासवर्ड ..."
+
+#: account/forms.py:44
+msgid "Repeat Password"
+msgstr "पासवर्ड दोहराएं"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "पासवर्ड दोहराएं ..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "उपयोगकर्ता नाम ..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "ईमेल"
+
+#: account/forms.py:59
+msgid "Email ..."
+msgstr "ईमेल ..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "पासवर्ड मेल नहीं खाते।"
+
+#: account/models.py:36
+msgid "user"
+msgstr "उपयोगकर्ता"
+
+#: account/models.py:39
+msgid "full name"
+msgstr "पूरा नाम"
+
+#: account/models.py:45
+msgid "photo"
+msgstr "तस्वीर"
+
+#: account/models.py:51 publication/models.py:33
+msgid "about"
+msgstr "के बारे में"
+
+#: account/models.py:64
+msgid "my theme"
+msgstr "मेरा थीम"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "अपना खाता संपादित करें"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:38
+msgid "Profile"
+msgstr "प्रोफ़ाइल"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "विन्यास"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:125
+msgid "My Stories"
+msgstr "मेरी कहानियां"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:126
+msgid "My Shared"
+msgstr "मेरा साझा"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "उन्होंने साझा किया"
+
+#: account/templates/account/edit.html:46
+msgid "Upload"
+msgstr "डालना"
+
+#: account/templates/account/edit.html:74
+msgid "Save changes"
+msgstr "परिवर्तनों को सुरक्षित करें"
+
+#: account/templates/account/login.html:8
+#: account/templates/account/login.html:28
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:28
+#: blog/templates/blog_base.html:140
+msgid "Login"
+msgstr "लॉग इन करें"
+
+#: account/templates/account/login.html:29
+#: account/templates/registration/login.html:29
+#: blog/templates/blog_base.html:143
+msgid "SignUp"
+msgstr "साइन अप करें"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "हटाना"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "अब प्रकाशित करें"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "ड्राफ्ट में ले जाएँ"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "संपादित पोस्ट"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:114
+#: blog/templates/blog/post_update.html:105
+msgid "Publish"
+msgstr "प्रकाशित करना"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "प्रकाशित"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "मसौदा तैयार किया"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "ट्रैश किए"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "ट्रैश हो"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "हटाया जा रहा है"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "प्रकाशन!"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "ड्राफ़्ट में ले जाया गया!"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "वहाँ साझा"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "जुदा जुदा"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "इस पोस्ट से खुद को हटाओ"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:61
+#: blog/templates/blog/post/detail.html:118
+#: blog/templates/blog/post/list_ajax.html:62
+#: blog/templates/blog/post/list_ajax_similar.html:33
+#: blog/templates/blog/search/list_ajax.html:61
+msgid "Published at %(post_publish)s"
+msgstr "%(post_publish)s . पर प्रकाशित"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "मेरा साझा"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "detaching"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "खाता बनाएं"
+
+#: account/templates/account/register.html:42
+msgid "Create"
+msgstr "बनाएं"
+
+#: account/templates/account/register.html:43
+msgid "Login Here"
+msgstr "यहां लॉगिन करें"
+
+#: account/templates/account/register.html:103
+msgid "This username is not available!"
+msgstr "यह उपयोगकर्ता नाम उपलब्ध नहीं है!"
+
+#: account/templates/account/register.html:110
+msgid "This username is available!"
+msgstr "यह उपयोगकर्तानाम उपलब्ध है!"
+
+#: account/templates/account/register.html:114
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr "मान्य उपयोगकर्ता नाम दर्ज करें वर्ण 4 अक्षरों से अधिक होना चाहिए!"
+
+#: account/templates/account/register.html:174
+msgid "This email is not available!"
+msgstr "यह ईमेल उपलब्ध नहीं है!"
+
+#: account/templates/account/register.html:179
+msgid "This email is available!"
+msgstr "यह ईमेल उपलब्ध है!"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "स्वागत"
+
+#: account/templates/account/register_done.html:13
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr ""
+"आपका स्वागत है, आपका ईमेल %(new_user_email)s और उपयोगकर्ता नाम "
+"%(new_user_username)s . है"
+
+#: account/templates/account/register_done.html:16
+msgid "Your account has been successfully created."
+msgstr "आपका खाता सफलतापूर्वक बना दिया गया है।"
+
+#: account/templates/account/register_done.html:17
+msgid "Now your can Login."
+msgstr "अब आप लॉग इन कर सकते हैं।"
+
+#: account/templates/account/register_done.html:19
+msgid "But First you have to Verify your account."
+msgstr "लेकिन सबसे पहले आपको अपना अकाउंट वेरीफाई करना होगा।"
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "उपयोगकर्ताओं"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "का पालन करें"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "निम्नलिखित"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "निम्नलिखित"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "समर्थक"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "निम्नलिखित"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "अधिक"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "उपयोगकर्ता सूची"
+
+#: account/templates/account/user/user_post_list_ajax.html:72
+#: blog/templates/blog/post/list_ajax.html:73
+#: blog/templates/blog/post/list_ajax_similar.html:41
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "अधिक पढ़ें"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "खाता हटा दो"
+
+#: account/templates/registration/login.html:8
+msgid "Login Now"
+msgstr "अभी लॉगिन करें"
+
+#: account/templates/registration/logout.html:5
+#: account/templates/registration/logout.html:14
+msgid "Logged out"
+msgstr "बाहर आ गये"
+
+#: account/templates/registration/logout.html:17
+msgid "You have been successfully logged out."
+msgstr "आप सफलता पूर्वक लॉगआउट कर चुके हैं।"
+
+#: account/templates/registration/logout.html:18
+msgid "You can Login again."
+msgstr "आप फिर से लॉगिन कर सकते हैं।"
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "पासवर्ड परिवर्तन"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "पासवर्ड बदला गया"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "तुम्हारा पासवर्ड सफलतापूर्वक बदल दिया गया है।"
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "अपना पासवर्ड बदलें"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "पासवर्ड बदलें"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:240
+#: blog/templates/blog/post/detail.html:251
+#: blog/templates/blog/post/detail.html:281
+msgid "Submit"
+msgstr "प्रस्तुत करना"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "पासवर्ड रीसेट"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "पासवर्ड सेट"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "आपका पासवर्ड सेट कर दिया गया है।"
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "आप अभी लॉग इन कर सकते हैं"
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "अपना पासवर्ड रीसेट करें"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "कृपया अपना नया पासवर्ड दो बार दर्ज करें:"
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"पासवर्ड रीसेट लिंक अमान्य था, संभवतः इसलिए कि इसका पहले ही उपयोग किया जा "
+"चुका है। कृपया एक नया पासवर्ड रीसेट करने का अनुरोध करें।"
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "हम"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "अपने स्पैम फ़ोल्डर की जाँच करना सुनिश्चित करें।"
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "पासवर्ड रीसेट"
+
+#: account/views.py:77
+msgid "Disabled Account"
+msgstr "अक्षम खाता"
+
+#: account/views.py:80
+msgid "Invalid login"
+msgstr "अमान्य लॉगिन"
+
+#: account/views.py:98
+msgid "User already exists"
+msgstr "उपयोगकर्ता पहले से मौजूद है"
+
+#: account/views.py:142
+msgid "Profile updated successfully"
+msgstr "प्रोफाइल को सफलतापूर्वक अपडेट किया गया"
+
+#: account/views.py:147
+msgid "Error updating your profile"
+msgstr "आपकी प्रोफ़ाइल अपडेट करने में त्रुटि"
+
+#: account/views.py:544
+msgid "Wrong password"
+msgstr "गलत पासवर्ड"
+
+#: account/views.py:642
+msgid "already removed"
+msgstr "पहले ही हटा दिया गया"
+
+#: blog/forms.py:67
+msgid "No Publication"
+msgstr "कोई प्रकाशन नहीं"
+
+#: blog/forms.py:95
+msgid "Title"
+msgstr "शीर्षक"
+
+#: blog/forms.py:100
+msgid "Type content here."
+msgstr "यहां सामग्री टाइप करें।"
+
+#: blog/forms.py:108 blog/forms.py:197 blog/templates/blog/post_form.html:71
+#: blog/templates/blog/post_update.html:63 blog/templates/blog/tag/list.html:4
+#: publication/forms.py:50 publication/forms.py:104
+msgid "Tags"
+msgstr "टैग"
+
+#: blog/forms.py:176
+msgid "Text here"
+msgstr "टेक्स्ट यहां"
+
+#: blog/forms.py:191 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "नाम"
+
+#: blog/forms.py:210 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "आपका प्रकाशन किस बारे में है."
+
+#: blog/models.py:83 blog/models.py:190
+msgid "title"
+msgstr "शीर्षक"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "उपशीर्षक"
+
+#: blog/models.py:95 blog/models.py:207
+msgid "cover"
+msgstr "आवरण"
+
+#: blog/models.py:196
+msgid "category"
+msgstr "श्रेणी"
+
+#: blog/models.py:204
+msgid "publication"
+msgstr "प्रकाशन"
+
+#: blog/models.py:220
+msgid "author"
+msgstr "लेखक"
+
+#: blog/models.py:226
+msgid "other authors"
+msgstr "अन्य लेखक"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:267
+msgid "Replay:"
+msgstr "फिर से खेलना:"
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "टिप्पणियाँ"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "शीर्षक:"
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "अद्यतन"
+
+#: blog/templates/blog/post/detail.html:24
+msgid "helps you remember more"
+msgstr "आपको अधिक याद रखने में मदद करता है"
+
+#: blog/templates/blog/post/detail.html:121
+msgid "Its a draft you can publish and edit here"
+msgstr "इसका मसौदा आप यहां प्रकाशित और संपादित कर सकते हैं"
+
+#: blog/templates/blog/post/detail.html:142
+msgid "views:"
+msgstr "विचार:"
+
+#: blog/templates/blog/post/detail.html:176
+msgid "Edit"
+msgstr "संपादित करें"
+
+#: blog/templates/blog/post/detail.html:221
+msgid "Reply"
+msgstr "जवाब"
+
+#: blog/templates/blog/post/detail.html:234
+#: blog/templates/blog/post/detail.html:245
+msgid "Hit a comment"
+msgstr "एक टिप्पणी मारो"
+
+#: blog/templates/blog/post/detail.html:278
+msgid "Comment here"
+msgstr "यहां टिप्पणी करें"
+
+#: blog/templates/blog/post/detail.html:298
+msgid "Similar posts"
+msgstr "इसी तरह की पोस्ट"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "पोस्ट बनाएं"
+
+#: blog/templates/blog/post_form.html:68
+#: blog/templates/blog/post_update.html:60
+msgid "Please provie some tags"
+msgstr "कृपया कुछ टैग साबित करें"
+
+#: blog/templates/blog/post_form.html:79
+#: blog/templates/blog/post_update.html:71
+msgid "Please provide when to publish"
+msgstr "कृपया बताएं कि कब प्रकाशित करना है"
+
+#: blog/templates/blog/post_form.html:91
+#: blog/templates/blog/post_update.html:83
+msgid "Upload cover image"
+msgstr "कवर छवि अपलोड करें"
+
+#: blog/templates/blog/post_form.html:94
+#: blog/templates/blog/post_update.html:86
+msgid "Upload (Click here)"
+msgstr "अपलोड करें (यहां क्लिक करें)"
+
+#: blog/templates/blog/post_form.html:100
+#: blog/templates/blog/post_update.html:92
+msgid "Share to edit with others"
+msgstr "दूसरों के साथ संपादित करने के लिए साझा करें"
+
+#: blog/templates/blog/post_form.html:106
+#: blog/templates/blog/post_update.html:98
+msgid "If publication?"
+msgstr "अगर प्रकाशन?"
+
+#: blog/templates/blog/post_update.html:7
+msgid "Update Post"
+msgstr "पोस्ट अपडेट करें"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "इस क्वेरी से संबंधित कोई पोस्ट नहीं है"
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:102
+msgid "Search"
+msgstr "खोज"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "पोस्ट युक्त"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "फिर से खोजो"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "सभी टैग"
+
+#: blog/templates/blog_base.html:87
+msgid "Posts"
+msgstr "पदों"
+
+#: blog/templates/blog_base.html:89 blog/templates/blog_base.html:124
+msgid "Create Post"
+msgstr "पोस्ट बनाएं"
+
+#: blog/templates/blog_base.html:121
+msgid "Manage profile"
+msgstr "प्रोफ़ाइल प्रबंधित करें"
+
+#: blog/templates/blog_base.html:122
+msgid "Change password"
+msgstr "पासवर्ड बदलें"
+
+#: blog/templates/blog_base.html:123
+msgid "Logout"
+msgstr "लॉग आउट"
+
+#: blog/templates/blog_base.html:128
+msgid "My Publications"
+msgstr "मेरे प्रकाशन"
+
+#: blog/templates/blog_base.html:129
+msgid "Create Publication"
+msgstr "प्रकाशन बनाएँ"
+
+#: blog/templates/blog_base.html:166
+msgid "Multi User Blog"
+msgstr "बहु उपयोगकर्ता ब्लॉग"
+
+#: blog/templates/blog_base.html:172
+msgid "Copyright"
+msgstr "कॉपीराइट"
+
+#: blog/views.py:438
+msgid "Your are not authorized to edit :)"
+msgstr "आप संपादित करने के लिए अधिकृत नहीं हैं :)"
+
+#: blog/views.py:545
+msgid "No posts found ..."
+msgstr "कोई प्रकाशन नहीं मिला ..."
+
+#: image_uploader/views.py:66
+msgid "Page not found."
+msgstr "पृष्ठ नहीं मिला।"
+
+#: publication/models.py:11
+msgid "name"
+msgstr "नाम"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "छवि"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "काउंटर"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "टैग"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "प्रकाशक"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "लेखक"

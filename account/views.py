@@ -23,6 +23,7 @@ from django.utils import timezone
 from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 from django.db.models import Q
+from django.utils.translation import gettext_lazy as _
 
 # 3rd party
 from itertools import chain
@@ -73,10 +74,10 @@ def user_login(request):
 
                     else:
                         return HttpResponse(
-                            'Disabled Account'
+                            _('Disabled Account')
                         )
                 else:
-                    return HttpResponse('Invalid login')
+                    return HttpResponse(_('Invalid login'))
         else:
             form = LoginForm()
         return render(
@@ -94,7 +95,7 @@ def register(request):
             user_form = UserRegistrationForm(request.POST)
             try:
                 user_exists = User.objects.get(username=request.POST['username'])
-                return JsonResponse({"message":"User already exists"}, status=200)
+                return JsonResponse({"message":_("User already exists")}, status=200)
             except User.DoesNotExist:
                 # pass           
                 if user_form.is_valid():
@@ -138,12 +139,12 @@ def edit(request):
             profile_form.save()
             messages.success(
                 request,
-                'Profile updated successfully'
+                _('Profile updated successfully')
             )
         else:
             messages.error(
                 request,
-                'Error updating your profile'
+                _('Error updating your profile')
             )
     else:
         user_form = UserEditForm(instance=request.user)
@@ -540,7 +541,7 @@ def delete_profile(request):
                 logout(request)
                 return redirect('register')
             else:
-                HttpResponse({'message': 'Wrong password'})
+                HttpResponse({'message': _('Wrong password')})
     else:
         form = UserDeleteForm(request.POST)
     return render(
@@ -638,7 +639,7 @@ def remove_shared_post_by_me(request):
             post.other_author.remove(request.user.id)
             return JsonResponse({'status': 'removed'}, status=200)
         except Post.DoesNotExist:
-            return JsonResponse({'status': 'already removed'}, status=404)
+            return JsonResponse({'status': _('already removed')}, status=404)
     return JsonResponse({'status': 'error'}, status=404)
 
 

@@ -2,13 +2,14 @@
 {% load static %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
-{% load social_share %}
 {% load blog_tags %}
-{% load editorjs %}
-
+<!-- {# load editorjs #} -->
+{% load i18n %}
 {% block title %} {{ post.title }} {% endblock %}
 {% block style %}
 {% endblock %}
+
+
 
 {% block content %}
 <div class="container">
@@ -20,7 +21,7 @@
                 <div class="row">
                     <div class="col-1">
                         <div class="float sticky-top">
-                            <sperms class="brains" data-toggle='tooltip' data-html='true' title='helps you remember more'>
+                            <sperms class="brains" data-toggle='tooltip' data-html='true' title='{% trans 'helps you remember more' %}'>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><g fill="none"><path d="M6.13 2.793A3.91 3.91 0 0 1 8.5 2c.24 0 .431.125.542.211c.124.098.24.223.344.348a.5.5 0 0 1 .114.318V6.5H8.415a1.5 1.5 0 1 0 0 1H9.5v9.415a.5.5 0 0 1-.183.387C8.855 17.68 8.237 18 7.5 18c-1.186 0-2.069-.598-2.64-1.313a4.057 4.057 0 0 1-.819-1.752a2.68 2.68 0 0 1-1.054-.555C2.435 13.907 2 13.14 2 12c0-.557.037-1.06.12-1.5h3.13c.636 0 1.16.475 1.24 1.089a1.5 1.5 0 1 0 1.004-.006A2.25 2.25 0 0 0 5.25 9.5H2.441c.153-.298.358-.55.625-.729a1.58 1.58 0 0 1 .212-.118c-.284-.832-.21-1.806.064-2.571c.175-.492.453-.957.835-1.267c.252-.205.552-.34.88-.366c.144-.683.549-1.248 1.074-1.656zM10.5 14.5h.75a2.25 2.25 0 0 0 2.25-2.25v-1.835a1.5 1.5 0 1 0-1 0v1.835c0 .69-.56 1.25-1.25 1.25h-.75V2.877a.5.5 0 0 1 .114-.318c.103-.125.22-.25.344-.348c.11-.086.301-.211.542-.211a3.91 3.91 0 0 1 2.37.793c.525.408.93.973 1.073 1.656c.328.025.628.161.88.366c.382.31.66.775.835 1.267c.274.765.348 1.74.064 2.57c.072.034.143.074.212.12c.275.183.484.445.638.754c.303.605.428 1.449.428 2.474c0 1.141-.435 1.907-.987 2.38a2.68 2.68 0 0 1-1.054.555c-.1.558-.38 1.204-.819 1.752C14.57 17.402 13.686 18 12.5 18c-.736 0-1.355-.32-1.816-.698a.5.5 0 0 1-.184-.387V14.5zM7 6.5a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1zm0 6a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1zm6-3a.5.5 0 1 0 0-1a.5.5 0 0 0 0 1z" fill="currentColor"/></g></svg>                            
                             </sperms>
                             <div class="bookmark_like d-flex flex-column">
@@ -105,7 +106,7 @@
                           {% if post.publication %}
                           
                           <a class="author_name_from_list vizvasrj" href="/{{post.author.get_absolute_url}}/">{{ post.author.user }}</a> 
-                          in <div class="inline ">
+                          -> <div class="inline ">
                               <a class=" td-n"  href="{{post.publication.get_absolute_url}}"><div class="navy-text ">{{post.publication}}</div></a>
                             </div>
                           {% endif %}
@@ -114,9 +115,10 @@
                           <p class="date">
                             {% if post.status == 'published' %}
                             
-                            Published at {{ post.publish }}
+                                {% blocktrans with post_publish=post.publish %}Published at {{ post_publish }}{% endblocktrans %}
+
                             {% elif post.author_id == request.user.id %}
-                            Its a draft you can publish and edit here <a href="{% url 'edit_post' post.id %}"> click</a>
+                             <a href="{% url 'edit_post' post.id %}"> {% trans 'Its a draft you can publish and edit here' %} </a>
                             {% endif %}
                           </p>                        <hr class="hr-line">
                         {% thumbnail post.cover "800x400" crop="100%" as im %}
@@ -137,7 +139,7 @@
                             </a>
                             {% endfor %}
                             <div class="total_views">
-                                <strong>views:</strong> {{total_views}}
+                                <strong>{% trans 'views:' %}</strong> {{total_views}}
                             </div>
                         </div>
                     </div>
@@ -159,7 +161,7 @@
                     <div id="comment-list" class="">
                         {% with allcomments.count as total_comments %}
                         <strong>
-                            {{ total_comments }} comment{{ total_comments|pluralize }}
+                            {{ total_comments }} <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M20 1.999H4c-1.103 0-2 .897-2 2v18l4-4h14c1.103 0 2-.897 2-2v-12c0-1.103-.897-2-2-2zm-6 11H7v-2h7v2zm3-4H7v-2h10v2z" fill="currentColor"/></svg>
                         </strong>
                         {% endwith %}
                         {% load mptt_tags %}
@@ -171,7 +173,7 @@
                                     <strong><img width="20px" src="{{ im.url }}" alt="">
                                         {{node.name}} {{ node.commentor.user }}</strong>
                                     <div>{{ node.created }} {% if request.user.id == node.commentor.id %} <a
-                                            href="{% url 'edit_comment' node.id %}">Edit</a> {% endif %}</div>
+                                            href="{% url 'edit_comment' node.id %}">{% trans 'Edit' %}</a> {% endif %}</div>
                                 </div>
                                 <div class="comment-body">
                                     {{ node.id }}: {{ node.body|xssprotect }}
@@ -216,7 +218,7 @@
                                     {% endwith %}
                                 </div>
                                 <hr>
-                                <button class="bg-blue btn" onClick="myFunction({{ node.id }})">Reply</button>
+                                <button class="bg-blue btn" onClick="myFunction({{ node.id }})">{% trans 'Reply' %}</button>
                             </div>
                             {% if not node.is_leaf_node %}
                             <div class="children pl-2 pl-md-5" style="margin-left: 15px;">
@@ -229,24 +231,24 @@
                         <div id="comment"></div>
                         <form id="myForm" method="post">
                             <div class="cover mb-2 ">
-                                <label class="mt-2 labeltext" for="body" class="form-label">Hit a comment</label>
+                                <label class="mt-2 labeltext" for="body" class="form-label">{% trans 'Hit a comment' %}</label>
                                 <div class="">
                                     {{ comment_form.body }}
                                 </div>
                             </div>
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">{% trans 'Submit' %}</button>
                         </form>
                         {% else %}
                         <form action="/login/?next={{ post.get_absolute_url }}#comment" method="post">
                             <div class="cover mb-2 ">
-                                <label class="mt-2 labeltext" for="body" class="form-label">Hit a comment</label>
+                                <label class="mt-2 labeltext" for="body" class="form-label">{% trans 'Hit a comment' %}</label>
                                 <div class="">
                                     <textarea name="id_body" id="id_body" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">{% trans 'Submit' %}</button>
                         </form>
                         {% endif %}
                     </div>
@@ -262,7 +264,7 @@
                             a.insertAdjacentHTML('afterend', ' \
                             <form id="newForm" method="post"> \
                                 <div class="re_form"> \
-                                <h2>Replay:</h2> \
+                                <h2>{% trans "Replay:" %}</h2> \
                                 <button type="button" class="btn re_form_close bg-red" onclick="formExit()"> \
                                     Close \
                                 </button> \
@@ -273,10 +275,10 @@
                                 </p> \
                                 <p> \
                                      \
-                                    <textarea placeholder="Comment here" name="body" id="id_body" class="re_form_textarea"></textarea>  \
+                                    <textarea placeholder="{% trans "Comment here" %}" name="body" id="id_body" class="re_form_textarea"></textarea>  \
                                 </p> \
                                 {% csrf_token %} \
-                                <button type="submit" class="btn btn-primary btn-lg btn-block bg-olive">Submit</button> \
+                                <button type="submit" class="btn btn-primary btn-lg btn-block bg-olive">{% trans "Submit" %}</button> \
                                 </div> \
                                 </form> \
                             ');
@@ -293,7 +295,7 @@
     </div>
     <hr>
     <div class="container">
-        <h2 style="font-weight: 700; color: slategrey;">Similar posts</h2>
+        <h2 style="font-weight: 700; color: slategrey;">{% trans 'Similar posts' %}</h2>
     </div>
         <div id="post-list">
             {% include "blog/post/list_ajax_similar.html" with posts=similar_posts %}

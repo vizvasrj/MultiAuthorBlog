@@ -1,7 +1,7 @@
 {% extends "blog_base.html" %}
-
+{% load i18n %}
 {% block content %} 
-<h1>Delete Account yes </h1>
+<h1>{% trans 'Delete Account' %} </h1>
 <form action="" method="POST">
     {{ form.as_p }}
     {% csrf_token %}

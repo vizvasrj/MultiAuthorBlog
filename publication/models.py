@@ -4,28 +4,33 @@ from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 from taggit_autosuggest.managers import TaggableManager
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 
 class Publication(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(_("name"), max_length=50)
     image = models.ImageField(
+        _('image'),
         upload_to='publication',
         null=True
     )
-    slug = AutoSlugField(populate_from='name')
+    slug = AutoSlugField(_('slug'), populate_from='name')
     tags = TaggableManager(
-        related_name='publications_tag'
+        related_name='publications_tag',
+        verbose_name=_('tags')
     )
     publisher  = models.ForeignKey(
         User,
         related_name='publications',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name=_('publisher')
     )
     writer = models.ManyToManyField(
         User,
         related_name='publications_cc',
+        verbose_name=_('writer')
     )
-    about = models.TextField()
+    about = models.TextField(_('about'))
     followers = models.ManyToManyField(
         User,
         through='PublicationContact',

@@ -599,10 +599,11 @@ div.comment-body img {
     text-align: center;
 }
 .vizvasrj {
-    font-family: 'Libre Barcode 39 Text', cursive;
-    
+    /* font-family: 'Libre Barcode 39 Text', cursive; */
+    font-family: Roboto mono;
     font-size: 32px !important;
     color: rgb(77, 77, 77);
+    filter: drop-shadow(1mm 1mm 3mm rgb(81, 112, 86));
 }
 .vizvasrj:hover {
     color: rgb(36, 36, 36);
@@ -850,6 +851,9 @@ div .post__body > p.post-body + p {
 .ln:hover {
     color: inherit;
     opacity: 0.9;
+}
+.delete__a, .publish__a, .untrash__a{
+    cursor: pointer;
 }
 
 

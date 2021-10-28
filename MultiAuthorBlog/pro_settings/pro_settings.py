@@ -58,9 +58,9 @@ INSTALLED_APPS = [
     'taggit_autosuggest',
     'mptt',
     'django_editorjs_fields',
-    'ckeditor_uploader',
+    # 'ckeditor_uploader',
     'django_extensions',
-    'tempus_dominus',
+    # 'tempus_dominus',
     'django_select2',
     'actions',
     'parler',
@@ -253,7 +253,7 @@ CKEDITOR_5_CONFIGS = {
 TAGGIT_CASE_INSENSITIVE = True
 
 # tempus_dominus
-TEMPUS_DOMINUS_LOCALIZE = True
+# TEMPUS_DOMINUS_LOCALIZE = True
 
 
 # Redis

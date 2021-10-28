@@ -1,0 +1,763 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-27 22:50+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:322
+msgid "English"
+msgstr "영어"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:323
+msgid "Arabic"
+msgstr "아라비아 말"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:324
+msgid "Chinese"
+msgstr "중국인"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:325
+msgid "Filipino"
+msgstr "필리핀"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:326
+msgid "French"
+msgstr "프랑스 국민"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:327
+msgid "German"
+msgstr "독일 사람"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:328
+msgid "Hindi"
+msgstr "힌디 어"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:329
+msgid "Indonesian"
+msgstr "인도네시아 인"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:330
+msgid "Italian"
+msgstr "이탈리아 사람"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:331
+msgid "Japanese"
+msgstr "일본어"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:332
+msgid "Korean"
+msgstr "한국인"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:333
+msgid "Norwegian"
+msgstr "노르웨이 인"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:334
+msgid "Portuguese"
+msgstr "포르투갈 인"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:335
+msgid "Russian"
+msgstr "러시아인"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:336
+msgid "Spanish"
+msgstr "스페인의"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:337
+msgid "Vietnamese"
+msgstr "베트남어"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "사용자 이름"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "비밀번호"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "비밀번호 ..."
+
+#: account/forms.py:44
+msgid "Repeat Password"
+msgstr "비밀번호 반복"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "비밀번호 반복..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "사용자 이름 ..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "이메일"
+
+#: account/forms.py:59
+msgid "Email ..."
+msgstr "이메일 ..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "비밀번호가 일치하지 않습니다."
+
+#: account/models.py:36
+msgid "user"
+msgstr "사용자"
+
+#: account/models.py:39
+msgid "full name"
+msgstr "성명"
+
+#: account/models.py:45
+msgid "photo"
+msgstr "사진"
+
+#: account/models.py:51 publication/models.py:33
+msgid "about"
+msgstr "~에 대한"
+
+#: account/models.py:64
+msgid "my theme"
+msgstr "내 테마"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "계정 수정"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:38
+msgid "Profile"
+msgstr "프로필"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "구성"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:126
+msgid "My Stories"
+msgstr "내 이야기"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:127
+msgid "My Shared"
+msgstr "내 공유"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "그들은 공유"
+
+#: account/templates/account/edit.html:46
+msgid "Upload"
+msgstr "업로드"
+
+#: account/templates/account/edit.html:74
+msgid "Save changes"
+msgstr "변경 사항을 저장하다"
+
+#: account/templates/account/login.html:8
+#: account/templates/account/login.html:28
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:28
+#: blog/templates/blog_base.html:141
+msgid "Login"
+msgstr "로그인"
+
+#: account/templates/account/login.html:29
+#: account/templates/registration/login.html:29
+#: blog/templates/blog_base.html:144
+msgid "SignUp"
+msgstr "가입하기"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "삭제"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "지금 게시"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "초안으로 이동"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "게시물 수정"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:114
+#: blog/templates/blog/post_update.html:105
+msgid "Publish"
+msgstr "게시"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "게시됨"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "초안"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "휴지통"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "쓰레기"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "삭제 중"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "출판!"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "드래프트로 옮겼습니다!"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "공유"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "떨어져있는"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "이 게시물에서 자신을 삭제"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:61
+#: blog/templates/blog/post/detail.html:118
+#: blog/templates/blog/post/list_ajax.html:62
+#: blog/templates/blog/post/list_ajax_similar.html:33
+#: blog/templates/blog/search/list_ajax.html:61
+msgid "Published at %(post_publish)s"
+msgstr "%(post_publish)s에 게시됨"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "내 공유"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "분리"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "계정 만들기"
+
+#: account/templates/account/register.html:42
+msgid "Create"
+msgstr "창조하다"
+
+#: account/templates/account/register.html:43
+msgid "Login Here"
+msgstr "여기에 로그인"
+
+#: account/templates/account/register.html:103
+msgid "This username is not available!"
+msgstr "이 이름은 사용할 수 없습니다!"
+
+#: account/templates/account/register.html:110
+msgid "This username is available!"
+msgstr "이 사용자 이름을 사용할 수 있습니다!"
+
+#: account/templates/account/register.html:114
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr "유효한 사용자 이름을 입력하십시오. 문자는 4자 이상이어야 합니다!"
+
+#: account/templates/account/register.html:174
+msgid "This email is not available!"
+msgstr "사용할 수 없는 이메일입니다!"
+
+#: account/templates/account/register.html:179
+msgid "This email is available!"
+msgstr "이 이메일을 사용할 수 있습니다!"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "어서 오십시오"
+
+#: account/templates/account/register_done.html:12
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr ""
+"환영합니다. 귀하의 이메일은 %(new_user_email)s이고 사용자 이름은 %(new_user_username)s입니다."
+
+#: account/templates/account/register_done.html:14
+msgid "Your account has been successfully created."
+msgstr "당신의 계정이 성공적으로 생성되었습니다."
+
+#: account/templates/account/register_done.html:15
+msgid "Now your can Login."
+msgstr "이제 로그인할 수 있습니다."
+
+#: account/templates/account/register_done.html:17
+msgid "But First you have to Verify your account."
+msgstr "하지만 먼저 계정을 확인해야 합니다."
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "사용자"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "따르다"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "수행원"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "수행원"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "팔로워"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "다음"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "더"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "사용자 목록"
+
+#: account/templates/account/user/user_post_list_ajax.html:72
+#: blog/templates/blog/post/list_ajax.html:73
+#: blog/templates/blog/post/list_ajax_similar.html:41
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "더 읽기"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "계정 삭제"
+
+#: account/templates/registration/login.html:8
+msgid "Login Now"
+msgstr "지금 로그인하십시오"
+
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
+msgid "Logged out"
+msgstr "로그아웃"
+
+#: account/templates/registration/logout.html:15
+msgid "You have been successfully logged out."
+msgstr "성공적으로 로그아웃되었습니다."
+
+#: account/templates/registration/logout.html:16
+msgid "You can Login again."
+msgstr "다시 로그인할 수 있습니다."
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "비밀번호 변경"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "비밀번호 변경됨"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "비밀번호가 성공적으로 변경되었습니다."
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "비밀번호 변경"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "비밀번호 변경"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:240
+#: blog/templates/blog/post/detail.html:251
+#: blog/templates/blog/post/detail.html:281
+msgid "Submit"
+msgstr "제출하다"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "비밀번호 초기화"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "비밀번호 설정"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "비밀번호가 설정되었습니다."
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "지금 로그인할 수 있습니다."
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "비밀번호를 재설정"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "새 비밀번호를 두 번 입력하십시오."
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr "비밀번호 재설정 링크가 유효하지 않습니다. 이미 사용되었기 때문일 수 있습니다. 새로운 비밀번호 재설정을 요청하세요."
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "우리"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "스팸 폴더를 확인하십시오."
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "비밀번호 초기화"
+
+#: account/views.py:77
+msgid "Disabled Account"
+msgstr "비활성화된 계정"
+
+#: account/views.py:80
+msgid "Invalid login"
+msgstr "로그인 오류"
+
+#: account/views.py:98
+msgid "User already exists"
+msgstr "사용자가 이미 존재합니다"
+
+#: account/views.py:142
+msgid "Profile updated successfully"
+msgstr "프로필이 업데이트되었습니다."
+
+#: account/views.py:147
+msgid "Error updating your profile"
+msgstr "프로필 업데이트 중 오류 발생"
+
+#: account/views.py:544
+msgid "Wrong password"
+msgstr "잘못된 비밀번호"
+
+#: account/views.py:642
+msgid "already removed"
+msgstr "이미 제거됨"
+
+#: blog/forms.py:67
+msgid "No Publication"
+msgstr "출판 없음"
+
+#: blog/forms.py:95
+msgid "Title"
+msgstr "제목"
+
+#: blog/forms.py:100
+msgid "Type content here."
+msgstr "여기에 내용을 입력합니다."
+
+#: blog/forms.py:108 blog/forms.py:197 blog/templates/blog/post_form.html:71
+#: blog/templates/blog/post_update.html:63 blog/templates/blog/tag/list.html:4
+#: publication/forms.py:50 publication/forms.py:104
+msgid "Tags"
+msgstr "태그"
+
+#: blog/forms.py:176
+msgid "Text here"
+msgstr "여기에 텍스트"
+
+#: blog/forms.py:191 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "이름"
+
+#: blog/forms.py:210 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "당신의 간행물은 무엇에 관한 것입니까?"
+
+#: blog/models.py:83 blog/models.py:190
+msgid "title"
+msgstr "제목"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "부제"
+
+#: blog/models.py:95 blog/models.py:207
+msgid "cover"
+msgstr "씌우다"
+
+#: blog/models.py:196
+msgid "category"
+msgstr "범주"
+
+#: blog/models.py:204
+msgid "publication"
+msgstr "출판"
+
+#: blog/models.py:220
+msgid "author"
+msgstr "작가"
+
+#: blog/models.py:226
+msgid "other authors"
+msgstr "다른 작가들"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:267
+msgid "Replay:"
+msgstr "다시 하다:"
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "코멘트"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "제목:"
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "업데이트"
+
+#: blog/templates/blog/post/detail.html:24
+msgid "helps you remember more"
+msgstr "더 많이 기억할 수 있도록 도와줍니다"
+
+#: blog/templates/blog/post/detail.html:121
+msgid "Its a draft you can publish and edit here"
+msgstr "여기에서 게시하고 편집할 수 있는 초안입니다."
+
+#: blog/templates/blog/post/detail.html:142
+msgid "views:"
+msgstr "견해:"
+
+#: blog/templates/blog/post/detail.html:176
+msgid "Edit"
+msgstr "편집하다"
+
+#: blog/templates/blog/post/detail.html:221
+msgid "Reply"
+msgstr "회신하다"
+
+#: blog/templates/blog/post/detail.html:234
+#: blog/templates/blog/post/detail.html:245
+msgid "Hit a comment"
+msgstr "댓글 누르기"
+
+#: blog/templates/blog/post/detail.html:278
+msgid "Comment here"
+msgstr "여기 댓글"
+
+#: blog/templates/blog/post/detail.html:298
+msgid "Similar posts"
+msgstr "유사한 게시물"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "게시물 작성"
+
+#: blog/templates/blog/post_form.html:68
+#: blog/templates/blog/post_update.html:60
+msgid "Please provie some tags"
+msgstr "일부 태그를 제공하십시오."
+
+#: blog/templates/blog/post_form.html:79
+#: blog/templates/blog/post_update.html:71
+msgid "Please provide when to publish"
+msgstr "게시 시기를 알려주세요"
+
+#: blog/templates/blog/post_form.html:91
+#: blog/templates/blog/post_update.html:83
+msgid "Upload cover image"
+msgstr "표지 이미지 업로드"
+
+#: blog/templates/blog/post_form.html:94
+#: blog/templates/blog/post_update.html:86
+msgid "Upload (Click here)"
+msgstr "업로드(여기를 클릭)"
+
+#: blog/templates/blog/post_form.html:100
+#: blog/templates/blog/post_update.html:92
+msgid "Share to edit with others"
+msgstr "다른 사람과 수정하기 위해 공유"
+
+#: blog/templates/blog/post_form.html:106
+#: blog/templates/blog/post_update.html:98
+msgid "If publication?"
+msgstr "출판이라면?"
+
+#: blog/templates/blog/post_update.html:7
+msgid "Update Post"
+msgstr "게시물 업데이트"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "이 검색어와 관련된 게시물이 없습니다."
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
+msgid "Search"
+msgstr "찾다"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "게시물 포함"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "다시 검색"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "모든 태그"
+
+#: blog/templates/blog_base.html:88
+msgid "Posts"
+msgstr "게시물"
+
+#: blog/templates/blog_base.html:90 blog/templates/blog_base.html:125
+msgid "Create Post"
+msgstr "게시물 작성"
+
+#: blog/templates/blog_base.html:122
+msgid "Manage profile"
+msgstr "프로필 관리"
+
+#: blog/templates/blog_base.html:123
+msgid "Change password"
+msgstr "비밀번호 변경"
+
+#: blog/templates/blog_base.html:124
+msgid "Logout"
+msgstr "로그 아웃"
+
+#: blog/templates/blog_base.html:129
+msgid "My Publications"
+msgstr "내 출판물"
+
+#: blog/templates/blog_base.html:130
+msgid "Create Publication"
+msgstr "출판물 만들기"
+
+#: blog/templates/blog_base.html:167
+msgid "Multi User Blog"
+msgstr "다중 사용자 블로그"
+
+#: blog/templates/blog_base.html:173
+msgid "Copyright"
+msgstr "저작권"
+
+#: blog/views.py:438
+msgid "Your are not authorized to edit :)"
+msgstr "편집 권한이 없습니다. :)"
+
+#: blog/views.py:545
+msgid "No posts found ..."
+msgstr "게시물이 없습니다 ..."
+
+#: image_uploader/views.py:66
+msgid "Page not found."
+msgstr "페이지를 찾을 수 없습니다."
+
+#: publication/models.py:11
+msgid "name"
+msgstr "이름"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "영상"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "강타"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "태그"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "발행자"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "작가"

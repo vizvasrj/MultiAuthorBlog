@@ -10,6 +10,7 @@ from django.db.models.signals import (
 from django.dispatch import receiver
 from .tasks import print_full_name
 from django.core.validators import FileExtensionValidator
+from django.utils.translation import gettext_lazy as _
 
 class Theme(models.Model):
     name = models.CharField(max_length=50)
@@ -31,24 +32,23 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        related_name='profiles'
+        related_name='profiles',
+        verbose_name=_("user")
     )
     full_name = models.CharField(
+        _("full name"),
         max_length=100,
         blank=True,
         null=True
     )
     photo = models.ImageField(
+        _("photo"),
         upload_to='users/%Y/%m/%d',
         blank=True,
         default='account/defaultprofileimage.jpg'
     )
-    full_name = models.CharField(
-        max_length=200,
-        blank=True,
-        null=True
-    )
     about = models.CharField(
+        _("about"),
         max_length=150,
         blank=True,
         null=True
@@ -60,7 +60,8 @@ class Profile(models.Model):
         Theme,
         related_name='themes',
         on_delete=models.CASCADE,
-        default=1
+        default=1,
+        verbose_name=_("my theme")
     )
     def __str__(self):
         return self.user.username
@@ -74,9 +75,11 @@ class Profile(models.Model):
 def post_save_receiver(sender, created, instance, *args, **kwargs):
 
     if created:
-        print("created did slug changed?")
+        # print("created did slug changed?")
+        pass
     else:
-        print("updated", instance.full_name)
+        # print("updated", instance.full_name)
+        pass
         # print_full_name.delay(name=instance.full_name)
         
 
@@ -85,7 +88,7 @@ class Contact(models.Model):
     user_from = models.ForeignKey(
         User,
         related_name='rel_from_set',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     user_to = models.ForeignKey(
         User,

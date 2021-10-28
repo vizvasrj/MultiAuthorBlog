@@ -1,0 +1,766 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-27 22:50+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:322
+msgid "English"
+msgstr "tiếng Anh"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:323
+msgid "Arabic"
+msgstr "tiếng Ả Rập"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:324
+msgid "Chinese"
+msgstr "người Trung Quốc"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:325
+msgid "Filipino"
+msgstr "Người Phi Luật Tân"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:326
+msgid "French"
+msgstr "người Pháp"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:327
+msgid "German"
+msgstr "tiếng Đức"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:328
+msgid "Hindi"
+msgstr "Tiếng Hindi"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:329
+msgid "Indonesian"
+msgstr "Người Indonesia"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:330
+msgid "Italian"
+msgstr "người Ý"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:331
+msgid "Japanese"
+msgstr "tiếng Nhật"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:332
+msgid "Korean"
+msgstr "Hàn Quốc"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:333
+msgid "Norwegian"
+msgstr "Nauy"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:334
+msgid "Portuguese"
+msgstr "Người Bồ Đào Nha"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:335
+msgid "Russian"
+msgstr "tiếng Nga"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:336
+msgid "Spanish"
+msgstr "người Tây Ban Nha"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:337
+msgid "Vietnamese"
+msgstr "Tiếng Việt"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "tên tài khoản"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "Mật khẩu ..."
+
+#: account/forms.py:44
+msgid "Repeat Password"
+msgstr "Lặp lại mật khẩu"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "Lặp lại mật khẩu ..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "Tên tài khoản ..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "E-mail"
+
+#: account/forms.py:59
+msgid "Email ..."
+msgstr "Email ..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "Mật khẩu không phù hợp."
+
+#: account/models.py:36
+msgid "user"
+msgstr "người sử dụng"
+
+#: account/models.py:39
+msgid "full name"
+msgstr "Họ và tên"
+
+#: account/models.py:45
+msgid "photo"
+msgstr "ảnh"
+
+#: account/models.py:51 publication/models.py:33
+msgid "about"
+msgstr "Về"
+
+#: account/models.py:64
+msgid "my theme"
+msgstr "giao diện của tôi"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "Chỉnh sửa tài khoản của bạn"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:38
+msgid "Profile"
+msgstr "Hồ sơ"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:126
+msgid "My Stories"
+msgstr "Câu chuyện của tôi"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:127
+msgid "My Shared"
+msgstr "Chia sẻ của tôi"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "Họ chia sẻ"
+
+#: account/templates/account/edit.html:46
+msgid "Upload"
+msgstr "Tải lên"
+
+#: account/templates/account/edit.html:74
+msgid "Save changes"
+msgstr "Lưu thay đổi"
+
+#: account/templates/account/login.html:8
+#: account/templates/account/login.html:28
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:28
+#: blog/templates/blog_base.html:141
+msgid "Login"
+msgstr "Đăng nhập"
+
+#: account/templates/account/login.html:29
+#: account/templates/registration/login.html:29
+#: blog/templates/blog_base.html:144
+msgid "SignUp"
+msgstr "Đăng ký"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "xóa bỏ"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "Phát hành ngay bây giờ"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "Chuyển sang Bản nháp"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "Chỉnh sửa bài"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:114
+#: blog/templates/blog/post_update.html:105
+msgid "Publish"
+msgstr "Công bố"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "Được phát hành"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "Đã soạn thảo"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "Đã chuyển vào thùng rác"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "Trashing"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "Xóa"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "Xuất bản!"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "Đã chuyển sang Bản nháp!"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "Đã chia sẻ"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "Tách ra"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "xóa chính bạn khỏi bài đăng này"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:61
+#: blog/templates/blog/post/detail.html:118
+#: blog/templates/blog/post/list_ajax.html:62
+#: blog/templates/blog/post/list_ajax_similar.html:33
+#: blog/templates/blog/search/list_ajax.html:61
+msgid "Published at %(post_publish)s"
+msgstr "Đã xuất bản lúc% (post_publish) s"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "Của tôi đã chia sẻ"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "Tách ra"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "Tạo một tài khoản"
+
+#: account/templates/account/register.html:42
+msgid "Create"
+msgstr "Tạo ra"
+
+#: account/templates/account/register.html:43
+msgid "Login Here"
+msgstr "Đăng nhập tại đây"
+
+#: account/templates/account/register.html:103
+msgid "This username is not available!"
+msgstr "Tên người dùng này không có sẵn!"
+
+#: account/templates/account/register.html:110
+msgid "This username is available!"
+msgstr "Tên người dùng này có sẵn!"
+
+#: account/templates/account/register.html:114
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr "Nhập ký tự tên người dùng hợp lệ phải có nhiều hơn 4 chữ cái!"
+
+#: account/templates/account/register.html:174
+msgid "This email is not available!"
+msgstr "Email này không có sẵn!"
+
+#: account/templates/account/register.html:179
+msgid "This email is available!"
+msgstr "Email này có sẵn!"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "Chào mừng"
+
+#: account/templates/account/register_done.html:12
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr ""
+"Chào mừng bạn, Email của bạn% (new_user_email) s và tên người dùng là% "
+"(new_user_username) s"
+
+#: account/templates/account/register_done.html:14
+msgid "Your account has been successfully created."
+msgstr "Tai khoản của bạn đa được tạo thanh công."
+
+#: account/templates/account/register_done.html:15
+msgid "Now your can Login."
+msgstr "Bây giờ bạn có thể Đăng nhập."
+
+#: account/templates/account/register_done.html:17
+msgid "But First you have to Verify your account."
+msgstr "Nhưng trước tiên bạn phải Xác minh tài khoản của mình."
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "Người dùng"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "Theo dõi"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "Tiếp theo"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "tiếp theo"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "Người theo dõi"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "Theo dõi"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "hơn"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "Danh sách người dùng"
+
+#: account/templates/account/user/user_post_list_ajax.html:72
+#: blog/templates/blog/post/list_ajax.html:73
+#: blog/templates/blog/post/list_ajax_similar.html:41
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "Đọc thêm"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "Xóa tài khoản"
+
+#: account/templates/registration/login.html:8
+msgid "Login Now"
+msgstr "Đăng nhập ngay bây giờ"
+
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
+msgid "Logged out"
+msgstr "Đã đăng xuất"
+
+#: account/templates/registration/logout.html:15
+msgid "You have been successfully logged out."
+msgstr "Bạn đã đăng xuất thành công."
+
+#: account/templates/registration/logout.html:16
+msgid "You can Login again."
+msgstr "Bạn có thể Đăng nhập lại."
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "Thay đổi mật khẩu"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "mật khẩu đã được thay đổi"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "Mật khẩu của bạn đã được thay đổi thành công."
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "Thay đổi mật khẩu của bạn"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "Đổi mật khẩu"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:240
+#: blog/templates/blog/post/detail.html:251
+#: blog/templates/blog/post/detail.html:281
+msgid "Submit"
+msgstr "Nộp"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "Đặt lại mật khẩu"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "Đặt mật khẩu"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "Mật khẩu của bạn đã được thiết lập."
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "Bạn có thể Đăng nhập ngay bây giờ"
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "Đặt lại mật khẩu của bạn"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "Vui lòng nhập mật khẩu mới của bạn hai lần:"
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Liên kết đặt lại mật khẩu không hợp lệ, có thể vì nó đã được sử dụng. Vui "
+"lòng yêu cầu đặt lại mật khẩu mới."
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "chúng tôi"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "đảm bảo kiểm tra thư mục thư rác của bạn."
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "Đặt lại mật khẩu"
+
+#: account/views.py:77
+msgid "Disabled Account"
+msgstr "Tài khoản bị vô hiệu hóa"
+
+#: account/views.py:80
+msgid "Invalid login"
+msgstr "Đăng nhập không hợp lệ"
+
+#: account/views.py:98
+msgid "User already exists"
+msgstr "Người dùng đã tồn tại"
+
+#: account/views.py:142
+msgid "Profile updated successfully"
+msgstr "Hô sơ được cập nhật thành công"
+
+#: account/views.py:147
+msgid "Error updating your profile"
+msgstr "Lỗi khi cập nhật hồ sơ của bạn"
+
+#: account/views.py:544
+msgid "Wrong password"
+msgstr "Sai mật khẩu"
+
+#: account/views.py:642
+msgid "already removed"
+msgstr "đã được dời đi"
+
+#: blog/forms.py:67
+msgid "No Publication"
+msgstr "Không xuất bản"
+
+#: blog/forms.py:95
+msgid "Title"
+msgstr "Tiêu đề"
+
+#: blog/forms.py:100
+msgid "Type content here."
+msgstr "Nhập nội dung tại đây."
+
+#: blog/forms.py:108 blog/forms.py:197 blog/templates/blog/post_form.html:71
+#: blog/templates/blog/post_update.html:63 blog/templates/blog/tag/list.html:4
+#: publication/forms.py:50 publication/forms.py:104
+msgid "Tags"
+msgstr "Thẻ"
+
+#: blog/forms.py:176
+msgid "Text here"
+msgstr "Nhắn tin tại đây"
+
+#: blog/forms.py:191 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "Tên"
+
+#: blog/forms.py:210 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "Ấn phẩm của bạn về cái gì."
+
+#: blog/models.py:83 blog/models.py:190
+msgid "title"
+msgstr "chức vụ"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "phụ đề"
+
+#: blog/models.py:95 blog/models.py:207
+msgid "cover"
+msgstr "che"
+
+#: blog/models.py:196
+msgid "category"
+msgstr "thể loại"
+
+#: blog/models.py:204
+msgid "publication"
+msgstr "sự xuất bản"
+
+#: blog/models.py:220
+msgid "author"
+msgstr "tác giả"
+
+#: blog/models.py:226
+msgid "other authors"
+msgstr "các tác giả khác"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:267
+msgid "Replay:"
+msgstr "Phát lại:"
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "bình luận"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "chức vụ:"
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "Cập nhật"
+
+#: blog/templates/blog/post/detail.html:24
+msgid "helps you remember more"
+msgstr "giúp bạn nhớ nhiều hơn"
+
+#: blog/templates/blog/post/detail.html:121
+msgid "Its a draft you can publish and edit here"
+msgstr "Đây là bản nháp, bạn có thể xuất bản và chỉnh sửa ở đây"
+
+#: blog/templates/blog/post/detail.html:142
+msgid "views:"
+msgstr "lượt xem:"
+
+#: blog/templates/blog/post/detail.html:176
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#: blog/templates/blog/post/detail.html:221
+msgid "Reply"
+msgstr "Đáp lại"
+
+#: blog/templates/blog/post/detail.html:234
+#: blog/templates/blog/post/detail.html:245
+msgid "Hit a comment"
+msgstr "Nhấn một bình luận"
+
+#: blog/templates/blog/post/detail.html:278
+msgid "Comment here"
+msgstr "Bình luận tại đây"
+
+#: blog/templates/blog/post/detail.html:298
+msgid "Similar posts"
+msgstr "Bài viết tương tự"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "Tạo bài đăng"
+
+#: blog/templates/blog/post_form.html:68
+#: blog/templates/blog/post_update.html:60
+msgid "Please provie some tags"
+msgstr "Vui lòng provie một số thẻ"
+
+#: blog/templates/blog/post_form.html:79
+#: blog/templates/blog/post_update.html:71
+msgid "Please provide when to publish"
+msgstr "Vui lòng cung cấp thời điểm xuất bản"
+
+#: blog/templates/blog/post_form.html:91
+#: blog/templates/blog/post_update.html:83
+msgid "Upload cover image"
+msgstr "Tải lên ảnh bìa"
+
+#: blog/templates/blog/post_form.html:94
+#: blog/templates/blog/post_update.html:86
+msgid "Upload (Click here)"
+msgstr "Tải lên (Bấm vào đây)"
+
+#: blog/templates/blog/post_form.html:100
+#: blog/templates/blog/post_update.html:92
+msgid "Share to edit with others"
+msgstr "Chia sẻ để chỉnh sửa với những người khác"
+
+#: blog/templates/blog/post_form.html:106
+#: blog/templates/blog/post_update.html:98
+msgid "If publication?"
+msgstr "Nếu xuất bản?"
+
+#: blog/templates/blog/post_update.html:7
+msgid "Update Post"
+msgstr "Cập nhật bài đăng"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "Không có bài đăng nào liên quan đến truy vấn này"
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "Đăng chứa"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "Tìm kiếm lại"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "Tất cả các thẻ"
+
+#: blog/templates/blog_base.html:88
+msgid "Posts"
+msgstr "Bài viết"
+
+#: blog/templates/blog_base.html:90 blog/templates/blog_base.html:125
+msgid "Create Post"
+msgstr "Tạo bài đăng"
+
+#: blog/templates/blog_base.html:122
+msgid "Manage profile"
+msgstr "Quản lý hồ sơ"
+
+#: blog/templates/blog_base.html:123
+msgid "Change password"
+msgstr "Đổi mật khẩu"
+
+#: blog/templates/blog_base.html:124
+msgid "Logout"
+msgstr "Đăng xuất"
+
+#: blog/templates/blog_base.html:129
+msgid "My Publications"
+msgstr "Ấn phẩm của tôi"
+
+#: blog/templates/blog_base.html:130
+msgid "Create Publication"
+msgstr "Tạo ấn phẩm"
+
+#: blog/templates/blog_base.html:167
+msgid "Multi User Blog"
+msgstr "Blog nhiều người dùng"
+
+#: blog/templates/blog_base.html:173
+msgid "Copyright"
+msgstr "Bản quyền"
+
+#: blog/views.py:438
+msgid "Your are not authorized to edit :)"
+msgstr "Của bạn không được phép chỉnh sửa :)"
+
+#: blog/views.py:545
+msgid "No posts found ..."
+msgstr "Không tìm thấy bài viết ..."
+
+#: image_uploader/views.py:66
+msgid "Page not found."
+msgstr "Không tìm thấy trang."
+
+#: publication/models.py:11
+msgid "name"
+msgstr "Tên"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "hình ảnh"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "con sên"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "thẻ"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "nhà xuất bản"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "nhà văn"

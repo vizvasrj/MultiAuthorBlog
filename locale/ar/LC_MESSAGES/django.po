@@ -1,0 +1,767 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-27 17:28+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:322
+msgid "English"
+msgstr "إنجليزي"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:323
+msgid "Arabic"
+msgstr "عربي"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:324
+msgid "Chinese"
+msgstr "صينى"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:325
+msgid "Filipino"
+msgstr "الفلبينية"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:326
+msgid "French"
+msgstr "فرنسي"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:327
+msgid "German"
+msgstr "ألمانية"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:328
+msgid "Hindi"
+msgstr "هندي"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:329
+msgid "Indonesian"
+msgstr "الأندونيسية"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:330
+msgid "Italian"
+msgstr "إيطالي"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:331
+msgid "Japanese"
+msgstr "اليابانية"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:332
+msgid "Korean"
+msgstr "الكورية"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:333
+msgid "Norwegian"
+msgstr "النرويجية"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:334
+msgid "Portuguese"
+msgstr "البرتغالية"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:335
+msgid "Russian"
+msgstr "الروسية"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:336
+msgid "Spanish"
+msgstr "الأسبانية"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:337
+msgid "Vietnamese"
+msgstr "فيتنامي"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "كلمه السر"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "كلمه السر ..."
+
+#: account/forms.py:44
+msgid "Repeat Password"
+msgstr "اعد كلمة السر"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "اعد كلمة السر ..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "اسم المستخدم ..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "بريد الالكتروني"
+
+#: account/forms.py:59
+msgid "Email ..."
+msgstr "بريد الالكتروني ..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "كلمات المرور غير متطابقة."
+
+#: account/models.py:36
+msgid "user"
+msgstr "المستعمل"
+
+#: account/models.py:39
+msgid "full name"
+msgstr "الاسم بالكامل"
+
+#: account/models.py:45
+msgid "photo"
+msgstr "صورة فوتوغرافية"
+
+#: account/models.py:51 publication/models.py:33
+msgid "about"
+msgstr "حول"
+
+#: account/models.py:64
+msgid "my theme"
+msgstr "موضوعي"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "تحرير حسابك"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:38
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "إعدادات"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:126
+msgid "My Stories"
+msgstr "قصصي"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:127
+msgid "My Shared"
+msgstr "مشتركي"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "هم شاركوا"
+
+#: account/templates/account/edit.html:46
+msgid "Upload"
+msgstr "تحميل"
+
+#: account/templates/account/edit.html:74
+msgid "Save changes"
+msgstr "احفظ التغييرات"
+
+#: account/templates/account/login.html:8
+#: account/templates/account/login.html:28
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:28
+#: blog/templates/blog_base.html:141
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: account/templates/account/login.html:29
+#: account/templates/registration/login.html:29
+#: blog/templates/blog_base.html:144
+msgid "SignUp"
+msgstr "اشتراك"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "حذف"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "نشر الآن"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "الانتقال إلى المسودة"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "تعديل المنشور"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:114
+#: blog/templates/blog/post_update.html:105
+msgid "Publish"
+msgstr "ينشر"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "نشرت"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "صاغ"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "محطمة"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "تحطيم"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "حذف"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "نشر!"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "انتقل إلى المسودة!"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "هناك مشتركة"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "منفصل"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "احذف نفسك من هذا المنشور"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:61
+#: blog/templates/blog/post/detail.html:118
+#: blog/templates/blog/post/list_ajax.html:62
+#: blog/templates/blog/post/list_ajax_similar.html:33
+#: blog/templates/blog/search/list_ajax.html:61
+msgid "Published at %(post_publish)s"
+msgstr "تم النشر في٪ (post_publish) s"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "مشاركتي"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "انفصال"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "انشئ حساب"
+
+#: account/templates/account/register.html:42
+msgid "Create"
+msgstr "إنشاء"
+
+#: account/templates/account/register.html:43
+msgid "Login Here"
+msgstr "تسجيل الدخول من هنا"
+
+#: account/templates/account/register.html:103
+msgid "This username is not available!"
+msgstr "اسم المستخدم هذا غير متوفر!"
+
+#: account/templates/account/register.html:110
+msgid "This username is available!"
+msgstr "اسم المستخدم متاح!"
+
+#: account/templates/account/register.html:114
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr "إدخال اسم مستخدم صالح يجب أن يكون أكثر من 4 أحرف!"
+
+#: account/templates/account/register.html:174
+msgid "This email is not available!"
+msgstr "هذا البريد الإلكتروني غير متوفر!"
+
+#: account/templates/account/register.html:179
+msgid "This email is available!"
+msgstr "هذا البريد الإلكتروني متاح!"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "أهلا بك"
+
+#: account/templates/account/register_done.html:12
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr ""
+"مرحبًا ، بريدك الإلكتروني٪ (new_user_email) s واسم المستخدم هو٪ "
+"(new_user_username) s"
+
+#: account/templates/account/register_done.html:14
+msgid "Your account has been successfully created."
+msgstr "تم إنشاء حسابك بنجاح."
+
+#: account/templates/account/register_done.html:15
+msgid "Now your can Login."
+msgstr "الآن يمكنك تسجيل الدخول."
+
+#: account/templates/account/register_done.html:17
+msgid "But First you have to Verify your account."
+msgstr "ولكن عليك أولاً التحقق من حسابك."
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "المستخدمون"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "يتبع"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "التالية"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "التالية"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "متابعون"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "أتباع"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "أكثر"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "قائمة المستخدمين"
+
+#: account/templates/account/user/user_post_list_ajax.html:72
+#: blog/templates/blog/post/list_ajax.html:73
+#: blog/templates/blog/post/list_ajax_similar.html:41
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "اقرأ أكثر"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "حذف الحساب"
+
+#: account/templates/registration/login.html:8
+msgid "Login Now"
+msgstr "تسجيل الدخول الآن"
+
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
+msgid "Logged out"
+msgstr "تسجيل الخروج"
+
+#: account/templates/registration/logout.html:15
+msgid "You have been successfully logged out."
+msgstr "لقد تم تسجيل بنجاح."
+
+#: account/templates/registration/logout.html:16
+msgid "You can Login again."
+msgstr "يمكنك تسجيل الدخول مرة أخرى."
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "تغيير كلمة السر"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "تم تغيير كلمة السر"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "كلمة السر الخاصة بك تم تغييرها بنجاح."
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "غير كلمة المرور الخاصة بك"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:240
+#: blog/templates/blog/post/detail.html:251
+#: blog/templates/blog/post/detail.html:281
+msgid "Submit"
+msgstr "يقدم"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "تعيين كلمة المرور"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "تم تعيين كلمة المرور الخاصة بك."
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "يمكنك تسجيل الدخول الآن"
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "اعد ضبط كلمه السر"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "الرجاء إدخال كلمة المرور الجديدة مرتين:"
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"رابط إعادة تعيين كلمة المرور غير صالح ، ربما لأنه تم استخدامه بالفعل. يرجى "
+"طلب إعادة تعيين كلمة المرور الجديدة."
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "نحن"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "تأكد من فحص مجلد الرسائل غير المرغوب فيها."
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: account/views.py:77
+msgid "Disabled Account"
+msgstr "حساب تعطيل"
+
+#: account/views.py:80
+msgid "Invalid login"
+msgstr "تسجيل الدخول غير صالح"
+
+#: account/views.py:98
+msgid "User already exists"
+msgstr "المستخدم موجود اصلا"
+
+#: account/views.py:142
+msgid "Profile updated successfully"
+msgstr "تم تحديث الملف الشخصي بنجاح"
+
+#: account/views.py:147
+msgid "Error updating your profile"
+msgstr "خطأ في تحديث ملف التعريف الخاص بك"
+
+#: account/views.py:544
+msgid "Wrong password"
+msgstr "كلمة مرور خاطئة"
+
+#: account/views.py:642
+msgid "already removed"
+msgstr "تمت إزالته بالفعل"
+
+#: blog/forms.py:67
+msgid "No Publication"
+msgstr "لا يوجد منشور"
+
+#: blog/forms.py:95
+msgid "Title"
+msgstr "عنوان"
+
+#: blog/forms.py:100
+msgid "Type content here."
+msgstr "اكتب المحتوى هنا."
+
+#: blog/forms.py:108 blog/forms.py:197 blog/templates/blog/post_form.html:71
+#: blog/templates/blog/post_update.html:63 blog/templates/blog/tag/list.html:4
+#: publication/forms.py:50 publication/forms.py:104
+msgid "Tags"
+msgstr "العلامات"
+
+#: blog/forms.py:176
+msgid "Text here"
+msgstr "نص هنا"
+
+#: blog/forms.py:191 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "اسم"
+
+#: blog/forms.py:210 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "ما هو منشورك عن."
+
+#: blog/models.py:83 blog/models.py:190
+msgid "title"
+msgstr "لقب"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "العنوان الفرعي"
+
+#: blog/models.py:95 blog/models.py:207
+msgid "cover"
+msgstr "غطاء، يغطي"
+
+#: blog/models.py:196
+msgid "category"
+msgstr "الفئة"
+
+#: blog/models.py:204
+msgid "publication"
+msgstr "النشر"
+
+#: blog/models.py:220
+msgid "author"
+msgstr "مؤلف"
+
+#: blog/models.py:226
+msgid "other authors"
+msgstr "مؤلفين آخرين"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:267
+msgid "Replay:"
+msgstr "إعادة:"
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "تعليقات"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "لقب:"
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "تحديث"
+
+#: blog/templates/blog/post/detail.html:24
+msgid "helps you remember more"
+msgstr "يساعدك على تذكر المزيد"
+
+#: blog/templates/blog/post/detail.html:121
+msgid "Its a draft you can publish and edit here"
+msgstr "انها مسودة يمكنك نشرها وتحريرها هنا"
+
+#: blog/templates/blog/post/detail.html:142
+msgid "views:"
+msgstr "الآراء:"
+
+#: blog/templates/blog/post/detail.html:176
+msgid "Edit"
+msgstr "يحرر"
+
+#: blog/templates/blog/post/detail.html:221
+msgid "Reply"
+msgstr "رد"
+
+#: blog/templates/blog/post/detail.html:234
+#: blog/templates/blog/post/detail.html:245
+msgid "Hit a comment"
+msgstr "اضغط على تعليق"
+
+#: blog/templates/blog/post/detail.html:278
+msgid "Comment here"
+msgstr "التعليق هنا"
+
+#: blog/templates/blog/post/detail.html:298
+msgid "Similar posts"
+msgstr "وظائف مماثلة"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "إنشاء وظيفة"
+
+#: blog/templates/blog/post_form.html:68
+#: blog/templates/blog/post_update.html:60
+msgid "Please provie some tags"
+msgstr "يرجى تقديم بعض العلامات"
+
+#: blog/templates/blog/post_form.html:79
+#: blog/templates/blog/post_update.html:71
+msgid "Please provide when to publish"
+msgstr "يرجى تقديم وقت النشر"
+
+#: blog/templates/blog/post_form.html:91
+#: blog/templates/blog/post_update.html:83
+msgid "Upload cover image"
+msgstr "تحميل صورة الغلاف"
+
+#: blog/templates/blog/post_form.html:94
+#: blog/templates/blog/post_update.html:86
+msgid "Upload (Click here)"
+msgstr "تحميل (اضغط هنا)"
+
+#: blog/templates/blog/post_form.html:100
+#: blog/templates/blog/post_update.html:92
+msgid "Share to edit with others"
+msgstr "شارك للتحرير مع الآخرين"
+
+#: blog/templates/blog/post_form.html:106
+#: blog/templates/blog/post_update.html:98
+msgid "If publication?"
+msgstr "إذا نشر؟"
+
+#: blog/templates/blog/post_update.html:7
+msgid "Update Post"
+msgstr "تحديث المنشور"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "لا توجد وظيفة متعلقة بهذا الاستعلام"
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
+msgid "Search"
+msgstr "بحث"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "بعد احتواء"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "ابحث ثانيا"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "كل العلامات"
+
+#: blog/templates/blog_base.html:88
+msgid "Posts"
+msgstr "دعامات"
+
+#: blog/templates/blog_base.html:90 blog/templates/blog_base.html:125
+msgid "Create Post"
+msgstr "إنشاء منشور"
+
+#: blog/templates/blog_base.html:122
+msgid "Manage profile"
+msgstr "إدارة الملف الشخصي"
+
+#: blog/templates/blog_base.html:123
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+#: blog/templates/blog_base.html:124
+msgid "Logout"
+msgstr "تسجيل خروج"
+
+#: blog/templates/blog_base.html:129
+msgid "My Publications"
+msgstr "منشوراتي"
+
+#: blog/templates/blog_base.html:130
+msgid "Create Publication"
+msgstr "إنشاء المنشور"
+
+#: blog/templates/blog_base.html:167
+msgid "Multi User Blog"
+msgstr "مدونة متعددة المستخدمين"
+
+#: blog/templates/blog_base.html:173
+msgid "Copyright"
+msgstr "حقوق النشر"
+
+#: blog/views.py:438
+msgid "Your are not authorized to edit :)"
+msgstr "غير مصرح لك بالتعديل :)"
+
+#: blog/views.py:545
+msgid "No posts found ..."
+msgstr "لم يتم العثور على أية منشورات ..."
+
+#: image_uploader/views.py:66
+msgid "Page not found."
+msgstr "الصفحة غير موجودة."
+
+#: publication/models.py:11
+msgid "name"
+msgstr "اسم"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "صورة"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "سبيكة"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "العلامات"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "الناشر"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "كاتب"

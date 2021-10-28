@@ -1,5 +1,5 @@
 {% extends "blog_base.html" %}
-
+{% load i18n %}
 {% load blog_tags %}
 {% load thumbnail %}
 
@@ -15,7 +15,7 @@
             {% csrf_token %}
         </div>
         <div class="col-lg-8">
-            <a class="linknone bg-cyan-lite border"  href="{% url 'my_shared_post' %}">My shared</a>
+            <a class="linknone bg-cyan-lite border"  href="{% url 'my_shared_post' %}">{% trans 'My shared' %}</a>
             <div id="post-list">
                 {% include "account/me/shared_ajax_list.html" %}
             </div>
@@ -74,7 +74,7 @@ $(window).scroll(function () {
             success: function() {
                 $('#postbox[data-id="' + dataId + '"]').remove();
                 window.setTimeout(function() {
-                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong> removing you from</strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
+                    $(".alert").append('  <div class="alert bg-red alert-warning alert-dismissible fade show" role="alert">  <strong> {% trans 'Detaching' %} </strong> ' + dataTitle + ' </div>').fadeTo(4000, 0).slideUp(500, function(){
                         $(this).remove(); 
                     });;
                 }, 1);

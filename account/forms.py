@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.contrib.auth import logout
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.utils.translation import gettext_lazy as _
 
 
 from .models import Profile
@@ -18,44 +19,44 @@ from .models import Profile
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Username', widget=forms.PasswordInput(attrs={
+    username = forms.CharField(label=_('Username'), widget=forms.PasswordInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Username',
+        'placeholder': _('Username'),
         'type': 'text',
         'name': 'username'
     }))
 
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={
+    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Password',
+        'placeholder': _('Password'),
         'type': 'password',
         'name': 'password'
     }))
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={
+    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Password ...',
+        'placeholder': _('Password ...'),
         'type': 'password',
         'name': 'password'
     }))
-    password2 = forms.CharField(label='Repeat Password', widget=forms.PasswordInput(attrs={
+    password2 = forms.CharField(label=_('Repeat Password'), widget=forms.PasswordInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Repeat Password ...',
+        'placeholder': _('Repeat Password ...'),
         'type': 'password',
         'name': 'password'
     }))
-    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={
+    username = forms.CharField(label=_('Username'), widget=forms.TextInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Username ...',
+        'placeholder': _('Username ...'),
         'type': 'text',
         'name': 'username'
     }))
 
-    email = forms.CharField(label='Email', widget=forms.EmailInput(attrs={
+    email = forms.CharField(label=_('Email'), widget=forms.EmailInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Email ...',
+        'placeholder': _('Email ...'),
         'type': 'email',
         'name': 'email'
     }))
@@ -74,7 +75,7 @@ class UserRegistrationForm(forms.ModelForm):
         cd = self.cleaned_data
         if cd['password1'] != cd['password2']:
             raise forms.ValidationError(
-                'Passwords dosent Matched.')
+                _("Passwords doesn't Matched."))
         return cd['password2']
 
 

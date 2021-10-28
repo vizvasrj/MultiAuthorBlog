@@ -12,6 +12,7 @@ from django.contrib.sites.models import Site
 from django.utils.text import slugify
 from django.core.signals import request_finished
 from django.core.validators import FileExtensionValidator
+from django.utils.translation import gettext_lazy as _
 
 
 # local
@@ -27,6 +28,9 @@ from taggit_autosuggest.managers import TaggableManager
 # for slug to change it name for diffrent 
 # language i am using unidecode
 from unidecode import unidecode
+from taggit.models import  TagBase, GenericTaggedItemBase, ItemBase, TaggedItemBase
+from crum import get_current_user
+
 
 
 now = timezone.now()
@@ -76,17 +80,19 @@ def custome_slugify(value):
     return f'{value}-{t}'
 
 class Category(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(_('title'), max_length=100)
     slug = AutoSlugField(
         populate_from=['title','created'],
         # slugify=custome_slugify,
     )
     subtitle = models.CharField(
+        _('subtitle'),
         max_length=200,
         blank=True,
         null=True,
     )
     cover = models.ImageField(
+        _('cover'),
         upload_to='category/',
         default='category/defaultcatg.jpg',
         blank=True,
@@ -101,9 +107,6 @@ class Category(models.Model):
     class Meta:
         ordering = ('-created',)
 
-
-from taggit.models import  TagBase, GenericTaggedItemBase, ItemBase, TaggedItemBase
-from crum import get_current_user
 
 class MyCustomTag(TagBase):
     name = models.CharField(max_length=50)
@@ -184,21 +187,24 @@ class Post(models.Model):
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
-    title = models.CharField(max_length=256)
+    title = models.CharField(_('title'), max_length=256)
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
         blank=True,
         null=True,
+        verbose_name=_('category')
     )
     publication = models.ForeignKey(
         Pub,
         on_delete=models.CASCADE,
         related_name='posts',
         blank=True,
-        null=True
+        null=True,
+        verbose_name=_('publication')
     )
     cover = models.ImageField(
+        _('cover'),
         upload_to='cover/%Y/%m/%d',
         blank=True, null=True
     )
@@ -210,12 +216,14 @@ class Post(models.Model):
     author = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
-        related_name='blog_posts'
+        related_name='blog_posts',
+        verbose_name=_('author')
     )
     other_author = models.ManyToManyField(
         User,
         related_name='other_authors',
-        blank=True
+        blank=True,
+        verbose_name=_('other authors')
     )
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)

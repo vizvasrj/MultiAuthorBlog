@@ -58,15 +58,15 @@ INSTALLED_APPS = [
     'taggit_autosuggest',
     'mptt',
     'django_editorjs_fields',
-    'ckeditor_uploader',
+    # 'ckeditor_uploader',
     'django_extensions',
-    'tempus_dominus',
+    # 'tempus_dominus',
     'django_select2',
     'actions',
     'parler',
     'django_user_agents',
     'django_hosts',
-    'django_social_share',
+    # 'django_social_share',
     'debug_toolbar',
 
     # local
@@ -100,6 +100,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -260,7 +261,7 @@ CKEDITOR_5_CONFIGS = {
 TAGGIT_CASE_INSENSITIVE = True
 
 # tempus_dominus
-TEMPUS_DOMINUS_LOCALIZE = True
+# TEMPUS_DOMINUS_LOCALIZE = True
 
 
 # Redis
@@ -339,6 +340,7 @@ LANGUAGES = (
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
+    os.path.join(BASE_DIR, 'taggit_autosuggest/locale/'),
 )
 PARLER_LANGUAGES = {
     1:(
@@ -400,3 +402,4 @@ def show_toolbar_handler(request):
     if request.user and request.user.id == 1:
         return True
     return False
+

@@ -10,7 +10,7 @@ from .models import Post, Comment
 from taggit.forms import TagWidget
 from taggit_autosuggest.widgets import TagAutoSuggest
 from mptt.forms import TreeNodeChoiceField
-from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
+# from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 from django_select2 import forms as s2forms
 from django_select2.forms import ModelSelect2Widget
 from django.utils import timezone, dateformat
@@ -18,6 +18,7 @@ from django.utils.timezone import localtime
 
 from django.contrib.auth.models import User
 from django.db.models import Q
+from django.utils.translation import gettext_lazy as _
 
 from publication.models import Publication as Pub
 from blog.models import SharedOrOtherEdit
@@ -63,7 +64,7 @@ class PostForm(forms.ModelForm):
         queryset=None, 
         required=False,
         to_field_name="id", 
-        empty_label="No Publication",
+        empty_label=_("No Publication"),
         widget=forms.Select(
                 attrs={
                     'class': 'myfieldclass bg-red-lite',
@@ -91,12 +92,12 @@ class PostForm(forms.ModelForm):
         widgets = {
             'title': forms.Textarea(
                 attrs={'class': 'myfieldclass padding-15 border-bottom', 'autocomplete': 'off',
-                'rows': "2", 'placeholder': 'Title'}
+                'rows': "2", 'placeholder': _('Title')}
             ),
             'body': forms.Textarea(
                 # config={'minHeight': 100}
                 attrs={
-                'placeholder': 'Type content here.',
+                'placeholder': _('Type content here.'),
                     'class': 'myfieldclass ',
                 }
             ),
@@ -104,7 +105,7 @@ class PostForm(forms.ModelForm):
                 attrs={
                     'class': 'myfieldclass border-bottom p-2 tag_label inputTag',
                     'autocomplete': 'off',
-                    'placeholder': 'Tags',
+                    'placeholder': _('Tags'),
                     'required': False,
                 }
             ),
@@ -172,7 +173,7 @@ class CommentForm(forms.ModelForm):
 class SearchForm(forms.Form):
     query = forms.CharField(label='Search', widget=forms.TextInput(attrs={
         'class': 'myfieldclass-search',
-        'placeholder': 'Text here',
+        'placeholder': _('Text here'),
         'type': 'text',
         'name': 'search',
         'autocomplete': 'off'
@@ -187,13 +188,13 @@ class PubForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={'class': 'myfieldclass border padding-15 border-bottom', 'autocomplete': 'off',
-                'placeholder': 'Name'}
+                'placeholder': _('Name')}
             ),
             'tags': TagAutoSuggest('tagmodel',
                 attrs={
                     'class': 'myfieldclass border-bottom p-2 tag_label inputTag',
                     'autocomplete': 'off',
-                    'placeholder': 'Tags',
+                    'placeholder': _('Tags'),
                     'required': False,
                 }
             ),
@@ -206,7 +207,7 @@ class PubForm(forms.ModelForm):
             'about': forms.Textarea(
                 # config={'minHeight': 100}
                 attrs={
-                'placeholder': 'What\'s your Publication about of.',
+                'placeholder': _("What's your Publication about of."),
                     'class': 'myfieldclass padding-15',
                 }
             ),

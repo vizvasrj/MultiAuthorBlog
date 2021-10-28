@@ -1,7 +1,8 @@
 {% extends "blog_base.html" %}
 {% load crispy_forms_tags %}
 {% load thumbnail %}
-{% block title %}Edit your account{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans 'Edit your account' %}{% endblock title %}
 {% block color %} {% include 'blog/nav_color.html' %} {% endblock %}
 
 {% block nav %} 
@@ -13,19 +14,19 @@
 <li class=" mt-5">
 
         <li class="active">
-            <a class="" href="{% url 'edit' %}"><h6 class="mx-3">Profile</h6></a>
+            <a class="" href="{% url 'edit' %}"><h6 class="mx-3">{% trans 'Profile' %}</h6></a>
         </li>
         <li>
-            <a href="#"><h6 class="mx-3">Configuration</h6></a>
+            <a href="#"><h6 class="mx-3">{% trans 'Configuration' %}</h6></a>
         </li>
         <li>
-            <a href="{% url 'my_published_story' %}"><h6 class="mx-3">My Stories</h6></a>
+            <a href="{% url 'my_published_story' %}"><h6 class="mx-3">{% trans 'My Stories' %}</h6></a>
         </li>
         <li>
-            <a href="{% url 'my_shared_post' %}"><h6 class="mx-3">My Shared</h6></a>
+            <a href="{% url 'my_shared_post' %}"><h6 class="mx-3">{% trans 'My Shared' %}</h6></a>
         </li>
         <li>
-            <a href="{% url 'their_shared_post' %}"><h6 class="mx-3">They Shared</h6></a>
+            <a href="{% url 'their_shared_post' %}"><h6 class="mx-3">{% trans 'They Shared' %}</h6></a>
         </li>
 {% endblock %}
 
@@ -34,7 +35,7 @@
     <div class="">
         <div class="">
             <div class="">
-                <h1 class="maintitle">Profile</h1>
+                <h1 class="maintitle">{% trans 'Profile' %}</h1>
                 <div class="mb-3">
                     <form method="POST" enctype="multipart/form-data">
                         <div class="photo mb-2 border-top">
@@ -42,7 +43,7 @@
                             <div class="">
                                 <label id="remove" class="uploadcover" for="id_photo">
                                     {% thumbnail user.profiles.photo "300x300" crop="100%" as im %}
-                                    <img class="blogcoverimage" width="100%" id="myImg" src='{{ im.url }}' alt="Upload" />
+                                    <img class="blogcoverimage" width="100%" id="myImg" src='{{ im.url }}' alt="{% trans 'Upload' %}" />
                                 </label>
                                 {{profile_form.photo}}
                             </div>
@@ -70,7 +71,7 @@
                         </div>
                         {% csrf_token %}
                         <p class="mb-2 border-top">
-                            <input class="mt-2 btn selected" type="submit" value="Save changes">
+                            <input class="mt-2 btn selected bg-olive-lite" type="submit" value="{% trans 'Save changes' %}">
                         </p>
                     </form>
                 </div>

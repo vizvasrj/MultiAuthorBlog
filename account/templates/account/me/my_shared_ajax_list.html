@@ -1,4 +1,5 @@
 {% load blog_tags %}
+{% load i18n %}
 {% load humanize %}
 {% load thumbnail %}
 {% load account_tags %}
@@ -11,7 +12,7 @@
             <div class="delete">
 
                 <a data-id="{{ post.id }}" data-title="{{post.title}}" class="delete__a" data-toggle="tooltip"
-                    data-placement="top" title="remove yourself from this post">
+                    data-placement="top" title="{% trans 'remove yourself from this post' %}">
                     <svg class="changesize2" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em"
                         height="1em"
@@ -25,7 +26,7 @@
 
             </div>
             <a data-id="{{ post.id }}" data-title="{{post.title}}" href="{% url 'edit_post' post.id %}" class="edit__a"
-                data-toggle="tooltip" data-placement="top" title="Edit post">
+                data-toggle="tooltip" data-placement="top" title="{% trans 'Edit post' %}">
                 <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     aria-hidden="true" focusable="false" width="1em" height="1em"
                     style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
@@ -77,9 +78,9 @@
             You edited
         {% endif %}
         <p class="date">
-
-            Published at {{ post.publish }} 
-
+            
+            {% blocktrans with post_publish=post.publish %}Published at {{ post_publish }}{% endblocktrans %}
+             
         </p>
         <hr class="hr-line">
 
@@ -89,7 +90,7 @@
         {% if status == 'drafted' %}
         <h3>
             <input id="datetimeinput" class="datetimeinput" type="datetime-local" value="{% now 'Y-m-j H:i' %}" />
-            <button data-title="{{post.title}}" data-id="{{ post.id }}" class="publish__b btn bg-navy">Publish</button>
+            <button data-title="{{post.title}}" data-id="{{ post.id }}" class="publish__b btn bg-navy">{% trans 'Publish' %}</button>
             <label class="date_format" for="button">YYYY-MM-DD HH:MM</label>
         </h3>
         {% endif %}

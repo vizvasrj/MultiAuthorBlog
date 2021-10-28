@@ -1,7 +1,7 @@
 {% extends "blog_base.html" %}
 {% load thumbnail %}
-
-{% block title %} Users {% endblock %}
+{% load i18n %}
+{% block title %} {% trans 'Users' %} {% endblock %}
 
 {% block content %}
 <div class="container-fluid">
@@ -9,7 +9,7 @@
         <div class="col-sm-2 bg-secondary"></div>
         <div class="col-sm-8 bg-light">
             <div class="somealign">
-                <h1 class="maintitle">Users List</h1>
+                <h1 class="maintitle">{% trans 'Users List' %}</h1>
                 <div id="user-list">
                     {% include "account/user/user_list.html" %}
                 </div>

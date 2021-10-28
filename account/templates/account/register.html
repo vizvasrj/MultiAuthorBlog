@@ -1,6 +1,7 @@
 {% extends "blog_base.html" %}
 {% load crispy_forms_tags %}
-{% block title %}Create an account{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans 'Create an account' %}{% endblock title %}
 {% block content %}
 <h1 class="headercreateaccount d-flex justify-content-center">Create account</h1>
 <div class="d-flex justify-content-center border">
@@ -38,8 +39,8 @@
         </div>
 {% csrf_token %}
         <p>
-            <input id="create" class="mt-2 btn bg-aqua-lite-08" type="submit" value="Create">
-            <a class="mt-2 btn bg-fuchisa-lite-08" href="{% url 'login' %}">Login Here</a>
+            <input id="create" class="mt-2 btn bg-aqua-lite-08" type="submit" value="{% trans 'Create' %}">
+            <a class="mt-2 btn bg-fuchisa-lite-08" href="{% url 'login' %}">{% trans 'Login Here' %}</a>
         </p>
 
     </form>
@@ -99,18 +100,18 @@ $('#id_password2').on('keyup', function () {
                 if (response.is_taken == true) {
                     $('#id_username').removeClass('is-valid').addClass('is-invalid');
                     $('#usernameError').remove();
-                    $('#id_username').after('<div class="invalid-feedback d-block" id="usernameError">This username is not available!</div>')
+                    $('#id_username').after('<div class="invalid-feedback d-block" id="usernameError">{% trans 'This username is not available!' %}</div>')
                 }
                 else {
                     if ( $('#id_username').val().length >= 4 ) {
 
                         $('#id_username').removeClass('is-invalid').addClass('is-valid');
                         $('#usernameError').remove();
-                        $('#id_username').after('<div class="valid-feedback d-block" id="usernameError">This username is available!</div>')
+                        $('#id_username').after('<div class="valid-feedback d-block" id="usernameError">{% trans 'This username is available!' %}</div>')
                     }
                     else if ( $('#id_username').val().length <= 4 ) {
                         $('#usernameError').remove();
-                        $('#id_username').after('<div class="valid-feedback d-block" id="usernameError">Enter valid username character <br /> should be more than 4 letters !</div>')
+                        $('#id_username').after('<div class="valid-feedback vuser" id="usernameError">{% trans 'Enter valid username character should be more than 4 letters!' %}</div>')
                     }
 
 
@@ -170,12 +171,12 @@ else if ( validateEmail(emailaddress) &&  $(this).val() != '' ) {
             if (response.is_taken == true) {
                 $('#id_email').removeClass('is-valid').addClass('is-invalid');
                 $('#emailError').remove();
-                $('#id_email').after('<div class="invalid-feedback d-block" id="emailError">This email is not available!</div>')
+                $('#id_email').after('<div class="invalid-feedback d-block" id="emailError">{% trans 'This email is not available!' %}</div>')
             }
             else {
                 $('#id_email').removeClass('is-invalid').addClass('is-valid');
                 $('#emailError').remove();
-                $('#id_email').after('<div class="valid-feedback d-block" id="emailError">This email is available!</div>')
+                $('#id_email').after('<div class="valid-feedback d-block" id="emailError">{% trans 'This email is available!' %}</div>')
 
 
 

@@ -1,4 +1,5 @@
 {% load blog_tags %}
+{% load i18n %}
 {% load thumbnail %}
 {% load humanize %}
 
@@ -8,7 +9,7 @@
       <div class="blog__list__float sticky-top">
           <div class="delete">
 
-            <a data-id="{{ post.id }}" data-title="{{post.title}}" class="delete__a" data-toggle="tooltip" data-placement="top" title="delete">
+            <a data-id="{{ post.id }}" data-title="{{post.title}}" class="delete__a" data-toggle="tooltip" data-placement="top" title="{% trans 'delete' %}">
                 <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                     <path class="" d="M3.389 7.113L4.49 18.021c.061.461 2.287 1.977 5.51 1.979c3.225-.002 5.451-1.518 5.511-1.979l1.102-10.908C14.929 8.055 12.412 8.5 10 8.5c-2.41 0-4.928-.445-6.611-1.387zm9.779-5.603l-.859-.951C11.977.086 11.617 0 10.916 0H9.085c-.7 0-1.061.086-1.392.559l-.859.951C4.264 1.959 2.4 3.15 2.4 4.029v.17C2.4 5.746 5.803 7 10 7c4.198 0 7.601-1.254 7.601-2.801v-.17c0-.879-1.863-2.07-4.433-2.519zM12.07 4.34L11 3H9L7.932 4.34h-1.7s1.862-2.221 2.111-2.522c.19-.23.384-.318.636-.318h2.043c.253 0 .447.088.637.318c.248.301 2.111 2.522 2.111 2.522h-1.7z" fill="#626262"/>
                 </svg>
@@ -16,20 +17,20 @@
             
           </div>
           {% if status == 'drafted' %}
-          <a data-id="{{ post.id }}" data-datetime="{% now 'Y-m-j H:i' %}" data-title="{{post.title}}" class="publish__a" data-toggle="tooltip" data-placement="top" title="Publish now">
+          <a data-id="{{ post.id }}" data-datetime="{% now 'Y-m-j H:i' %}" data-title="{{post.title}}" class="publish__a" data-toggle="tooltip" data-placement="top" title="{% trans 'Publish now' %}">
             <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                 <path class="" d="M9.967 8.193L5 13h3v6h4v-6h3L9.967 8.193zM18 1H2C.9 1 0 1.9 0 3v12c0 1.1.9 2 2 2h4v-2H2V6h16v9h-4v2h4c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zM2.5 4.25a.75.75 0 1 1 0-1.5a.75.75 0 0 1 0 1.5zm2 0a.75.75 0 1 1 0-1.5a.75.75 0 0 1 0 1.5zM18 4H6V3h12.019L18 4z" fill="#626262"/>
             </svg>
           </a>
           {% endif %}
           {% if status == 'trashed' %}
-          <a data-id="{{ post.id }}" data-title="{{post.title}}" class="untrash__a" data-toggle="tooltip" data-placement="top" title="Move to Draft">
+          <a data-id="{{ post.id }}" data-title="{{post.title}}" class="untrash__a" data-toggle="tooltip" data-placement="top" title="{% trans 'Move to Draft' %}">
             <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                 <path class="" d="M20 2a1 1 0 0 1 1 1v3.757l-8.999 9l-.006 4.238l4.246.006L21 15.242V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16zm1.778 6.808l1.414 1.414L15.414 18l-1.416-.002l.002-1.412l7.778-7.778zM12 12H7v2h5v-2zm3-4H7v2h8V8z" fill="#626262"/>
             </svg>
           </a>
           {% endif %}
-          <a data-id="{{ post.id }}" data-title="{{post.title}}" href="{% url 'edit_post' post.id %}" class="edit__a" data-toggle="tooltip" data-placement="top" title="Edit post">
+          <a data-id="{{ post.id }}" data-title="{{post.title}}" href="{% url 'edit_post' post.id %}" class="edit__a" data-toggle="tooltip" data-placement="top" title="{% trans 'Edit post' %}">
             <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                 <path class="" d="M16.474 5.408l2.118 2.117m-.756-3.982L12.109 9.27a2.118 2.118 0 0 0-.58 1.082L11 13l2.648-.53c.41-.082.786-.283 1.082-.579l5.727-5.727a1.853 1.853 0 1 0-2.621-2.621z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3" fill="#626262"/>
             </svg>
@@ -61,7 +62,7 @@
         {% if status == 'drafted' %}
         <h3>
             <input id="datetimeinput" class="datetimeinput" type="datetime-local" value="{% now 'Y-m-j H:i' %}" />
-            <button data-title="{{post.title}}" data-id="{{ post.id }}" class="publish__b btn bg-navy">Publish</button>
+            <button data-title="{{post.title}}" data-id="{{ post.id }}" class="publish__b btn bg-navy">{% trans 'Publish' %}</button>
             <label class="date_format" for="button">YYYY-MM-DD HH:MM</label>
         </h3>
         {% endif %}

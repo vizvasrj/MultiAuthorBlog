@@ -84,6 +84,7 @@ def italian_translate(pk):
     post = Post.objects.get(id=pk)
     body = post.body
     title = post.title
+    print(title)
     tags = []
     for tag in post.tags.all():
         tags.append(tag.name)

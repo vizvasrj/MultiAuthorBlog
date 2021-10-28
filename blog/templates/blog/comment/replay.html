@@ -1,8 +1,8 @@
 {% extends "blog_base.html" %}
-
+{% load i18n %}
 <form id="newForm" method="post">
   <div class="re_form">
-    <h2>Replay:</h2>
+    <h2>{% trans 'Replay:' %}</h2>
     <p>
       <select name="parent" class="d-none" id="id_parentt">
         <option value="{{node.id}}" selected="{{node.id}}"></option>
@@ -13,7 +13,7 @@
     </p>
     {% csrf_token %}
     <button type="submit" class="btn btn-primary btn-lg btn-block bg-olive">
-      Submit
+      {% trans 'Submit' %}
     </button>
   </div>
 </form>

@@ -1,18 +1,20 @@
 {% extends "blog_base.html" %}
-{% block title %}Welcome{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans 'Welcome' %}{% endblock title %}
 {% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2 bg-light"></div>
         <div class="col-sm-8 bg-light">
             <div class="somealign">
-                <h1 class="maintitle">Work! Work! Work!</h1>
+                <h1 class="maintitle"></h1>
                 <div class="mb-3">
-                    <h1 class="title">Welcome your email {{ new_user.email }} and username is {{ new_user.username }}!</h1>
-                    <p class="paragraph">Your account has been successfully created. Now your can 
-                        <a href="{% url 'login' %}">Login</a>
+                    <h1 class="title">{% blocktrans with new_user_email=new_user.email new_user_username=new_user.username %}Welcome, Your email {{ new_user_email }} and username is {{ new_user_username }}{% endblocktrans %}</h1>
+                    <p class="paragraph">
+                        {% trans 'Your account has been successfully created.' %} 
+                        <a href="{% url 'login' %}">{% trans 'Now your can Login.' %}</a>
                     </p>
-                    <p class="paragraph">But First you have to Verify your account</p>
+                    <p class="paragraph">{% trans 'But First you have to Verify your account.' %}</p>
                 </div>
             </div>
         </div>

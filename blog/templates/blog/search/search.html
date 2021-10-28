@@ -1,8 +1,9 @@
 {% extends "blog_base.html" %}
 {% load blog_tags %}
+{% load i18n %}
 {% load thumbnail %}
 {% block title %} 
-    Search 
+    {% trans 'Search' %} 
 {% endblock %}
 
 {% block content %} 
@@ -13,7 +14,7 @@
         {% if query %}
         <div class="col-lg-10">
             <div class="search">
-                <h1 class="search__query__title">Post Containing "{{ query }}"</h1>
+                <h1 class="search__query__title">{% trans 'Post Containing' %} "{{ query }}"</h1>
             
                 <div class="col-lg-9">
                     <div id="post-list">
@@ -23,7 +24,7 @@
                 <p>
                 <div class="col-lg-3">
                 </div>
-                    <a href="{% url 'post_search' %}">Search again</a>
+                    <a href="{% url 'post_search' %}">{% trans 'Search again' %}</a>
                 </p>
             </div>
         </div>
@@ -38,7 +39,7 @@
                 </div>
             
                 <div class="d-flex justify-content-center">
-                    <input type="submit" class="btn bg-olive-lite" value="Search">
+                    <input type="submit" class="btn bg-olive-lite" value="{% trans 'Search' %}">
                 </div>
             </form>
         </div>

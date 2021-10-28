@@ -1,0 +1,770 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-27 16:38+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:322
+msgid "English"
+msgstr "Englisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:323
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:324
+msgid "Chinese"
+msgstr "Chinesisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:325
+msgid "Filipino"
+msgstr "Philippinisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:326
+msgid "French"
+msgstr "Französisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:327
+msgid "German"
+msgstr "Deutsch"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:328
+msgid "Hindi"
+msgstr "Hindi"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:329
+msgid "Indonesian"
+msgstr "Indonesisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:330
+msgid "Italian"
+msgstr "Italienisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:331
+msgid "Japanese"
+msgstr "japanisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:332
+msgid "Korean"
+msgstr "Koreanisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:333
+msgid "Norwegian"
+msgstr "norwegisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:334
+msgid "Portuguese"
+msgstr "Portugiesisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:335
+msgid "Russian"
+msgstr "Russisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:336
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:337
+msgid "Vietnamese"
+msgstr "Vietnamesisch"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "Nutzername"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "Passwort"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "Passwort ..."
+
+#: account/forms.py:44
+msgid "Repeat Password"
+msgstr "Passwort wiederholen"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "Passwort wiederholen ..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "Nutzername ..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "Email"
+
+#: account/forms.py:59
+msgid "Email ..."
+msgstr "Email ..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "Passwörter stimmen nicht überein."
+
+#: account/models.py:36
+msgid "user"
+msgstr "Benutzer"
+
+#: account/models.py:39
+msgid "full name"
+msgstr "vollständiger Name"
+
+#: account/models.py:45
+msgid "photo"
+msgstr "Foto"
+
+#: account/models.py:51 publication/models.py:33
+msgid "about"
+msgstr "Über"
+
+#: account/models.py:64
+msgid "my theme"
+msgstr "mein Thema"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "Bearbeiten Sie Ihr Konto"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:38
+msgid "Profile"
+msgstr "Profil"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "Aufbau"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:126
+msgid "My Stories"
+msgstr "Meine Geschichten"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:127
+msgid "My Shared"
+msgstr "Mein geteiltes"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "Sie teilten"
+
+#: account/templates/account/edit.html:46
+msgid "Upload"
+msgstr "Hochladen"
+
+#: account/templates/account/edit.html:74
+msgid "Save changes"
+msgstr "Änderungen speichern"
+
+#: account/templates/account/login.html:8
+#: account/templates/account/login.html:28
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:28
+#: blog/templates/blog_base.html:141
+msgid "Login"
+msgstr "Anmeldung"
+
+#: account/templates/account/login.html:29
+#: account/templates/registration/login.html:29
+#: blog/templates/blog_base.html:144
+msgid "SignUp"
+msgstr "Anmeldung"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "löschen"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "Jetzt veröffentlichen"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "In Entwurf verschieben"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "Beitrag bearbeiten"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:114
+#: blog/templates/blog/post_update.html:105
+msgid "Publish"
+msgstr "Veröffentlichen"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "Veröffentlicht"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "Entworfen"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "Papierkorb"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "Papierkorb"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "Löschen"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "Veröffentlichung!"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "In Entwurf verschoben!"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "Dort geteilt"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "Löste sich"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "entferne dich aus diesem Beitrag"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:61
+#: blog/templates/blog/post/detail.html:118
+#: blog/templates/blog/post/list_ajax.html:62
+#: blog/templates/blog/post/list_ajax_similar.html:33
+#: blog/templates/blog/search/list_ajax.html:61
+msgid "Published at %(post_publish)s"
+msgstr "Veröffentlicht bei %(post_publish)s"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "Mein geteiltes"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "Abnehmen"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "Ein Konto erstellen"
+
+#: account/templates/account/register.html:42
+msgid "Create"
+msgstr "Schaffen"
+
+#: account/templates/account/register.html:43
+msgid "Login Here"
+msgstr "Hier anmelden"
+
+#: account/templates/account/register.html:103
+msgid "This username is not available!"
+msgstr "Dieser Benutzername ist nicht verfügbar!"
+
+#: account/templates/account/register.html:110
+msgid "This username is available!"
+msgstr "Dieser Benutzername ist verfügbar!"
+
+#: account/templates/account/register.html:114
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr ""
+"Geben Sie ein gültiges Benutzernamenzeichen ein, das aus mehr als 4 "
+"Buchstaben bestehen sollte!"
+
+#: account/templates/account/register.html:174
+msgid "This email is not available!"
+msgstr "Diese E-Mail ist nicht verfügbar!"
+
+#: account/templates/account/register.html:179
+msgid "This email is available!"
+msgstr "Diese E-Mail ist verfügbar!"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: account/templates/account/register_done.html:12
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr ""
+"Willkommen, Ihre E-Mail-Adresse %(new_user_email)s und Ihr Benutzername "
+"lautet %(new_user_username)s"
+
+#: account/templates/account/register_done.html:14
+msgid "Your account has been successfully created."
+msgstr "Ihr Konto wurde erfolgreich erstellt."
+
+#: account/templates/account/register_done.html:15
+msgid "Now your can Login."
+msgstr "Jetzt können Sie sich anmelden."
+
+#: account/templates/account/register_done.html:17
+msgid "But First you have to Verify your account."
+msgstr "Aber zuerst müssen Sie Ihr Konto verifizieren."
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "Benutzer"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "Folgen"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "Folge"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "folgendes"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "Anhänger"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "Folgen"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "mehr"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "Benutzerliste"
+
+#: account/templates/account/user/user_post_list_ajax.html:72
+#: blog/templates/blog/post/list_ajax.html:73
+#: blog/templates/blog/post/list_ajax_similar.html:41
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "Weiterlesen"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "Konto löschen"
+
+#: account/templates/registration/login.html:8
+msgid "Login Now"
+msgstr "Jetzt einloggen"
+
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
+msgid "Logged out"
+msgstr "Abgemeldet"
+
+#: account/templates/registration/logout.html:15
+msgid "You have been successfully logged out."
+msgstr "Du hast dich erfolgreich abgemeldet."
+
+#: account/templates/registration/logout.html:16
+msgid "You can Login again."
+msgstr "Sie können sich erneut anmelden."
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "Passwortänderung"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "Passwort geändert"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "Ihr Passwort wurde erfolgreich geändert."
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "Ändern Sie Ihr Passwort"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:240
+#: blog/templates/blog/post/detail.html:251
+#: blog/templates/blog/post/detail.html:281
+msgid "Submit"
+msgstr "einreichen"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "Passwort zurücksetzen"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "Passwort eingestellt"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "Ihr Passwort wurde festgelegt."
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "Sie können sich jetzt einloggen"
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "Setze dein Passwort zurück"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "Bitte geben Sie Ihr neues Passwort zweimal ein:"
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Der Link zum Zurücksetzen des Passworts war ungültig, möglicherweise weil er"
+" bereits verwendet wurde. Bitte fordern Sie eine neue Passwortzurücksetzung "
+"an."
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "Wir"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "Überprüfen Sie unbedingt Ihren Spam-Ordner."
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "Passwort zurücksetzen"
+
+#: account/views.py:77
+msgid "Disabled Account"
+msgstr "Deaktiviertes Konto"
+
+#: account/views.py:80
+msgid "Invalid login"
+msgstr "Ungültiger Login"
+
+#: account/views.py:98
+msgid "User already exists"
+msgstr "Benutzer existiert bereits"
+
+#: account/views.py:142
+msgid "Profile updated successfully"
+msgstr "Profil erfolgreich aktualisiert"
+
+#: account/views.py:147
+msgid "Error updating your profile"
+msgstr "Fehler beim Aktualisieren Ihres Profils"
+
+#: account/views.py:544
+msgid "Wrong password"
+msgstr "Falsches Passwort"
+
+#: account/views.py:642
+msgid "already removed"
+msgstr "bereits entfernt"
+
+#: blog/forms.py:67
+msgid "No Publication"
+msgstr "Keine Veröffentlichung"
+
+#: blog/forms.py:95
+msgid "Title"
+msgstr "Titel"
+
+#: blog/forms.py:100
+msgid "Type content here."
+msgstr "Geben Sie hier Inhalt ein."
+
+#: blog/forms.py:108 blog/forms.py:197 blog/templates/blog/post_form.html:71
+#: blog/templates/blog/post_update.html:63 blog/templates/blog/tag/list.html:4
+#: publication/forms.py:50 publication/forms.py:104
+msgid "Tags"
+msgstr "Stichworte"
+
+#: blog/forms.py:176
+msgid "Text here"
+msgstr "Text hier"
+
+#: blog/forms.py:191 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "Name"
+
+#: blog/forms.py:210 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "Worum geht es in Ihrer Publikation?"
+
+#: blog/models.py:83 blog/models.py:190
+msgid "title"
+msgstr "Titel"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "Untertitel"
+
+#: blog/models.py:95 blog/models.py:207
+msgid "cover"
+msgstr "Startseite"
+
+#: blog/models.py:196
+msgid "category"
+msgstr "Kategorie"
+
+#: blog/models.py:204
+msgid "publication"
+msgstr "Veröffentlichung"
+
+#: blog/models.py:220
+msgid "author"
+msgstr "Autor"
+
+#: blog/models.py:226
+msgid "other authors"
+msgstr "andere Autoren"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:267
+msgid "Replay:"
+msgstr "Wiederholung:"
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "Kommentare"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "Titel:"
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: blog/templates/blog/post/detail.html:24
+msgid "helps you remember more"
+msgstr "hilft dir, dich an mehr zu erinnern"
+
+#: blog/templates/blog/post/detail.html:121
+msgid "Its a draft you can publish and edit here"
+msgstr ""
+"Es ist ein Entwurf, den Sie hier veröffentlichen und bearbeiten können"
+
+#: blog/templates/blog/post/detail.html:142
+msgid "views:"
+msgstr "Ansichten:"
+
+#: blog/templates/blog/post/detail.html:176
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: blog/templates/blog/post/detail.html:221
+msgid "Reply"
+msgstr "Antwort"
+
+#: blog/templates/blog/post/detail.html:234
+#: blog/templates/blog/post/detail.html:245
+msgid "Hit a comment"
+msgstr "Hit einen Kommentar"
+
+#: blog/templates/blog/post/detail.html:278
+msgid "Comment here"
+msgstr "Kommentieren Sie hier"
+
+#: blog/templates/blog/post/detail.html:298
+msgid "Similar posts"
+msgstr "Ähnliche Beiträge"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "Beitrag erstellen"
+
+#: blog/templates/blog/post_form.html:68
+#: blog/templates/blog/post_update.html:60
+msgid "Please provie some tags"
+msgstr "Bitte geben Sie einige Tags an"
+
+#: blog/templates/blog/post_form.html:79
+#: blog/templates/blog/post_update.html:71
+msgid "Please provide when to publish"
+msgstr "Bitte geben Sie an, wann die Veröffentlichung erfolgen soll"
+
+#: blog/templates/blog/post_form.html:91
+#: blog/templates/blog/post_update.html:83
+msgid "Upload cover image"
+msgstr "Titelbild hochladen"
+
+#: blog/templates/blog/post_form.html:94
+#: blog/templates/blog/post_update.html:86
+msgid "Upload (Click here)"
+msgstr "Hochladen (hier klicken)"
+
+#: blog/templates/blog/post_form.html:100
+#: blog/templates/blog/post_update.html:92
+msgid "Share to edit with others"
+msgstr "Zum Bearbeiten mit anderen teilen"
+
+#: blog/templates/blog/post_form.html:106
+#: blog/templates/blog/post_update.html:98
+msgid "If publication?"
+msgstr "Wenn Veröffentlichung?"
+
+#: blog/templates/blog/post_update.html:7
+msgid "Update Post"
+msgstr "Beitrag aktualisieren"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "Es gibt keinen Beitrag zu dieser Abfrage"
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
+msgid "Search"
+msgstr "Suche"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "Beitrag mit"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "Erneut suchen"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "Alle Tags"
+
+#: blog/templates/blog_base.html:88
+msgid "Posts"
+msgstr "Beiträge"
+
+#: blog/templates/blog_base.html:90 blog/templates/blog_base.html:125
+msgid "Create Post"
+msgstr "Beitrag erstellen"
+
+#: blog/templates/blog_base.html:122
+msgid "Manage profile"
+msgstr "Profil verwalten"
+
+#: blog/templates/blog_base.html:123
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: blog/templates/blog_base.html:124
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: blog/templates/blog_base.html:129
+msgid "My Publications"
+msgstr "Meine Publikationen"
+
+#: blog/templates/blog_base.html:130
+msgid "Create Publication"
+msgstr "Publikation erstellen"
+
+#: blog/templates/blog_base.html:167
+msgid "Multi User Blog"
+msgstr "Mehrbenutzer-Blog"
+
+#: blog/templates/blog_base.html:173
+msgid "Copyright"
+msgstr "Urheberrechte ©"
+
+#: blog/views.py:438
+msgid "Your are not authorized to edit :)"
+msgstr "Sie haben keine Berechtigung zum Bearbeiten :)"
+
+#: blog/views.py:545
+msgid "No posts found ..."
+msgstr "Keine Einträge gefunden ..."
+
+#: image_uploader/views.py:66
+msgid "Page not found."
+msgstr "Seite nicht gefunden."
+
+#: publication/models.py:11
+msgid "name"
+msgstr "Name"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "Bild"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "Schnecke"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "Stichworte"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "Herausgeber"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "Schriftsteller"
