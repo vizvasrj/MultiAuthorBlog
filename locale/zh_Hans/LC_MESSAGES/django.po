@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-28 10:44+0530\n"
+"POT-Creation-Date: 2021-10-28 22:53+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -182,11 +182,11 @@ msgstr "轮廓"
 msgid "Configuration"
 msgstr "配置"
 
-#: account/templates/account/edit.html:23 blog/templates/blog_base.html:126
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:147
 msgid "My Stories"
 msgstr "我的故事"
 
-#: account/templates/account/edit.html:26 blog/templates/blog_base.html:127
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:148
 msgid "My Shared"
 msgstr "我的共享"
 
@@ -206,15 +206,21 @@ msgstr "保存更改"
 #: account/templates/account/login.html:28
 #: account/templates/registration/login.html:4
 #: account/templates/registration/login.html:28
-#: blog/templates/blog_base.html:141
+#: blog/templates/blog_base.html:162
 msgid "Login"
 msgstr "登录"
 
 #: account/templates/account/login.html:29
 #: account/templates/registration/login.html:29
-#: blog/templates/blog_base.html:144
+#: blog/templates/blog_base.html:165
 msgid "SignUp"
 msgstr "报名"
+
+#: account/templates/account/me/fallowing/post.html:50
+#, fuzzy
+#| msgid "All tags"
+msgid "Related tags"
+msgstr "相关标签"
 
 #: account/templates/account/me/my_post_list_ajax.html:12
 msgid "delete"
@@ -291,6 +297,7 @@ msgstr "从这篇文章中删除自己"
 #: blog/templates/blog/post/list_ajax.html:62
 #: blog/templates/blog/post/list_ajax_similar.html:33
 #: blog/templates/blog/search/list_ajax.html:61
+#, python-format
 msgid "Published at %(post_publish)s"
 msgstr "发布于 %(post_publish)s"
 
@@ -339,6 +346,7 @@ msgid "Welcome"
 msgstr "欢迎"
 
 #: account/templates/account/register_done.html:12
+#, python-format
 msgid ""
 "Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
 msgstr "欢迎，您的电子邮件 %(new_user_email)s 和用户名是 %(new_user_username)s"
@@ -604,10 +612,6 @@ msgstr "帮助你记住更多"
 msgid "Its a draft you can publish and edit here"
 msgstr "它是您可以在此处发布和编辑的草稿"
 
-#: blog/templates/blog/post/detail.html:142
-msgid "views:"
-msgstr "意见："
-
 #: blog/templates/blog/post/detail.html:176
 msgid "Edit"
 msgstr "编辑"
@@ -672,7 +676,8 @@ msgid "There are no post related this query"
 msgstr "没有与此查询相关的帖子"
 
 #: blog/templates/blog/search/search.html:6
-#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:123
+#: blog/templates/blog_base.html:124
 msgid "Search"
 msgstr "搜索"
 
@@ -688,39 +693,39 @@ msgstr "再次搜索"
 msgid "All tags"
 msgstr "所有标签"
 
-#: blog/templates/blog_base.html:88
+#: blog/templates/blog_base.html:93
 msgid "Posts"
 msgstr "帖子"
 
-#: blog/templates/blog_base.html:90 blog/templates/blog_base.html:125
+#: blog/templates/blog_base.html:95 blog/templates/blog_base.html:146
 msgid "Create Post"
 msgstr "创建帖子"
 
-#: blog/templates/blog_base.html:122
+#: blog/templates/blog_base.html:143
 msgid "Manage profile"
 msgstr "管理个人资料"
 
-#: blog/templates/blog_base.html:123
+#: blog/templates/blog_base.html:144
 msgid "Change password"
 msgstr "更改密码"
 
-#: blog/templates/blog_base.html:124
+#: blog/templates/blog_base.html:145
 msgid "Logout"
 msgstr "登出"
 
-#: blog/templates/blog_base.html:129
+#: blog/templates/blog_base.html:150
 msgid "My Publications"
 msgstr "我的出版物"
 
-#: blog/templates/blog_base.html:130
+#: blog/templates/blog_base.html:151
 msgid "Create Publication"
 msgstr "创建出版物"
 
-#: blog/templates/blog_base.html:167
+#: blog/templates/blog_base.html:188
 msgid "Multi User Blog"
 msgstr "多用户博客"
 
-#: blog/templates/blog_base.html:173
+#: blog/templates/blog_base.html:194
 msgid "Copyright"
 msgstr "版权"
 
@@ -759,3 +764,6 @@ msgstr "出版商"
 #: publication/models.py:31
 msgid "writer"
 msgstr "作家"
+
+#~ msgid "views:"
+#~ msgstr "意见："

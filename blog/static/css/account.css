@@ -58,7 +58,7 @@
     font-family: 400;
     font-size: 20px;
     color: inherit;
-    border: rgb(77, 77, 77);
+    border: rgb(223, 223, 223);
     border-style: solid;
     background-color: inherit;
 }
@@ -73,14 +73,27 @@
 }
 
 .navtext {
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
+    font-family: 'Poppins', monospace;
+    font-weight: 900;
     font-size: 16px;
+    color: rgb(105, 105, 105)
+}
+.nav-text2{
+    /* margin-top: 9px; */
+
+}
+.nav-text2:hover{
+
 }
 .navtext:valid {
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    font-size: 16px;
+    font-family: 'Poppins', monospace;
+    font-weight: 900;
+    /* font-size: 16px; */
+    color: rgb(41, 41, 41);
+
+}
+.navtext:hover {
+    color: rgb(41, 41, 41);
 }
 
 .fileinput {

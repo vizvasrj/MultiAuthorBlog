@@ -18,7 +18,11 @@
     <div class="container" style="margin-left: -24px; margin-top: -2px;">
         <div class="row">
             <div class="col-sm-6  flex-fill">
-                <div class="d-flex flex-column">
+                <div class="d-flex flex-column" 
+                {% if post.tags.all.count == 0 %}
+                    style="margin-top: 5px;"
+                {% endif %}
+                    >
                     <div class="p-2 ">
                         <a class="author_name_from_list" href="/{{post.author.get_absolute_url}}/">
                             <strong class="">
@@ -111,14 +115,15 @@
 
 <p class="word-break">{{post.body|paragraph|truncatechars_html:500}}</p>
 <div class="d-flex flex-row">
-    <p class="flex-fill">{{ post.total_likes }} like{{ post.total_likes|pluralize }}</p>
+    <div class="flex-fill heart-color" style="font-size: x-large;">{{ post.total_likes }} <svg class="heart-color" style="margin-top: -4px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M7 3C4.239 3 2 5.216 2 7.95c0 2.207.875 7.445 9.488 12.74a.985.985 0 0 0 1.024 0C21.125 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3s-5 3-5 3s-2.239-3-5-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+    </div>
     <div class="bookmark" style="font-size: x-large;">
         {% with bookmark=post.bookmark_list.all %}
 
         {% if user.is_authenticated %}
         
         <a data-id="{{ post.id }}" data-action="{% if request.user in bookmark %}un{% endif %}bookmark" class="bookmark">
-            <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <svg  style="margin-top: -4px;" class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                 <path class="{% if request.user in bookmark %}king{% endif %} {{ post.id }} icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262"/>
             </svg>
           </a>
@@ -126,7 +131,7 @@
         {% else %}
 
         <a href="{% url 'login' %}?next={{ request.path }}" class="bookmark_unauthenticated">
-            <svg class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <svg  style="margin-top: -4px;" class="changesize2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                 <path class="icad" d="M17 3H7a2 2 0 0 0-2 2v16l7-3l7 3V5a2 2 0 0 0-2-2z" fill="#626262"/>
             </svg>
         </a>

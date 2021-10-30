@@ -41,6 +41,8 @@
   <link href="https://fonts.googleapis.com/css2?family=WindSong&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">   <!-- local FOnts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+
   <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}">
 
   <!-- brand font -->
@@ -62,6 +64,9 @@
   {% block head %} 
   {% endblock %}
   <style>
+    body {
+      font-family: Poppins !important;
+    }
     {% block style %} 
     
     {% endblock %}
@@ -71,11 +76,11 @@
   <div class="wrapper">
 
     <body class="bg-light">
-      <div class="container">
-        <nav class="navbar navbar-expand-sm left150px">
+      <div class="container-fulid" style="background-image: url(https://www.nasa.gov/sites/default/files/thumbnails/image/wallpaper_gamma_rays.jpeg); height: 240px;">
+        <nav class="navbar navbar-expand-sm left150px" style="top: 10px;background: #ffffff80;margin-left: 10px;margin-right: 10px; z-index: 10000;">
           <div class="container-fluid">
             <a class="navbar-brand navtext vizvasrj" href="/">Vizvasrj</a>
-            <button class="navbar-toggler bg-olive-lite-nav" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler bg-olive-lite-nav toggle_nav_button" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -84,25 +89,44 @@
               
               <ul class="navbar-nav me-auto mb-lg-0">
                 {% block menu %} 
-                <li class="nav-item text-center">
-                  <a class="nav-link navtext" aria-current="page" href="{% url 'post_list' %}">{% trans 'Posts' %}</a>
+                <li class="nav-item text-center mx-1">
+                  <a class="nav-link navtext nav-text2" aria-current="page" href="{% url 'post_list' %}">{% trans 'Posts' %}</a>
                 </li>
-                <li class="nav-item text-center"><a class="nav-link navtext" href="{% url 'post_new' %}">{% trans 'Create Post' %}</a></li>
+                <li class="nav-item  text-center ">
+                  <a class="nav-link navtext nav-text2" href="{% url 'post_new' %}">{% trans 'Create Post' %}</a>
+                </li>
                 {% endblock %}
               </ul>
               <button type="button" class="btn-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1c-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z" fill="currentColor"/></svg>
               </button>
-              
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              <div class="">
+                <a class="dropdown nav-link navtext nav-text2 text-center" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">{{LANGUAGE_CODE|upper}}</a>
+                <ul class="languages dropdown-menu dropdown-menu-custom bg-green-lite-dropdown" aria-labelledby="dropdown02"">
+                  {% for language in languages %}
+                    <li class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}">
+                      <a href="/{{ language.code }}/"
+                      class="dropdown-item">
+                        {{ language.name_local }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+                      
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content search-modal-content">
                     <form id="search-form" autocomplete="off" method="GET" class="d-flex" action="{% url 'post_search' %}">
-                      <input id="search-input" class="form-control me-2 navtext  input-search" type="search" name="query" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success navtext bg-red" type="submit">{% trans 'Search' %}</button>
+                      <input id="search-input" class="form-control me-2 navtext  input-search" type="search" name="query" placeholder="{% trans 'Search' %}" aria-label="Search">
+                      <button class="btn btn-outline-success navtext" style="background-color: yellowgreen;" type="submit">{% trans 'Search' %}</button>
                     </form>
-                    <div id="results-box" class="results none">
+                    <div id="results-box" class="results none" style="background-color: white;">
                       {% csrf_token %}
                     </div>      
                   </div>
@@ -111,12 +135,12 @@
               {% if request.user.is_authenticated %}
               <!-- Settings Profile -->
               <ul class="navbar-nav right150px mb-lg-0">
-                <li class="nav-item dropdown text-center">
-                  <a class="nav-link dropdown" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item dropdown text-center ">
+                  <a class="nav-link dropdown" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background: #aaa;">
                     {% thumbnail request.user.profiles.photo 42x42 crop as avatar %}
-                    <img class="rounded" width="42px" src="{{ avatar.url }}" alt="">
+                    <img style="margin: -5px;" class="rounded" width="42px" src="{{ avatar.url }}" alt="">
                   </a>
-                  <ul class="dropdown-menu bg-green-lite-dropdown" aria-labelledby="dropdown01">
+                  <ul id="" class="dropdown-menu bg-green-lite-dropdown" aria-labelledby="dropdown01" style="margin-left: -90px;">
                     <li><a class="dropdown-item" href="{% url 'my_profile' %} ">
                         {{ request.user.username }}</a></li>
                     <li><a class="dropdown-item" href="{% url 'edit' %}">{% trans 'Manage profile' %}</a></li>
@@ -148,6 +172,33 @@
               {% endif %}
 
             </div>
+              {% if request.user.is_authenticated %}
+              <!-- Settings Profile -->
+              <ul class="">
+                  <a  class="toggle_nav_img nav-link dropdown" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background: #aaa;">
+                    {% thumbnail request.user.profiles.photo 42x42 crop as avatar %}
+                    <img class=" rounded" width="42px" src="{{ avatar.url }}" alt="">
+                  </a>
+                  <ul id="" class="dropdown-menu bg-green-lite-dropdown nav_dropdown" aria-labelledby="dropdown01">
+                    <li><a class="dropdown-item" href="{% url 'my_profile' %} ">
+                        {{ request.user.username }}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'edit' %}">{% trans 'Manage profile' %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'password_change' %}">{% trans 'Change password' %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'post_new' %}">{% trans 'Create Post' %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'my_published_story' %}">{% trans 'My Stories' %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'my_shared_post' %}">{% trans 'My Shared' %}</a></li>
+                    <hr>
+                    <li><a class="dropdown-item" href="{% url 'my_publication_list' %}">{% trans 'My Publications' %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'publication_create' %}">{% trans 'Create Publication' %}</a></li>
+                    
+
+
+                  </ul>
+
+                <!-- { % include "account/user/profile.html" % } -->
+                </ul>
+                {% endif %}            <!--  -->
           </div>
         </nav>
 

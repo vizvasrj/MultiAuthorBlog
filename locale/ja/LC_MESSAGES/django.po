@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 04:01+0530\n"
+"POT-Creation-Date: 2021-10-29 09:25+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,11 +183,11 @@ msgstr "プロフィール"
 msgid "Configuration"
 msgstr "構成"
 
-#: account/templates/account/edit.html:23 blog/templates/blog_base.html:125
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:147
 msgid "My Stories"
 msgstr "私の物語"
 
-#: account/templates/account/edit.html:26 blog/templates/blog_base.html:126
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:148
 msgid "My Shared"
 msgstr "私の共有"
 
@@ -207,15 +207,21 @@ msgstr "変更内容を保存"
 #: account/templates/account/login.html:28
 #: account/templates/registration/login.html:4
 #: account/templates/registration/login.html:28
-#: blog/templates/blog_base.html:140
+#: blog/templates/blog_base.html:162
 msgid "Login"
 msgstr "ログイン"
 
 #: account/templates/account/login.html:29
 #: account/templates/registration/login.html:29
-#: blog/templates/blog_base.html:143
+#: blog/templates/blog_base.html:165
 msgid "SignUp"
 msgstr "サインアップ"
+
+#: account/templates/account/me/fallowing/post.html:50
+#, fuzzy
+#| msgid "All tags"
+msgid "Related tags"
+msgstr "すべてのタグ"
 
 #: account/templates/account/me/my_post_list_ajax.html:12
 msgid "delete"
@@ -292,8 +298,10 @@ msgstr "この投稿から自分を削除します"
 #: blog/templates/blog/post/list_ajax.html:62
 #: blog/templates/blog/post/list_ajax_similar.html:33
 #: blog/templates/blog/search/list_ajax.html:61
+#, fuzzy, python-format
+#| msgid "Published at %(post_publish)s"
 msgid "Published at %(post_publish)s"
-msgstr "％（post_publish）sで公開"
+msgstr "%(post_publish)s で公開"
 
 #: account/templates/account/me/shared.html:18
 msgid "My shared"
@@ -325,7 +333,8 @@ msgstr "このユーザー名は使用可能です！"
 
 #: account/templates/account/register.html:114
 msgid "Enter valid username character should be more than 4 letters!"
-msgstr "有効なユーザー名を入力してください文字は4文字以上である必要があります！"
+msgstr ""
+"有効なユーザー名を入力してください文字は4文字以上である必要があります！"
 
 #: account/templates/account/register.html:174
 msgid "This email is not available!"
@@ -339,20 +348,26 @@ msgstr "このメールが利用可能です！"
 msgid "Welcome"
 msgstr "いらっしゃいませ"
 
-#: account/templates/account/register_done.html:13
+#: account/templates/account/register_done.html:12
+#, fuzzy, python-format
+#| msgid ""
+#| "Welcome, Your email %(new_user_email)s and username is "
+#| "%(new_user_username)s"
 msgid ""
 "Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
-msgstr "ようこそ、あなたのメールアドレスは％（new_user_email）sで、ユーザー名は％（new_user_username）sです。"
+msgstr ""
+"ようこそ、あなたのメールアドレスは％（new_user_email）sで、ユーザー名"
+"は％（new_user_username）sです。"
 
-#: account/templates/account/register_done.html:16
+#: account/templates/account/register_done.html:14
 msgid "Your account has been successfully created."
 msgstr "アカウントが正常に作成されました。"
 
-#: account/templates/account/register_done.html:17
+#: account/templates/account/register_done.html:15
 msgid "Now your can Login."
 msgstr "これでログインできます。"
 
-#: account/templates/account/register_done.html:19
+#: account/templates/account/register_done.html:17
 msgid "But First you have to Verify your account."
 msgstr "ただし、最初にアカウントを確認する必要があります。"
 
@@ -406,16 +421,16 @@ msgstr "アカウントを削除する"
 msgid "Login Now"
 msgstr "ここでログイン"
 
-#: account/templates/registration/logout.html:5
-#: account/templates/registration/logout.html:14
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
 msgid "Logged out"
 msgstr "ログアウトしました"
 
-#: account/templates/registration/logout.html:17
+#: account/templates/registration/logout.html:15
 msgid "You have been successfully logged out."
 msgstr "正常にログアウトされました。"
 
-#: account/templates/registration/logout.html:18
+#: account/templates/registration/logout.html:16
 msgid "You can Login again."
 msgstr "再度ログインできます。"
 
@@ -480,7 +495,9 @@ msgstr "新しいパスワードを2回入力してください。"
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
-msgstr "パスワードリセットリンクが無効でした。おそらく、すでに使用されているためです。新しいパスワードのリセットをリクエストしてください。"
+msgstr ""
+"パスワードリセットリンクが無効でした。おそらく、すでに使用されているためで"
+"す。新しいパスワードのリセットをリクエストしてください。"
 
 #: account/templates/registration/password_reset_done.html:13
 msgid "We"
@@ -605,10 +622,6 @@ msgstr "もっと思い出すのに役立ちます"
 msgid "Its a draft you can publish and edit here"
 msgstr "ここで公開および編集できるドラフト"
 
-#: blog/templates/blog/post/detail.html:142
-msgid "views:"
-msgstr "ビュー："
-
 #: blog/templates/blog/post/detail.html:176
 msgid "Edit"
 msgstr "編集"
@@ -673,7 +686,8 @@ msgid "There are no post related this query"
 msgstr "このクエリに関連する投稿はありません"
 
 #: blog/templates/blog/search/search.html:6
-#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:102
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:123
+#: blog/templates/blog_base.html:124
 msgid "Search"
 msgstr "検索"
 
@@ -689,39 +703,39 @@ msgstr "もう一度検索"
 msgid "All tags"
 msgstr "すべてのタグ"
 
-#: blog/templates/blog_base.html:87
+#: blog/templates/blog_base.html:93
 msgid "Posts"
 msgstr "投稿"
 
-#: blog/templates/blog_base.html:89 blog/templates/blog_base.html:124
+#: blog/templates/blog_base.html:95 blog/templates/blog_base.html:146
 msgid "Create Post"
 msgstr "投稿を作成する"
 
-#: blog/templates/blog_base.html:121
+#: blog/templates/blog_base.html:143
 msgid "Manage profile"
 msgstr "プロファイルの管理"
 
-#: blog/templates/blog_base.html:122
+#: blog/templates/blog_base.html:144
 msgid "Change password"
 msgstr "パスワードを変更する"
 
-#: blog/templates/blog_base.html:123
+#: blog/templates/blog_base.html:145
 msgid "Logout"
 msgstr "ログアウト"
 
-#: blog/templates/blog_base.html:128
+#: blog/templates/blog_base.html:150
 msgid "My Publications"
 msgstr "私の出版物"
 
-#: blog/templates/blog_base.html:129
+#: blog/templates/blog_base.html:151
 msgid "Create Publication"
 msgstr "パブリケーションを作成する"
 
-#: blog/templates/blog_base.html:166
+#: blog/templates/blog_base.html:188
 msgid "Multi User Blog"
 msgstr "マルチユーザーブログ"
 
-#: blog/templates/blog_base.html:172
+#: blog/templates/blog_base.html:194
 msgid "Copyright"
 msgstr "著作権"
 
@@ -760,3 +774,6 @@ msgstr "出版社"
 #: publication/models.py:31
 msgid "writer"
 msgstr "作家"
+
+#~ msgid "views:"
+#~ msgstr "ビュー："

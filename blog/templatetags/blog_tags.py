@@ -52,7 +52,10 @@ def markdown_format(text):
     return mark_safe(markdown.markdown(text))
 
 def read(html):
-    return readtime.of_html(html)
+    read = readtime.of_html(html)
+    # print(read)
+    read_splited = str(read).split(' ')[0]
+    return read_splited
 
 register.filter('readtime', read)
 
