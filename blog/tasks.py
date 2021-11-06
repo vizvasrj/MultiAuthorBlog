@@ -22,11 +22,44 @@ from .models import MyCustomTag, TagNameValue, Post
 from django.db.models import F
 from celery import shared_task
 
+from bs4 import BeautifulSoup
+import os
+from google.cloud import texttospeech, texttospeech_v1
+from django.core.files import File
+from pydub import AudioSegment
+
+
+def text_to_speech(text, pk, part=None):
+    client = texttospeech_v1.TextToSpeechClient()
+    synthesis_input = texttospeech_v1.SynthesisInput(text=text)
+    voice = texttospeech_v1.VoiceSelectionParams(
+        language_code = 'en-US',
+        name = 'en-US-Wavenet-D',
+        ssml_gender = texttospeech_v1.SsmlVoiceGender.FEMALE
+    )
+    audio_config = texttospeech_v1.AudioConfig(
+        audio_encoding = texttospeech.AudioEncoding.MP3
+    )
+    response = client.synthesize_speech(
+        input = synthesis_input,
+        voice = voice,
+        audio_config = audio_config
+    )
+    if part != None:
+            
+        with open(f'{pk}_{part}_eng.mp3', 'wb') as output:
+            output.write(response.audio_content) 
+        
+    if part == None:
+        with open(f'{pk}_eng.mp3', 'wb') as output:
+            output.write(response.audio_content) 
+
 @shared_task
 # def print_title(pk):
 def translate_post(pk):
     import time
     time.sleep(2)
+
     # french_translate(pk)
     # hindi_translate(pk)
     # chinese_translate(pk)
@@ -41,7 +74,7 @@ def translate_post(pk):
     # norwegian_translate(pk)
     # vietnamese_translate(pk)
     # filipino_translate(pk)
-    italian_translate(pk)
+    # italian_translate(pk)
 
 
 # @shared_task

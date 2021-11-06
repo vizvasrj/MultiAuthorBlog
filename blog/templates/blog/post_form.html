@@ -49,13 +49,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <div class="title mb-2 ">
+                <div class="title mb-2">
                     <div class="">
                         {{ form.title }}
                     </div>
                 </div>
-                <div class="body mb-2 ">
-                    <div class="" style="padding: 0px;">
+                <div class="body mb-2">
+                    <div id="ck_body" class="" style="padding: 0px;">
                         {{ form.body }}
                     </div>
                 </div>
@@ -111,7 +111,7 @@
 
                 <div class="d-flex mt-2">
                     <div class="publish mt-2">
-                        <button name="btnsubmit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">{% trans 'Publish' %}</button>
+                        <button id="save_btn" name="btnsubmit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bg-red-lite">{% trans 'Publish' %}</button>
                     </div>
                 </div>  
             </div>
@@ -132,6 +132,7 @@
 
 <script  src="{% static 'js/ckeditor.js' %}"></script>
 <script src="{% static 'js/ckeditor.config.js' %}"></script>
+
 
 {% endblock %}
 
@@ -189,6 +190,58 @@ if (navigator.userAgent.match(/Mobile/)) {
   }
 
 
+  console.log("start here**")
+
+  $( "#save_btn" ).click(function(event) {
+    // $( this ).slideUp();
+    event.preventDefault();
+    var save_btn = $( '#save_btn' );
+    var title = $( '#id_title' );
+    var body = $( '#id_body' );
+    var t_w = $( '#t_w' );
+    var p_w = $( '#p_w' );
+    var formid = $( '#formid' );
+    var paragraph = $("div.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred p");
+    if ( title.val().length > 4 ) {
+        if ($('#t_w').length == 1) {
+            ( t_w ).remove();
+            console.log( "tw removed" );
+
+        }
+        var tt = 'ok';
+    }
+    if (paragraph.text().length > 4) {
+        if ($('#p_w').length == 1) {
+            ( p_w ).remove();
+            console.log("pw removed");
+
+        }
+        var pp = 'ok'
+        console.log(paragraph.length)
+    }
+    if (pp=='ok' && tt=='ok') {
+        console.log("Both are ok");
+        $('#formid').submit();
+    }
+    else {
+        if ( paragraph.text().length <= 4 ) {
+            if ( $('#p_w').length == 0 ) {
+                console.log( "paragraph warrning" );
+                $( '#ck_body' ).after("<span id='p_w' class='p-2' style='color: red;font-size: x-small;'>{% trans 'please insert valid content' %}<span>");
+            }
+        }
+        if (title.val().length <= 4){
+            if ( $('#t_w').length == 0 ) {
+                console.log( "insert warrning" );
+                ( title ).after("<span id='t_w' class='p-2' style='color: red;font-size: x-small;'>{% trans 'please insert valid title' %}<span>");
+            }
+        }
+        
+    }
+  });
+
+
 
 {% endblock %}
+
 

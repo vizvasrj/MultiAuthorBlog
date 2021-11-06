@@ -24,10 +24,10 @@ LANGUAGES = {
     'vi': 'vi',
 }
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Project/texttospeech/speech/serviceacc.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Documents/serviceacc.json'
 
 
-def translate_text(text, code, project_id="quick-yen-321916"):
+def translate_text(text, code, project_id="cedar-unison-331205"):
     print(code)
     client = translate.TranslationServiceClient()
     location = "global"

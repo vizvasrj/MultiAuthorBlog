@@ -47,12 +47,12 @@ margin-top: -20px !important;
         </div>
         <div class="border col-xl-4">
             <div id="tags" class="">
-                <h6 class="px-3 py-3 mt-2 bg-red-lite box-shadow f-30 fw-900">{% trans 'Related tags' %}</h6>
+                <h6 class="px-3 py-3 mt-2 bg-red-lite f-30 fw-900">{% trans 'Related tags' %}</h6>
                 {% for s_tags in sorted_related_tags %}
                 <div style="display: inline-block; padding: 3px;" class=" ln p-1">
                     <div class="bg-olive-lite ">
                         
-                        <a class="ln box-shadow"
+                        <a class="ln"
                             href="{{ s_tags.get_absolute_url }}"><strong># </strong> {{ s_tags }}
                         </a>
                         <a data-url="{% url 'tag_follow' %}" data-id="{{ s_tags.id }}"
@@ -72,7 +72,7 @@ margin-top: -20px !important;
 
                 {% for s_tags in my_tags %}
                 <div style="display: inline-block;" class=" ln p-1 mt-2 mx-1 ">
-                    <div class="bg-olive-lite  box-shadow " style="padding: 5px;">
+                    <div class="bg-olive-lite" style="padding: 5px;">
                         
                         <a class="ln"
                             href="{{ s_tags.tag.get_absolute_url }}"><strong># </strong> {{ s_tags.tag.slug|capfirst }}

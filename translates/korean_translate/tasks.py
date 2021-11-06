@@ -25,10 +25,10 @@ from google.cloud import language_v1
 from django.core.files import File
 from pydub import AudioSegment
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Project/texttospeech/speech/serviceacc.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Documents/serviceacc.json'
 
 
-def translate_text(text, project_id="quick-yen-321916"):
+def translate_text(text, project_id="cedar-unison-331205"):
     # Translating text
     client = translate.TranslationServiceClient()
     location = 'global'

@@ -862,7 +862,7 @@ div .post__body>p.post-body+p {
 .toggle_nav_img {
     position: fixed;
     right: 71px;
-    top: 18px;
+    top: 8px;
     padding-right: 7px !important;
     padding-left: 7px !important;
 
@@ -897,11 +897,64 @@ div .post__body>p.post-body+p {
     margin-top: .125rem;
     right: 0;
 }
-..dropdown-content {
+
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-  }
+}
+
+.button--pandora {
+	background: #000 !important;
+	font-weight: 700 !important;
+	padding: 0 !important;
+	border-radius: 5px !important;
+}
+
+.button--pandora span {
+	display: block !important;
+	padding: 0.5rem 0.8rem !important;
+	border: 1px solid #000 !important;
+	border-radius: 5px !important;
+	transform: translate3d(-4px, -4px, 0) !important;
+	transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1) !important;
+}
+
+.button--pandora:hover span {
+	transform: translate3d(-8px, -8px, 0) !important;
+}
+
+
+.button {
+	pointer-events: auto !important;
+	cursor: pointer !important;
+	background: #000000 !important;
+	border: none !important;
+	/* padding: 1.5rem 3rem !important; */
+	margin: 0 !important;
+	font-family: inherit !important;
+	font-size: inherit !important;
+	position: relative !important;
+	display: inline-block !important;
+}
+
+.button::before,
+.button::after {
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.scrolled-down {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+}
+.scrolled-up {
+    /* transform: translateY(0); */
+    transition: all 0.3s ease-in-out;
+}

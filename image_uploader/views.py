@@ -51,7 +51,6 @@ def handle_uploaded_file(f):
 def upload_file(request):
     if request.method == 'POST' and request.user.is_active:
         form = UploadFileForm(request.POST, request.FILES)
-        print(form)
         try:
             image_verify(request.FILES['upload'])
         except NoImageException as ex:
