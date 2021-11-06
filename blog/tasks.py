@@ -54,6 +54,22 @@ def text_to_speech(text, pk, part=None):
         with open(f'{pk}_eng.mp3', 'wb') as output:
             output.write(response.audio_content) 
 
+
+
+def eng_speech(pk):
+    post = Post.objects.get(id=pk)
+    body = post.body
+    title = post.title
+    tags = []
+    for tag in post.tags.all():
+        tags.append(tag.name)
+    
+    soup = BeautifulSoup(body, 'html.parser')
+    codes = {}
+    count = 1000
+    list = []
+    for x in soup:
+
 @shared_task
 # def print_title(pk):
 def translate_post(pk):
