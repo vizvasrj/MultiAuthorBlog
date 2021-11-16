@@ -1,5 +1,7 @@
 $(document).ready(function () {
     var csrfToken = $("input[name=csrfmiddlewaretoken]").val();
+    var follow = $("a.follow").text()
+    var following = $("a.following").text()
   $("a.follow").click(function (e) {
     e.preventDefault();
     $.post(
@@ -21,7 +23,7 @@ $(document).ready(function () {
 
           // toggle link text
           $("a.follow").text(
-            previous_action == "follow" ? "Following" : "Follow"
+            previous_action == "follow" ? following : follow
           );
 
           // update total followers
