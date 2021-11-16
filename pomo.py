@@ -24,7 +24,7 @@ LANGUAGES = {
     'vi': 'vi',
 }
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Documents/serviceacc.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '~/serviceacc.json'
 
 
 def translate_text(text, code, project_id="cedar-unison-331205"):
