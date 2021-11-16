@@ -93,6 +93,7 @@ INSTALLED_APPS = [
     'translates.vietnamese_translate',
     'translates.filipino_translate',
     'translates.italian_translate',
+    'translates.english_translate',
 ]
 
 MIDDLEWARE = [

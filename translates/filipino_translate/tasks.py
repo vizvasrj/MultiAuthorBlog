@@ -38,7 +38,7 @@ def translate_text(text, project_id="cedar-unison-331205"):
             "parent": parent,
             "contents": [text],
             "mime_type": "text/html",  # mime types: text/plain, text/html
-            "source_language_code": "en-US",
+            # "source_language_code": "en-US",
             "target_language_code": "tl",
         }
     )
@@ -111,8 +111,8 @@ def filipino_translate(pk):
     p_tags.string = ",".join(tags)
 
     bs_wp.append(p_tags)
-    t_c = text_to_category(text=str(bs_wp))
-    print (t_c[0].name)
+    # t_c = text_to_category(text=str(bs_wp))
+    # print (t_c[0].name)
 
     t_t = translate_text(text=str(bs_wp))
 

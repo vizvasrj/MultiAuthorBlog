@@ -958,3 +958,7 @@ div .post__body>p.post-body+p {
     /* transform: translateY(0); */
     transition: all 0.3s ease-in-out;
 }
+.tnum {
+    font-size: 18px;
+    vertical-align: middle;
+}

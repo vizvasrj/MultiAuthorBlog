@@ -56,8 +56,126 @@
     <div class=" mb-1">
       <div class="mt-2">
         <a class="post_title" href="{{post.get_absolute_url}}">
-          <h3 class="post_title mt-1">{{post.title|capfirst}}</h3>
-        </a>
+          <h3 class="post_title mt-1">
+          
+          {% if LANGUAGE_CODE == 'en' %}
+            {% if post.english_translated_post.last.title %}
+              {{ post.english_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'ar' %}
+            {% if post.arabic_translated_post.last.title %}
+              {{ post.arabic_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'zh-hans' %}
+            {% if post.chiense_translated_post.last.title %}
+              {{ post.chiense_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+              
+
+          {% elif  LANGUAGE_CODE == 'ta' %}
+            {% if post.filipino_translated_post.last.title %}
+              {{ post.filipino_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'fr' %}
+            {% if post.french_translated_post.last.title %}
+              {{ post.french_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'de' %}
+            {% if post.german_translated_post.last.title %}
+              {{ post.german_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'hi' %}
+            {% if post.hindi_translated_post.last.title %}
+              {{ post.hindi_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+          
+          {% elif  LANGUAGE_CODE == 'id' %}
+            {% if post.indonesian_translated_post.last.title %}
+              {{ post.indonesian_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'it' %}
+            {% if post.italian_translated_post.last.title %}
+              {{ post.italian_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+            
+          {% elif  LANGUAGE_CODE == 'ja' %}
+            {% if post.japanese_translated_post.last.title %}
+              {{ post.japanese_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'ko' %}
+            {% if post.korean_translated_post.last.title %}
+              {{ post.korean_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'nn' %}
+            {% if post.norwegian_translated_post.last.title %}
+              {{ post.norwegian_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'pt' %}
+            {% if post.portuguese_translated_post.last.title %}
+              {{ post.portuguese_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'ru' %}
+            {% if post.russian_translated_post.last.title %}
+              {{ post.russian_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'es' %}
+            {% if post.spanish_translated_post.last.title %}
+              {{ post.spanish_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% elif  LANGUAGE_CODE == 'vi' %}
+            {% if post.vietnamese_translated_post.last.title %}
+              {{ post.vietnamese_translated_post.last.title }}
+            {% else %}
+              {{ post.title }}  
+            {% endif %}
+
+          {% else %}
+            else
+          {% endif %}
+          </h3>
+          </a>
       </div>
       <hr>
       <div class="">
@@ -79,8 +197,125 @@
 
       <a href="{{post.get_absolute_url}}"><img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="" /></a>
       <p class="mt-1 post__list__body">
-        {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-      </p>
+        
+      {% if LANGUAGE_CODE == 'en' %}
+        {% if post.english_translated_post.last.body %}
+          {{ post.english_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'ar' %}
+        {% if post.arabic_translated_post.last.body %}
+          {{ post.arabic_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'zh-hans' %}
+        {% if post.chiense_translated_post.last.body %}
+          {{ post.chiense_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+          
+
+      {% elif  LANGUAGE_CODE == 'ta' %}
+        {% if post.filipino_translated_post.last.body %}
+          {{ post.filipino_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'fr' %}
+        {% if post.french_translated_post.last.body %}
+          {{ post.french_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'de' %}
+        {% if post.german_translated_post.last.body %}
+          {{ post.german_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'hi' %}
+        {% if post.hindi_translated_post.last.body %}
+          {{ post.hindi_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+      
+      {% elif  LANGUAGE_CODE == 'id' %}
+        {% if post.indonesian_translated_post.last.body %}
+          {{ post.indonesian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'it' %}
+        {% if post.italian_translated_post.last.body %}
+          {{ post.italian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+        
+      {% elif  LANGUAGE_CODE == 'ja' %}
+        {% if post.japanese_translated_post.last.body %}
+          {{ post.japanese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'ko' %}
+        {% if post.korean_translated_post.last.body %}
+          {{ post.korean_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'nn' %}
+        {% if post.norwegian_translated_post.last.body %}
+          {{ post.norwegian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'pt' %}
+        {% if post.portuguese_translated_post.last.body %}
+          {{ post.portuguese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'ru' %}
+        {% if post.russian_translated_post.last.body %}
+          {{ post.russian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'es' %}
+        {% if post.spanish_translated_post.last.body %}
+          {{ post.spanish_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'vi' %}
+        {% if post.vietnamese_translated_post.last.body %}
+          {{ post.vietnamese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+        {% else %}
+          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
+        {% endif %}
+
+      {% else %}
+        else
+      {% endif %}
+
+    </p>
       <a class="link0" href="{{post.get_absolute_url}}">
         <p class="read_more">{% trans 'Read more' %}</p>
       </a>

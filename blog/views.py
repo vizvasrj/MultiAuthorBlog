@@ -44,7 +44,7 @@ from nltk.corpus import wordnet
 
 
 from django.core.cache import cache
-a_timedelta = timedelta(days=1)
+a_timedelta = timedelta(minutes=1)
 
 on_day_in_seconds = a_timedelta.total_seconds()
 
@@ -146,9 +146,12 @@ def post_list(request, tag_slug=None):
 #             value=1
 #         )
 
+from django.utils import translation
 
 def post_detail(request, slug, author):
     user = request.user
+    language = request.LANGUAGE_CODE
+    cache.delete(f'post-{slug}')
     post = cache.get(f'post-{slug}')        
     if not post:
         post = get_object_or_404(
@@ -160,27 +163,126 @@ def post_detail(request, slug, author):
     else:
         # print(f'{slug} get from cache')
         pass
-    # i think this is better on celery
-    # background task slow tasks
-    tag_main.delay(user=user.id, post=post.id)
     # r.set(f"idid_post", bytes(post))
-    cn_p = post.chinese_translated_post.last()
-    hi_p = post.hindi_translated_post.last()
-    ar_p = post.arabic_translated_post.last()
-    tl_p = post.filipino_translated_post.last()
-    fr_p = post.french_translated_post.last()
-    de_p = post.german_translated_post.last()
-    id_p = post.indonesian_translated_post.last()
-    it_p = post.italian_translated_post.last()
-    jp_p = post.japanese_translated_post.last()
-    ko_p = post.korean_translated_post.last()
-    no_p = post.norwegian_translated_post.last()
-    pt_p = post.portuguese_translated_post.last()
-    ru_p = post.russian_translated_post.last()
-    es_p = post.spanish_translated_post.last()
-    vi_p = post.vietnamese_translated_post.last()
+    if language == 'en':
+        if post.english_translated_post.last():
+            t_post = post.english_translated_post.last()
+        else:
+            t_post = post
+
+    elif language == 'zh-hans':
+        if post.chinese_translated_post.last():
+            t_post = post.chinese_translated_post.last()
+        else:
+            t_post = post
+
+    elif language == 'hi':
+        if post.hindi_translated_post.last():
+            t_post = post.hindi_translated_post.last()
+        else:
+            t_post = post
+        
+    elif language == 'ar':
+        if post.arabic_translated_post.last():
+            t_post = post.arabic_translated_post.last()
+        else:
+            t_post = post
+
+    elif language == 'ta':
+        if post.filipino_translated_post.last():
+            t_post = post.filipino_translated_post.last()
+        else:
+            t_post = post
+
+    elif language == 'fr':
+        if post.french_translated_post.last():
+            t_post = post.french_translated_post.last()
+        else:
+            t_post = post
     
-    ip = request.META.get("REMOTE_ADDR")
+    elif language == 'de':
+        if post.german_translated_post.last():
+            t_post = post.german_translated_post.last()
+        else:
+            t_post = post
+    
+    elif language == 'id':
+        if post.indonesian_translated_post.last():
+            t_post = post.indonesian_translated_post.last()
+        else:
+            t_post = post
+    
+    elif language == 'it':
+        if post.italian_translated_post.last():
+            t_post = post.italian_translated_post.last()
+        else:
+            t_post = post
+
+    elif language == 'ja':
+        if post.japanese_translated_post.last():
+            t_post = post.japanese_translated_post.last()
+        else:
+            t_post = post
+    
+    elif language == 'ko':
+        if post.korean_translated_post.last():
+            t_post = post.korean_translated_post.last()
+        else:
+            t_post = post
+    
+    elif language == 'nn':
+        if post.norwegian_translated_post.last():
+            t_post = post.norwegian_translated_post.last()
+        else:
+            t_post = post
+
+    elif language == 'pt':
+        if post.portuguese_translated_post.last():
+            t_post = post.portuguese_translated_post.last()
+        else:
+            t_post = post
+
+    elif language == 'ru':
+        if post.russian_translated_post.last():
+            t_post = post.russian_translated_post.last()
+        else:
+            t_post = post
+    
+    elif language == 'es':
+        if post.spanish_translated_post.last():
+            t_post = post.spanish_translated_post.last()
+        else:
+            t_post = post
+    
+    elif language == 'vi':
+        if post.vietnamese_translated_post.last():
+            t_post = post.vietnamese_translated_post.last()
+        else:
+            t_post = post
+    # I know it will never get inside this else statement
+    else:
+        # print('inside else')
+        t_post = post
+
+    # print(t_post.title)
+    # print(t_post)
+    # IP
+    # ip = request.META.get("REMOTE_ADDR")
+
+    if request.user.is_authenticated:
+        user = request.user
+        # i think this is better on celery
+        # background task slow tasks
+        tag_main.delay(user=user.id, post=post.id)
+
+    else:
+        user = request.COOKIES['sessionid']
+        
+    # num_visits = request.session.get('num_visits', 0) + 1
+    # request.session['num_visits'] = num_visits
+    # print(str(num_visits))
+    # print(request.COOKIES['sessionid'])
+
 
     total_views = r.incr(f'post:{post.id}:views')
     comments = post.comments.filter(active=True)
@@ -215,21 +317,7 @@ def post_detail(request, slug, author):
             'comment_form': comment_form,
             'similar_posts': similar_posts,
             'total_views': total_views,
-            'cn_p': cn_p,
-            'hi_p': hi_p,
-            'ar_p': ar_p,
-            'tl_p': tl_p,
-            'fr_p': fr_p,
-            'de_p': de_p,
-            'id_p': id_p,
-            'it_p': it_p,
-            'jp_p': jp_p,
-            'ko_p': ko_p,
-            'no_p': no_p,
-            'pt_p': pt_p,
-            'ru_p': ru_p,
-            'es_p': es_p,
-            'vi_p': vi_p
+            't_post': t_post,
         }
     )
 
@@ -411,7 +499,7 @@ def update_data(request, pk):
             if form.is_valid():
                 post = form.save(commit=False)
                 if request.user.id == post.author_id:
-                    post.status = 'publish'
+                    post.status = 'published'
                     post.author_id = main_author_id
                 else:
                     post.author_id = main_author_id

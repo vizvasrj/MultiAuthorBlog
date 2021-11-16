@@ -9,7 +9,7 @@ import time
 LANGUAGES = {
     'ar': 'ar',
     'zh_hans': 'zh-CN',
-    'ta': 'fil',
+    'ta': 'tl',
     'fr': 'fr',
     'de': 'de',
     'hi': 'hi',
@@ -37,7 +37,7 @@ def translate_text(text, code, project_id="cedar-unison-331205"):
             "parent": parent,
             "contents": [text],
             "mime_type": "text/html",  # mime types: text/plain, text/html
-            "source_language_code": "en-US",
+            # "source_language_code": "en-US",
             "target_language_code": code,
         }
     )
