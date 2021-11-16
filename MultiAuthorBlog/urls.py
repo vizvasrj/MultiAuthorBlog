@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 urlpatterns = i18n_patterns(
     path('__debug__/', include(debug_toolbar.urls)),
 
-    path('admin/', admin.site.urls),
+    path('ri_admin/ad_996', admin.site.urls),
     path('', include('account.urls')),
     # path('', post_list),
     path('blog/', include('blog.urls')),
