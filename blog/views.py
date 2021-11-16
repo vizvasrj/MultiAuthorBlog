@@ -276,7 +276,7 @@ def post_detail(request, slug, author):
         tag_main.delay(user=user.id, post=post.id)
 
     else:
-        user = request.COOKIES['sessionid']
+        pass
         
     # num_visits = request.session.get('num_visits', 0) + 1
     # request.session['num_visits'] = num_visits
