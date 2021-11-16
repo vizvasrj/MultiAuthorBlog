@@ -25,7 +25,7 @@ from google.cloud import language_v1
 from django.core.files import File
 from pydub import AudioSegment
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Documents/serviceacc.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '~/serviceacc.json'
 
 
 def translate_text(text, project_id="cedar-unison-331205"):
