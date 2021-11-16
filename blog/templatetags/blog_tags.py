@@ -260,3 +260,10 @@ def paragraph_soup(html):
 def paragraph(html):
     html = paragraph_soup(html)
     return mark_safe(html)
+
+
+@register.filter(is_safe=True, name='t_url')
+def paragraph(path):
+    html = "/".join(path.split("/")[2:])
+    # print(html)
+    return html

@@ -52,7 +52,7 @@ def pre_save_receiver(sender, instance, created=False,  *args, **kwargs):
     else:
         # print("Only updating")
         # no translation for now
-        print("Delay?")
+        print("Update posts")
         # translate_post.delay(pk=instance.id)
         
         # for x in instance.tags.all():

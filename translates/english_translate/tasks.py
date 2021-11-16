@@ -12,7 +12,7 @@
 # t_s = tag_seperated
 from celery import shared_task
 from blog.models import Post
-from translates.arabic_translate.models import ArabicTranslatedPost
+from translates.english_translate.models import EnglishTranslatedPost
 from bs4 import BeautifulSoup
 import os
 from google.cloud import (
@@ -39,7 +39,7 @@ def translate_text(text, project_id="cedar-unison-331205"):
             "contents": [text],
             "mime_type": "text/html",  # mime types: text/plain, text/html
             # "source_language_code": "en-US",
-            "target_language_code": "ar",
+            "target_language_code": "en",
         }
     )
     for translation in response.translations:
@@ -57,8 +57,8 @@ def text_to_speech(text, pk, part=None):
     client = texttospeech_v1.TextToSpeechClient()
     synthesis_input = texttospeech_v1.SynthesisInput(text=text)
     voice = texttospeech_v1.VoiceSelectionParams(
-        language_code = 'ar-XA',
-        name = 'ar-XA-Wavenet-A',
+        language_code = 'en-GB',
+        name = 'en-GB-Wavenet-A',
         ssml_gender = texttospeech_v1.SsmlVoiceGender.FEMALE
     )
     audio_config = texttospeech_v1.AudioConfig(
@@ -71,16 +71,16 @@ def text_to_speech(text, pk, part=None):
     )
     if part != None:
             
-        with open(f'{pk}_{part}_arabic.mp3', 'wb') as output:
+        with open(f'{pk}_{part}_english.mp3', 'wb') as output:
             output.write(response.audio_content) 
         
     if part == None:
-        with open(f'{pk}_arabic.mp3', 'wb') as output:
+        with open(f'{pk}_english.mp3', 'wb') as output:
             output.write(response.audio_content) 
         
 
 @shared_task
-def arabic_translate(pk):
+def english_translate(pk):
     post = Post.objects.get(id=pk)
     body = post.body
     title = post.title
@@ -141,7 +141,7 @@ def arabic_translate(pk):
 
     else:
         t_t_sp = text_to_speech(text=t_t_n_s_t, pk=pk)
-    # before uploading to arabic_tra.. replace it with pre
+    # before uploading to english_tra.. replace it with pre
     t_t_p = t_t
     for ke, val in codes.items():
         t_t_p = t_t_p.replace(str(ke), str(val))
@@ -160,31 +160,31 @@ def arabic_translate(pk):
 
     t_t_p_c = t_t_p
 
-    # saving to translate models ie Arabic
+    # saving to translate models ie English
     try:
         if parts != None:
             audio = []
             for x in range(len(parts)):
-                audio.append(f"AudioSegment.from_mp3(f'{pk}_{x}_arabic.mp3')")
+                audio.append(f"AudioSegment.from_mp3(f'{pk}_{x}_english.mp3')")
             join = "+".join(audio)
             "mix_audio = " + join
             executes=("mix_audio = " + join)
-            executes2=(f"mix_audio.export('{pk}_arabic.mp3')")
+            executes2=(f"mix_audio.export('{pk}_english.mp3')")
             exec(executes)
             exec(executes2)
             
-            # mix_audio.export("{pk}_arabic.mp3")
+            # mix_audio.export("{pk}_english.mp3")
             rm_audio = []
             for x in range(len(parts)):
                 import os
-                os.system(f'rm {pk}_{x}_arabic.mp3')
+                os.system(f'rm {pk}_{x}_english.mp3')
     except:
         pass
 
-    file = open(f'{pk}_arabic.mp3', 'rb')
+    file = open(f'{pk}_english.mp3', 'rb')
     fileU = File(file)
     
-    h = ArabicTranslatedPost.objects.create(
+    h = EnglishTranslatedPost.objects.create(
         post_id=pk,
         title=str(t_p_title),
         # title=post.title,
@@ -192,7 +192,7 @@ def arabic_translate(pk):
         audio=fileU
     )
     import os
-    os.system(f'rm {pk}_arabic.mp3')
+    os.system(f'rm {pk}_english.mp3')
     for t_s in t_k_l:
         h.tags.add(t_s)
     

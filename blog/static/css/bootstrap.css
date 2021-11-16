@@ -3329,10 +3329,9 @@ textarea.form-control-lg {
     color: #212529;
     text-align: left;
     list-style: none;
-    background-color: #fff;
+    background-color: #f8f9fa;
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, .15);
-    border-radius: .25rem
 }
 
 .dropdown-menu[data-bs-popper] {
@@ -3569,6 +3568,11 @@ textarea.form-control-lg {
 
 .dropdown-menu.show {
     display: block
+}
+@media screen and (max-width: 380px) {
+    .dropdown-menu.show {
+        display: contents
+    }
 }
 
 .dropdown-header {
@@ -10089,4 +10093,3 @@ textarea.form-control-lg {
     }
 }
 
-/*# sourceMappingURL=bootstrap.min.css.map */

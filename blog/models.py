@@ -213,6 +213,7 @@ class Post(models.Model):
         max_length=256,
         # slugify=custome_slugify,
     )
+    audio = models.FileField(blank=True, null=True)
     author = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,

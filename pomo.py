@@ -9,7 +9,7 @@ import time
 LANGUAGES = {
     'ar': 'ar',
     'zh_hans': 'zh-CN',
-    'ta': 'fil',
+    'ta': 'tl',
     'fr': 'fr',
     'de': 'de',
     'hi': 'hi',
@@ -24,10 +24,10 @@ LANGUAGES = {
     'vi': 'vi',
 }
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Project/texttospeech/speech/serviceacc.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/root/Documents/serviceacc.json'
 
 
-def translate_text(text, code, project_id="quick-yen-321916"):
+def translate_text(text, code, project_id="cedar-unison-331205"):
     print(code)
     client = translate.TranslationServiceClient()
     location = "global"
@@ -37,7 +37,7 @@ def translate_text(text, code, project_id="quick-yen-321916"):
             "parent": parent,
             "contents": [text],
             "mime_type": "text/html",  # mime types: text/plain, text/html
-            "source_language_code": "en-US",
+            # "source_language_code": "en-US",
             "target_language_code": code,
         }
     )

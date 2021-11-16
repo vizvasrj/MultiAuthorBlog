@@ -10,7 +10,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'body')
     raw_id_fields = ('author',)
     date_hierarchy = 'publish'
-    ordering = ('status', 'publish')
+    ordering = ('-publish',)
 
 
 @admin.register(Comment)

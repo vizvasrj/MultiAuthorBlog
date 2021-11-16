@@ -5,6 +5,8 @@
 {% load blog_tags %}
 <!-- {# load editorjs #} -->
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 {% block title %} {{ post.title }} {% endblock %}
 {% block style %}
 {% endblock %}
@@ -104,18 +106,30 @@
                         </div>
                     </div>
                     <div class="col-11 post__body">
-                        <h1 class="posttitle">{{ post.title }}</h1>
+                        <h1 class="posttitle">
+                            
+                                {{ t_post.title }}
+                        
+                        </h1>
+                        
+                        {% if post.audio %}
+                            <audio controls id="audio1" style="width: 100%;">
+                                <source id='audio2' src="{{t_post.audio.url}}" type="audio/mpeg">
+                              Your browser does not support the audio element.
+                              </audio>
+                        {% endif %}
+                            
                         <p class="detail_readtime"><svg xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24"
                                 height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                                 <path
                                     d="M12.25 2c-5.514 0-10 4.486-10 10s4.486 10 10 10s10-4.486 10-10s-4.486-10-10-10zM18 13h-6.75V6h2v5H18v2z"
                                     fill="currentColor" />
-                            </svg> {{post.body|readtime}} </p>
+                            </svg><span class="tnum"> {{post.body|readtime}} </span></p>
                         <div class="">
                             {% thumbnail post.author.photo "42x42" crop="100%" as im %}
                             <a class="a_author_image" href="/{{post.author.get_absolute_url}}/">
-                                <img class="author__left__side rounded" src="{{ im.url }}" alt="">
+                                <img class="author__left__side rounded" src="{{ im.url }}" alt=""> {{post.author}}
                             </a>
                             {% if post.publication %}
 
@@ -141,14 +155,11 @@
                         {% thumbnail post.cover "800x400" crop="100%" as im %}
                         <img class="mb-3" width="100%" src="{{im.url}}" alt="">
                         <div class="post-body">
-                            {{ post.body|xssprotect }}
+
+                                {{ t_post.body|xssprotect }}
+                          
                         </div>
                         <div class="">
-                            <hr>
-                            {{ hi_p.slug }}
-                            <hr>
-                            {{ cn_p.slug }}
-                            <hr>
                             {% for tag in post.tags.all %}
                             <a href="{{ tag.get_absolute_url }}" class="tags-item
                                 {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bg-red-lite' %}">
@@ -203,9 +214,9 @@
                                     </div>
                                 </div>
                                 <div class="comment-body">
-                                    {{ node.id }}: {{ node.body|xssprotect }}
+                                    {{ node.body|xssprotect }}
                                 </div>
-                                <div id="">
+                                <div id="" style="border-bottom: 1px solid grey; margin-bottom: 2px;">
                                     {% with total_likes=node.users_like.count users_like=node.users_like.all %}
                                     <div class="c_count" data-action="">
                                         <span class="c_count">
@@ -244,8 +255,7 @@
                                     <!-- end count and like -->
                                     {% endwith %}
                                 </div>
-                                <hr>
-                                <button class="bg-blue btn" onClick="myFunction({{ node.id }})">{% trans 'Reply' %}</button>
+                                <button style="padding: 2px;" class="bg-blue btn" onClick="myFunction({{ node.id }})">{% trans 'Reply' %}</button>
                             </div>
                             {% if not node.is_leaf_node %}
                             <div class="children pl-2 pl-md-5" style="margin-left: 15px;">
@@ -264,7 +274,7 @@
                                 </div>
                             </div>
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">{% trans 'Submit' %}</button>
+                            <button type="submit" class="button button--pandora bg-navy"><span class="">{% trans 'Submit' %}</span></button>
                         </form>
                         {% else %}
                         <form action="/login/?next={{ post.get_absolute_url }}#comment" method="post">
@@ -275,7 +285,7 @@
                                 </div>
                             </div>
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-primary btn-lg btn-block bg-blue">{% trans 'Submit' %}</button>
+                            <button type="submit" class="button button--pandora bg-navy"><span>{% trans 'Submit' %}</span></button>
                         </form>
                         {% endif %}
                     </div>
@@ -292,7 +302,7 @@
                             <form id="newForm" method="post"> \
                                 <div class="re_form"> \
                                 <h2>{% trans "Replay:" %}</h2> \
-                                <button type="button" class="btn re_form_close bg-red" onclick="formExit()"> \
+                                <button type="button" style="margin-top: -42px;" class="btn re_form_close bg-red" onclick="formExit()"> \
                                     Close \
                                 </button> \
                                 <p> \
@@ -302,19 +312,45 @@
                                 </p> \
                                 <p> \
                                      \
-                                    <textarea placeholder="{% trans "Comment here" %}" name="body" id="id_body" class="re_form_textarea"></textarea>  \
+                                    <textarea style="padding: 10px;border: 1px solid gray;" placeholder="{% trans "Comment here" %}" name="body" id="id_body" class="re_form_textarea"></textarea>  \
                                 </p> \
                                 {% csrf_token %} \
-                                <button type="submit" class="btn btn-primary btn-lg btn-block bg-olive">{% trans "Submit" %}</button> \
+                                <button  id="replay_comment" type="submit" class="btn btn-primary btn-lg btn-block bg-olive">{% trans "Submit" %}</button> \
                                 </div> \
                                 </form> \
                             ');
                             // CKEDITOR.replace("id_body");
                             // var textarea = document.body.appendChild( document.createElement( 'textarea' ) );
                             // CKEDITOR.replace( textarea );
+                            var myEl = document.getElementById('replay_comment');
+                            var body = document.querySelector('#newForm div p textarea#id_body');
+                            var form = document.querySelector('#newForm');
+                            
+
+    
+                            myEl.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                console.log(body.value)
+                                var c_wa_re = document.querySelector('#c_wa_re');
+                                if ( body.value.length > 4 ) {
+                                    form.submit();
+                                }
+                                else {
+                                    if ( c_wa_re ) {
+                                        console.log(" Lready warrned");
+                                    } 
+                                    else if ( !c_wa_re ) {
+                                        console.log(c_wa_re)
+                                        console.log("insert warrning");
+                                        ( body ).insertAdjacentHTML("afterend", "<span id='c_wa_re' class='p-2' style='color: red;font-size: x-small;'>{% trans 'please insert some comment' %}<span>");
+                                    }
+                                }
+                                   
+                            });
+                            
                         }
                         // $('#myForm').trigger("reset");
-                    </script>
+                        </script>
         </div>
         <div class="col-md-2"></div>
     </div>
@@ -450,4 +486,31 @@ $( "div .post__body > div.post-body > div" ).toggleClass( "iamhigh" );
 $( this ).toggleClass( "glow" );
 });
 
+
+
+$('#myForm button.button.button--pandora.bg-navy').click( function(e){
+    console.log("Submit");
+    e.preventDefault();
+    var paragraph = $("div.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred p").text()
+    var pre = $("div.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred pre").text()
+    console.log(paragraph.length)
+    console.log(pre.length)
+    if ( paragraph.length > 4 ) {
+        console.log(" paragraph is greather than 5");
+        $("#myForm").submit();
+    }
+    else {
+        if ( $('#comment-warning').length == 0 ) {
+            $("div.cover.mb-2").after("<span id='comment-warning' class='p-2' style='color: red;font-size: x-small;'>{% trans 'please insert some comment' %}<br><br><span>")
+        }
+    }
+
+})
+$("#newForm button#replay_comment").click( function(evt) {
+    evt.preventDefault();
+    console.log($('#newForm div p textarea#id_body').val());
+});
+$('#replay_comment').click(function (e) {
+    e.preventDefault();
+});
 {% endblock %}

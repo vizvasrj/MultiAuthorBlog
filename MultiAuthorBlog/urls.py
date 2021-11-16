@@ -17,7 +17,6 @@ urlpatterns = i18n_patterns(
     # path('', post_list),
     path('blog/', include('blog.urls')),
     path('editorjs/', include('django_editorjs_fields.urls')),
-    path('my_uploader/', include('image_uploader.urls')),
     # path('ckeditor/', include('ckeditor_uploader.urls')),
     path('select2/', include('django_select2.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
@@ -30,6 +29,11 @@ urlpatterns = i18n_patterns(
             name='tags_posts_lists'),
 
 )
+urlpatterns += [
+    path('my_uploader/', include('image_uploader.urls')),
+
+]
+
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL,

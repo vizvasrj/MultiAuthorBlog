@@ -715,3 +715,5 @@ def my_relations_posts(request):
         )
     else:
         return redirect(reverse('post_list'))
+
+
