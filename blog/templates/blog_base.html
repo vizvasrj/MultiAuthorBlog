@@ -81,11 +81,21 @@
         <nav id="nav" class="navbar navbar-expand-sm left150px" >
           <div class="container-fluid" style="box-shadow: 2px 2px 15px 2px rgba(64,60,67,.16);">
             <a class="navbar-brand navtext vizvasrj" href="/">Vizvasrj</a>
-            <button class="navbar-toggler bg-olive-lite-nav toggle_nav_button" type="button" data-bs-toggle="collapse"
+            <!-- <button class="navbar-toggler bg-olive-lite-nav toggle_nav_button" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <button class="menu navbar-toggler bg-olive-lite-nav toggle_nav_button" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+              <svg width="50" height="50" viewBox="0 0 100 100">
+                <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                <path class="line line2" d="M 20,50 H 80" />
+                <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+              </svg>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               
               <ul class="navbar-nav me-auto mb-lg-0">
@@ -144,7 +154,7 @@
                   {% endif %}
                     
                 </a>
-                <ul class="languages dropdown-menu dropdown-menu-custom bg-green-lite-dropdown" aria-labelledby="dropdown02"">
+                <ul class="languages dropdown-menu dropdown-menu-custom bg-green-lite-dropdown nav_mobile" aria-labelledby="dropdown02"">
                   {% for language in languages %}
                     <li class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}">
                       <a href="/{{ language.code }}/{{request.path|t_url}}"
@@ -174,11 +184,11 @@
               <!-- Settings Profile -->
               <ul class="navbar-nav right150px mb-lg-0">
                 <li class="nav-item dropdown text-center ">
-                  <a class="nav-link dropdown" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background: #aaa;">
+                  <a class="nav-link dropdown hide_on_mobile" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="background: #aaa;">
                     {% thumbnail request.user.profiles.photo 42x42 crop as avatar %}
                     <img style="margin: -5px;" class="rounded" width="42px" src="{{ avatar.url }}" alt="">
                   </a>
-                  <ul id="" class="dropdown-menu bg-green-lite-dropdown" aria-labelledby="dropdown01" style="margin-left: -90px;">
+                  <ul id="a" class="dropdown-menu bg-green-lite-dropdown" aria-labelledby="dropdown01" style="margin-left: -90px;">
                     <li><a class="dropdown-item" href="{% url 'my_profile' %} ">
                         {{ request.user.username }}</a></li>
                     <li><a class="dropdown-item" href="{% url 'edit' %}">{% trans 'Manage profile' %}</a></li>
@@ -217,7 +227,7 @@
                     {% thumbnail request.user.profiles.photo 42x42 crop as avatar %}
                     <img class=" rounded" width="42px" src="{{ avatar.url }}" alt="">
                   </a>
-                  <ul id="" class="dropdown-menu bg-green-lite-dropdown nav_dropdown" aria-labelledby="dropdown01">
+                  <ul id="b" class="dropdown-menu bg-green-lite-dropdown nav_dropdown z9999" aria-labelledby="dropdown01">
                     <li><a class="dropdown-item" href="{% url 'my_profile' %} ">
                         {{ request.user.username }}</a></li>
                     <li><a class="dropdown-item" href="{% url 'edit' %}">{% trans 'Manage profile' %}</a></li>
