@@ -1,6 +1,6 @@
 **
 
-## This is author speaking
+## Django 3.2.8(python 3.9) multi user/ muli language / translatable social blog  
 i am vizvasrj and here is my website with lots of things.
 that you will see on [https://vizvasrj.com](https://vizvasrj.com) my website is hosted and i am currently working on this.
 ![vizvasrj demo image one](https://i.imgur.com/usSksDl.png)
