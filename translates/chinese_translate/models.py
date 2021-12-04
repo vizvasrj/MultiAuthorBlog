@@ -59,6 +59,12 @@ class ChineseTranslatedPost(models.Model):
         upload_to='chinese_speech/',
         blank=True
     )
+    translate = models.BooleanField(
+        default=True
+    )
+    boom = models.BooleanField(
+        default=True
+    )
     class Meta:
         ordering = ['-updated']
 

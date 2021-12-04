@@ -126,7 +126,7 @@
 .blogcoverimage {
     cursor: pointer;
     max-height: 300px;
-    max-width: 300px;
+    /* max-width: 300px; */
     border: 5px solid transparent;
 }
 
@@ -1023,4 +1023,20 @@ div .post__body>p.post-body+p {
 
 .d_h {
     display: none;
+    animation: fadeIn 1s;
+}
+.d_t {
+    display: block;
+
+}
+
+.hover__tag {
+    /* color: rgb(134, 134, 134); */
+    font-size: 72px;
+    text-decoration: none;
+    color: darkgray;
+}
+.hover__tag:hover {
+    color: rgb(134, 134, 134);
+    /* color: red; */
 }

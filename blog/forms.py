@@ -225,3 +225,62 @@ class OtherEditForm(forms.ModelForm):
         model = SharedOrOtherEdit
         fields = ('title', 'body', 'edit_summary', 'tags')
         
+
+class TranslatePostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = (
+            'title', 'body', 'tags', 'cover',
+        )
+        widgets = {
+            'title': forms.Textarea(
+                attrs={'class': 'myfieldclass padding-15 border-bottom', 'autocomplete': 'off',
+                'rows': "2", 'placeholder': _('Title')}
+            ),
+            'body': forms.Textarea(
+                # config={'minHeight': 100}
+                attrs={
+                'placeholder': _('Type content here.'),
+                    'class': 'myfieldclass ',
+                }
+            ),
+            'tags': TagAutoSuggest('tagmodel',
+                attrs={
+                    'class': 'myfieldclass border-bottom p-2 tag_label inputTag',
+                    'autocomplete': 'off',
+                    'placeholder': _('Tags'),
+                    'required': False,
+                }
+            ),
+            'cover': forms.FileInput(
+                attrs={
+                    'class': 'myfieldclass',
+                    'required': False
+                }
+            ),
+            # 'status': forms.Select(
+            #     attrs={
+            #         'class': 'bg-red',
+            #     }
+            # ),
+            # 'publish': forms.TextInput(
+            #     attrs={
+            #         'class': 'myfieldclass text-center',
+            #         'value': fomated_time
+            #     }
+            # ),
+
+            # 'other_author': CoAuthorsWidget(
+            #     attrs={
+            #         'class': 'bg-olive-lite',
+            #         'style': 'width: 100%',
+            #     }
+            # ),
+            # 'publication': forms.Select(
+            #     attrs={
+            #         'class': 'myfieldclass bg-red-lite',
+            #     }
+            # ),
+            
+        }

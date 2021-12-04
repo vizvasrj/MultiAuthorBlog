@@ -1,7 +1,9 @@
 {% extends "blog_base.html" %}
 {% load static %}
+{% load blog_tags %}
 {% load i18n %}
 {% block style %}
+
 
 .tags__home {
 display: list-item !important;
@@ -20,10 +22,10 @@ margin-top: -20px !important;
 
             <div class="col-xl-8">
                 {% if tag %}
-                <div class=" ln mb-5">
-                    <div class="bg-olive-lite box-shadow">
+                <div class="" style="margin-bottom: 5px; border-bottom: 1px solid darkgrey;" >
+                    <div class="">
                         
-                        <a class="ln"
+                        <a class="hover__tag"
                             href="{{ tag.get_absolute_url }}"><strong># </strong> {{ tag }}
                         </a>
                         <a data-url="{% url 'tag_follow' %}" data-id="{{ tag.id }}"
@@ -71,6 +73,7 @@ margin-top: -20px !important;
                 {% endfor %}
 
                 {% for s_tags in my_tags %}
+                
                 <div style="display: inline-block;" class=" ln p-1 mt-2 mx-1 ">
                     <div class="bg-olive-lite" style="padding: 5px;">
                         
