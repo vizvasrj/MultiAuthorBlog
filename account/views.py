@@ -685,7 +685,7 @@ def my_relations_posts(request):
         else:
             posts = Post.aupm.all().order_by('-publish')
         empty = Post.aupm.all()
-        my_tags = TagNameValue.objects.all().filter(user=request.user).order_by('-value')
+        my_tags = TagNameValue.objects.all().filter(user=request.user).order_by('-value')[:10]
         list_chain = list(chain(posts, empty))
 
         paginator = Paginator(list_chain, 10)

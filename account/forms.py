@@ -96,9 +96,28 @@ class UserEditForm(forms.ModelForm):
 
 class ProfileEditForm(forms.ModelForm):
     # photo = forms.ImageField(widget=forms.FileInput,)
+    LANGUAGES = (
+        ('en', 'English'),
+        ('ar', 'عربي'),
+        ('zh_hans', '简体中文'),
+        ('ta', 'Filipino'),
+        ('fr', 'français'),
+        ('de', 'Deutsch'),
+        ('hi', 'हिंदी'),
+        ('id', 'bahasa Indonesia'),
+        ('it', 'Italiana'),
+        ('ja', '日本'),
+        ('ko', '한국인'),
+        ('nn', 'Norsk'),
+        ('pt', 'Português'),
+        ('ru', 'русский'),
+        ('es', 'Española'),
+        ('vi', 'Tiếng Việt'),
+    )
+    lang = forms.ChoiceField(label='Language', choices=LANGUAGES)
     class Meta:
         model = Profile
-        fields = ('about', 'full_name', 'photo')
+        fields = ('about', 'full_name', 'photo', 'lang')
 
         widgets = {
             'about': forms.Textarea(
@@ -111,6 +130,11 @@ class ProfileEditForm(forms.ModelForm):
             ),
             'photo': forms.FileInput(
                 attrs={'class': 'invisible'}
+            ),
+            'lang': forms.Select(
+                attrs={
+                    'class': 'lang'
+                }
             )
 
         }
@@ -120,9 +144,9 @@ class UserPasswordResetForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):
         super(UserPasswordResetForm, self).__init__(*args, **kwargs)
 
-    email = forms.EmailField(label='Enter email address', widget=forms.EmailInput(attrs={
+    email = forms.EmailField(label=_('Enter email address'), widget=forms.EmailInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Email ...',
+        'placeholder': _('Email ...'),
         'type': 'email',
         'name': 'email'
         }))
@@ -132,21 +156,21 @@ class UserPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
         super(UserPasswordChangeForm, self).__init__(*args, **kwargs)
 
-    old_password = forms.CharField(label='Old password', widget=forms.PasswordInput(attrs={
+    old_password = forms.CharField(label=_('Old password'), widget=forms.PasswordInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Old password ...',
+        'placeholder': _('Old password ...'),
         'type': 'password',
         'name': 'old_password'
     }))
-    new_password1 = forms.CharField(label='New password', widget=forms.PasswordInput(attrs={
+    new_password1 = forms.CharField(label=_('New password'), widget=forms.PasswordInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'New password ...',
+        'placeholder': _('New password ...'),
         'type': 'password',
         'name': 'new_password1'
     }))
-    new_password2 = forms.CharField(label='Repeat Password', widget=forms.PasswordInput(attrs={
+    new_password2 = forms.CharField(label=_('Repeat Password'), widget=forms.PasswordInput(attrs={
         'class': 'myfieldclass',
-        'placeholder': 'Repeat password ...',
+        'placeholder': _('Repeat password ...'),
         'type': 'password',
         'name': 'new_password2'
     }))
@@ -155,10 +179,10 @@ class UserPasswordChangeForm(PasswordChangeForm):
 
 class UserDeleteForm(forms.Form):
     password = forms.CharField(
-        label='Enter Your password to delete your account',
+        label=_('Enter Your password to delete your account'),
         widget=forms.PasswordInput(attrs={
             'class': 'delete_password',
-            'placeholder': 'Enter your password to delete your account',
+            'placeholder': _('Enter your password to delete your account'),
             'type': 'password',
             'name': 'password'
         })

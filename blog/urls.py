@@ -31,5 +31,7 @@ urlpatterns = [
     path('tags/list/', tag_list, name='tag_list'),
     path('post/search-ajax/', views.post_ajax_search, name='search_ajax'),
     path('tags/tag/follow/', views.tag_follow, name='tag_follow'),
+    path('translate/update/<int:pk>/<int:id>', views.update_translate_post, name='translate_edit_post'),
+
 
 ]

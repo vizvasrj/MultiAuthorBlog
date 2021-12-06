@@ -29,6 +29,25 @@ class Theme(models.Model):
 
 
 class Profile(models.Model):
+
+    LANGUAGES = (
+        ('en', 'English'),
+        ('ar', 'عربي'),
+        ('zh_hans', '简体中文'),
+        ('ta', 'Filipino'),
+        ('fr', 'français'),
+        ('de', 'Deutsch'),
+        ('hi', 'हिंदी'),
+        ('id', 'bahasa Indonesia'),
+        ('it', 'Italiana'),
+        ('ja', '日本'),
+        ('ko', '한국인'),
+        ('nn', 'Norsk'),
+        ('pt', 'Português'),
+        ('ru', 'русский'),
+        ('es', 'Española'),
+        ('vi', 'Tiếng Việt'),
+    )
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
@@ -55,6 +74,11 @@ class Profile(models.Model):
     )
     color = ColorField(
         format='hexa'
+    )
+    lang = models.CharField(
+        max_length=10,
+        choices=LANGUAGES,
+        default='en'
     )
     my_theme = models.ForeignKey(
         Theme,

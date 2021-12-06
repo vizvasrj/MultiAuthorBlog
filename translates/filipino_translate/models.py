@@ -59,6 +59,9 @@ class FilipinoTranslatedPost(models.Model):
         upload_to='filipino_speech/',
         blank=True
     )
+    translate = models.BooleanField(
+        default=True
+    )
     class Meta:
         ordering = ['-updated']
 

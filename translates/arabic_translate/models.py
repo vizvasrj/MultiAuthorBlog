@@ -58,6 +58,9 @@ class ArabicTranslatedPost(models.Model):
         upload_to='arabic_speech/',
         blank=True
     )
+    translate = models.BooleanField(
+        default=True
+    )
     class Meta:
         ordering = ['-updated']
 

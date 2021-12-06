@@ -59,6 +59,9 @@ class NorwegianTranslatedPost(models.Model):
         upload_to='norwegian_speech/',
         blank=True
     )
+    translate = models.BooleanField(
+        default=True
+    )
     class Meta:
         ordering = ['-updated']
 

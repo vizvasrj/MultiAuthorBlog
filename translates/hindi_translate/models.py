@@ -59,6 +59,9 @@ class HindiTranslatedPost(models.Model):
         upload_to='hindi_speech/',
         blank=True
     )
+    translate = models.BooleanField(
+        default=True
+    )
     class Meta:
         ordering = ['-updated']
 

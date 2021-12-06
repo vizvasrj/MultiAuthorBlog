@@ -321,8 +321,8 @@
       </a>
       <div class="">
         {% for tag in post.tags.all %}
-        <a href="{% url 'post_list_by_tag' tag.slug %}" class=" tags-item
-            {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bg-red-lite' %}">
+        <a href="{{ tag.get_absolute_url }}" class=" tags-item
+            {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bgredlite---' %}">
           #{{ tag }}
         </a>
         {% endfor %}
