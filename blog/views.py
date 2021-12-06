@@ -1,5 +1,6 @@
 from datetime import timedelta
 from django.contrib import auth
+from django.db.models.query import InstanceCheckMeta
 from easy_thumbnails.files import get_thumbnailer
 from django.utils.timezone import localtime
 from django.utils import timezone, dateformat
@@ -301,13 +302,16 @@ def post_detail(request, slug, author):
     post_tags_ids = post.tags.values_list(
         'id', flat=True
     )
-    similar_posts = Post.published.filter(
+    similar_posts = Post.aupm.filter(
         tags__in=post_tags_ids
     ).exclude(id=post.id)
+    if similar_posts:
+        pass
+    else:
+        similar_posts = Post.aupm.all().order_by('-created')
     similar_posts = similar_posts.annotate(
         same_tags=Count('tags')
     ).order_by('-same_tags', '-publish')[:4]
-
     return render(
         request,
         'blog/post/detail.html', {
@@ -471,6 +475,7 @@ fomated_time = dateformat.format(lt, 'Y-m-d H:i')
 
 @login_required
 def update_data(request, pk):
+    
     post = get_object_or_404(Post, pk=pk)
     cache.delete(f'post-{post.slug}')   
 
@@ -715,103 +720,114 @@ def translate_listview(request, post):
 #             form = OtherEditForm()
 
 from .models import TagNameValue
+import enchant
 
 def tags_posts_lists(request, slug):
     # cache.delete(f'tags_posts_lists-{slug}')
+    tag = None
     tag = cache.get(f'tags_posts_lists-{slug}')
-    if not tag:
-        tag = get_object_or_404(
-            MyCustomTag,
-            slug=slug
-        )
-        cache.set(f'tags_posts_lists-{slug}', tag, on_day_in_seconds)
-        # print(f'tags_posts_lists-{slug} not in cache')
-        syn = []
-        ant = []
-        for synset in wordnet.synsets(tag.name):
-            for idx, lemma in enumerate(synset.lemmas()):
-                syn.append(lemma.name())
-                if lemma.antonyms():
-                    ant.append(lemma.antonyms()[0].name())
-        set_syn = set(syn)
-        set_syn.remove(tag.slug)
-        # print(syn)
-        # print("Set")
-        suggested_tags = []
-        for word in set_syn:
+    # print(slug)
+    d = enchant.Dict("en_US")
+    if d.check(slug):
+        if not tag:
+            tag = get_object_or_404(
+                MyCustomTag,
+                slug=slug
+            )
+            cache.set(f'tags_posts_lists-{slug}', tag, on_day_in_seconds)
+            # print(f'tags_posts_lists-{slug} not in cache')
+            syn = []
+            ant = []
+            for synset in wordnet.synsets(tag.name):
+                for idx, lemma in enumerate(synset.lemmas()):
+                    syn.append(lemma.name())
+                    if lemma.antonyms():
+                        ant.append(lemma.antonyms()[0].name())
+            set_syn = set(syn)
+            set_syn.remove(tag.slug)
+            # print(syn)
+            # print("Set")
+            suggested_tags = []
+            for word in set_syn:
+                try:
+                    if MyCustomTag.objects.get(slug=word).slug == word:
+                        # print(word, "@@@@::Exists in tags")
+                        suggested_tags.append(word)
+                except MyCustomTag.DoesNotExist:
+                    # print(word, "####::Not")
+                    pass
+            for word in set(ant):
+                try:
+                    if MyCustomTag.objects.get(slug=word).slug == word:
+                        # print(word, "@@@@::Exists in tags")
+                        suggested_tags.append(word)
+                except MyCustomTag.DoesNotExist:
+                    # print(word, "####::Not")
+                    pass
+            
             try:
-                if MyCustomTag.objects.get(slug=word).slug == word:
-                    # print(word, "@@@@::Exists in tags")
-                    suggested_tags.append(word)
-            except MyCustomTag.DoesNotExist:
-                # print(word, "####::Not")
-                pass
-        for word in set(ant):
-            try:
-                if MyCustomTag.objects.get(slug=word).slug == word:
-                    # print(word, "@@@@::Exists in tags")
-                    suggested_tags.append(word)
-            except MyCustomTag.DoesNotExist:
-                # print(word, "####::Not")
-                pass
-        
-        try:
-            first_word = wordnet.synset(f'{tag.slug}.n.01')
-        except:
-            try:
-                first_word = wordnet.synset(f'{tag.slug}.v.01')
+                first_word = wordnet.synset(f'{tag.slug}.n.01')
             except:
                 try:
-                    first_word = wordnet.synset(f'{tag.slug}.r.01')
+                    first_word = wordnet.synset(f'{tag.slug}.v.01')
                 except:
                     try:
-                        first_word = wordnet.synset(f'{tag.slug}.a.01')
+                        first_word = wordnet.synset(f'{tag.slug}.r.01')
                     except:
-                        first_word = wordnet.synset(f'{tag.slug}.s.01')
+                        try:
+                            first_word = wordnet.synset(f'{tag.slug}.a.01')
+                        except:
+                            first_word = wordnet.synset(f'{tag.slug}.s.01')
 
-        sort = {}
-        for word in suggested_tags:
+            sort = {}
+            for word in suggested_tags:
+                try:
+                    second_word = wordnet.synset(f'{word}.v.01')
+                    sort[word] = first_word.wup_similarity(second_word)
+                except:
+                    second_word = wordnet.synset(f'{word}.n.01')
+                    sort[word] = first_word.wup_similarity(second_word)
+                # print(first_word.wup_similarity(second_word),word)
+            
+            import operator
+            des = sorted(sort.items(), key=operator.itemgetter(1), reverse=True)
+            
+            tag_items = []
+            for item, key in des:
+                # print(item, 'item')
+                tag_items.append(item)
+            
+            # t_objects = Q()
+            # for item in tag_items:
+            #     t_objects |= Q(slug=item)
+            
+            # related_tags = MyCustomTag.objects.filter(t_objects)
+                
+            whens = []
             try:
-                second_word = wordnet.synset(f'{word}.v.01')
-                sort[word] = first_word.wup_similarity(second_word)
+                for sort_index, value in enumerate(tag_items):
+                    whens.append(models.When(slug=value, then=sort_index))
+                    qs = MyCustomTag.objects.filter(slug__in=tag_items).annotate(
+                        _sort_index=models.Case(*whens, output_field=models.IntegerField())
+                    )
+                    # print("Here")
+                
+                sorted_related_tags = qs.order_by('_sort_index')[:10]
+                cache.set(f'sorted_related_tags-{tag}', sorted_related_tags, on_day_in_seconds)
             except:
-                second_word = wordnet.synset(f'{word}.n.01')
-                sort[word] = first_word.wup_similarity(second_word)
-            # print(first_word.wup_similarity(second_word),word)
-        
-        import operator
-        des = sorted(sort.items(), key=operator.itemgetter(1), reverse=True)
-        
-        tag_items = []
-        for item, key in des:
-            # print(item, 'item')
-            tag_items.append(item)
-        
-        # t_objects = Q()
-        # for item in tag_items:
-        #     t_objects |= Q(slug=item)
-        
-        # related_tags = MyCustomTag.objects.filter(t_objects)
+                sorted_related_tags = MyCustomTag.objects.all()[:10]
             
-        whens = []
-        try:
-            for sort_index, value in enumerate(tag_items):
-                whens.append(models.When(slug=value, then=sort_index))
-                qs = MyCustomTag.objects.filter(slug__in=tag_items).annotate(
-                    _sort_index=models.Case(*whens, output_field=models.IntegerField())
-                )
-                # print("Here")
-            
-            sorted_related_tags = qs.order_by('_sort_index')[:10]
-            cache.set(f'sorted_related_tags-{tag}', sorted_related_tags, on_day_in_seconds)
-        except:
-            sorted_related_tags = MyCustomTag.objects.all()[:10]
-        
 
 
+        else:
+            # print(f'tags_posts_lists-{slug} get from cache')
+            pass
+    
     else:
-        # print(f'tags_posts_lists-{slug} get from cache')
-        pass
+        tag = get_object_or_404(
+                MyCustomTag,
+                slug=slug
+            )
 
     sorted_related_tags = cache.get(f'sorted_related_tags-{tag}')
 
@@ -874,5 +890,84 @@ def tag_follow(request):
     return JsonResponse({'status': 'error'})
 
 
+from translates.hindi_translate.models import HindiTranslatedPost
+from translates.french_translate.models import FrenchTranslatedPost
+from translates.chinese_translate.models import ChineseTranslatedPost
+from translates.spanish_translate.models import SpanishTranslatedPost
+from translates.arabic_translate.models import ArabicTranslatedPost
+from translates.indonesian_translate.models import IndonesianTranslatedPost
+from translates.portuguese_translate.models import PortugueseTranslatedPost
+from translates.japanese_translate.models import JapaneseTranslatedPost
+from translates.russian_translate.models import RussianTranslatedPost
+from translates.german_translate.models import GermanTranslatedPost
+from translates.korean_translate.models import KoreanTranslatedPost
+from translates.norwegian_translate.models import NorwegianTranslatedPost
+from translates.vietnamese_translate.models import VietnameseTranslatedPost
+from translates.filipino_translate.models import FilipinoTranslatedPost
+from translates.italian_translate.models import ItalianTranslatedPost
+from translates.english_translate.models import EnglishTranslatedPost
 
+from .forms import TranslatePostForm
 
+@login_required
+def update_translate_post(request, pk, id):
+    p = get_object_or_404(Post, pk=id)
+    print(p)
+    language = request.LANGUAGE_CODE
+    if language == 'hi':
+        post = get_object_or_404(HindiTranslatedPost, pk=pk)
+    elif language == 'en':
+        post = get_object_or_404(EnglishTranslatedPost, pk=pk)
+    elif language == 'ko':
+        post = get_object_or_404(KoreanTranslatedPost, pk=pk)
+    elif language == 'zh-hans':
+        post = get_object_or_404(ChineseTranslatedPost, pk=pk)
+    elif language == 'ar':
+        post = get_object_or_404(ArabicTranslatedPost, pk=pk)
+    elif language == 'ta':
+        post = get_object_or_404(FilipinoTranslatedPost, pk=pk)
+    elif language == 'fr':
+        post = get_object_or_404(FrenchTranslatedPost, pk=pk)
+    elif language == 'de':
+        post = get_object_or_404(GermanTranslatedPost, pk=pk)
+    elif language == 'id':
+        post = get_object_or_404(IndonesianTranslatedPost, pk=pk)
+    elif language == 'it':
+        post = get_object_or_404(ItalianTranslatedPost, pk=pk)
+    elif language == 'ja':
+        post = get_object_or_404(JapaneseTranslatedPost, pk=pk)
+    elif language == 'nn':
+        post = get_object_or_404(NorwegianTranslatedPost, pk=pk)
+    elif language == 'pt':
+        post = get_object_or_404(PortugueseTranslatedPost, pk=pk)
+    elif language == 'ru':
+        post = get_object_or_404(RussianTranslatedPost, pk=pk)
+    elif language == 'es':
+        post = get_object_or_404(SpanishTranslatedPost, pk=pk)
+    elif language == 'vi':
+        post = get_object_or_404(VietnameseTranslatedPost, pk=pk)
+
+    if post.cover:
+        cover_image = post.cover.url
+    else:
+        cover_image = 'No image'
+    form = TranslatePostForm(
+        data=request.POST,
+        files=request.FILES, instance=post
+        )
+    if request.method == 'POST':
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            post.edited_by.add(request.user)
+            form.save_m2m()
+            return redirect(p.get_absolute_url())
+    else:
+        form = TranslatePostForm(instance=post)
+    return render(
+        request,
+        'blog/translate_update.html',{
+            'form': form,
+            'cover_image': cover_image
+        }
+    )

@@ -118,7 +118,13 @@
                               Your browser does not support the audio element.
                               </audio>
                         {% endif %}
+
+                        {{ t_post.author }}
+                        {% if t_post.post %}
+                            <a href="/{{ LANGUAGE_CODE }}/blog/translate/update/{{ t_post.id }}/{{ post.id }}">{% trans 'edit translated' %}</a>
+                        {% endif %}
                             
+                              
                         <p class="detail_readtime"><svg xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24"
                                 height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -128,6 +134,7 @@
                             </svg><span class="tnum"> {{post.body|readtime}} </span></p>
                         <div class="">
                             {% thumbnail post.author.photo "42x42" crop="100%" as im %}
+                            
                             <a class="a_author_image" href="/{{post.author.get_absolute_url}}/">
                                 <img class="author__left__side rounded" src="{{ im.url }}" alt=""> {{post.author}}
                             </a>
@@ -152,7 +159,13 @@
                             {% endif %}
                         </p>
                         <hr class="hr-line">
-                        {% thumbnail post.cover "800x400" crop="100%" as im %}
+                        
+                        {% if t_post.cover %}
+                            {% thumbnail t_post.cover "800x400" crop="100%" as im %}
+                        {% else %}
+                            {% thumbnail post.cover "800x400" crop="100%" as im %}
+                        {% endif %}
+                            
                         <img class="mb-3" width="100%" src="{{im.url}}" alt="">
                         <div class="post-body">
 
@@ -162,7 +175,7 @@
                         <div class="">
                             {% for tag in post.tags.all %}
                             <a href="{{ tag.get_absolute_url }}" class="tags-item
-                                {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bg-red-lite' %}">
+                                {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bgredlite---' %}">
                                 #{{ tag }}
                             </a>
                             {% endfor %}
@@ -373,7 +386,6 @@
 
 {% block domready %}
 
-console.log("aa");
 $('a.like').click(function (e) {
 e.preventDefault();
 $.post('{% url "like" %}',

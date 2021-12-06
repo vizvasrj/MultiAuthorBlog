@@ -59,6 +59,9 @@ class RussianTranslatedPost(models.Model):
         upload_to='russian_speech/',
         blank=True
     )
+    translate = models.BooleanField(
+        default=True
+    )
     class Meta:
         ordering = ['-updated']
 

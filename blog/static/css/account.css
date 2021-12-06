@@ -44,7 +44,7 @@
 .linkfooter {
     text-decoration: none;
     font-family: Work Sans;
-    font-size: 20px;
+    /* font-size: 20px; */
     font-weight: 400;
 }
 
@@ -97,11 +97,10 @@
 }
 
 .fileinput {
-    font-family: 'Questrial', sans-serif;
+    font-family: 'Robo mono', sans-serif;
     font-weight: 400;
     background-color: inherit;
     color: rgb(48, 48, 48);
-    font-size: 20px;
 }
 
 .left520px {
@@ -158,11 +157,9 @@ section {
 }
 
 .usernametext {
-    font-family: 'Questrial', sans-serif;
-    font-weight: 800;
+    font-weight: 300;
     background-color: inherit;
     color: rgb(48, 48, 48);
-    font-size: 20px;
 
 }
 .userinfo {
@@ -323,4 +320,10 @@ section {
 /* verify username */
 vuser {
     display: table-caption;
+}
+.hover__userl {
+    background-color: inherit;
+}
+.hover__userl:hover {
+    background-color: rgba(209, 209, 209, 0.432);
 }

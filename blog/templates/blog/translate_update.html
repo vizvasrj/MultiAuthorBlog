@@ -1,0 +1,156 @@
+{% extends "blog_base.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load editorjs %}
+
+{% block title %}	{% trans 'Update Post' %}	{% endblock %}
+
+{% block head %} 
+<link rel="stylesheet" href="{% static 'css/autoSuggest.css' %}">
+
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/bootstrap-tagsinput.js' %}"></script>
+
+<script src="{% static 'js/jquery.init.js' %}"></script>
+<script src="{% static 'js/jquery.autoSuggest.js' %}"></script>
+
+{% endblock %}
+
+
+{% block style %} 
+
+:root {
+	--ck-sample-editor-min-height: 400px;
+}
+
+{% endblock %}
+
+
+{% block menu %} 
+
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" class="post-form" enctype="multipart/form-data" id="formid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="title mb-2 ">
+                    <div class="">
+                        {{ form.title }}
+                    </div>
+                </div>
+                <div class="body mb-2 ">
+                    <div class="" style="padding: 0px;">
+                        {{ form.body }}
+                    </div>
+                </div>
+                {% csrf_token %}
+
+                <br>
+            </div>
+            <div class="col-md-4 border mb-32-px">
+                <div class="tags bg-aqua-lite">
+                    <label class="mt-2 tag_label bg-green-lite d-flex justify-content-center" for="tags" class="form-label">{% trans 'Please provie some tags' %}</label>
+                    <div class="height__100">
+                        {% if request.user_agent.is_mobile %}
+                        <input name="tags" class="myfieldclass border-bottom p-2 tag_label inputTag" autocomplete="off" placeholder="{% trans 'Tags' %}" required="" id="id_tags" value="{{ tags }}">
+                        {% else %}
+                            {{ form.tags }}
+                        {% endif %}
+
+                    </div>
+                </div>
+                <div class="cover bg-aqua-lite ">
+                    <label class="mt-2 tag_label d-flex bg-green-lite justify-content-center" for="cover" class="form-label">{% trans 'Upload cover image' %}</label>
+                    <div class="">
+                        <label id="remove" class="uploadcover d-flex " for="id_cover">
+                            <img class="blogcoverimage d-flex justify-content-center" width="100%" id="myImg" src='{{cover_image}}' alt="{% trans 'Upload (Click here)' %}" />
+                        </label>
+                        {{ form.cover }}
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="publish mt-2">
+                        <button name="submit" data-value="publish" type="submit" formnovalidate="formnovalidate" class="save btn publish__b bgredlite---">{% trans 'Publish' %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>    
+
+
+
+{% endblock %}
+
+{% block footer %} 
+
+{% endblock %}
+
+{% block script %} 
+
+<script  src="{% static 'js/ckeditor.js' %}"></script>
+<script src="{% static 'js/ckeditor.config.js' %}"></script>
+
+{% endblock %}
+
+{% block domready2 %}
+
+
+$(function () {
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+});
+
+function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result); 
+    // $('#remove').remove(); 
+
+}
+
+// Check 
+
+$("#formid").on('click', 'option', function(event){
+
+
+    
+    var dataText = $(this).attr('value');
+    var before = $(this)
+    console.log(dataText)
+    if (dataText=='published'){
+        $('#h_publish').removeClass('none');
+    }
+    else {
+        $('#h_publish').addClass('none');
+    }
+
+
+
+});
+
+$('#id_tags__tagautosuggest').removeAttr("required");
+
+
+if (navigator.userAgent.match(/Mobile/)) {
+
+
+    $('#id_tags__tagautosuggest').attr('type', 'hidden');
+    $('#id_tags').removeAttr('type');
+    $("#id_tags").tagsinput('items');
+
+  }
+
+
+
+
+{% endblock %}
+

@@ -67,7 +67,7 @@ INSTALLED_APPS = [
     'django_user_agents',
     'django_hosts',
     # 'django_social_share',
-    'debug_toolbar',
+    # 'debug_toolbar',
 
     # local
     'blog',
@@ -100,9 +100,9 @@ MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -394,13 +394,16 @@ ROOT_HOSTCONF = 'MultiAuthorBlog.hosts'
 DEFAULT_HOST = 'www'
 
 # Django Debug Tool
-INTERNAL_IPS = [
-    # ...
-    '127.0.0.1',
-    # ...
-]
-def show_toolbar_handler(request):
-    if request.user and request.user.id == 1:
-        return True
-    return False
+# INTERNAL_IPS = [
+#     # ...
+#     '127.0.0.1',
+#     # ...
+# ]
+# def show_toolbar_handler(request):
+#     if request.user and request.user.id == 1:
+#         return True
+#     return False
 
+# Django Parler
+PARLER_ENABLE_CACHING = True
+PARLER_DEFAULT_ACTIVATE = True
