@@ -3,7 +3,24 @@
 {% load i18n %}
 {% block title %} Login {% endblock %}
 
+{% block menu %}		{% endblock %}
+{% block footer %}		{% endblock %}
+
+{% block style %}	
+.login_nav {
+    text-decoration: underline;
+    background: #45662350;
+    border: 1px solid #23346650;
+}
+.signup_nav {
+    text-decoration: underline;
+    background: antiquewhite;
+    border: 1px solid #22333350;
+}
+{% endblock %}
+
 {% block content %}
+
 <div class="login mt-5">
     <h1 class="headercreateaccount d-flex justify-content-center">{% trans 'Login' %}</h1>
     <div class="d-flex mb-5 justify-content-center border">
