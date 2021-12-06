@@ -62,9 +62,6 @@ class ChineseTranslatedPost(models.Model):
     translate = models.BooleanField(
         default=True
     )
-    boom = models.BooleanField(
-        default=True
-    )
     class Meta:
         ordering = ['-updated']
 

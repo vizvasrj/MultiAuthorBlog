@@ -3571,7 +3571,7 @@ textarea.form-control-lg {
 }
 @media screen and (max-width: 380px) {
     .dropdown-menu.show {
-        display: contents
+        display: block
     }
 }
 
