@@ -696,11 +696,10 @@ div .post__body>p.post-body+p {
 }
 
 .eye {
-    font-size: 22px;
+    border: 1px solid darkgrey;
 }
 
 .eye:hover {
-    font-size: 22px;
     color: inherit;
 }
 

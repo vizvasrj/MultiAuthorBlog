@@ -267,3 +267,5 @@ def paragraph(path):
     html = "/".join(path.split("/")[2:])
     # print(html)
     return html
+
+
