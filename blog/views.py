@@ -97,6 +97,7 @@ def create_post(request):
 def post_list(request, tag_slug=None):
     # posts = Post.published.all()
     posts = Post.aupm.all()
+    print(translation.get_language_from_request(request))
     tag = None
     if tag_slug:
         tag = get_object_or_404(

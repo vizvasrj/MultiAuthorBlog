@@ -17,6 +17,9 @@ well this is my first project from Django. and i am currently developing this we
  - you can like 🧡 it and others can like it.
  - bookmark 🔖 it 
  - Signup / SignIn
+ - Create publiation
+ - Follow users and publication
+ - Based on follow recommended post 
  - And lots of it, 
 
 ***I need some support I am alone Doing it its been a Year now i think i need some help email me [vizvasrj@gmail.com](mailto:vizvasrj@gmail.com)***
