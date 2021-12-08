@@ -111,6 +111,7 @@ MIDDLEWARE = [
     # 'account.middleware.subdomain_course_middleware',
     'django_hosts.middleware.HostsResponseMiddleware',
     'crum.CurrentRequestUserMiddleware',
+    'blog.middelware.language_change_middleware'
 ]
 
 ROOT_URLCONF = 'MultiAuthorBlog.urls'
@@ -318,6 +319,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 from django.utils.translation import gettext_lazy as _
+
+# _ = lambda s: s
 
 LANGUAGES = (
     ('en', _('English')),

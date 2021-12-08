@@ -104,4 +104,6 @@ urlpatterns = [
      path('account/validate_email', views.validate_email, name='validate_email'),
 
      path('', views.my_relations_posts, name='my_relations_posts'),
+
+
 ]

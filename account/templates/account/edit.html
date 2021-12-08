@@ -84,6 +84,11 @@
                             <input class="mt-2 btn selected bg-olive-lite" type="submit" value="{% trans 'Save changes' %}">
                         </p>
                     </form>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ lang_form }}
+                        <input type="submit" value="change Lnag">
+                    </form>
                 </div>
             </div>
         </div>
