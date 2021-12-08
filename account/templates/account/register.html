@@ -18,49 +18,56 @@
 {% block footer %}		{% endblock %}
 
 {% block content %}
-<h1 class="headercreateaccount d-flex justify-content-center">Create account</h1>
-<div class="d-flex justify-content-center border">
-
-    <form class="roboto" method="POST">
-        <div class="fullname mb-2 border-top">
-            <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.email.label}}:</label>
-            <div class="">
-                {{user_form.email}}
-            </div>
-        </div>
-        <div class="fullname mb-2 border-top">
-            <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.username.label}}:</label>
-            <div class="">
-                {{user_form.username}}
-            </div>
-        </div>
-        <div class="fullname mb-2 border-top">
-            <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.password1.label}}:</label>
-            <div class="">
-                {{user_form.password1}}
-            </div>
-        </div>
-        <div class="fullname mb-2 border-top">
-            <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.password2.label}}:</label>
-            <div class="d-flex flex-row" id="show_hide_password">
-                {{user_form.password2}}
-                <div class="input-group-addon">
-                    <a class="input-group-text zero-border transparent eye" href=""><i class="bi bi-eye-fill"></i></a>
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+    
+        <h1 class="headercreateaccount d-flex justify-content-center">Create account</h1>
+        <div class="d-flex justify-content-center border">
+    
+            <form class="roboto" method="POST">
+                <div class="fullname mb-2 ">
+                    <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.email.label}}:</label>
+                    <div class="" >
+                        {{user_form.email}}
+                    </div>
                 </div>
-            </div>
+                <div class="fullname mb-2 border-top">
+                    <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.username.label}}:</label>
+                    <div class="">
+                        {{user_form.username}}
+                    </div>
+                </div>
+                <div class="fullname mb-2 border-top">
+                    <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.password1.label}}:</label>
+                    <div class="">
+                        {{user_form.password1}}
+                    </div>
+                </div>
+                <div class="fullname mb-2 border-top">
+                    <label class="mt-2 labeltext" for="full_name" class="form-label">{{user_form.password2.label}}:</label>
+                    <div class="d-flex flex-row" id="show_hide_password">
+                        {{user_form.password2}}
+                        <div class="input-group-addon">
+                            <a class="input-group-text zero-border transparent eye" href=""><i class="bi bi-eye-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="message" class="message">
+    
+                </div>
+        {% csrf_token %}
+                <p>
+                    <input id="create" class="mt-2 btn bg-aqua-lite-08" type="submit" value="{% trans 'Create' %}">
+                    <a class="mt-2 btn bg-fuchisa-lite-08" href="{% url 'login' %}">{% trans 'Login Here' %}</a>
+                </p>
+    
+            </form>
         </div>
-        <div id="message" class="message">
-
+        <div class="roboto already d-flex justify-content-center">
         </div>
-{% csrf_token %}
-        <p>
-            <input id="create" class="mt-2 btn bg-aqua-lite-08" type="submit" value="{% trans 'Create' %}">
-            <a class="mt-2 btn bg-fuchisa-lite-08" href="{% url 'login' %}">{% trans 'Login Here' %}</a>
-        </p>
-
-    </form>
-</div>
-<div class="roboto already d-flex justify-content-center">
+    </div>
+    <div class="col-lg-4"></div>
 </div>
 
 {% endblock %}

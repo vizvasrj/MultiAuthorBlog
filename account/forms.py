@@ -55,7 +55,7 @@ class UserRegistrationForm(forms.ModelForm):
     }))
 
     email = forms.CharField(label=_('Email'), widget=forms.EmailInput(attrs={
-        'class': 'myfieldclass',
+        'class': 'myfieldclass ',
         'placeholder': _('Email ...'),
         'type': 'email',
         'name': 'email'
@@ -187,3 +187,43 @@ class UserDeleteForm(forms.Form):
             'name': 'password'
         })
     )
+
+
+class LanguageEditForm(forms.ModelForm):
+    # photo = forms.ImageField(widget=forms.FileInput,)
+    LANGUAGES = (
+        ('en', 'English'),
+        ('ar', 'عربي'),
+        ('zh_hans', '简体中文'),
+        ('ta', 'Filipino'),
+        ('fr', 'français'),
+        ('de', 'Deutsch'),
+        ('hi', 'हिंदी'),
+        ('id', 'bahasa Indonesia'),
+        ('it', 'Italiana'),
+        ('ja', '日本'),
+        ('ko', '한국인'),
+        ('nn', 'Norsk'),
+        ('pt', 'Português'),
+        ('ru', 'русский'),
+        ('es', 'Española'),
+        ('vi', 'Tiếng Việt'),
+    )
+    lang = forms.ChoiceField(label='Language', choices=LANGUAGES)
+    class Meta:
+        model = Profile
+        fields = ('lang',)
+        widgets = {
+            'lang': forms.Select(
+                attrs={
+                    'class': 'lang'
+                }
+            )
+        }
+
+
+
+class LanguageSelect(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('lang',)
