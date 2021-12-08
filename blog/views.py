@@ -84,7 +84,6 @@ def create_post(request):
     else:
         form = PostForm(user=request.user, data=request.POST,
                         files=request.FILES)
-
     return render(
         request,
         'blog/post_form.html', {
@@ -972,3 +971,15 @@ def update_translate_post(request, pk, id):
             'cover_image': cover_image
         }
     )
+
+from account.models import Profile
+@login_required
+def set_language(request, lang=None):
+    next_path = request.GET.get('next')
+    translation.activate(lang)
+    person = get_object_or_404(Profile, id=request.user.id)
+    person.lang = lang
+    person.save()
+    after = next_path.split("/")[2:]
+    joined_after = "/".join(after)
+    return HttpResponseRedirect(f'/{joined_after}')

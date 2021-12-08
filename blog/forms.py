@@ -1,7 +1,9 @@
 # core
 from django import forms
-from django.db.models import query
+from django.db.models import fields, query
 from django.forms import widgets
+
+from account.models import Profile
 
 # local
 from .models import Post, Comment
@@ -284,3 +286,5 @@ class TranslatePostForm(forms.ModelForm):
             # ),
             
         }
+
+

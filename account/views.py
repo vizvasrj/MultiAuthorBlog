@@ -37,6 +37,7 @@ from .forms import (
 from blog.models import Post, TagNameValue
 from publication.models import Publication
 
+from django.utils import translation
 
 
 def user_login(request):
@@ -67,6 +68,8 @@ def user_login(request):
                                 return HttpResponseRedirect(request.GET['next'])
                             else:
                                 login(request, user)
+                                # activate defined language at login
+                                translation.activate(user.profiles.lang)
                                 return redirect(reverse('post_list'))
                         else:
                             login(request, user)
@@ -120,7 +123,7 @@ def register(request):
             {'user_form': user_form}
         )
 
-
+from .forms import LanguageSelect
 
 @login_required
 def edit(request):
@@ -134,13 +137,19 @@ def edit(request):
             data=request.POST,
             files=request.FILES
         )
-        if user_form.is_valid() and profile_form.is_valid():
+        lang_form = LanguageSelect(
+            instance=request.user.profiles,
+            data=request.POST,
+        )
+        if user_form.is_valid() and profile_form.is_valid() and lang_form.is_valid():
             user_form.save()
             profile_form.save()
+            lang_form.save()
             messages.success(
                 request,
                 _('Profile updated successfully')
             )
+            return HttpResponseRedirect('/edit/')
         else:
             messages.error(
                 request,
@@ -151,12 +160,14 @@ def edit(request):
         profile_form = ProfileEditForm(
             instance=request.user.profiles
         )
+        lang_form = LanguageSelect(instance=request.user.profiles)
     return render(
         request,
         'account/edit.html',
         {
             'user_form': user_form,
-            'profile_form': profile_form
+            'profile_form': profile_form,
+            'lang_form': lang_form
         }
     )
 
@@ -527,7 +538,7 @@ def untrash_post(request):
             return JsonResponse({'status': 'not found'}, status=404)
     return JsonResponse({'status': 'error'}, status=404)
 
-
+@login_required
 def delete_profile(request):
     user = request.user
     if request.method == 'POST':

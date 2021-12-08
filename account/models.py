@@ -31,8 +31,8 @@ class Theme(models.Model):
 class Profile(models.Model):
 
     LANGUAGES = (
-        ('en', 'English'),
         ('ar', 'عربي'),
+        ('en', 'English'),
         ('zh_hans', '简体中文'),
         ('ta', 'Filipino'),
         ('fr', 'français'),

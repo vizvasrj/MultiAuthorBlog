@@ -32,6 +32,6 @@ urlpatterns = [
     path('post/search-ajax/', views.post_ajax_search, name='search_ajax'),
     path('tags/tag/follow/', views.tag_follow, name='tag_follow'),
     path('translate/update/<int:pk>/<int:id>', views.update_translate_post, name='translate_edit_post'),
-
+    path('ln/set_language/<str:lang>', views.set_language, name='set_language')
 
 ]
