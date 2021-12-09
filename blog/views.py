@@ -150,6 +150,7 @@ def post_list(request, tag_slug=None):
 from django.utils import translation
 
 def post_detail(request, slug, author):
+    ip = str(request.META.get("REMOTE_ADDR"))
     user = request.user
     language = request.LANGUAGE_CODE
     cache.delete(f'post-{slug}')
@@ -322,6 +323,7 @@ def post_detail(request, slug, author):
             'similar_posts': similar_posts,
             'total_views': total_views,
             't_post': t_post,
+            'ip': ip
         }
     )
 
