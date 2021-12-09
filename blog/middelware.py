@@ -19,8 +19,6 @@ def language_change_middleware(get_response):
             translation.activate('hi')
         elif country_code == 'DE':
             translation.activate('de')
-        else:
-            translation.activate('fr')
         return response
     return middleware
 
