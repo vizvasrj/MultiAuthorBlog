@@ -22,6 +22,6 @@ def language_change_middleware(get_response):
         else:
             translation.activate('fr')
         print(text, country_code, "text and &&& country code")
-        return response
+        return country_code
     return middleware
 
