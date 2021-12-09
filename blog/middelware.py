@@ -15,13 +15,14 @@ def language_change_middleware(get_response):
         curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
         text = curl.text
         country_code = text.split('\n')[0]
-        if country_code == 'IN':
-            translation.activate('hi')
-        elif country_code == 'DE':
-            translation.activate('de')
-        else:
-            translation.activate('fr')
+        translation.activate(country_code)
+        # if country_code == 'IN':
+        # elif country_code == 'DE':
+        #     translation.activate('de')
+        # else:
+        #     translation.activate('fr')
         print(text, country_code, "text and &&& country code")
-        return country_code
+        
+        return response
     return middleware
 
