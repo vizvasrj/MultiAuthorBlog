@@ -11,7 +11,12 @@ def language_change_middleware(get_response):
         if request.user.is_authenticated:
             translation.activate(request.user.profiles.lang)
         response = get_response(request)
-        ip = request.META.get("REMOTE_ADDR")
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        
         curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
         text = curl.text
         country_code = text.split('\n')[0]
