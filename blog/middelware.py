@@ -15,7 +15,7 @@ def language_change_middleware(get_response):
         curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
         text = curl.text
         country_code = text.split('\n')[0]
-        translation.activate(country_code)
+        translation.activate('country_code')
         # if country_code == 'IN':
         # elif country_code == 'DE':
         #     translation.activate('de')
