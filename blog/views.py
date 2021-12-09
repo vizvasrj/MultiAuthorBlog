@@ -162,6 +162,9 @@ def post_detail(request, slug, author):
     text = curl.text
     country_code = text.split('\n')[0]
     ip = country_code
+    if ip == 'IN':
+        ip = 'hi'
+    
 
     user = request.user
     language = request.LANGUAGE_CODE
