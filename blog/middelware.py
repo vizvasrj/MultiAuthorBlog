@@ -12,8 +12,8 @@ def language_change_middleware(get_response):
             translation.activate(request.user.profiles.lang)
         response = get_response(request)
         ip = request.META.get("REMOTE_ADDR")
-        response = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
-        text = response.text
+        curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
+        text = curl.text
         country_code = text.split('\n')[0]
         if country_code == 'IN':
             translation.activate('hi')
