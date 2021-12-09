@@ -150,7 +150,12 @@ def post_list(request, tag_slug=None):
 from django.utils import translation
 
 def post_detail(request, slug, author):
-    ip = str(request.META.get("REMOTE_ADDR"))
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    
     user = request.user
     language = request.LANGUAGE_CODE
     cache.delete(f'post-{slug}')
