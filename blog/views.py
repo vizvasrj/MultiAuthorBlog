@@ -22,6 +22,7 @@ from django.core.paginator import (
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.decorators.http import require_POST
+import requests
 from common.decorators import ajax_required
 from django.contrib.postgres.search import(
     SearchQuery, SearchVector, SearchRank
@@ -148,6 +149,7 @@ def post_list(request, tag_slug=None):
 #         )
 
 from django.utils import translation
+import requests
 
 def post_detail(request, slug, author):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -156,6 +158,11 @@ def post_detail(request, slug, author):
     else:
         ip = request.META.get('REMOTE_ADDR')
     
+    curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
+    text = curl.text
+    country_code = text.split('\n')[0]
+    ip = country_code
+
     user = request.user
     language = request.LANGUAGE_CODE
     cache.delete(f'post-{slug}')
