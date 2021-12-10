@@ -152,18 +152,19 @@ from django.utils import translation
 import requests
 
 def post_detail(request, slug, author):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
+    # FOr IP
+    # x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    # if x_forwarded_for:
+    #     ip = x_forwarded_for.split(',')[0]
+    # else:
+    #     ip = request.META.get('REMOTE_ADDR')
     
-    curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
-    text = curl.text
-    country_code = text.split('\n')[0]
-    ip = country_code
-    if ip == 'IN':
-        ip = 'hi'
+    # curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
+    # text = curl.text
+    # country_code = text.split('\n')[0]
+    # ip = country_code
+    # if ip == 'IN':
+    #     ip = 'hi'
     
 
     user = request.user
@@ -338,7 +339,6 @@ def post_detail(request, slug, author):
             'similar_posts': similar_posts,
             'total_views': total_views,
             't_post': t_post,
-            'ip': ip
         }
     )
 
