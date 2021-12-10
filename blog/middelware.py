@@ -48,21 +48,21 @@ def language_change_middleware(get_response):
             curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
             text = curl.text
             country_code = text.split('\n')[0]
-            if country_code == 'IN':
-                translation.activate('hi')
-            elif country_code == 'DE':
-                translation.activate('de')
-            elif country_code == 'US':
-                translation.activate('en')
-            elif country_code == 'ES':
-                translation.activate('es')
 
             # response.set_cookie('cookie_name', country_code)
             # this function will be used to make cookie
             set_cookie(response, 'cookie_name_user', country_code, 1)
         # # OR
         value = request.COOKIES.get('cookie_name_user')
-        translation.activate(value)
+        if value == 'IN':
+            translation.activate('hi')
+        elif value == 'DE':
+            translation.activate('de')
+        elif value == 'US':
+            translation.activate('en')
+        elif value == 'ES':
+            translation.activate('es')
+        # translation.activate(value)
         print(value, "VAUE after SET COKKIE")
 
         # try:
