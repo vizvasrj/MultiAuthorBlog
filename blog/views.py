@@ -267,7 +267,7 @@ def post_detail(request, slug, author):
         response = HttpResponse("hello")
 
         set_cookie(response, 'cookie_name_user', country_code, 1)
-        value = request.COOKIES.get('cookie_name_user')
+        value = country_code
             
     active_translate(value)
     print(value, "VAUE after SET COKKIE")
