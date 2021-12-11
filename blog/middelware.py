@@ -82,7 +82,7 @@ def language_change_middleware(get_response):
                         'PY', 'PE', 'ES', 'UY',
                         'VE'}:
             translation.activate('es')
-        elif value in {'CN'}:
+        elif value in {'CN', 'HK'}:
             translation.activate('zh-hans')
         elif value in {'KR', 'KP'}:
             translation.activate('ko')
