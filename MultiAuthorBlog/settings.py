@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'image_uploader',
     'flag',
     'publication',
+    # 'chat',
 
     # translates
     'translates.hindi_translate',
