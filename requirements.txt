@@ -51,6 +51,7 @@ ipython==7.28.0
 jedi==0.18.0
 joblib==1.1.0
 kombu==5.1.0
+langdetect==1.0.9
 lxml==4.6.3
 Markdown==3.3.4
 markdown2==2.4.1
@@ -72,6 +73,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycodestyle==2.8.0
 pydub==0.25.1
+pyenchant==3.2.2
 Pygments==2.10.0
 pyparsing==3.0.1
 pyquery==1.4.3

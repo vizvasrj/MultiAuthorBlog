@@ -1,4 +1,3 @@
-**
 
 ## Django 3.2.8(python 3.9) multi user/ muli language / translatable social blog  
 i am vizvasrj and here is my website with lots of things.
@@ -22,7 +21,4 @@ well this is my first project from Django. and i am currently developing this we
  - Based on follow recommended post 
  - And lots of it, 
 
-***I need some support I am alone Doing it its been a Year now i think i need some help email me [vizvasrj@gmail.com](mailto:vizvasrj@gmail.com)***
-buy me Beer 🍺 paypal saurav.raj.ash@gmail.com
-i have hosted this on trial google cloud. Help me to develop this app 
-**
+

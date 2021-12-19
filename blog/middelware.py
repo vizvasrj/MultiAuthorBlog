@@ -10,7 +10,7 @@ from django.conf import settings
 
 def language_change_middleware(get_response):
     # Cookei set
-    def set_cookie(response, key, value, days_expire=7):
+    def set_cookie(response, key, value, days_expire=1):
         if days_expire is None:
             max_age = 365 * 24 * 60 * 60    # one year
         else:
@@ -93,35 +93,29 @@ def language_change_middleware(get_response):
 
     # Language Change
     def middleware(request):
+        response = get_response(request)
         if request.user.is_authenticated:
             translation.activate(request.user.profiles.lang)
-        response = get_response(request)
+        else:
+            value = request.COOKIES.get('cookie_name_user')
+            if value is None:
+                # Cookie is not set
+                x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+                if x_forwarded_for:
+                    ip = x_forwarded_for.split(',')[0]
+                else:
+                    ip = request.META.get('REMOTE_ADDR')
+                curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
+                text = curl.text
+                country_code = text.split('\n')[0]
 
-        # get cookie 
-        value = request.COOKIES.get('cookie_name_user')
-        if value is None:
-            # Cookie is not set
-            x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-            if x_forwarded_for:
-                ip = x_forwarded_for.split(',')[0]
-            else:
-                ip = request.META.get('REMOTE_ADDR')
-            curl = requests.get(f'http://ip-api.com/csv/{ip}?fields=countryCode')
-            text = curl.text
-            country_code = text.split('\n')[0]
+                # response.set_cookie('cookie_name', country_code)
+                # this function will be used to make cookie
+                set_cookie(response, 'cookie_name_user', country_code, 1)
+                value = country_code
 
-            # response.set_cookie('cookie_name', country_code)
-            # this function will be used to make cookie
-            set_cookie(response, 'cookie_name_user', country_code, 1)
-            value = country_code
-
-        active_translate(value)
-        print(value, "VAUE after SET COKKIE")
-
-        # try:
-        #     value = request.COOKIES['cookie_name']
-        # except KeyError:
-        #     print("Key Error")
+            # activate language is user is not authenticated
+            active_translate(value)
 
 
         return response
