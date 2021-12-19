@@ -75,19 +75,14 @@
                         <div class="fullname mb-2 border-top">
                             <label class="mt-2 labeltext" for="full_name"
                             class="form-label">{{profile_form.lang.label}}:</label>
-                            <div class="">
+                            <div class="lang_select">
                                 {{profile_form.lang}}
                             </div>
                         </div>
                         {% csrf_token %}
                         <p class="mb-2 border-top">
-                            <input class="mt-2 btn selected bg-olive-lite" type="submit" value="{% trans 'Save changes' %}">
+                            <input class="mt-2 btn save_profile" type="submit" value="{% trans 'Save changes' %}">
                         </p>
-                    </form>
-                    <form action="" method="POST">
-                        {% csrf_token %}
-                        {{ lang_form }}
-                        <input type="submit" value="change Lnag">
                     </form>
                 </div>
             </div>

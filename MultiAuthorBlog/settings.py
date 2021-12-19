@@ -68,6 +68,8 @@ INSTALLED_APPS = [
     'django_hosts',
     # 'django_social_share',
     # 'debug_toolbar',
+    'rest_framework',
+    'rest_framework.authtoken',
 
     # local
     'blog',
@@ -76,6 +78,7 @@ INSTALLED_APPS = [
     'image_uploader',
     'flag',
     'publication',
+    # 'chat',
 
     # translates
     'translates.hindi_translate',
@@ -410,3 +413,11 @@ DEFAULT_HOST = 'www'
 # Django Parler
 PARLER_ENABLE_CACHING = True
 PARLER_DEFAULT_ACTIVATE = True
+
+
+# REST auth
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
+}
