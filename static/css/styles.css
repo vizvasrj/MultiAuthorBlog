@@ -12,6 +12,9 @@
 	--ck-sample-sidebar-width: 350px;
 	/* --ck-sample-editor-min-height: 400px; */
 	--ck-sample-editor-z-index: 10;
+	--ck-color-toolbar-background: rgb(106, 94, 138) !important;
+	--ck-color-toolbar-pannel-background: #577466 !important;
+	--ck-color-toolbar-dropdown-background: #778822 !important;
 }
 
 /* --------- EDITOR STYLES  ---------------------------------------------------------------------------------------- */
@@ -343,10 +346,10 @@ body[ data-editor='InlineEditor'] .collaboration-demo__row {
 
 /* Custom */
 .ck-dropdown__panel{
-	background: transparent !important;
+	background: var(--ck-color-toolbar-dropdown-background);
 }
 .ck-list{
-	background: transparent !important;
+	background: var(--ck-color-toolbar-dropdown-background) !important;
 }
 /* --------- SAMPLE GENERIC STYLES (not related to CKEditor) ------------------------------------------------------- */
 body, html {
@@ -510,4 +513,7 @@ footer {
 
 .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) :valid {
 	border: 5px solid red;
+}
+.ck.ck-toolbar.ck-toolbar_grouping {
+	background-color: var(--ck-color-toolbar-pannel-background) ;
 }

@@ -126,7 +126,7 @@
 .blogcoverimage {
     cursor: pointer;
     max-height: 300px;
-    max-width: 300px;
+    /* max-width: 300px; */
     border: 5px solid transparent;
 }
 
@@ -153,24 +153,20 @@
 }
 
 .posttitle {
+    font-family: Poppins;
     font-size: 1.6em;
     line-height: 1.25em;
     width: 100%;
-    margin: 30px 0;
+    /* margin: 30px 0; */
     padding: 0;
     word-break: break-word;
     hyphens: auto;
     color: rgb(105, 105, 105);
+    text-decoration: none;
 }
 
 .posttitle:hover {
-    font-size: 1.6em;
-    line-height: 1.25em;
-    width: 100%;
-    margin: 30px 0;
-    padding: 0;
-    word-break: break-word;
-    hyphens: auto;
+    text-decoration: underline;
 }
 
 .bookmark_like {
@@ -463,10 +459,15 @@ div.comment-body img {
     font-size: 14px;
     width: 135px;
 }
-
+.publish {
+    width: 100%;
+}
 .publish__b {
     padding: 1px !important;
-    font-size: 14px;
+    width: 100%;
+    font-size: xxx-large;
+    color: green;
+    background: greenyellow;    
 }
 
 .date_format {
@@ -847,13 +848,13 @@ div .post__body>p.post-body+p {
 }
 
 .toggle_nav_button {
-    position: fixed;
+    position: absolute;
     right: 13px;
     top: 13px;
 }
 
 .toggle_nav_img {
-    position: fixed;
+    position: absolute;
     right: 71px;
     top: 8px;
     padding-right: 7px !important;
@@ -956,14 +957,14 @@ div .post__body>p.post-body+p {
     height: 100% !important;
 }
 
-.scrolled-down {
+/* .scrolled-down {
     transform: translateY(-100%);
     transition: all 0.3s ease-in-out;
-}
+} */
 
 .scrolled-up {
     /* transform: translateY(0); */
-    transition: all 0.3s ease-in-out;
+    /* transition: all 0.3s ease-in-out; */
 }
 
 .tnum {
@@ -1023,4 +1024,31 @@ div .post__body>p.post-body+p {
 
 .d_h {
     display: none;
+    /* animation: fadeIn 1s; */
+}
+.d_t {
+    display: block;
+
+}
+
+.hover__tag {
+    /* color: rgb(134, 134, 134); */
+    font-size: 72px;
+    text-decoration: none;
+    color: darkgray;
+}
+.hover__tag:hover {
+    color: rgb(134, 134, 134);
+    /* color: red; */
+}
+
+.c_p_s {
+    border: 1px solid lightblue;
+    background: lightblue;
+    border-radius: 20px;
+    padding: 7px;
+}
+.c_p_s:hover {
+    background: lightgrey;
+    border: 1px soild lightgrey;
 }
