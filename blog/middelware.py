@@ -10,7 +10,7 @@ from django.conf import settings
 
 def language_change_middleware(get_response):
     # Cookei set
-    def set_cookie(response, key, value, days_expire=7):
+    def set_cookie(response, key, value, days_expire=1):
         if days_expire is None:
             max_age = 365 * 24 * 60 * 60    # one year
         else:
