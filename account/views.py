@@ -24,6 +24,7 @@ from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 # 3rd party
 from itertools import chain
@@ -91,6 +92,10 @@ def user_login(request):
 
 
 def register(request):
+    if request.LANGUAGE_CODE in settings.REGISTER_LANGUAGES:
+        language = request.LANGUAGE_CODE
+    else:
+        language = 'en'
     if request.user.is_authenticated:
         return redirect(reverse('post_list'))
     else:
@@ -102,14 +107,12 @@ def register(request):
             except User.DoesNotExist:
                 # pass           
                 if user_form.is_valid():
-                    print("valid")
                     new_user = user_form.save(commit=False)
                     new_user.set_password(
                         user_form.cleaned_data['password1']
                     )
-                    print("new_user")
                     new_user.save()
-                    Profile.objects.create(user=new_user)
+                    Profile.objects.create(user=new_user, lang=language)
                     return render(
                         request,
                         'account/register_done.html',
