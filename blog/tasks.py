@@ -21,7 +21,6 @@ from translates.english_translate.tasks import english_translate
 from django.contrib.auth.models import User
 from .models import MyCustomTag, TagNameValue, Post
 from django.db.models import F
-from celery import shared_task
 
 from bs4 import BeautifulSoup
 import os

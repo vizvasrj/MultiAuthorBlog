@@ -71,7 +71,7 @@ def post_save_receiver(sender, created, instance, *args, **kwargs):
     if created:
         print("created <post save>")
 
-        translate_post.delay(pk=instance.id)
+        # translate_post.delay(pk=instance.id)
         print("created did slug changed?")
         # mail = mail_post.delay(post_id=instance.id, title=instance.title, status=instance.status)
         # print(mail)

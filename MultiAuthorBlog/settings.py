@@ -299,6 +299,7 @@ SELECT2_CSS = 'css/select2.css'
 # SELECT2_JS = ''
 
 TAGGIT_AUTOSUGGEST_MAX_SUGGESTIONS = 8
+TAGGIT_AUTOSUGGEST_MODELS = ('blog', 'MyCustomTag')
 
 SITE_ID = 1
 
@@ -421,3 +422,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',  # <-- And here
     ],
 }
+
+# used in account/views/register 
+REGISTER_LANGUAGES = ('en', 'ar', 'zh-hans', 'ta','fr', 'de', 'hi', 'id', 'it', 'ja', 'ko', 'nn', 'pt', 'ru', 'es', 'vi')
+
+# Google service key file location for api usage
+GOOGLE_SERVICE_KEY = '/home/ak41622/serviceacc.json'
+
