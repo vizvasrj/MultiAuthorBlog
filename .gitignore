@@ -216,5 +216,3 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django
 secret.py
-health_article.json
-linehealth_health2.json
