@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import VietnameseTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(VietnameseTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "vi" in settings.ADMIN_SWITCH:
+    from .models import VietnameseTranslatedPost
+    admin.site.register(VietnameseTranslatedPost)

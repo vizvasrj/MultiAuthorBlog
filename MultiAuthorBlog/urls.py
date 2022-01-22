@@ -27,6 +27,7 @@ urlpatterns = i18n_patterns(
          post_detail, name='post_detail'),
     path('tag/<slug:slug>', tags_posts_lists, 
             name='tags_posts_lists'),
+    path('grappelli/', include('grappelli.urls')),
 )
 urlpatterns += [
     path('my_uploader/', include('image_uploader.urls')),

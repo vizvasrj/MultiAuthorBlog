@@ -761,7 +761,10 @@ def tags_posts_lists(request, slug):
                     if lemma.antonyms():
                         ant.append(lemma.antonyms()[0].name())
             set_syn = set(syn)
-            set_syn.remove(tag.slug)
+            try:
+                set_syn.remove(tag.slug)
+            except KeyError:
+                pass
             # print(syn)
             # print("Set")
             suggested_tags = []

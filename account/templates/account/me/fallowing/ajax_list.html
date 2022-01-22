@@ -1,6 +1,7 @@
 {% load blog_tags %}
 {% load thumbnail %}
 {% load blog_tags %}
+{% load i18n %}
 
 
 
@@ -98,7 +99,124 @@
 </div> -->
 
 <a class="h1-title" href="{{post.get_absolute_url}}">
-    <h1 class="h1-title">{{post.title}}</h1>
+    <h1 class="h1-title">
+        {% if LANGUAGE_CODE == 'en' %}
+        {% if post.english_translated_post.last.title %}
+          {{ post.english_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'ar' %}
+        {% if post.arabic_translated_post.last.title %}
+          {{ post.arabic_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'zh-hans' %}
+        {% if post.chiense_translated_post.last.title %}
+          {{ post.chiense_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+          
+
+      {% elif  LANGUAGE_CODE == 'ta' %}
+        {% if post.filipino_translated_post.last.title %}
+          {{ post.filipino_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'fr' %}
+        {% if post.french_translated_post.last.title %}
+          {{ post.french_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'de' %}
+        {% if post.german_translated_post.last.title %}
+          {{ post.german_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'hi' %}
+        {% if post.hindi_translated_post.last.title %}
+          {{ post.hindi_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+      
+      {% elif  LANGUAGE_CODE == 'id' %}
+        {% if post.indonesian_translated_post.last.title %}
+          {{ post.indonesian_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'it' %}
+        {% if post.italian_translated_post.last.title %}
+          {{ post.italian_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+        
+      {% elif  LANGUAGE_CODE == 'ja' %}
+        {% if post.japanese_translated_post.last.title %}
+          {{ post.japanese_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'ko' %}
+        {% if post.korean_translated_post.last.title %}
+          {{ post.korean_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'nn' %}
+        {% if post.norwegian_translated_post.last.title %}
+          {{ post.norwegian_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'pt' %}
+        {% if post.portuguese_translated_post.last.title %}
+          {{ post.portuguese_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'ru' %}
+        {% if post.russian_translated_post.last.title %}
+          {{ post.russian_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'es' %}
+        {% if post.spanish_translated_post.last.title %}
+          {{ post.spanish_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% elif  LANGUAGE_CODE == 'vi' %}
+        {% if post.vietnamese_translated_post.last.title %}
+          {{ post.vietnamese_translated_post.last.title }}
+        {% else %}
+          {{ post.title }}  
+        {% endif %}
+
+      {% else %}
+        else
+      {% endif %}
+</h1>
 </a>
 {% if post.cover %}
 
@@ -113,7 +231,125 @@
 {% endif %}
 
 
-<p class="word-break">{{post.body|paragraph|truncatechars_html:500}}</p>
+<p class="word-break">
+    
+    {% if LANGUAGE_CODE == 'en' %}
+    {% if post.english_translated_post.last.body %}
+      {{ post.english_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'ar' %}
+    {% if post.arabic_translated_post.last.body %}
+      {{ post.arabic_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'zh-hans' %}
+    {% if post.chiense_translated_post.last.body %}
+      {{ post.chiense_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+      
+
+  {% elif  LANGUAGE_CODE == 'ta' %}
+    {% if post.filipino_translated_post.last.body %}
+      {{ post.filipino_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'fr' %}
+    {% if post.french_translated_post.last.body %}
+      {{ post.french_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'de' %}
+    {% if post.german_translated_post.last.body %}
+      {{ post.german_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'hi' %}
+    {% if post.hindi_translated_post.last.body %}
+      {{ post.hindi_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+  
+  {% elif  LANGUAGE_CODE == 'id' %}
+    {% if post.indonesian_translated_post.last.body %}
+      {{ post.indonesian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'it' %}
+    {% if post.italian_translated_post.last.body %}
+      {{ post.italian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+    
+  {% elif  LANGUAGE_CODE == 'ja' %}
+    {% if post.japanese_translated_post.last.body %}
+      {{ post.japanese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'ko' %}
+    {% if post.korean_translated_post.last.body %}
+      {{ post.korean_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'nn' %}
+    {% if post.norwegian_translated_post.last.body %}
+      {{ post.norwegian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'pt' %}
+    {% if post.portuguese_translated_post.last.body %}
+      {{ post.portuguese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'ru' %}
+    {% if post.russian_translated_post.last.body %}
+      {{ post.russian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'es' %}
+    {% if post.spanish_translated_post.last.body %}
+      {{ post.spanish_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% elif  LANGUAGE_CODE == 'vi' %}
+    {% if post.vietnamese_translated_post.last.body %}
+      {{ post.vietnamese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% else %}
+      {{post.body|paragraph|truncatechars_html:500}}  
+    {% endif %}
+
+  {% else %}
+    else
+  {% endif %}
+</p>
 <div class="d-flex flex-row">
     <div class="flex-fill heart-color" style="font-size: x-large;">{{ post.total_likes }} <svg class="heart-color" style="margin-top: -4px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M7 3C4.239 3 2 5.216 2 7.95c0 2.207.875 7.445 9.488 12.74a.985.985 0 0 0 1.024 0C21.125 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3s-5 3-5 3s-2.239-3-5-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
     </div>

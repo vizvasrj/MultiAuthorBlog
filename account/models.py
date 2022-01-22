@@ -60,6 +60,7 @@ class Profile(models.Model):
         blank=True,
         null=True
     )
+    
     photo = models.ImageField(
         _("photo"),
         upload_to='users/%Y/%m/%d',

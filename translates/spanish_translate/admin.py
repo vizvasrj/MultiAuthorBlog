@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import SpanishTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(SpanishTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "es" in settings.ADMIN_SWITCH:
+    from .models import SpanishTranslatedPost
+    admin.site.register(SpanishTranslatedPost)

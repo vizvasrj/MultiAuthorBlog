@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import GermanTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(GermanTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "de" in settings.ADMIN_SWITCH:
+    from .models import GermanTranslatedPost
+    admin.site.register(GermanTranslatedPost)

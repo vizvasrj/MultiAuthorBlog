@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import FilipinoTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(FilipinoTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "ta" in settings.ADMIN_SWITCH:
+    from .models import FilipinoTranslatedPost
+    admin.site.register(FilipinoTranslatedPost)

@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import RussianTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(RussianTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "ru" in settings.ADMIN_SWITCH:
+    from .models import RussianTranslatedPost
+    admin.site.register(RussianTranslatedPost)
