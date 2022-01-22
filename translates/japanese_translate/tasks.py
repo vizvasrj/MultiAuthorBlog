@@ -29,7 +29,7 @@ from django.conf import settings
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = settings.GOOGLE_SERVICE_KEY
 
 
-def translate_text(text, project_id="cedar-unison-331205"):
+def translate_text(text, project_id=settings.GOOGLE_PROJECT_ID):
     # Translating text
     client = translate.TranslationServiceClient()
     location = 'global'

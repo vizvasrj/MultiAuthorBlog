@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import ChineseTranslatedPost
+from django.conf import settings
 
-
-admin.site.register(ChineseTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "zh-hans" in settings.ADMIN_SWITCH:
+    from .models import ChineseTranslatedPost
+    admin.site.register(ChineseTranslatedPost)

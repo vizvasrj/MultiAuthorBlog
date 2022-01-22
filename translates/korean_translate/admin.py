@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import KoreanTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(KoreanTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "ko" in settings.ADMIN_SWITCH:
+    from .models import KoreanTranslatedPost
+    admin.site.register(KoreanTranslatedPost)

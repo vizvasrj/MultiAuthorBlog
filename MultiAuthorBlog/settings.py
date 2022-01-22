@@ -39,6 +39,7 @@ AUTHENTICATION_BACKENDS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'account',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,6 +80,7 @@ INSTALLED_APPS = [
     'flag',
     'publication',
     # 'chat',
+    'scrape',
 
     # translates
     'translates.hindi_translate',
@@ -428,4 +430,24 @@ REGISTER_LANGUAGES = ('en', 'ar', 'zh-hans', 'ta','fr', 'de', 'hi', 'id', 'it', 
 
 # Google service key file location for api usage
 GOOGLE_SERVICE_KEY = '/home/ak41622/serviceacc.json'
+GOOGLE_PROJECT_ID = 'cedar-unison-331205'
+# this will activate all admin of translation
+ADMIN_SWITCH = (
+    # 'en', 
+    # 'ar', 
+    # 'zh-hans', 
+    # 'ta',
+    # 'fr', 
+    # 'de', 
+    # 'hi', 
+    # 'id', 
+    # 'it', 
+    'ja', 
+    # 'ko', 
+    # 'nn', 
+    # 'pt', 
+    # 'ru', 
+    # 'es', 
+    # 'vi'
+    )
 

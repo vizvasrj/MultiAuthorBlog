@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import PortugueseTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(PortugueseTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "pt" in settings.ADMIN_SWITCH:
+    from .models import PortugueseTranslatedPost
+    admin.site.register(PortugueseTranslatedPost)

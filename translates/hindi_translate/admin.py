@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import HindiTranslatedPost
+from django.conf import settings
 
-
-admin.site.register(HindiTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "hi" in settings.ADMIN_SWITCH:
+    from .models import HindiTranslatedPost
+    admin.site.register(HindiTranslatedPost)

@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import IndonesianTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(IndonesianTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "id" in settings.ADMIN_SWITCH:
+    from .models import IndonesianTranslatedPost
+    admin.site.register(IndonesianTranslatedPost)

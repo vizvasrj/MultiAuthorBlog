@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import JapaneseTranslatedPost
+from django.conf import settings
 
-
-#admin.site.register(JapaneseTranslatedPost)
+from MultiAuthorBlog.settings import ADMIN_SWITCH
+if "ja" in settings.ADMIN_SWITCH:
+    from .models import JapaneseTranslatedPost
+    admin.site.register(JapaneseTranslatedPost)
