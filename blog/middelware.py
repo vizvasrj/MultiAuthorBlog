@@ -116,8 +116,6 @@ def language_change_middleware(get_response):
 
             # activate language is user is not authenticated
             active_translate(value)
-
-
         return response
     return middleware
 
