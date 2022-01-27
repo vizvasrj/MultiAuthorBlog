@@ -29,6 +29,27 @@ from django.core.files import File
 from pydub import AudioSegment
 from langdetect import detect
 
+T_SWITCH = (
+    # 'en', 
+    # 'ar', 
+    # 'zh-hans', 
+    # 'ta',
+    # 'fr', 
+    # 'de', 
+    'hi', 
+    # 'id', 
+    # 'it', 
+    # 'ja', 
+    # 'ko', 
+    # 'nn', 
+    # 'pt', 
+    # 'ru', 
+    # 'es', 
+    # 'vi'
+    )
+
+
+
 def lang_detect(text, pk):
     ln = detect(text)
     # if ln == 'en':
@@ -36,67 +57,84 @@ def lang_detect(text, pk):
 
     # french_translate(pk)
     if ln != 'fr':
-        french_translate(pk)
+        if 'fr' in T_SWITCH:
+            french_translate(pk)
 
     # hindi_translate(pk)
     if ln != 'hi':
-        hindi_translate(pk)
+        if 'hi' in T_SWITCH:
+            hindi_translate(pk)
 
     # chinese_translate(pk)
     if ln != 'zh-cn':
-        chinese_translate(pk)
+        if 'zh-hans' in T_SWITCH:
+            chinese_translate(pk)
 
     # spanish_translate(pk)
     if ln != 'es':
-        spanish_translate(pk)
+        if 'es' in T_SWITCH:
+            spanish_translate(pk)
 
     # arabic_translate(pk)
     if ln != 'ar':
-        arabic_translate(pk)
+        if 'ar' in T_SWITCH:
+            arabic_translate(pk)
 
     # indonesian_translate(pk)
     if ln != 'id':
-        indonesian_translate(pk)
+        if 'id' in T_SWITCH:
+            indonesian_translate(pk)
 
     # portuguese_translate(pk)
     if ln != 'pt':
-        portuguese_translate(pk)
+        if 'pt' in T_SWITCH:
+            portuguese_translate(pk)
 
     # japanese_translate(pk)
     if ln != 'ja':
-        japanese_translate(pk)
+        if 'ja' in T_SWITCH:
+            japanese_translate(pk)
 
     # russian_translate(pk)
     if ln != 'ru':
-        russian_translate(pk)
+        if 'ru' in T_SWITCH:
+            russian_translate(pk)
 
     # german_translate(pk)
     if ln != 'de':
-        german_translate(pk)
+        if 'de' in T_SWITCH:
+            german_translate(pk)
 
     # korean_translate(pk)
     if ln != 'ko':
-        korean_translate(pk)
+        if 'ko' in T_SWITCH:
+            korean_translate(pk)
 
     # norwegian_translate(pk)
     if ln != 'no':
-        norwegian_translate(pk)
+        if 'no' in T_SWITCH:
+            norwegian_translate(pk)
 
     # vietnamese_translate(pk)
     if ln != 'vi':
-        vietnamese_translate(pk)
+        if 'vi' in T_SWITCH:
+            vietnamese_translate(pk)
 
     # filipino_translate(pk)
     if ln != 'ta':
-        filipino_translate(pk)
+        if 'ta' in T_SWITCH:
+            filipino_translate(pk)
 
     # italian_translate(pk)
     if ln != 'it':
-        italian_translate(pk)
+        if 'it' in T_SWITCH:
+            italian_translate(pk)
 
     # english_translate(pk)
     if ln != 'en':
-        english_translate(pk)
+        if 'en' in T_SWITCH:
+            english_translate(pk)
+            
     return ln
 
 
