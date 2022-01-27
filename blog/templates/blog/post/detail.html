@@ -9,7 +9,10 @@
 
 {% block title %} {{ t_post.title }} {% endblock %}
 {% block style %}
+
+<style>.ra-button {padding: .3em .9em; border-radius: .25em; background: linear-gradient(#fff, #efefef); box-shadow: 0 1px .2em gray; display: inline-flex; align-items: center; cursor: pointer;} .ra-button img {height: 1em; margin: 0 .5em 0 0;}</style>
 {% endblock %}
+
 
 
 
@@ -111,7 +114,9 @@
                                 {{ t_post.title }}
                         
                         </h1>
-                        
+                        <div id="ra-player" data-skin="https://assets.sitespeaker.link/embed/skins/default"><div class="ra-button" onclick="readAloud(document.getElementById('ra-audio'), document.getElementById('ra-player'))"><img src="https://assets.sitespeaker.link/embed/skins/default/play-icon.png"/> Listen to this article</div></div>
+                        <audio id="ra-audio" data-lang="en-IN" data-voice="Amazon Raveena" data-key="f4b7b44eb4ae0fcd80731c40d3ff3ec6"></audio>
+
                         {% if post.audio %}
                             <audio controls id="audio1" style="width: 100%;">
                                 <source id='audio2' src="{{t_post.audio.url}}" type="audio/mpeg">
@@ -379,8 +384,10 @@
 {% endblock %}
 
 {% block script %}
+
 <script src="{% static 'js/ckeditor.js' %}"></script>
 <script src="{% static 'js/ckeditor.config.js' %}"></script>
+<script>function readAloud(e,n){var s="https://assets.sitespeaker.link/embed/";/iPad|iPhone|iPod/.test(navigator.userAgent)&&(e.src=s+"sound/silence.mp3",e.play(),"undefined"!=typeof speechSynthesis&&speechSynthesis.speak(new SpeechSynthesisUtterance(" ")));var t=document.createElement("script");t.onload=function(){readAloudInit(e,n)},t.src=s+"js/readaloud.min.js",document.head.appendChild(t)}</script>
 
 {% endblock %}
 
