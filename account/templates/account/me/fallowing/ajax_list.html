@@ -101,11 +101,11 @@
 <a class="h1-title" href="{{post.get_absolute_url}}">
     <h1 class="h1-title">
         {% if LANGUAGE_CODE == 'en' %}
-        {% if post.english_translated_post.last.title %}
-          {{ post.english_translated_post.last.title }}
-        {% else %}
-          {{ post.title }}  
-        {% endif %}
+          {% if post.english_translated_post.last.title %}
+            {{ post.english_translated_post.last.title }}
+          {% else %}
+            {{ post.title }}  
+          {% endif %}
 
       {% elif  LANGUAGE_CODE == 'ar' %}
         {% if post.arabic_translated_post.last.title %}
@@ -214,7 +214,7 @@
         {% endif %}
 
       {% else %}
-        else
+        {{ post.title }}
       {% endif %}
 </h1>
 </a>
@@ -347,7 +347,7 @@
     {% endif %}
 
   {% else %}
-    else
+      {{post.body|paragraph|truncatechars_html:500}}
   {% endif %}
 </p>
 <div class="d-flex flex-row">

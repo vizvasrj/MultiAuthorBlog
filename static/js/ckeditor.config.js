@@ -6,7 +6,6 @@ ClassicEditor
     .create(document.querySelector("#id_body"), {
         extraPlugins: [MyCustomUploadAdapterPlugin],
 
-
         toolbar: {
             items: [
                 'heading',

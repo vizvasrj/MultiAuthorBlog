@@ -172,7 +172,7 @@
             {% endif %}
 
           {% else %}
-            else
+            {{ post.title }}
           {% endif %}
           </h3>
           </a>
@@ -312,7 +312,7 @@
         {% endif %}
 
       {% else %}
-        else
+        {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
       {% endif %}
 
     </p>

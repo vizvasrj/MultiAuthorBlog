@@ -94,7 +94,11 @@ def clean_data_and_save(pk):
             )
         import json
         json_data = json.loads(response.text)
-        return json_data['data']['image']['url']
+        try:
+            img_url = json_data['data']['image']['url']
+        except KeyError:
+            img_url = ''
+        return img_url
 
 
     # Amazon checker
@@ -287,8 +291,8 @@ def clean_data_and_save(pk):
             elif tag.name == 'lazy-image':
                 src = tag['src']
                 src = change_src(src)
-                src = upload_to_imgbb(img_url=src)
-                print(colored(src, "green"))
+                # src = upload_to_imgbb(img_url=src)
+                # print(colored(src, "green"))
                 change_to_str('<img src="'+src+'">')
 
                 
@@ -299,8 +303,8 @@ def clean_data_and_save(pk):
                 try:
                     src = tag.img['src']
                     src = change_src(src)
-                    src = upload_to_imgbb(img_url=src)
-                    print(colored(src,"green"))
+                    # src = upload_to_imgbb(img_url=src)
+                    # print(colored(src,"green"))
                     change_to_str('<img src="'+src+'">')
                 except TypeError:
                     pass
@@ -345,11 +349,17 @@ def clean_data_and_save(pk):
                     td_fill = []
                     for td in td_cols:
                         if td.a:
-                            td_a_st = td.a.string
-                            td_a_href = td.a['href']
-                            # html_table.append()
-                            full_a = "<a href="+td_a_href+">"+td_a_st+"</a>"
-                            td_fill.append(str(td).replace(str(td.a), full_a))
+                            try:
+                                try:
+                                    td_a_st = td.a.string
+                                    td_a_href = td.a['href']
+                                    # html_table.append()
+                                    full_a = "<a href="+td_a_href+">"+td_a_st+"</a>"
+                                    td_fill.append(str(td).replace(str(td.a), full_a))
+                                except TypeError:
+                                    pass
+                            except KeyError:
+                                pass
                         else:
                             td_fill.append(str(td))
                     if count == 0:
@@ -479,10 +489,17 @@ def clean_data_and_save(pk):
             # checker_runtime="1",
         ), "red"))
 
-
 for x in set_parsed:
     print(colored(x,"red"))
-    article_id = Healthline.objects.get(url=x).id
+    if '/stories' in x:
+        pass
+    elif '/tweet-chat' in x:
+        pass
+    elif '/dear' in x:
+        pass
+    else:
+        article_id = Healthline.objects.get(url=x).id
 
-    clean_data_and_save(pk=article_id)
-# clean_data_and_save(pk=17072)
+        clean_data_and_save(pk=article_id)
+
+# clean_data_and_save(pk=20704)
