@@ -69,7 +69,8 @@ def hi_only_translate(pk):
     h = Post.objects.create(
         title=str(t_p_title),
         body=str(t_t_p_s),
-        author=profile
+        author=profile,
+        scrape_url=post.url
     )
     print(colored(h, "red"))
     # for t_s in t_k_l:
