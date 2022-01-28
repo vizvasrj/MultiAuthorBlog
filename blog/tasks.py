@@ -1,7 +1,7 @@
 
 from celery import shared_task
 from django.views.decorators.http import require_GET
-from translates.hindi_translate.tasks import hindi_translate
+from translates.hindi_translate.tasks import hindi_translate, hi_only_translate
 from translates.french_translate.tasks import french_translate
 from translates.chinese_translate.tasks import chinese_translate
 from translates.spanish_translate.tasks import spanish_translate
@@ -134,7 +134,7 @@ def lang_detect(text, pk):
     if ln != 'en':
         if 'en' in T_SWITCH:
             english_translate(pk)
-            
+
     return ln
 
 
@@ -410,10 +410,12 @@ def eng_speech(pk):
 def translate_post(pk):
     import time
     time.sleep(2)
-    eng_speech(pk=pk)
+    # [hindi, chinese, jap post to english \]
+    # eng_speech(pk=pk)
 
     # french_translate(pk)
     # hindi_translate(pk)
+    hi_only_translate(pk)
     # chinese_translate(pk)
     # spanish_translate(pk)
     # arabic_translate(pk)

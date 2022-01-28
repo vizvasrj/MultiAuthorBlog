@@ -92,16 +92,16 @@ def hindi_translate(pk):
     soup = BeautifulSoup(body, 'html.parser')
     codes = {}
     count = 1000
-    list = []
+    lists = []
     for x in soup:
         if x.name == 'pre':
             count += 1
             love = f'00-00-{count}'
             codes[love] = x
-            list.append(f'{str(love)} ')
+            lists.append(f'{str(love)} ')
         else:
-            list.append(f'{str(x)} ')
-    join = "".join(map(str, list))
+            lists.append(f'{str(x)} ')
+    join = "".join(map(str, lists))
     bs_wp = BeautifulSoup(join, 'html.parser')
     # title and tags are added so they can be trans-
     # lated
@@ -203,3 +203,42 @@ def hindi_translate(pk):
         h.tags.add(t_s)
     
     return t_t_p_s
+
+from termcolor import colored
+
+def hi_only_translate(pk):
+    post = Post.objects.get(id=pk)
+    body = post.body
+    title = post.title
+    tags = []
+    for tag in post.tags.all():
+        tags.append(tag.name)
+
+    soup = BeautifulSoup(body, 'html.parser')
+    bs_wp = BeautifulSoup(str(soup), 'html.parser')
+    p_title = soup.new_tag("title")
+    p_title.string = post.title
+    bs_wp.insert(0, p_title)
+    p_tags = soup.new_tag("tags")
+    p_tags.string = ','.join(tags)
+    bs_wp.append(p_tags)
+    t_t = translate_text(text=str(bs_wp))
+    t_t_p_s = BeautifulSoup(t_t, 'html.parser')
+    print(colored(t_t_p_s, "blue"))
+    tag_title = t_t_p_s.title
+    t_p_title = tag_title.string
+    tag_title.decompose()
+    tag_keys = t_t_p_s.tags
+    t_p_keys = tag_keys.string
+    print(t_p_keys)
+    t_k_l = t_p_keys.split(',')
+    tag_keys.decompose()
+
+    h = HindiTranslatedPost.objects.create(
+        post_id=pk,
+        title=str(t_p_title),
+        body=str(t_t_p_s)
+    )
+    print(colored(h, "red"))
+    for t_s in t_k_l:
+        h.tags.add(t_s)
