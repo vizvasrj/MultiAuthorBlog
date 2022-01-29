@@ -6,7 +6,6 @@ from .views import (
     post_like, comment_like, bookmark, update_data,
     delete_post, edit_comment, tag_list
 )
-
 from . import views
 
 
