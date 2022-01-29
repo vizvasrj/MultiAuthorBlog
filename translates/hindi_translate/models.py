@@ -21,7 +21,7 @@ class HindiTranslatedPost(models.Model):
     post = models.ForeignKey(
         Post,
         related_name='hindi_translated_post',
-        on_delete=models.PROTECT
+        on_delete=models.CASCADE
     )
     title = models.CharField(
         max_length=256
