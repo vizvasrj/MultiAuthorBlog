@@ -9,13 +9,13 @@ from .views import read_file
 from blog.views import post_detail, tags_posts_lists
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
-from blog.sitemaps import PostSitemap
+# from blog.sitemaps import PostSitemap
 
-from django.contrib.sitemaps.views import sitemap
+# from django.contrib.sitemaps.views import sitemap
 
-sitemaps = {
-    'posts': PostSitemap,
-}
+# sitemaps = {
+#     'posts': PostSitemap,
+# }
 
 urlpatterns = i18n_patterns(
     path('__debug__/', include(debug_toolbar.urls)),
@@ -39,12 +39,12 @@ urlpatterns = i18n_patterns(
 )
 urlpatterns += [
     path('my_uploader/', include('image_uploader.urls')),
-    path(
-        'sitemap.xml',
-        sitemap, {
-            'sitemaps': sitemaps
-            }, name='django.contrib.sitemaps.views.sitemap'
-    ),
+    # path(
+    #     'sitemap.xml',
+    #     sitemap, {
+    #         'sitemaps': sitemaps
+    #         }, name='django.contrib.sitemaps.views.sitemap'
+    # ),
 ]
 
 if settings.DEBUG:
