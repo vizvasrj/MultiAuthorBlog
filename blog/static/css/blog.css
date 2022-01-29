@@ -1072,3 +1072,15 @@ div .post__body>p.post-body+p {
     background: greenyellow;    
 }
 
+.hr-post-list {
+    margin-top: -5px;
+}
+.author-up {
+    margin-top: -13px;
+}
+.mtm20 {
+    margin-top: -20px;
+}
+.mb15 {
+    margin-bottom: 15px;
+}

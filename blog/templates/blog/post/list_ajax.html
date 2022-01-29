@@ -4,7 +4,7 @@
 {% load no_code_editorjs %}
 {{user.profiles.all}}
 {% for post in posts %}
-<div class="row bg-mint-lite p-2 mb-2">
+<div class="row bg-mint-lite p-2 mtm20">
   <div class="col-1" style="border-right: 2px solid #d9dadb;">
     <div class="blog__list__float sticky-top">
       <div class="bookmark">
@@ -178,7 +178,7 @@
           </a>
       </div>
       <hr class="hr-post-list">
-      <div class="">
+      <div class="author-up">
         {% thumbnail post.author.photo "42x42" crop="100%" as im %}
         <a class="a_author_image" href="/{{post.author.get_absolute_url}}/">
           <img class="author__left__side rounded" src="{{ im.url }}" alt="">
