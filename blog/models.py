@@ -175,7 +175,7 @@ class TaggedWhatever(TaggedItemBase, GenericTaggedItemBase):
         related_name="blogs_posts_items",
     )
     
-
+from django.utils.translation import activate
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -276,6 +276,8 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        # activate('hi')
+
         return reverse("post_detail", kwargs={"slug": self.slug, "author": self.author })
     
 
