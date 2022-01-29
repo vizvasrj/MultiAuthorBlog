@@ -1072,14 +1072,3 @@ div .post__body>p.post-body+p {
     background: greenyellow;    
 }
 
-p > a {
-    color: inherit;
-    text-decoration: underline;
-    cursor: text;
-}
-
-p > a:hover {
-    color: inherit;
-    text-decoration: underline;
-    cursor: text;
-}
