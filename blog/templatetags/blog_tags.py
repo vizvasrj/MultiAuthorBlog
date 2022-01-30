@@ -263,7 +263,7 @@ def paragraph(html):
 
 
 @register.filter(is_safe=True, name='t_url')
-def paragraph(path):
+def t_url_paragraph(path):
     html = "/".join(path.split("/")[2:])
     # print(html)
     return html
