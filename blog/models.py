@@ -129,12 +129,12 @@ class MyCustomTag(TagBase):
         verbose_name = "Tag"
         verbose_name_plural = "Tags"
 
-    def save(self, *args, **kwargs):
-        user = get_current_user().id
-        user = User.objects.get(id=user)
-        # if not self.pk:
-        self.creator = user
-        super(MyCustomTag, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     user = get_current_user().id
+    #     user = User.objects.get(id=user)
+    #     # if not self.pk:
+    #     self.creator = user
+    #     super(MyCustomTag, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("tags_posts_lists", kwargs={"slug": self.slug})
@@ -264,6 +264,13 @@ class Post(models.Model):
     )
     scrape_url = models.CharField(
         max_length=256,
+        blank=True, null=True
+    )
+    # this is used by translation workers
+    # help them to skip this while using it 
+    t = models.CharField(
+        max_length=20,
+        default='None',
         blank=True, null=True
     )
 

@@ -23,6 +23,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.decorators.http import require_POST
 import requests
+from blog import serializers
 from common.decorators import ajax_required
 from django.contrib.postgres.search import(
     SearchQuery, SearchVector, SearchRank
@@ -97,7 +98,7 @@ def create_post(request):
 def post_list(request, tag_slug=None):
     # posts = Post.published.all()
     posts = Post.aupm.all()
-    print(translation.get_language_from_request(request))
+    # print(translation.get_language_from_request(request))
     tag = None
     if tag_slug:
         tag = get_object_or_404(
@@ -997,9 +998,12 @@ from account.models import Profile
 def set_language(request, lang=None):
     next_path = request.GET.get('next')
     translation.activate(lang)
-    person = get_object_or_404(Profile, id=request.user.id)
+    person = get_object_or_404(Profile, user__username=request.user.username)
     person.lang = lang
     person.save()
     after = next_path.split("/")[2:]
     joined_after = "/".join(after)
     return HttpResponseRedirect(f'/{joined_after}')
+
+
+# from rest_framework.decorators import Response

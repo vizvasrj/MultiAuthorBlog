@@ -4,10 +4,13 @@ from django.contrib.auth import views as auth_views
 
 
 # local
-from . import views
+from . import views , rest_views
 from .forms import (
     UserPasswordResetForm, UserPasswordChangeForm
 )
+
+from rest_framework_simplejwt import views as jwt_views
+
 
 urlpatterns = [
      # path('',
@@ -104,6 +107,27 @@ urlpatterns = [
      path('account/validate_email', views.validate_email, name='validate_email'),
 
      path('', views.my_relations_posts, name='my_relations_posts'),
+
+
+     # Rest framwork authentication
+     path('api/logout/', rest_views.LogoutView.as_view(), 
+          name='api-logout'),
+     path('api/token/', rest_views.MyTokenObtainPairView.as_view(),
+          name='token_create'),
+     path('api/token/refresh/',
+          jwt_views.TokenRefreshSlidingView.as_view(),
+          name='refresh'),
+     path('api/register/',
+          rest_views.AuthUserRegistrationView.as_view(),
+          name='api-register'),
+     path('api/login/',
+          rest_views.AuthUserLoginView.as_view(),
+          name='api-login'),
+     path('api/users/',
+          rest_views.UserListView.as_view(),
+          name='api-users'),
+
+     path('api/loginchecker/', rest_views.LoginCheckerView.as_view(), name='login_checker'),
 
 
 ]
