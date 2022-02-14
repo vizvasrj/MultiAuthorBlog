@@ -7,8 +7,7 @@ from .views import (
     delete_post, edit_comment, tag_list
 )
 from . import views
-
-
+from . import rest_views
 
 urlpatterns = [
     path('create/', create_post, name='post_new'),
@@ -31,6 +30,27 @@ urlpatterns = [
     path('post/search-ajax/', views.post_ajax_search, name='search_ajax'),
     path('tags/tag/follow/', views.tag_follow, name='tag_follow'),
     path('translate/update/<int:pk>/<int:id>', views.update_translate_post, name='translate_edit_post'),
-    path('ln/set_language/<str:lang>', views.set_language, name='set_language')
+    path('ln/set_language/<str:lang>', views.set_language, name='set_language'),
+
+    # Serializers
+    # path(
+    #     'rest-movies/', 
+    #     views.PostListSerializerView.as_view(),
+    #     name=views.PostListSerializerView.name
+    # )
+    path(
+        'posts-list/',
+        rest_views.PostCRUDView.as_view(),
+        name='post-list-curd'
+    ),
+    path(
+        'posts-list2/',
+        rest_views.PostListView.as_view(),
+        name='posts-list-2'
+    ),
+    path('posts-detail/<int:pk>/',
+        rest_views.PostDetail.as_view(),
+        name='api-post-detail'),
+    
 
 ]

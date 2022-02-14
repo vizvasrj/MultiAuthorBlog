@@ -2,6 +2,7 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load no_code_editorjs %}
+{% get_current_language as LANGUAGE_CODE %}
 {{user.profiles.all}}
 {% for post in posts %}
 <div class="row bg-mint-lite p-2 mtm20">

@@ -731,3 +731,4 @@ def my_relations_posts(request):
         return redirect(reverse('post_list'))
 
 
+# Rest framework authfro
