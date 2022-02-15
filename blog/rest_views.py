@@ -4,6 +4,7 @@ from account.models import Profile
 
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.db.models import Q
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -13,7 +14,8 @@ from rest_framework.reverse import reverse
 
 from .serializers import PostCURDSerializer, PostSerializer
 from rest_framework.exceptions import (
-    AuthenticationFailed, PermissionDenied, ValidationError
+    AuthenticationFailed, PermissionDenied, ValidationError,
+    NotFound
 )
 import jwt
 from rest_framework import status
@@ -21,6 +23,7 @@ from django.contrib.auth.middleware import get_user
 from .permissions import IsOwnerOrReadOnly
 from rest_framework.views import APIView
 from termcolor import colored
+from django.contrib.auth.models import AnonymousUser
 
 from blog import serializers
 
@@ -335,4 +338,78 @@ class PostListView(APIView):
 
         serializer.save(author=user)
 
+
+
+# New Methods for randome get all non translated but only one at a time
+class RandomPostCRUDView(generics.ListCreateAPIView):
+    query = Post.aupm.all()
+    
+    queryset = query
+    serializer_class = PostCURDSerializer
+
+
+    def list(self, request, *args, **kwargs):
+        if request.user != AnonymousUser():
+            pass
+        else:
+            raise AuthenticationFailed("Login again")
+        queryset = Post.aupm.all().filter(
+            Q(indonesian_translated_post=None)
+            & Q(portuguese_translated_post=None)
+            & Q(vietnamese_translated_post=None)
+            & Q(russian_translated_post=None)
+            & Q(spanish_translated_post=None)
+            & Q(norwegian_translated_post=None)
+            & Q(korean_translated_post=None)
+            & Q(japanese_translated_post=None)
+            & Q(italian_translated_post=None)
+            & Q(hindi_translated_post=None)
+            & Q(german_translated_post=None)
+            & Q(french_translated_post=None)
+            & Q(filipino_translated_post=None)
+            & Q(english_translated_post=None)
+            & Q(chinese_translated_post=None)
+            & Q(arabic_translated_post=None)
+            & Q(other_author=None)
+        ).order_by("-created")[0:1]
+
+        page = self.paginate_queryset(queryset)
+        try:
+            q = queryset[0]
+        except IndexError:
+            raise NotFound("not found i thinks its ended")
+        q.other_author.add(request.user)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        # user = get_user(request)
+        # if user.is_authenticated:
+        #     return user
+        user = auth(request=request)
+        if user:
+            return self.create(request, user=user.username)
+        
+    def create(self, request, user, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer, user=user)
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            serializer.data, 
+            status=status.HTTP_201_CREATED, 
+            headers=headers
+        )
+
+    def perform_create(self, serializer, user):
+        user = Profile.objects.get(user__username=user)
+        serializer.save(author=user)
 

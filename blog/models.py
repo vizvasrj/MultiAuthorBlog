@@ -347,6 +347,8 @@ class Comment(MPTTModel):
 # This is to send email when author add post
 # ie create post and add author to it 
 # it send email to added author
+
+'''
 @receiver(m2m_changed, sender=Post.other_author.through)
 def user_liked_changed(reverse, instance, action, pk_set, model, *args, **kwargs):
     if action == 'post_add':
@@ -360,7 +362,7 @@ def user_liked_changed(reverse, instance, action, pk_set, model, *args, **kwargs
             send_mail(
                 subject, message, 'root@vizvasrj.com', (x.email,), fail_silently=False
             )
-            
+            '''
 
 
 

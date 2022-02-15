@@ -51,6 +51,12 @@ urlpatterns = [
     path('posts-detail/<int:pk>/',
         rest_views.PostDetail.as_view(),
         name='api-post-detail'),
+
+    path(
+        'random-post/',
+        rest_views.RandomPostCRUDView.as_view(),
+        name='random-post'
+        )
     
 
 ]

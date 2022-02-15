@@ -57,7 +57,7 @@ urlpatterns = i18n_patterns(
 )
 urlpatterns += [
     path('my_uploader/', include('image_uploader.urls')),
-    path('api9006912014/', ApiRoot.as_view(), name='api-root'),
+    path('api/', ApiRoot.as_view(), name='api-root'),
     # path(
     #     'sitemap.xml',
     #     sitemap, {
