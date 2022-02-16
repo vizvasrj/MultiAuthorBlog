@@ -338,6 +338,12 @@ class PostListView(APIView):
 
         serializer.save(author=user)
 
+import redis
+r = redis.Redis(
+    host=settings.REDIS_HOST,
+    port=settings.REDIS_PORT,
+    db=settings.REDIS_DB
+)
 
 
 # New Methods for randome get all non translated but only one at a time
@@ -370,15 +376,28 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
             & Q(english_translated_post=None)
             & Q(chinese_translated_post=None)
             & Q(arabic_translated_post=None)
-            & Q(other_author=None)
-        ).order_by("-created")[0:1]
+        ).filter(other_author=None).order_by("?")[0:1]
+
+        p = queryset[0]
+        # p = Post.objects.all().order_by("-created")[0]
+        rp = r.lrange("tpostt2", 0, -1)
+        # print(rp)
+        stringlist = [x.decode("utf-8") for x in rp]
+        # print(stringlist)
+        set_list = set(stringlist)
+        # print(set_list)
+        p = Post.objects.all().order_by("?").filter(~Q(id__in=set_list))[0]
+        # print(p)
+        r.rpush("tpostt2", p.id)
+        queryset = Post.objects.all().filter(id=p.id)
+
 
         page = self.paginate_queryset(queryset)
-        try:
-            q = queryset[0]
-        except IndexError:
-            raise NotFound("not found i thinks its ended")
-        q.other_author.add(request.user)
+        # try:
+        #     q = queryset[0]
+        # except IndexError:
+        #     raise NotFound("not found i thinks its ended")
+        # q.other_author.add(request.user)
         if page is not None:
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
