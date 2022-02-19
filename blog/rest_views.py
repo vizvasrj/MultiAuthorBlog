@@ -392,7 +392,6 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
         p = Post.objects.all().order_by("?").filter(~Q(id__in=set_list))[0]
         # print(p)
         r.rpush("tpostt2", p.id)
-        queryset = Post.objects.all().filter(id=p.id)
         
         # This will check that post ie p is empty after filtering ids
         # if it empty then  
@@ -433,6 +432,7 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
                 ids.append(x.id)
 
             print(set(ids))
+        queryset = Post.objects.all().filter(id=p.id)
 
         page = self.paginate_queryset(queryset)
         # try:
