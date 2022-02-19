@@ -362,42 +362,42 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
             pass
         else:
             raise AuthenticationFailed("Login again")
-        queryset = Post.aupm.all().filter(
-            Q(indonesian_translated_post=None)
-            & Q(portuguese_translated_post=None)
-            & Q(vietnamese_translated_post=None)
-            & Q(russian_translated_post=None)
-            & Q(spanish_translated_post=None)
-            & Q(norwegian_translated_post=None)
-            & Q(korean_translated_post=None)
-            & Q(japanese_translated_post=None)
-            & Q(italian_translated_post=None)
-            & Q(hindi_translated_post=None)
-            & Q(german_translated_post=None)
-            & Q(french_translated_post=None)
-            & Q(filipino_translated_post=None)
-            & Q(english_translated_post=None)
-            & Q(chinese_translated_post=None)
-            & Q(arabic_translated_post=None)
-        ).filter(other_author=None).order_by("?")[0:1]
+        # queryset = Post.aupm.all().filter(
+        #     Q(indonesian_translated_post=None)
+        #     & Q(portuguese_translated_post=None)
+        #     & Q(vietnamese_translated_post=None)
+        #     & Q(russian_translated_post=None)
+        #     & Q(spanish_translated_post=None)
+        #     & Q(norwegian_translated_post=None)
+        #     & Q(korean_translated_post=None)
+        #     & Q(japanese_translated_post=None)
+        #     & Q(italian_translated_post=None)
+        #     & Q(hindi_translated_post=None)
+        #     & Q(german_translated_post=None)
+        #     & Q(french_translated_post=None)
+        #     & Q(filipino_translated_post=None)
+        #     & Q(english_translated_post=None)
+        #     & Q(chinese_translated_post=None)
+        #     & Q(arabic_translated_post=None)
+        # ).filter(other_author=None).order_by("?")[0:1]
 
-        p = queryset[0]
-        # p = Post.objects.all().order_by("-created")[0]
-        rp = r.lrange("tpostt2", 0, -1)
-        # print(rp)
-        stringlist = [x.decode("utf-8") for x in rp]
-        # print(stringlist)
-        set_list = set(stringlist)
-        # print(set_list)
-        p = Post.objects.all().order_by("?").filter(~Q(id__in=set_list))[0]
-        # print(p)
-        r.rpush("tpostt2", p.id)
-        queryset = Post.objects.all().filter(id=p.id)
+        # p = queryset[0]
+        # # p = Post.objects.all().order_by("-created")[0]
+        # rp = r.lrange("tpostt2", 0, -1)
+        # # print(rp)
+        # stringlist = [x.decode("utf-8") for x in rp]
+        # # print(stringlist)
+        # set_list = set(stringlist)
+        # # print(set_list)
+        # p = Post.objects.all().order_by("?").filter(~Q(id__in=set_list))[0]
+        # # print(p)
+        # r.rpush("tpostt2", p.id)
+        # queryset = Post.objects.all().filter(id=p.id)
         
-        # This will check that post ie p is empty after filtering ids
-        # if it empty then  
-        if not p:
-            print(p)
+        # # This will check that post ie p is empty after filtering ids
+        # # if it empty then  
+        # if not p:
+        #     print(p)
         ids = []
         for x in Post.aupm.all().filter(Q(indonesian_translated_post=None)):
             ids.append(x.id)
