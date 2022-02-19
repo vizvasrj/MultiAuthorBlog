@@ -396,7 +396,7 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
         
         # This will check that post ie p is empty after filtering ids
         # if it empty then  
-        if p:
+        if not p:
             print(p)
             ids = []
             for x in Post.aupm.all().filter(Q(indonesian_translated_post=None)):
