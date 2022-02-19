@@ -398,41 +398,42 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
         # if it empty then  
         if not p:
             print(p)
-            ids = []
-            for x in Post.aupm.all().filter(Q(indonesian_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(portuguese_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(vietnamese_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(russian_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(spanish_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(norwegian_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(korean_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(japanese_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(italian_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(hindi_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(german_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(french_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(filipino_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(english_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(chinese_translated_post=None)):
-                ids.append(x.id)
-            for x in Post.aupm.all().filter(Q(arabic_translated_post=None)):
-                ids.append(x.id)
+        ids = []
+        for x in Post.aupm.all().filter(Q(indonesian_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(portuguese_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(vietnamese_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(russian_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(spanish_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(norwegian_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(korean_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(japanese_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(italian_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(hindi_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(german_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(french_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(filipino_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(english_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(chinese_translated_post=None)):
+            ids.append(x.id)
+        for x in Post.aupm.all().filter(Q(arabic_translated_post=None)):
+            ids.append(x.id)
 
-            p = Post.objects.all().order_by("?").filter(~Q(id__in=ids))[0]
+        p = Post.objects.all().order_by("?").filter(~Q(id__in=ids))[0]
+        queryset = Post.objects.all().filter(id=p.id)
 
         page = self.paginate_queryset(queryset)
         # try:
