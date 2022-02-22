@@ -449,8 +449,11 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
         #     ids.append(x.id)
             
 
-        p = Post.objects.all().order_by("?")[0]
-        queryset = Post.objects.all().filter(id=p.id)
+        # p = Post.objects.all().order_by("-created").filter(Q(id__in=ids))[0]
+        
+        # queryset = Post.objects.all().filter(id=p.id)
+        p2 = Post.objects.all().order_by("?")[0]
+        queryset = Post.objects.all().filter(id=p2.id)
         # print(queryset)
         page = self.paginate_queryset(queryset)
         # try:
