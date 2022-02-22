@@ -243,15 +243,16 @@ def div( value, arg ):
 def paragraph_soup(html):
     # This will extract all and only  paragraphs from html
     soup = BeautifulSoup(html, 'html.parser')
-    paragraphs = []
-    for x in soup:
-        if x.name == 'p':
-            for y in x:
-                if y.name == 'img':
-                    pass
-                else:
-                    # encoded_html = (str(x).replace('<','&lt;').replace('>','&gt;'))
-                    paragraphs.append(str(x))
+    paragraphs = soup.get_text()
+    # paragraphs = []
+    # for x in soup:
+    #     if x.name == 'p':
+    #         for y in x:
+    #             if y.name == 'img':
+    #                 pass
+    #             else:
+    #                 # encoded_html = (str(x).replace('<','&lt;').replace('>','&gt;'))
+    #                 paragraphs.append(str(x))
     return ''.join(paragraphs)
 
 
