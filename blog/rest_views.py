@@ -1,5 +1,5 @@
 from django.forms import ValidationError
-from .models import Post
+from .models import Post, Image
 from account.models import Profile
 
 from django.contrib.auth.models import User
@@ -26,7 +26,10 @@ from termcolor import colored
 from django.contrib.auth.models import AnonymousUser
 
 from blog import serializers
-
+import io
+import os
+import base64
+from django.core.files import File
 
 
 def auth(request):
@@ -140,11 +143,47 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
             status = instance.status
             author = instance.author
             data_req = request.data['t']
+            im_b64 = request.data['cover2.image']
+            cover2_name = request.data['cover2._name']
+            creator_name = request.data['cover2.creator_name']
+            creator_url = request.data['cover2.creator_url']
+
+            head = str(im_b64[:10])
+            if head.startswith('iVBORw0KGg'):
+                ext = 'png'
+            elif head.startswith('/9j/'):
+                ext = 'jpg'
+            else:
+                ext = 'jpg'
+
+            try:
+                cover2 = Image.objects.get(sha_256=cover2_name)
+                print(colored("cover2 sha exists", 'blue'))
+            except Image.DoesNotExist:
+                with open(f'{cover2_name}.{ext}', 'wb') as fh:
+                    fh.write(base64.urlsafe_b64decode(im_b64))
+
+                new_image = File(open(f'{cover2_name}.{ext}', 'rb'))
+                cover2 = Image.objects.create(
+                    image=new_image, 
+                    creator_name=creator_name, 
+                    creator_url=creator_url,
+                    sha_256=cover2_name
+                )
+                print(colored(os.popen('ls').read(), 'red'))
+                try:
+                    os.remove(f'{cover2_name}.{ext}')
+                except FileNotFoundError:
+                    pass
+
+            
+
             data_ser = {
                 "title": title, 
                 "body": body, 
                 "status": status, 
-                "t": data_req
+                "t": data_req,
+                "cover2": cover2.id
                 }
             json_d = data_ser
         elif t1 == t2:
@@ -452,7 +491,7 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
         # p = Post.objects.all().order_by("-created").filter(Q(id__in=ids))[0]
         
         # queryset = Post.objects.all().filter(id=p.id)
-        p2 = Post.objects.all().order_by("?")[0]
+        p2 = Post.objects.all().order_by("-created")[0]
         queryset = Post.objects.all().filter(id=p2.id)
         # print(queryset)
         page = self.paginate_queryset(queryset)

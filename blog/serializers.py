@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 from blog.models import (
-    Post, MyCustomTag, Category
+    Post, MyCustomTag, Category, Image
 )
 from translates.hindi_translate.models import HindiTranslatedPost
 from translates.arabic_translate.models import ArabicTranslatedPost
@@ -165,6 +165,15 @@ class VIpost(serializers.ModelSerializer):
         fields = ('id',)
 
 
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = ('image', 'creator_name', 'creator_url', )
+
+
+from drf_writable_nested.serializers import WritableNestedModelSerializer
+
 class PostCURDSerializer(serializers.ModelSerializer):
     title = serializers.CharField(
         max_length=256
@@ -176,6 +185,7 @@ class PostCURDSerializer(serializers.ModelSerializer):
     author = serializers.CharField(
         required=False, read_only=True
     )
+    # cover2 = ImageSerializer()
     english_translated_post = ENpost(required=False, many=True, read_only=True)
     arabic_translated_post = ARpost(required=False, many=True, read_only=True)
     chinese_translated_post = CNpost(required=False, many=True, read_only=True)
@@ -206,6 +216,7 @@ class PostCURDSerializer(serializers.ModelSerializer):
             'body', 
             'status', 
             'author', 
+            'cover2',
             'english_translated_post',
             'arabic_translated_post',
             'chinese_translated_post',

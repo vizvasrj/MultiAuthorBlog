@@ -1,4 +1,5 @@
 # Django
+from tkinter import CASCADE
 from django.db import models
 import time
 from django.utils import timezone
@@ -177,6 +178,34 @@ class TaggedWhatever(TaggedItemBase, GenericTaggedItemBase):
     
 from django.utils.translation import activate
 
+
+class Image(models.Model):
+    image = models.ImageField(
+        _('cover'),
+        upload_to='cover/%Y/%m/%d',
+        blank=True, null=True
+        )  
+    creator_name = models.CharField(
+        _('photographer name'),
+        max_length=100,
+        blank=True, null=True
+    )
+    creator_url = models.CharField(
+        _('photographer profile url'),
+        max_length=100,
+        blank=True, null=True
+    )
+    sha_256 = models.CharField(
+        _('sha_256'),
+        max_length=64,
+        blank=True, null=True, 
+        db_index=True
+    )
+    def __str__(self):
+        return self.image.url
+
+
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -207,6 +236,13 @@ class Post(models.Model):
         _('cover'),
         upload_to='cover/%Y/%m/%d',
         blank=True, null=True
+    )
+    cover2 = models.ForeignKey(
+        Image,
+        on_delete=models.CASCADE,
+        related_name='im_posts',
+        blank=True, null=True,
+        verbose_name=_('cover image')
     )
     slug = AutoSlugField(
         populate_from='title',

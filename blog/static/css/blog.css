@@ -1084,3 +1084,13 @@ div .post__body>p.post-body+p {
 .mb15 {
     margin-bottom: 15px;
 }
+
+picture > span > a {
+    color: #aaaaaa;
+}
+picture > span {
+    color: #aaaaaa;
+}
+picture > span > a:hover {
+    color: #aaaaaa;
+}

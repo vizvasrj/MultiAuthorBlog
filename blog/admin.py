@@ -1,6 +1,6 @@
 from django.contrib import admin
 from taggit.models import Tag
-from .models import Post, Comment, MyCustomTag
+from .models import Post, Comment, MyCustomTag, Image
 
 # Register your models here.
 @admin.register(Post)
@@ -23,3 +23,4 @@ admin.site.register(MyCustomTag)
 from .models import TagNameValue, TagContact
 admin.site.register(TagNameValue)
 admin.site.register(TagContact)
+admin.site.register(Image)

@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
 
     # 3rd party
+    'storages',
     'corsheaders',
     'crispy_forms',
     'colorfield',
@@ -525,3 +526,42 @@ REST_FRAMEWORK = {
     },
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
+
+
+# DATA_UPLOAD_MAX_NUMBER_FIELDS = 10555
+# if filepath.is_file():
+#     from .secret import (
+#         DEFAULT_FILE_STORAGE,
+#         # STATICFILES_STORAGE,
+#         LINODE_BUCKET,
+#         LINODE_BUCKET_REGION,
+#         LINODE_BUCKET_ACCESS_KEY,
+#         LINODE_BUCKET_SECRET_KEY,
+#         AWS_S3_ENDPOINT_URL,
+#         AWS_ACCESS_KEY_ID,
+#         AWS_SECRET_ACCESS_KEY,
+#         AWS_S3_REGION_NAME,
+#         AWS_S3_USE_SSL,
+#         AWS_STORAGE_BUCKET_NAME,
+#     )
+
+#     DEFAULT_FILE_STORAGE = DEFAULT_FILE_STORAGE
+#     # STATICFILES_STORAGE = STATICFILES_STORAGE
+#     LINODE_BUCKET = LINODE_BUCKET
+#     LINODE_BUCKET_REGION = LINODE_BUCKET_REGION
+#     LINODE_BUCKET_ACCESS_KEY = LINODE_BUCKET_ACCESS_KEY
+#     LINODE_BUCKET_SECRET_KEY = LINODE_BUCKET_SECRET_KEY
+#     AWS_S3_ENDPOINT_URL = AWS_S3_ENDPOINT_URL
+#     AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+#     AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+#     AWS_S3_REGION_NAME = AWS_S3_REGION_NAME
+#     AWS_S3_USE_SSL = AWS_S3_USE_SSL
+#     AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
+# else:
+#     pass
+
+
+# AWS_QUERYSTRING_AUTH = False
+# AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+# AWS_S3_SECURE_URLS = False
+# # AWS_S3_CUSTOM_DOMAIN = 'audiospeech.eu-central-1.linodeobjects.com'

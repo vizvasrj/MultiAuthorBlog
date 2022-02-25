@@ -165,11 +165,22 @@
                         
                         {% if t_post.cover %}
                             {% thumbnail t_post.cover "800x400" crop="100%" as im %}
-                        {% else %}
+                            <img class="mb-3" width="100%" src="{{im.url}}" alt="">
+                        {% elif post.cover %}
                             {% thumbnail post.cover "800x400" crop="100%" as im %}
+                            <img class="mb-3" width="100%" src="{{im.url}}" alt="">
+                        {% elif post.cover2.image %}
+                            {% thumbnail post.cover2.image "883x341" crop="100%" as im %}
+                            <picture style="display: block; font-size: 10px;">
+                                <img width="200px" class="col-sm-12 post-image" src="{{im.url}}" alt="" />
+                                <span style="display: block; text-align: center;">Photo by <a href="{{post.cover2.creator_url}}?utm_source=vizvasrj%20uploader&utm_medium=referral">{{post.cover2.creator_name}}</a> on <a href="https://unsplash.com/?utm_source=vizvasrj%20uploader&utm_medium=referral">Unsplash</a></span>
+
+                            </picture>
+                        {% else %}
+
                         {% endif %}
                             
-                        <img class="mb-3" width="100%" src="{{im.url}}" alt="">
+                        
                         <div class="post-body">
 
                                 {{ t_post.body|xssprotect }}
