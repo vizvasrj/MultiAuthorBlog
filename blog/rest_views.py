@@ -413,7 +413,13 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
         # print(stringlist)
         set_list = set(stringlist)
         # print(set_list)
-        p = Post.objects.filter(cover2=None).order_by("?").filter(~Q(id__in=set_list))[0]
+        p = Post.objects.filter(
+            # cover2=None
+            ).order_by(
+                "-created"
+            ).filter(
+                # ~Q(id__in=set_list)
+            )[0]
         # print(p)
         r.rpush("tpostt2", p.id)
         queryset = Post.objects.all().filter(id=p.id)
