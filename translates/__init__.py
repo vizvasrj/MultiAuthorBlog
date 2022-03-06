@@ -19,7 +19,6 @@
 # __all__ = [
 #     "ArabicTranslatedPost",
 #     "HindiTranslatedPost"
-#     "ArabicTranslatedPost"
 #     "ChineseTranslatedPost"
 #     "FilipinoTranslatedPost"
 #     "FrenchTranslatedPost"

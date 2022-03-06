@@ -91,6 +91,7 @@ INSTALLED_APPS = [
     'publication',
     # 'chat',
     'scrape',
+    'mytag',
 
     # translates
     'translates.hindi_translate',

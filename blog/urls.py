@@ -56,7 +56,10 @@ urlpatterns = [
         'random-post/',
         rest_views.RandomPostCRUDView.as_view(),
         name='random-post'
-        )
-    
+        ),
+    path('random-audio/',
+        rest_views.AudioPostCRUDView.as_view(),
+        name='random-audio'
+        ),
 
 ]

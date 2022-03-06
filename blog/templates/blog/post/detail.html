@@ -111,10 +111,10 @@
                                 {{ t_post.title }}
                         
                         </h1>
-                        
-                        {% if t_post.audio %}
+                        {{t_post.audio_url}}
+                        {% if t_post.audio_url %}
                             <audio controls id="audio1" style="width: 100%;">
-                                <source id='audio2' src="{{t_post.audio.url}}" type="audio/mpeg">
+                                <source id='audio2' src="{{t_post.audio_url}}" type="audio/mpeg">
                               Your browser does not support the audio element.
                               </audio>
                         {% endif %}
@@ -187,7 +187,7 @@
                           
                         </div>
                         <div class="">
-                            {% for tag in post.tags.all %}
+                            {% for tag in t_tags %}
                             <a href="{{ tag.get_absolute_url }}" class="tags-item
                                 {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bgredlite---' %}">
                                 #{{ tag }}

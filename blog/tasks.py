@@ -19,7 +19,8 @@ from translates.italian_translate.tasks import italian_translate
 from translates.english_translate.tasks import english_translate
 
 from django.contrib.auth.models import User
-from .models import MyCustomTag, TagNameValue, Post
+from .models import Post
+from mytag.models import MyCustomTag, TagNameValue
 from django.db.models import F
 
 from bs4 import BeautifulSoup

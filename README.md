@@ -21,4 +21,17 @@ well this is my first project from Django. and i am currently developing this we
  - Based on follow recommended post 
  - And lots of it, 
 
+***My special Thanks To*** for making my task little bit easy
+ - stackoverflow.com, 
+ - google.com
+ - BeautifulSoup
+ - html.parser
+ - deep_translator
+ - google_tts 
+ - Django
+ - bootstrap
+ - youtube.com
+ - udemy.com
+ - torrent
+ - 
 

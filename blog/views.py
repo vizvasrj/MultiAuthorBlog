@@ -36,14 +36,18 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # local
-from .models import MyCustomTag, Post, Comment, TagContact
+from .models import Post, Comment
+from mytag.models import MyCustomTag, TagContact
 from .forms import (
     PostForm, CommentForm, SearchForm,
     )
+from .utils import language_in_post_detail, language_in_post_tags
 # 3rd party
 from taggit.models import Tag
 import redis
 from nltk.corpus import wordnet
+from django.utils import translation
+import requests
 
 
 from django.core.cache import cache
@@ -149,8 +153,6 @@ def post_list(request, tag_slug=None):
 #             value=1
 #         )
 
-from django.utils import translation
-import requests
 
 def post_detail(request, slug, author):
     # FOr IP
@@ -183,106 +185,9 @@ def post_detail(request, slug, author):
         # print(f'{slug} get from cache')
         pass
     # r.set(f"idid_post", bytes(post))
-    if language == 'en':
-        if post.english_translated_post.last():
-            t_post = post.english_translated_post.last()
-        else:
-            t_post = post
 
-    elif language == 'zh-hans':
-        if post.chinese_translated_post.last():
-            t_post = post.chinese_translated_post.last()
-        else:
-            t_post = post
-
-    elif language == 'hi':
-        if post.hindi_translated_post.last():
-            t_post = post.hindi_translated_post.last()
-        else:
-            t_post = post
-        
-    elif language == 'ar':
-        if post.arabic_translated_post.last():
-            t_post = post.arabic_translated_post.last()
-        else:
-            t_post = post
-
-    elif language == 'ta':
-        if post.filipino_translated_post.last():
-            t_post = post.filipino_translated_post.last()
-        else:
-            t_post = post
-
-    elif language == 'fr':
-        if post.french_translated_post.last():
-            t_post = post.french_translated_post.last()
-        else:
-            t_post = post
-    
-    elif language == 'de':
-        if post.german_translated_post.last():
-            t_post = post.german_translated_post.last()
-        else:
-            t_post = post
-    
-    elif language == 'id':
-        if post.indonesian_translated_post.last():
-            t_post = post.indonesian_translated_post.last()
-        else:
-            t_post = post
-    
-    elif language == 'it':
-        if post.italian_translated_post.last():
-            t_post = post.italian_translated_post.last()
-        else:
-            t_post = post
-
-    elif language == 'ja':
-        if post.japanese_translated_post.last():
-            t_post = post.japanese_translated_post.last()
-        else:
-            t_post = post
-    
-    elif language == 'ko':
-        if post.korean_translated_post.last():
-            t_post = post.korean_translated_post.last()
-        else:
-            t_post = post
-    
-    elif language == 'nn':
-        if post.norwegian_translated_post.last():
-            t_post = post.norwegian_translated_post.last()
-        else:
-            t_post = post
-
-    elif language == 'pt':
-        if post.portuguese_translated_post.last():
-            t_post = post.portuguese_translated_post.last()
-        else:
-            t_post = post
-
-    elif language == 'ru':
-        if post.russian_translated_post.last():
-            t_post = post.russian_translated_post.last()
-        else:
-            t_post = post
-    
-    elif language == 'es':
-        if post.spanish_translated_post.last():
-            t_post = post.spanish_translated_post.last()
-        else:
-            t_post = post
-    
-    elif language == 'vi':
-        if post.vietnamese_translated_post.last():
-            t_post = post.vietnamese_translated_post.last()
-        else:
-            t_post = post
-    # I know it will never get inside this else statement
-    else:
-        # print('inside else')
-        t_post = post
-
+    t_post = language_in_post_detail(post=post, language=language)
+    t_tags = language_in_post_tags(post, language)
     # print(t_post.title)
     # print(t_post)
     # IP
@@ -340,6 +245,7 @@ def post_detail(request, slug, author):
             'similar_posts': similar_posts,
             'total_views': total_views,
             't_post': t_post,
+            't_tags': t_tags,
         }
     )
 
@@ -737,7 +643,6 @@ def translate_listview(request, post):
 #         else:
 #             form = OtherEditForm()
 
-from .models import TagNameValue
 import enchant
 
 def tags_posts_lists(request, slug):

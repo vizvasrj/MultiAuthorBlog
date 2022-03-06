@@ -13,7 +13,18 @@ from unidecode import unidecode
 
 # Create your models here.
 from blog.models import Post
+from mytag.models import MyCustomTag
 
+class HindiTranslatedTag(models.Model):
+    tag = models.ForeignKey(
+        MyCustomTag,
+        related_name='hindi_tags',
+        on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.name
 
 
 
@@ -62,8 +73,13 @@ class HindiTranslatedPost(models.Model):
     translate = models.BooleanField(
         default=True
     )
+    audio_url = models.URLField(
+        blank=True,
+        null=True
+    )
     class Meta:
         ordering = ['-updated']
+        get_latest_by = ['created']
 
     def __str__(self):
         return self.title

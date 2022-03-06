@@ -5,13 +5,13 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.db.models import Q
-from django.db.models.signals import m2m_changed, post_save, pre_save
-from django.dispatch import receiver
-from django.core.mail import send_mail
-from django.contrib.sites.models import Site
-from django.utils.text import slugify
-from django.core.signals import request_finished
-from django.core.validators import FileExtensionValidator
+# from django.db.models.signals import m2m_changed, post_save, pre_save
+# from django.dispatch import receiver
+# from django.core.mail import send_mail
+# from django.contrib.sites.models import Site
+# from django.utils.text import slugify
+# from django.core.signals import request_finished
+# from django.core.validators import FileExtensionValidator
 from django.utils.translation import gettext_lazy as _
 
 
@@ -27,11 +27,10 @@ from taggit_autosuggest.managers import TaggableManager
 # 
 # for slug to change it name for diffrent 
 # language i am using unidecode
-from unidecode import unidecode
-from taggit.models import  TagBase, GenericTaggedItemBase, ItemBase, TaggedItemBase
-from crum import get_current_user
-
-
+# from unidecode import unidecode
+# from taggit.models import  TagBase, GenericTaggedItemBase, ItemBase, TaggedItemBase
+# from crum import get_current_user
+from mytag.models import TaggedWhatever, MyCustomTag
 
 now = timezone.now()
 
@@ -108,72 +107,6 @@ class Category(models.Model):
         ordering = ('-created',)
 
 
-class MyCustomTag(TagBase):
-    name = models.CharField(max_length=50)
-    slug = AutoSlugField(populate_from=name)
-    creator = models.ForeignKey(
-        User,
-        related_name='tag_creators',
-        on_delete=models.PROTECT
-    )
-    original = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    followers = models.ManyToManyField(
-        User,
-        through='TagContact',
-        related_name='t_following',
-        symmetrical=False
-    )
-
-    class Meta:
-        verbose_name = "Tag"
-        verbose_name_plural = "Tags"
-
-    # def save(self, *args, **kwargs):
-    #     user = get_current_user().id
-    #     user = User.objects.get(id=user)
-    #     # if not self.pk:
-    #     self.creator = user
-    #     super(MyCustomTag, self).save(*args, **kwargs)
-
-    def get_absolute_url(self):
-        return reverse("tags_posts_lists", kwargs={"slug": self.slug})
-
-class TagContact(models.Model):
-    user_from = models.ForeignKey(
-        User,
-        related_name='t_from_user',
-        on_delete=models.CASCADE
-    )
-    to_tag = models.ForeignKey(
-        MyCustomTag,
-        related_name='to_tag',
-        on_delete=models.CASCADE
-    )
-    created = models.DateTimeField(
-        auto_now_add=True,
-        db_index=True
-    )
-
-    class Meta:
-        ordering = ('-created',)
-
-    def __str__(self):
-        return f'{self.user_from} follows {self.to_tag}'
-
-
-class TaggedWhatever(TaggedItemBase, GenericTaggedItemBase):
-    # TaggedWhatever can also extend TaggedItemBase or a combination of
-    # both TaggedItemBase and GenericTaggedItemBase. GenericTaggedItemBase
-    # allows using the same tag for different kinds of objects, in this
-    # example Food and Drink.
-
-    # Here is where you provide your custom Tag class.
-    tag = models.ForeignKey(
-        MyCustomTag,
-        on_delete=models.CASCADE,
-        related_name="blogs_posts_items",
-    )
     
 from django.utils.translation import activate
 
@@ -218,14 +151,14 @@ class Post(models.Model):
     title = models.CharField(_('title'), max_length=256)
     category = models.ForeignKey(
         Category,
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         blank=True,
         null=True,
         verbose_name=_('category')
     )
     publication = models.ForeignKey(
         Pub,
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         related_name='posts',
         blank=True,
         null=True,
@@ -238,7 +171,7 @@ class Post(models.Model):
     )
     cover2 = models.ForeignKey(
         Image,
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         related_name='im_posts',
         blank=True, null=True,
         verbose_name=_('cover image')
@@ -251,7 +184,7 @@ class Post(models.Model):
     audio = models.FileField(blank=True, null=True)
     author = models.ForeignKey(
         Profile,
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         related_name='blog_posts',
         verbose_name=_('author')
     )
@@ -313,6 +246,8 @@ class Post(models.Model):
     
     class Meta:
         ordering = ('-publish',)
+        get_latest_by = ['id']
+
 
     def __str__(self):
         return self.title
@@ -491,19 +426,31 @@ class SharedOrOtherEdit(models.Model):
 
 
 
-class TagNameValue(models.Model):
-
-    tag = models.ForeignKey(
-        MyCustomTag,  
-        on_delete=models.CASCADE,
-        related_name='tags_name'
-    )
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='users_tag'
-    )
-    value = models.IntegerField(default=0)
+class Occurrence(models.Model):
+    number = models.IntegerField(unique=True)
 
     def __str__(self):
-        return f'{self.tag} in {self.user}'
+        return str(self.number)
+
+
+class TagPostOccurrenceLen(models.Model):
+    tag_count = models.ForeignKey(
+        Occurrence,
+        on_delete=models.CASCADE,
+        related_name='nums'
+    )
+    tag = models.ForeignKey(
+        MyCustomTag,
+        on_delete=models.CASCADE,
+        related_name='post_occurrence'
+    )
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='tag_occurence'
+    )
+    def __str__(self):
+        return f'[{self.tag_count} X {self.tag}] in: {self.post.id}'
+
+# Get Methods
+# Post.objects.get(id=5).posts_occuraces.get(tag__name="sherlock").tag_count.number

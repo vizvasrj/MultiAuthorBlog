@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 from .serializers import FRTPostSerializer
-from translates.chinese_translate.models import ChineseTranslatedPost
+from translates.indonesian_translate.models import IndonesianTranslatedPost
 
 from rest_framework import generics, status, permissions
 from rest_framework.exceptions import (
@@ -48,7 +48,7 @@ def auth(request):
 
 # Create your views here.
 class FRTPostView(generics.ListCreateAPIView):
-    queryset = ChineseTranslatedPost.objects.all()
+    queryset = IndonesianTranslatedPost.objects.all()
     serializer_class = FRTPostSerializer
 
     def get(self, request, *args, **kwargs):
@@ -79,7 +79,7 @@ class FRTPostView(generics.ListCreateAPIView):
 
 
 class FRTPostDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = ChineseTranslatedPost.objects.all()
+    queryset = IndonesianTranslatedPost.objects.all()
     serializer_class = FRTPostSerializer
     name = 'fr-post-list'
     permission_class = (
@@ -114,7 +114,7 @@ class FRTPostDetail(generics.RetrieveUpdateDestroyAPIView):
         path_id = instance.id
         data = serializer.validated_data
         post_id = data['post']['id']
-        p = ChineseTranslatedPost.objects.get(id=path_id)
+        p = IndonesianTranslatedPost.objects.get(id=path_id)
         p.edited_by.add(user)
         post = Post.objects.get(id=post_id)
         serializer.save(post=post)

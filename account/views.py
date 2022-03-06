@@ -35,7 +35,8 @@ from .forms import (
     LoginForm, UserDeleteForm, UserRegistrationForm,
     UserEditForm, ProfileEditForm
 )
-from blog.models import Post, TagNameValue
+from blog.models import Post
+from mytag.models import TagNameValue
 from publication.models import Publication
 
 from django.utils import translation

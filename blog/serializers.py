@@ -6,8 +6,9 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 from blog.models import (
-    Post, MyCustomTag, Category, Image
+    Post, Category, Image
 )
+from mytag.models import MyCustomTag
 from translates.hindi_translate.models import HindiTranslatedPost
 from translates.arabic_translate.models import ArabicTranslatedPost
 from translates.chinese_translate.models import ChineseTranslatedPost
@@ -250,4 +251,153 @@ class PostListSerializer(serializers.Serializer):
     class Meta:
         model = Post
         fields = ('id', 'title', 'body', 'status',)
+
+
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+class ENpost(serializers.ModelSerializer):
+    class Meta:
+        model = EnglishTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class ARpost(serializers.ModelSerializer):
+    class Meta:
+        model = ArabicTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class CNpost(serializers.ModelSerializer):
+    class Meta:
+        model = ChineseTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class TApost(serializers.ModelSerializer):
+    class Meta:
+        model = FilipinoTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class FRpost(serializers.ModelSerializer):
+    class Meta:
+        model = FrenchTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class DEpost(serializers.ModelSerializer):
+    class Meta:
+        model = GermanTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class HIpost(serializers.ModelSerializer):
+    class Meta:
+        model = HindiTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class IDpost(serializers.ModelSerializer):
+    class Meta:
+        model = IndonesianTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class ITpost(serializers.ModelSerializer):
+    class Meta:
+        model = ItalianTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class JApost(serializers.ModelSerializer):
+    class Meta:
+        model = JapaneseTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class KOpost(serializers.ModelSerializer):
+    class Meta:
+        model = KoreanTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class NNpost(serializers.ModelSerializer):
+    class Meta:
+        model = NorwegianTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class PTpost(serializers.ModelSerializer):
+    class Meta:
+        model = PortugueseTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class RUpost(serializers.ModelSerializer):
+    class Meta:
+        model = RussianTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class ESpost(serializers.ModelSerializer):
+    class Meta:
+        model = SpanishTranslatedPost
+        fields = ('id', 'audio_url')
+
+
+class VIaudio(serializers.ModelSerializer):
+    class Meta:
+        model = VietnameseTranslatedPost
+        fields = ('id', 'audio_url')
+
+class OnlyAudioShow(serializers.ModelSerializer):
+    title = serializers.CharField(
+        max_length=256
+    )
+    body = serializers.CharField()
+    english_translated_post = ENpost(required=False, many=True, read_only=True)
+    arabic_translated_post = ARpost(required=False, many=True, read_only=True)
+    chinese_translated_post = CNpost(required=False, many=True, read_only=True)
+    filipino_translated_post = TApost(required=False, many=True, read_only=True)
+    french_translated_post = FRpost(required=False, many=True, read_only=True)
+    german_translated_post = DEpost(required=False, many=True, read_only=True)
+    hindi_translated_post = HIpost(required=False, many=True, read_only=True)
+    indonesian_translated_post = IDpost(required=False, many=True, read_only=True)
+    italian_translated_post = ITpost(required=False, many=True, read_only=True)
+    japanese_translated_post = JApost(required=False, many=True, read_only=True)
+    korean_translated_post = KOpost(required=False, many=True, read_only=True)
+    norwegian_translated_post = NNpost(required=False, many=True, read_only=True)
+    portuguese_translated_post = PTpost(required=False, many=True, read_only=True)
+    russian_translated_post = RUpost(required=False, many=True, read_only=True)
+    spanish_translated_post = ESpost(required=False, many=True, read_only=True)
+
+    vietnamese_translated_post = VIaudio(required=False, many=True, read_only=True)
+    t = serializers.CharField(
+        max_length=20,
+        allow_null=True,
+        required=False,
+    )
+    class Meta:
+        model = Post
+        fields = (
+            'id', 
+            'title', 
+            'body', 
+            'english_translated_post',
+            'arabic_translated_post',
+            'chinese_translated_post',
+            'filipino_translated_post',
+            'french_translated_post',
+            'german_translated_post',
+            'hindi_translated_post',
+            'indonesian_translated_post',
+            'italian_translated_post',
+            'japanese_translated_post',
+            'korean_translated_post',
+            'norwegian_translated_post',
+            'portuguese_translated_post',
+            'russian_translated_post',
+            'spanish_translated_post',
+            'vietnamese_translated_post',
+            't',
+            )
 
