@@ -16,7 +16,9 @@ from .serializers import OnlyAudioShow, PostCURDSerializer, PostSerializer
 from rest_framework.exceptions import (
     AuthenticationFailed, PermissionDenied, ValidationError,
     
+    
 )
+from rest_framework.exceptions import APIException
 import jwt
 from rest_framework import status
 from django.contrib.auth.middleware import get_user
@@ -588,6 +590,12 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
 
 
 """Audio are here"""
+# Custome execption
+class Success(APIException):
+    status_code = status.HTTP_202_ACCEPTED
+    default_detail = 'Success .'
+    default_code = 'success'
+
 
 class AudioPostCRUDView(generics.ListCreateAPIView):
     query = Post.aupm.all()
@@ -678,152 +686,78 @@ class AudioPostDetail(generics.RetrieveUpdateDestroyAPIView):
     )
 
     def update(self, request, *args, **kwargs):
-        partial = kwargs.pop('partial', False)
         instance = self.get_object()
-        t1 = instance.t
-        try:
-            t2 = request.data['t']
-        except KeyError:
-            raise ValidationError("Key Error try inputing 't'")
-        author = request.user
-        if str(request.user) != str(instance.author):
-            author = instance.author
-            try:
-                if request.data['title'] != instance.title or request.data['body'] != instance.body or request.data['status'] != instance.status:
-                    raise PermissionDenied("you dont have permissions")
-            except KeyError:
-                pass
-        if t1 != t2:
-            title = instance.title
-            body = instance.body
-            status = instance.status
-            author = instance.author
-            data_req = request.data['t']
-            audio_urls = request.data['audio_url']
-            print(colored(audio_urls, 'green'), 'auio_url')
-            qq = json.loads(audio_urls)
-            print(colored(qq, 'red'))
-            for x in qq:
-                print(x)
-                l_key = list(x.keys())[0]
-                print(l_key)
-                l_url = list(x.values())[0]
-                print(l_url)
+        audio_urls = request.data['audio_url']
+        qq = json.loads(audio_urls)
+        for x in qq:
+            l_key = list(x.keys())[0]
+            print(l_key)
+            l_url = list(x.values())[0]
 
-                if l_key == 'ja':
-                    i_tr = instance.japanese_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'en':
-                    i_tr = instance.english_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'ar':
-                    i_tr = instance.arabic_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'zh_CN':
-                    i_tr = instance.chinese_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'tl':
-                    i_tr = instance.filipino_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'fr':
-                    i_tr = instance.french_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'de':
-                    i_tr = instance.german_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'hi':
-                    i_tr = instance.hindi_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'id':
-                    i_tr = instance.indonesian_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'it':
-                    i_tr = instance.italian_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'ko':
-                    i_tr = instance.korean_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'no':
-                    i_tr = instance.norwegian_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'pt':
-                    i_tr = instance.portuguese_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'ru':
-                    i_tr = instance.russian_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                elif l_key == 'es':
-                    i_tr = instance.spanish_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
-                
-                elif l_key == 'vi':
-                    i_tr = instance.vietnamese_translated_post.latest()
-                    i_tr.audio_url = l_url
-                    i_tr.save()
+            if l_key == 'ja':
+                i_tr = instance.japanese_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'en':
+                i_tr = instance.english_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'ar':
+                i_tr = instance.arabic_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'zh_CN':
+                i_tr = instance.chinese_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'tl':
+                i_tr = instance.filipino_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'fr':
+                i_tr = instance.french_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'de':
+                i_tr = instance.german_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'hi':
+                i_tr = instance.hindi_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'id':
+                i_tr = instance.indonesian_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'it':
+                i_tr = instance.italian_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'ko':
+                i_tr = instance.korean_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'no':
+                i_tr = instance.norwegian_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'pt':
+                i_tr = instance.portuguese_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'ru':
+                i_tr = instance.russian_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            elif l_key == 'es':
+                i_tr = instance.spanish_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
+            
+            elif l_key == 'vi':
+                i_tr = instance.vietnamese_translated_post.latest()
+                i_tr.audio_url = l_url
+                i_tr.save()
 
-            data_ser = {
-                "title": title, 
-                "body": body, 
-                "t": data_req,
-                }
-            json_d = data_ser
-        elif t1 == t2:
-            json_d = request.data
-        elif t2 == []:
-            json_d = request.data
-        serializer = self.get_serializer(instance, data=json_d, partial=partial)
-
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer, author=author)
-
-        if getattr(instance, '_prefetched_objects_cache', None):
-            # If 'prefetch_related' has been applied to a queryset, we need to
-            # forcibly invalidate the prefetch cache on the instance.
-            instance._prefetched_objects_cache = {}
-
-        return Response(serializer.data)
-
-    def perform_update(self, serializer, author):
-        user = author
-        user = Profile.objects.get(user__username=user)
-        serializer.save(author=user)
-
-    def partial_update(self, request, *args, **kwargs):
-        kwargs['partial'] = True
-        return self.update(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        user = auth(request=request)
-        if user:
-            return self.update(request, *args, **kwargs)
-
-
-
-    def patch(self, request, *args, **kwargs):
-        user = auth(request=request)
-        if user:
-            return self.partial_update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        user = auth(request=request)
-        instance = self.get_object()
-        author = instance.author
-        if str(user) == str(author):
-            return self.destroy(request, *args, **kwargs)
-        else:
-            raise PermissionDenied("You are not authorized to delete it.")
+        raise Success("Success")

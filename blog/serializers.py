@@ -351,9 +351,9 @@ class VIaudio(serializers.ModelSerializer):
 
 class OnlyAudioShow(serializers.ModelSerializer):
     title = serializers.CharField(
-        max_length=256
+        max_length=256, read_only=True
     )
-    body = serializers.CharField()
+    body = serializers.CharField(read_only=True)
     english_translated_post = ENpost(required=False, many=True, read_only=True)
     arabic_translated_post = ARpost(required=False, many=True, read_only=True)
     chinese_translated_post = CNpost(required=False, many=True, read_only=True)
