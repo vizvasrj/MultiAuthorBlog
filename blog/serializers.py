@@ -1,8 +1,3 @@
-from tokenize import blank_re
-from unicodedata import category
-from unittest.util import _MAX_LENGTH
-from django.http import request
-from django.contrib.auth.models import User
 
 from rest_framework import serializers
 from blog.models import (

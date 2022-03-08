@@ -23,7 +23,6 @@ import jwt
 from rest_framework import status
 from django.contrib.auth.middleware import get_user
 from .permissions import IsOwnerOrReadOnly
-from rest_framework.views import APIView
 from termcolor import colored
 from django.contrib.auth.models import AnonymousUser
 
@@ -529,7 +528,12 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
         if request.user != AnonymousUser():
             pass
         else:
-            raise AuthenticationFailed("Login again")
+            raise AuthenticationFailed(
+                reverse(
+                    'api-login',
+                    request=request
+                )            
+            )
         queryset = Post.aupm.all().filter(
             cover2=None
         ).order_by("?")[0:1]
@@ -547,7 +551,7 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
             ).order_by(
                 "-created"
             ).filter(
-                ~Q(id__in=set_list)
+                # ~Q(id__in=set_list)
             )[0]
         # print(p)
         r.sadd("usedone", p.id)
