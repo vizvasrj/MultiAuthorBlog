@@ -540,21 +540,21 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
 
         p = queryset[0]
         # p = Post.objects.all().order_by("-created")[0]
-        rp = r.smembers("usedone")
+        rp = r.smembers("usedone2")
         # print(rp)
         stringlist = [x.decode("utf-8") for x in rp]
         # print(stringlist)
         set_list = set(stringlist)
         # print(set_list)
         p = Post.objects.filter(
-            cover2=None
+            # cover2=None
             ).order_by(
                 "-created"
             ).filter(
                 ~Q(id__in=set_list)
             )[0]
         # print(p)
-        r.sadd("usedone", p.id)
+        r.sadd("usedone2", p.id)
         queryset = Post.objects.all().filter(id=p.id)
         
         page = self.paginate_queryset(queryset)
