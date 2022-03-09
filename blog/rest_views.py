@@ -551,7 +551,7 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
             ).order_by(
                 "-created"
             ).filter(
-                # ~Q(id__in=set_list)
+                ~Q(id__in=set_list)
             )[0]
         # print(p)
         r.sadd("usedone", p.id)
