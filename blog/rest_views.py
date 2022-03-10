@@ -540,7 +540,7 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
 
         p = queryset[0]
         # p = Post.objects.all().order_by("-created")[0]
-        rp = r.smembers("usedone4")
+        rp = r.smembers("usedone5")
         # print(rp)
         stringlist = [x.decode("utf-8") for x in rp]
         # print(stringlist)
@@ -554,7 +554,7 @@ class RandomPostCRUDView(generics.ListCreateAPIView):
                 ~Q(id__in=set_list)
             )[0]
         # print(p)
-        r.sadd("usedone4", p.id)
+        r.sadd("usedone5", p.id)
         queryset = Post.objects.all().filter(id=p.id)
         
         page = self.paginate_queryset(queryset)
@@ -697,70 +697,86 @@ class AudioPostDetail(generics.RetrieveUpdateDestroyAPIView):
             l_key = list(x.keys())[0]
             print(l_key)
             l_url = list(x.values())[0]
-
+            
             if l_key == 'ja':
                 i_tr = instance.japanese_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'en':
                 i_tr = instance.english_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'ar':
                 i_tr = instance.arabic_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'zh_CN':
                 i_tr = instance.chinese_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'tl':
                 i_tr = instance.filipino_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'fr':
                 i_tr = instance.french_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'de':
                 i_tr = instance.german_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'hi':
                 i_tr = instance.hindi_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'id':
                 i_tr = instance.indonesian_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'it':
                 i_tr = instance.italian_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'ko':
                 i_tr = instance.korean_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'no':
                 i_tr = instance.norwegian_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'pt':
                 i_tr = instance.portuguese_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'ru':
                 i_tr = instance.russian_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             elif l_key == 'es':
                 i_tr = instance.spanish_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
             
             elif l_key == 'vi':
                 i_tr = instance.vietnamese_translated_post.latest()
+                i_tr.audio_url = None
                 i_tr.audio_url = l_url
                 i_tr.save()
 
