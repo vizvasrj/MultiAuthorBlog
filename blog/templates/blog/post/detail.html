@@ -111,7 +111,6 @@
                                 {{ t_post.title }}
                         
                         </h1>
-                        {{t_post.audio_url}}
                         {% if t_post.audio_url %}
                             <audio controls id="audio1" style="width: 100%;">
                                 <source id='audio2' src="{{t_post.audio_url}}" type="audio/mpeg">
@@ -120,9 +119,13 @@
                         {% endif %}
                               
                               {% if t_post.author != post.author %}
-                                  Helped by: {{t_post.author}}
+                                  Helped by: 
+                                  {% for x in t_post.edited_by.all %}
+                                      <a href="{% url 'user_detail' x %}">{{x}}</a>,
+                                  {% endfor %}
+                                      
                               {% endif %}
-                                  
+                              <br>    
                         {% if t_post.post %}
                             <a href="/{{ LANGUAGE_CODE }}/blog/translate/update/{{ t_post.id }}/{{ post.id }}">{% trans 'edit translated' %}</a>
                         {% endif %}
