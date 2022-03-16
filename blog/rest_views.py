@@ -627,7 +627,7 @@ class AudioPostCRUDView(generics.ListCreateAPIView):
 
         p = queryset[0]
         # p = Post.objects.all().order_by("-created")[0]
-        rp = r.smembers("new2")
+        rp = r.smembers("new4")
         # print(rp)
         stringlist = [x.decode("utf-8") for x in rp]
         # print(stringlist)
@@ -641,7 +641,7 @@ class AudioPostCRUDView(generics.ListCreateAPIView):
                 ~Q(id__in=set_list)
             )[0]
         # print(p)
-        r.sadd("new2", p.id)
+        r.sadd("new4", p.id)
         queryset = Post.objects.all().filter(id=p.id)
         
         page = self.paginate_queryset(queryset)
