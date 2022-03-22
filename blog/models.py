@@ -13,6 +13,7 @@ from django.db.models import Q
 # from django.core.signals import request_finished
 # from django.core.validators import FileExtensionValidator
 from django.utils.translation import gettext_lazy as _
+from executing import Source
 
 
 # local
@@ -137,6 +138,17 @@ class Image(models.Model):
         return self.image.url
 
 
+class Sources(models.Model):
+    text = models.CharField(
+        max_length=256, null=True, blank=True)
+    url = models.CharField(
+        max_length=256, null=True, blank=True)
+
+    def __str__(self):
+        if self.text:
+            return self.text
+        else: 
+            return self.url
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -240,6 +252,11 @@ class Post(models.Model):
         max_length=20,
         default='None',
         blank=True, null=True
+    )
+    source = models.ManyToManyField(
+        Sources,
+        blank=True,
+        related_name='postsource'
     )
 
     

@@ -252,97 +252,97 @@ class PostListSerializer(serializers.Serializer):
 class ENpost(serializers.ModelSerializer):
     class Meta:
         model = EnglishTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class ARpost(serializers.ModelSerializer):
     class Meta:
         model = ArabicTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class CNpost(serializers.ModelSerializer):
     class Meta:
         model = ChineseTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class TApost(serializers.ModelSerializer):
     class Meta:
         model = FilipinoTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class FRpost(serializers.ModelSerializer):
     class Meta:
         model = FrenchTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class DEpost(serializers.ModelSerializer):
     class Meta:
         model = GermanTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class HIpost(serializers.ModelSerializer):
     class Meta:
         model = HindiTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class IDpost(serializers.ModelSerializer):
     class Meta:
         model = IndonesianTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class ITpost(serializers.ModelSerializer):
     class Meta:
         model = ItalianTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class JApost(serializers.ModelSerializer):
     class Meta:
         model = JapaneseTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class KOpost(serializers.ModelSerializer):
     class Meta:
         model = KoreanTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class NNpost(serializers.ModelSerializer):
     class Meta:
         model = NorwegianTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class PTpost(serializers.ModelSerializer):
     class Meta:
         model = PortugueseTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class RUpost(serializers.ModelSerializer):
     class Meta:
         model = RussianTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class ESpost(serializers.ModelSerializer):
     class Meta:
         model = SpanishTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 
 class VIaudio(serializers.ModelSerializer):
     class Meta:
         model = VietnameseTranslatedPost
-        fields = ('id', 'audio_url')
+        fields = ('id', 'audio_url', 'g_audio_url')
 
 class OnlyAudioShow(serializers.ModelSerializer):
     # title = serializers.CharField(
@@ -396,3 +396,7 @@ class OnlyAudioShow(serializers.ModelSerializer):
             't',
             )
 
+class SourcePostSerializer(serializers.Serializer):
+    text = serializers.CharField()
+
+    

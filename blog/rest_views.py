@@ -12,7 +12,7 @@ from rest_framework import authentication, permissions
 from rest_framework import generics
 from rest_framework.reverse import reverse 
 
-from .serializers import OnlyAudioShow, PostCURDSerializer, PostSerializer
+from .serializers import OnlyAudioShow, PostCURDSerializer, PostSerializer, SourcePostSerializer
 from rest_framework.exceptions import (
     AuthenticationFailed, PermissionDenied, ValidationError,
     
@@ -627,7 +627,7 @@ class AudioPostCRUDView(generics.ListCreateAPIView):
 
         p = queryset[0]
         # p = Post.objects.all().order_by("-created")[0]
-        rp = r.smembers("new4")
+        rp = r.smembers("new5")
         # print(rp)
         stringlist = [x.decode("utf-8") for x in rp]
         # print(stringlist)
@@ -641,7 +641,7 @@ class AudioPostCRUDView(generics.ListCreateAPIView):
                 ~Q(id__in=set_list)
             )[0]
         # print(p)
-        r.sadd("new4", p.id)
+        r.sadd("new5", p.id)
         queryset = Post.objects.all().filter(id=p.id)
         
         page = self.paginate_queryset(queryset)
@@ -799,84 +799,103 @@ class AudioPostDetail(generics.RetrieveUpdateDestroyAPIView):
         for x in qq:
             if x['ln'] == 'ja':
                 i_tr = instance.japanese_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'en':
                 i_tr = instance.english_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'ar':
                 i_tr = instance.arabic_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'zh_CN':
                 i_tr = instance.chinese_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'tl':
                 i_tr = instance.filipino_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'fr':
                 i_tr = instance.french_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'de':
                 i_tr = instance.german_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'hi':
                 i_tr = instance.hindi_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'id':
                 i_tr = instance.indonesian_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'it':
                 i_tr = instance.italian_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'ko':
                 i_tr = instance.korean_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'no':
                 i_tr = instance.norwegian_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'pt':
                 i_tr = instance.portuguese_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'ru':
                 i_tr = instance.russian_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             elif x['ln'] == 'es':
                 i_tr = instance.spanish_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
             
             elif x['ln'] == 'vi':
                 i_tr = instance.vietnamese_translated_post.latest()
-                i_tr.audio_url = None
-                i_tr.audio_url = x['url']
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
                 i_tr.save()
 
         raise Success("Success")
+
+
+# class SourcePostDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Post.objects.all()
+#     serializer_class = SourcePostSerializer
+#     name = 'audio-post-detail'
+#     permission_classes = (
+#         permissions.IsAuthenticatedOrReadOnly,
+#         # IsOwnerOrReadOnly
+#     )
+
+#     def update(self, request, *args, **kwargs):
+#         instance = self.get_object()
+#         audio_urls = request.data['sources']
+#         qq = json.loads(audio_urls)
+#         for
+
+
+#         raise Success("Success")

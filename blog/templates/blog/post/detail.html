@@ -9,6 +9,35 @@
 
 {% block title %} {{ t_post.title }} {% endblock %}
 {% block style %}
+.mydropdown {
+    position: static;
+    display: inline-block;
+  }
+  
+  .mydropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: inherit;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .mydropdown:hover .mydropdown-content {
+    display: block;
+  }
+  .p_source {
+    font-size: 10px;
+    text-decoration: underline tomato 3px solid;
+    }
+
+.sources {
+    border: 5px solid #18868880;
+    padding-right: 5px;
+    padding-left: 5px;
+
+}
 {% endblock %}
 
 
@@ -111,9 +140,17 @@
                                 {{ t_post.title }}
                         
                         </h1>
+                        {{t_post.audio_url}}
+                        {{t_post.g_audio_url}}
                         {% if t_post.audio_url %}
                             <audio controls id="audio1" style="width: 100%;">
                                 <source id='audio2' src="{{t_post.audio_url}}" type="audio/mpeg">
+                              Your browser does not support the audio element.
+                              </audio>
+                        {% endif %}
+                        {% if t_post.g_audio_url %}
+                            <audio controls id="audio1" style="width: 100%;">
+                                <source id='audio2' src="{{t_post.g_audio_url}}" type="audio/mpeg">
                               Your browser does not support the audio element.
                               </audio>
                         {% endif %}
@@ -189,6 +226,21 @@
                                 {{ t_post.body|xssprotect }}
                           
                         </div>
+                        
+                        {% if post.source.all %}
+                            <div class="source">
+                                <div class="mydropdown">
+                                    <span class="sources">{% trans 'Sources' %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="15" height="15" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1152 1792"><path fill="#188688" d="M1133 1043q31 30 14 69q-17 40-59 40H706l201 476q10 25 0 49t-34 35l-177 75q-25 10-49 0t-35-34l-191-452l-312 312q-19 19-45 19q-12 0-24-5q-40-17-40-59V64Q0 22 40 5q12-5 24-5q27 0 45 19z"/></svg>                                </span>
+                                    <div class="mydropdown-content">
+                                    {% for x in post.source.all %}
+                                        <li class="p_source">{{x.text}}</li>
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                            
                         <div class="">
                             {% for tag in t_tags %}
                             <a href="{{ tag.get_absolute_url }}" class="tags-item
@@ -205,6 +257,7 @@
                                             fill="currentColor" />
                                     </svg></strong> {{total_views}}
                             </div>
+
                         </div>
                     </div>
                 </div>

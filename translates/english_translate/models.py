@@ -77,6 +77,10 @@ class EnglishTranslatedPost(models.Model):
         blank=True,
         null=True
     )
+    g_audio_url = models.URLField(
+        blank=True,
+        null=True
+    )
     class Meta:
         ordering = ['-updated']
         get_latest_by = ['created']

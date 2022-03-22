@@ -1,7 +1,8 @@
+from curses.ascii import SO
 from django.contrib import admin
 from .models import (
     Post, Comment, Image,
-    Occurrence, TagPostOccurrenceLen    
+    Occurrence, Sources, TagPostOccurrenceLen    
 )
 
 # Register your models here.
@@ -24,3 +25,4 @@ class CommedntAdmin(admin.ModelAdmin):
 admin.site.register(Image)
 admin.site.register(Occurrence)
 admin.site.register(TagPostOccurrenceLen)
+admin.site.register(Sources)
