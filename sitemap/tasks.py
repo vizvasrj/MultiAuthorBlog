@@ -111,467 +111,467 @@ def onethousand(url, date, ln):
     return aa
 
 
-def sitemap_creator():
-    sdata = []
-    for x in range(Post.objects.all()[16000].id):
-        try:
-            post = Post.objects.get(id=x)
-            date = post.updated.strftime("%Y-%m-%d")
-            # date=f'{randint(2005,2025)}-{randint(1,12)}-{randint(1,28)}'
-            aburl = post.get_absolute_url()
-            url = aburl.split('/')[2:]
-            jurl = "/".join(url)
-            ln = get_code(post)
-            sitemap_url = onethousand(jurl, date, ln)
-            data = {
-                'url': sitemap_url
-            }
-            sdata.append(data)
-        except Post.DoesNotExist:
-            pass
+# def sitemap_creator():
+sdata = []
+for x in range(Post.objects.all()[16000].id):
+    try:
+        post = Post.objects.get(id=x)
+        date = post.updated.strftime("%Y-%m-%d")
+        # date=f'{randint(2005,2025)}-{randint(1,12)}-{randint(1,28)}'
+        aburl = post.get_absolute_url()
+        url = aburl.split('/')[2:]
+        jurl = "/".join(url)
+        ln = get_code(post)
+        sitemap_url = onethousand(jurl, date, ln)
+        data = {
+            'url': sitemap_url
+        }
+        sdata.append(data)
+    except Post.DoesNotExist:
+        pass
 
-    # sdata.sort(key=lambda x: x["date"], reverse=True)
+# sdata.sort(key=lambda x: x["date"], reverse=True)
 
-    start_bracket = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-    end_bracket = '</urlset>'
-    ar = []
-    zh_hans = []
-    en = []
-    ta = []
-    fr = []
-    de = []
-    hi = []
-    id = []
-    it = []
-    ja = []
-    ko = []
-    nn = []
-    pt = []
-    ru = []
-    es = []
-    vi = []
+start_bracket = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+end_bracket = '</urlset>'
+ar = []
+zh_hans = []
+en = []
+ta = []
+fr = []
+de = []
+hi = []
+id = []
+it = []
+ja = []
+ko = []
+nn = []
+pt = []
+ru = []
+es = []
+vi = []
 
-    start_time = time.time()
-    for x in sdata:
-        for y in x["url"]:
-            if y["lan"] == "ar":
-                data = {"date": y["date"], "surl": y["url"]}
-                ar.append(data)
-            if y["lan"] == "zh-hans":
-                data = {"date": y["date"], "surl": y["url"]}
-                zh_hans.append(data)
-            if y["lan"] == "en":
-                data = {"date": y["date"], "surl": y["url"]}
-                en.append(data)
-            if y["lan"] == "ta":
-                data = {"date": y["date"], "surl": y["url"]}
-                ta.append(data)
-            if y["lan"] == "fr":
-                data = {"date": y["date"], "surl": y["url"]}
-                fr.append(data)
-            if y["lan"] == "de":
-                data = {"date": y["date"], "surl": y["url"]}
-                de.append(data)
-            if y["lan"] == "hi":
-                data = {"date": y["date"], "surl": y["url"]}
-                hi.append(data)
-            if y["lan"] == "id":
-                data = {"date": y["date"], "surl": y["url"]}
-                id.append(data)
-            if y["lan"] == "it":
-                data = {"date": y["date"], "surl": y["url"]}
-                it.append(data)
-            if y["lan"] == "ja":
-                data = {"date": y["date"], "surl": y["url"]}
-                ja.append(data)
-            if y["lan"] == "ko":
-                data = {"date": y["date"], "surl": y["url"]}
-                ko.append(data)
-            if y["lan"] == "nn":
-                data = {"date": y["date"], "surl": y["url"]}
-                nn.append(data)
-            if y["lan"] == "pt":
-                data = {"date": y["date"], "surl": y["url"]}
-                pt.append(data)
-            if y["lan"] == "ru":
-                data = {"date": y["date"], "surl": y["url"]}
-                ru.append(data)
-            if y["lan"] == "es":
-                data = {"date": y["date"], "surl": y["url"]}
-                es.append(data)
-            if y["lan"] == "vi":
-                data = {"date": y["date"], "surl": y["url"]}
-                vi.append(data)
+start_time = time.time()
+for x in sdata:
+    for y in x["url"]:
+        if y["lan"] == "ar":
+            data = {"date": y["date"], "surl": y["url"]}
+            ar.append(data)
+        if y["lan"] == "zh-hans":
+            data = {"date": y["date"], "surl": y["url"]}
+            zh_hans.append(data)
+        if y["lan"] == "en":
+            data = {"date": y["date"], "surl": y["url"]}
+            en.append(data)
+        if y["lan"] == "ta":
+            data = {"date": y["date"], "surl": y["url"]}
+            ta.append(data)
+        if y["lan"] == "fr":
+            data = {"date": y["date"], "surl": y["url"]}
+            fr.append(data)
+        if y["lan"] == "de":
+            data = {"date": y["date"], "surl": y["url"]}
+            de.append(data)
+        if y["lan"] == "hi":
+            data = {"date": y["date"], "surl": y["url"]}
+            hi.append(data)
+        if y["lan"] == "id":
+            data = {"date": y["date"], "surl": y["url"]}
+            id.append(data)
+        if y["lan"] == "it":
+            data = {"date": y["date"], "surl": y["url"]}
+            it.append(data)
+        if y["lan"] == "ja":
+            data = {"date": y["date"], "surl": y["url"]}
+            ja.append(data)
+        if y["lan"] == "ko":
+            data = {"date": y["date"], "surl": y["url"]}
+            ko.append(data)
+        if y["lan"] == "nn":
+            data = {"date": y["date"], "surl": y["url"]}
+            nn.append(data)
+        if y["lan"] == "pt":
+            data = {"date": y["date"], "surl": y["url"]}
+            pt.append(data)
+        if y["lan"] == "ru":
+            data = {"date": y["date"], "surl": y["url"]}
+            ru.append(data)
+        if y["lan"] == "es":
+            data = {"date": y["date"], "surl": y["url"]}
+            es.append(data)
+        if y["lan"] == "vi":
+            data = {"date": y["date"], "surl": y["url"]}
+            vi.append(data)
 
-    ar.sort(key=lambda x: x["date"], reverse=True)
-    zh_hans.sort(key=lambda x: x["date"], reverse=True)
-    en.sort(key=lambda x: x["date"], reverse=True)
-    ta.sort(key=lambda x: x["date"], reverse=True)
-    fr.sort(key=lambda x: x["date"], reverse=True)  
-    de.sort(key=lambda x: x["date"], reverse=True)
-    hi.sort(key=lambda x: x["date"], reverse=True)
-    id.sort(key=lambda x: x["date"], reverse=True)
-    it.sort(key=lambda x: x["date"], reverse=True)
-    ja.sort(key=lambda x: x["date"], reverse=True)
-    ko.sort(key=lambda x: x["date"], reverse=True)
-    nn.sort(key=lambda x: x["date"], reverse=True)
-    pt.sort(key=lambda x: x["date"], reverse=True)
-    ru.sort(key=lambda x: x["date"], reverse=True)
-    es.sort(key=lambda x: x["date"], reverse=True)
-    vi.sort(key=lambda x: x["date"], reverse=True)
+ar.sort(key=lambda x: x["date"], reverse=True)
+zh_hans.sort(key=lambda x: x["date"], reverse=True)
+en.sort(key=lambda x: x["date"], reverse=True)
+ta.sort(key=lambda x: x["date"], reverse=True)
+fr.sort(key=lambda x: x["date"], reverse=True)  
+de.sort(key=lambda x: x["date"], reverse=True)
+hi.sort(key=lambda x: x["date"], reverse=True)
+id.sort(key=lambda x: x["date"], reverse=True)
+it.sort(key=lambda x: x["date"], reverse=True)
+ja.sort(key=lambda x: x["date"], reverse=True)
+ko.sort(key=lambda x: x["date"], reverse=True)
+nn.sort(key=lambda x: x["date"], reverse=True)
+pt.sort(key=lambda x: x["date"], reverse=True)
+ru.sort(key=lambda x: x["date"], reverse=True)
+es.sort(key=lambda x: x["date"], reverse=True)
+vi.sort(key=lambda x: x["date"], reverse=True)
 
-    def chunks(lst, n):
-        """Yield successive n-sized chunks from lst."""
-        d = []
-        for i in range(0, len(lst), n):
-            d.append(lst[i : i + n])
+def chunks(lst, n):
+    """Yield successive n-sized chunks from lst."""
+    d = []
+    for i in range(0, len(lst), n):
+        d.append(lst[i : i + n])
 
-        return d
+    return d
 
-    ar_url = []
-    for x in ar:
-        ar_url.append(x['surl'])
+ar_url = []
+for x in ar:
+    ar_url.append(x['surl'])
 
-    zh_hans_url = []
-    for x in zh_hans:
-        zh_hans_url.append(x['surl'])
+zh_hans_url = []
+for x in zh_hans:
+    zh_hans_url.append(x['surl'])
 
-    en_url = []
-    for x in en:
-        en_url.append(x['surl'])
+en_url = []
+for x in en:
+    en_url.append(x['surl'])
 
-    ta_url = []
-    for x in ta:
-        ta_url.append(x['surl'])
-
-
-    fr_url = []
-    for x in fr:
-        fr_url.append(x['surl'])
+ta_url = []
+for x in ta:
+    ta_url.append(x['surl'])
 
 
-    de_url = []
-    for x in de:
-        de_url.append(x['surl'])
+fr_url = []
+for x in fr:
+    fr_url.append(x['surl'])
 
 
-    hi_url = []
-    for x in hi:
-        hi_url.append(x['surl'])
+de_url = []
+for x in de:
+    de_url.append(x['surl'])
 
 
-    id_url = []
-    for x in id:
-        id_url.append(x['surl'])
-
-    it_url = []
-    for x in it:
-        it_url.append(x['surl'])
-
-    ja_url = []
-    for x in ja:
-        ja_url.append(x['surl'])
-
-    ko_url = []
-    for x in ko:
-        ko_url.append(x['surl'])
-
-    nn_url = []
-    for x in nn:
-        nn_url.append(x['surl'])
-
-    pt_url = []
-    for x in pt:
-        pt_url.append(x['surl'])
-
-    ru_url = []
-    for x in ru:
-        ru_url.append(x['surl'])
-
-    es_url = []
-    for x in es:
-        es_url.append(x['surl'])
+hi_url = []
+for x in hi:
+    hi_url.append(x['surl'])
 
 
-    vi_url = []
-    for x in vi:
-        vi_url.append(x['surl'])
+id_url = []
+for x in id:
+    id_url.append(x['surl'])
 
-    ar_sitemap = chunks(ar_url, 1000)
-    zh_hans_sitemap = chunks(zh_hans_url, 1000)
-    en_sitemap = chunks(en_url, 1000)
-    ta_sitemap = chunks(ta_url, 1000)
-    fr_sitemap = chunks(fr_url, 1000)
-    de_sitemap = chunks(de_url, 1000)
-    hi_sitemap = chunks(hi_url, 1000)
-    id_sitemap = chunks(id_url, 1000)
-    it_sitemap = chunks(it_url, 1000)
-    ja_sitemap = chunks(ja_url, 1000)
-    ko_sitemap = chunks(ko_url, 1000)
-    nn_sitemap = chunks(nn_url, 1000)
-    pt_sitemap = chunks(pt_url, 1000)
-    ru_sitemap = chunks(ru_url, 1000)
-    es_sitemap = chunks(es_url, 1000)
-    vi_sitemap = chunks(vi_url, 1000)
+it_url = []
+for x in it:
+    it_url.append(x['surl'])
 
-    end_time = time.time() - start_time
-    print(end_time)
+ja_url = []
+for x in ja:
+    ja_url.append(x['surl'])
 
-    for idx, x in enumerate(ar_sitemap):
-        with gzip.open(f'ar_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+ko_url = []
+for x in ko:
+    ko_url.append(x['surl'])
 
-            sfile = File(open(f'ar_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('ar_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'ar_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(zh_hans_sitemap):
-        with gzip.open(f'zh_hans_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+nn_url = []
+for x in nn:
+    nn_url.append(x['surl'])
 
-            sfile = File(open(f'zh_hans_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('zh_hans_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'zh_hans_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
+pt_url = []
+for x in pt:
+    pt_url.append(x['surl'])
 
-    for idx, x in enumerate(en_sitemap):
-        with gzip.open(f'en_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+ru_url = []
+for x in ru:
+    ru_url.append(x['surl'])
 
-            sfile = File(open(f'en_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('en_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'en_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(ta_sitemap):
-        with gzip.open(f'ta_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+es_url = []
+for x in es:
+    es_url.append(x['surl'])
 
-            sfile = File(open(f'ta_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('ta_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'ta_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(fr_sitemap):
-        with gzip.open(f'fr_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
 
-            sfile = File(open(f'fr_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('fr_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'fr_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(de_sitemap):
-        with gzip.open(f'de_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+vi_url = []
+for x in vi:
+    vi_url.append(x['surl'])
 
-            sfile = File(open(f'de_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('de_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'de_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-            
-    for idx, x in enumerate(hi_sitemap):
-        with gzip.open(f'hi_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+ar_sitemap = chunks(ar_url, 1000)
+zh_hans_sitemap = chunks(zh_hans_url, 1000)
+en_sitemap = chunks(en_url, 1000)
+ta_sitemap = chunks(ta_url, 1000)
+fr_sitemap = chunks(fr_url, 1000)
+de_sitemap = chunks(de_url, 1000)
+hi_sitemap = chunks(hi_url, 1000)
+id_sitemap = chunks(id_url, 1000)
+it_sitemap = chunks(it_url, 1000)
+ja_sitemap = chunks(ja_url, 1000)
+ko_sitemap = chunks(ko_url, 1000)
+nn_sitemap = chunks(nn_url, 1000)
+pt_sitemap = chunks(pt_url, 1000)
+ru_sitemap = chunks(ru_url, 1000)
+es_sitemap = chunks(es_url, 1000)
+vi_sitemap = chunks(vi_url, 1000)
 
-            sfile = File(open(f'hi_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('hi_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'hi_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(id_sitemap):
-        with gzip.open(f'id_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+end_time = time.time() - start_time
+print(end_time)
 
-            sfile = File(open(f'id_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('id_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'id_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(it_sitemap):
-        with gzip.open(f'it_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+for idx, x in enumerate(ar_sitemap):
+    with open(f'ar_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
 
-            sfile = File(open(f'it_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('it_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'it_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(ja_sitemap):
-        with gzip.open(f'ja_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+        sfile = File(open(f'ar_sitemap_{idx}.xml', 'r'))
+        os.remove(f'ar_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'ar_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(zh_hans_sitemap):
+    with open(f'zh_hans_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
 
-            sfile = File(open(f'ja_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('ja_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'ja_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(ko_sitemap):
-        with gzip.open(f'ko_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+        sfile = File(open(f'zh_hans_sitemap_{idx}.xml', 'r'))
+        os.remove(f'zh_hans_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'zh_hans_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
 
-            sfile = File(open(f'ko_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('ko_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'ko_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(nn_sitemap):
-        with gzip.open(f'nn_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+for idx, x in enumerate(en_sitemap):
+    with open(f'en_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
 
-            sfile = File(open(f'nn_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('nn_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'nn_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(pt_sitemap):
-        with gzip.open(f'pt_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+        sfile = File(open(f'en_sitemap_{idx}.xml', 'r'))
+        os.remove(f'en_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'en_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(ta_sitemap):
+    with open(f'ta_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
 
-            sfile = File(open(f'pt_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('pt_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'pt_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(ru_sitemap):
-        with gzip.open(f'ru_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+        sfile = File(open(f'ta_sitemap_{idx}.xml', 'r'))
+        os.remove(f'ta_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'ta_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(fr_sitemap):
+    with open(f'fr_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
 
-            sfile = File(open(f'ru_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('ru_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'ru_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(es_sitemap):
-        with gzip.open(f'es_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+        sfile = File(open(f'fr_sitemap_{idx}.xml', 'r'))
+        os.remove(f'fr_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'fr_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(de_sitemap):
+    with open(f'de_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
 
-            sfile = File(open(f'es_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('es_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'es_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
-    for idx, x in enumerate(vi_sitemap):
-        with gzip.open(f'vi_sitemap_{idx}.xml.gz', 'wb', 5) as f:
-            one = start_bracket + "".join(x) + end_bracket            
-            f.write(one.encode())
+        sfile = File(open(f'de_sitemap_{idx}.xml', 'r'))
+        os.remove(f'de_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'de_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+        
+for idx, x in enumerate(hi_sitemap):
+    with open(f'hi_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
 
-            sfile = File(open(f'vi_sitemap_{idx}.xml.gz', 'r'))
-            os.remove('vi_sitemap_{idx}.xml.gz')
-            obj = Sitemap.objects.create(
-                name = f'vi_sitemap_{idx}.xml.gz',
-                sitemap_file = sfile,
-            )
-            url = obj.get_absolute_url()
-            full_url = 'https://vizvasrj.com'+url
-            google = 'https://www.google.com/ping?sitemap='+full_url
-            requests.get(url)
-            
+        sfile = File(open(f'hi_sitemap_{idx}.xml', 'r'))
+        os.remove(f'hi_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'hi_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(id_sitemap):
+    with open(f'id_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'id_sitemap_{idx}.xml', 'r'))
+        os.remove(f'id_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'id_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(it_sitemap):
+    with open(f'it_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'it_sitemap_{idx}.xml', 'r'))
+        os.remove(f'it_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'it_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(ja_sitemap):
+    with open(f'ja_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'ja_sitemap_{idx}.xml', 'r'))
+        os.remove(f'ja_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'ja_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(ko_sitemap):
+    with open(f'ko_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'ko_sitemap_{idx}.xml', 'r'))
+        os.remove(f'ko_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'ko_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(nn_sitemap):
+    with open(f'nn_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'nn_sitemap_{idx}.xml', 'r'))
+        os.remove(f'nn_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'nn_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(pt_sitemap):
+    with open(f'pt_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'pt_sitemap_{idx}.xml', 'r'))
+        os.remove(f'pt_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'pt_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(ru_sitemap):
+    with open(f'ru_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'ru_sitemap_{idx}.xml', 'r'))
+        os.remove(f'ru_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'ru_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(es_sitemap):
+    with open(f'es_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'es_sitemap_{idx}.xml', 'r'))
+        os.remove(f'es_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'es_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        
+for idx, x in enumerate(vi_sitemap):
+    with open(f'vi_sitemap_{idx}.xml', 'wb', 5) as f:
+        one = start_bracket + "".join(x) + end_bracket            
+        f.write(one.encode())
+
+        sfile = File(open(f'vi_sitemap_{idx}.xml', 'r'))
+        os.remove(f'vi_sitemap_{idx}.xml')
+        obj = Sitemap.objects.create(
+            name = f'vi_sitemap_{idx}.xml',
+            sitemap_file = sfile,
+        )
+        url = obj.get_absolute_url()
+        full_url = 'https://vizvasrj.com'+url
+        # google = 'https://www.google.com/ping?sitemap='+full_url
+        # requests.get(url)
+        

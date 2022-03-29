@@ -571,3 +571,10 @@ REST_FRAMEWORK = {
 # AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 # AWS_S3_SECURE_URLS = False
 # # AWS_S3_CUSTOM_DOMAIN = 'audiospeech.eu-central-1.linodeobjects.com'
+
+
+if filepath.is_file():
+    from .secret import HOME_DOMAIN
+    HOME_DOMAIN = HOME_DOMAIN
+else:
+    HOME_DOMAIN = 'https://vizvasrj.com'
