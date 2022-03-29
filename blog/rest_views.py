@@ -14,7 +14,8 @@ from rest_framework.reverse import reverse
 
 from .serializers import OnlyAudioShow, PostCURDSerializer, PostSerializer, SourcePostSerializer
 from rest_framework.exceptions import (
-    AuthenticationFailed, PermissionDenied, ValidationError,
+    AuthenticationFailed, PermissionDenied, ValidationError, 
+    NotFound
     
     
 )
@@ -633,14 +634,17 @@ class AudioPostCRUDView(generics.ListCreateAPIView):
         # print(stringlist)
         set_list = set(stringlist)
         # print(set_list)
-        p = Post.objects.filter(
-            # cover2=None
-            ).order_by( # delete id 16274 later
-                "-created"
-            ).filter(
-                ~Q(id__in=set_list)
-            )[0]
-        # print(p)
+        try:
+            p = Post.objects.filter(
+                # cover2=None
+                title='None'
+                ).order_by( # delete id 16274 later
+                    "-created"
+                ).filter(
+                    ~Q(id__in=set_list)
+                )[0]
+        except IndexError:
+            raise NotFound("EMPTY LIST")
         r.sadd("new5", p.id)
         queryset = Post.objects.all().filter(id=p.id)
         

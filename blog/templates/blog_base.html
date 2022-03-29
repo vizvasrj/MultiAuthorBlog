@@ -178,11 +178,12 @@
                   {% endif %}
                     
                 </a>
-                
+                <!-- LANGUAGEs  -->
+                {% block lnslugs %}	
                 {% if request.user.is_authenticated %}
                   
                 <ul class="languages dropdown-menu dropdown-menu-custom bg-green-lite-dropdown nav_mobile" aria-labelledby="dropdown02"">
-                  {% for language in languages %}
+                 {% for language in languages %}
                     <li class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}">
                       <a href="{% url 'set_language' language.code %}?next={{ request.path }}"
                       class="dropdown-item">
@@ -205,6 +206,7 @@
                   {% endfor %}
                 </ul>
                 {% endif %}
+                {% endblock %}
                   
               </div>
                       

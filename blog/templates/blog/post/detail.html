@@ -40,6 +40,36 @@
 }
 {% endblock %}
 
+<!-- Language slug -->
+{% block lnslugs %}	
+{% if request.user.is_authenticated %}
+                  
+<ul class="languages dropdown-menu dropdown-menu-custom bg-green-lite-dropdown nav_mobile" aria-labelledby="dropdown02"">
+ {% for language in languages %}
+    <li class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}">
+      <a href="{% url 'set_language' language.code %}?next={{ request.path }}"
+      class="dropdown-item">
+        {{ language.name_local }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+
+{% else %}
+<ul class="languages dropdown-menu dropdown-menu-custom bg-green-lite-dropdown nav_mobile" aria-labelledby="dropdown02"">
+  {% for language in languages %}
+    <li class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}">
+      <a href="/{{ language.code }}/{{request.path|t_url}}"
+      class="dropdown-item">
+        {{ language.name_local }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}
 
 
 {% block content %}
@@ -140,6 +170,7 @@
                                 {{ t_post.title }}
                         
                         </h1>
+                        <pre>{{t_post.slug}}</pre>
                         {{t_post.audio_url}}
                         {{t_post.g_audio_url}}
                         {% if t_post.audio_url %}

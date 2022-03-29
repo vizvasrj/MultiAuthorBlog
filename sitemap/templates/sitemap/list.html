@@ -1,0 +1,18 @@
+{% extends 'sitemap_base.html' %}
+
+{% block sitemap %}	
+
+      
+
+{% for x in sitemaps %}
+<sitemap>
+  <loc>
+    http://127.0.0.1:8000{{x.get_absolute_url}}
+  </loc>
+</sitemap>
+{% endfor %}
+  
+
+    
+
+{% endblock %}

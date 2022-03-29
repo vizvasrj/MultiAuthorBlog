@@ -64,6 +64,7 @@ urlpatterns += [
     #         'sitemaps': sitemaps
     #         }, name='django.contrib.sitemaps.views.sitemap'
     # ),
+    path('sitemap/', include('sitemap.urls')),
 ]
 
 if settings.DEBUG:

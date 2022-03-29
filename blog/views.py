@@ -155,6 +155,9 @@ def post_list(request, tag_slug=None):
 
 
 def post_detail(request, slug, author):
+    import time
+    start_time = time.time()
+
     # FOr IP
     # x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     # if x_forwarded_for:
@@ -170,8 +173,45 @@ def post_detail(request, slug, author):
     #     ip = 'hi'
     
 
+
     user = request.user
     language = request.LANGUAGE_CODE
+
+    # taking diffrent language slug convert to Post Slug
+    # if language == 'en':
+    #     slug = EnglishTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'zh-hans':
+    #     slug = ChineseTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'hi':
+    #     slug = HindiTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'ar':
+    #     slug = ArabicTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'ta':
+    #     slug = FilipinoTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'fr':
+    #     slug = FrenchTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'de':
+    #     slug = GermanTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'id':
+    #     slug = IndonesianTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'it':
+    #     slug = ItalianTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'ja':
+    #     slug = JapaneseTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'ko':
+    #     slug = KoreanTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'nn':
+    #     slug = NorwegianTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'pt':
+    #     slug = PortugueseTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'ru':
+    #     slug = RussianTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'es':
+    #     slug = SpanishTranslatedPost.objects.get(slug=slug).post.slug
+    # elif language == 'vi':
+    #     slug = VietnameseTranslatedPost.objects.get(slug=slug).post.slug
+    # else:
+    #     slug = slug
     cache.delete(f'post-{slug}')
     post = cache.get(f'post-{slug}')        
     if not post:
@@ -235,6 +275,9 @@ def post_detail(request, slug, author):
     similar_posts = similar_posts.annotate(
         same_tags=Count('tags')
     ).order_by('-same_tags', '-publish')[:4]
+    end_time = time.time() - start_time
+    print(end_time)
+
     return render(
         request,
         'blog/post/detail.html', {
