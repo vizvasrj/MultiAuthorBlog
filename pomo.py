@@ -91,6 +91,5 @@ for x in out.decode('utf8').split('\n'):
 def make_noise():
     duration = 2
     freq = 4400
-    os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq)
-)
+    os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
 make_noise()

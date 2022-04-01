@@ -87,7 +87,6 @@ INSTALLED_APPS = [
     'comment',
     'about',
     'image_uploader',
-    'flag',
     'publication',
     # 'chat',
     'scrape',
