@@ -578,3 +578,9 @@ if filepath.is_file():
 else:
     HOME_DOMAIN = 'https://vizvasrj.com'
 
+
+if filepath.is_file():
+    from .secret import BING_CLARITY
+    BING_CLARITY = BING_CLARITY
+else:
+    BING_CLARITY = False
