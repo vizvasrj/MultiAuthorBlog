@@ -17,107 +17,111 @@ from translates.english_translate.models import EnglishTranslatedTag
 
 from mytag.models import MyCustomTag
 
+from django.core.exceptions import ObjectDoesNotExist
+
 def language_in_post_detail(post, language):
-    if language == 'en':
-        if post.english_translated_post.latest():
-            return post.english_translated_post.latest()
-        else:
-            return post
+    try:
+        if language == 'en':
+            if post.english_translated_post.latest():
+                return post.english_translated_post.latest()
+            else:
+                return post
 
-    elif language == 'zh-hans':
-        if post.chinese_translated_post.latest():
-            return post.chinese_translated_post.latest()
-        else:
-            return post
+        elif language == 'zh-hans':
+            if post.chinese_translated_post.latest():
+                return post.chinese_translated_post.latest()
+            else:
+                return post
 
-    elif language == 'hi':
-        if post.hindi_translated_post.latest():
-            return post.hindi_translated_post.latest()
-        else:
-            return post
+        elif language == 'hi':
+            if post.hindi_translated_post.latest():
+                return post.hindi_translated_post.latest()
+            else:
+                return post
+            
+        elif language == 'ar':
+            if post.arabic_translated_post.latest():
+                return post.arabic_translated_post.latest()
+            else:
+                return post
+
+        elif language == 'ta':
+            if post.filipino_translated_post.latest():
+                return post.filipino_translated_post.latest()
+            else:
+                return post
+
+        elif language == 'fr':
+            if post.french_translated_post.latest():
+                return post.french_translated_post.latest()
+            else:
+                return post
         
-    elif language == 'ar':
-        if post.arabic_translated_post.latest():
-            return post.arabic_translated_post.latest()
-        else:
-            return post
+        elif language == 'de':
+            if post.german_translated_post.latest():
+                return post.german_translated_post.latest()
+            else:
+                return post
+        
+        elif language == 'id':
+            if post.indonesian_translated_post.latest():
+                return post.indonesian_translated_post.latest()
+            else:
+                return post
+        
+        elif language == 'it':
+            if post.italian_translated_post.latest():
+                return post.italian_translated_post.latest()
+            else:
+                return post
 
-    elif language == 'ta':
-        if post.filipino_translated_post.latest():
-            return post.filipino_translated_post.latest()
-        else:
-            return post
+        elif language == 'ja':
+            if post.japanese_translated_post.latest():
+                return post.japanese_translated_post.latest()
+            else:
+                return post
+        
+        elif language == 'ko':
+            if post.korean_translated_post.latest():
+                return post.korean_translated_post.latest()
+            else:
+                return post
+        
+        elif language == 'nn':
+            if post.norwegian_translated_post.latest():
+                return post.norwegian_translated_post.latest()
+            else:
+                return post
 
-    elif language == 'fr':
-        if post.french_translated_post.latest():
-            return post.french_translated_post.latest()
-        else:
-            return post
-    
-    elif language == 'de':
-        if post.german_translated_post.latest():
-            return post.german_translated_post.latest()
-        else:
-            return post
-    
-    elif language == 'id':
-        if post.indonesian_translated_post.latest():
-            return post.indonesian_translated_post.latest()
-        else:
-            return post
-    
-    elif language == 'it':
-        if post.italian_translated_post.latest():
-            return post.italian_translated_post.latest()
-        else:
-            return post
+        elif language == 'pt':
+            if post.portuguese_translated_post.latest():
+                return post.portuguese_translated_post.latest()
+            else:
+                return post
 
-    elif language == 'ja':
-        if post.japanese_translated_post.latest():
-            return post.japanese_translated_post.latest()
+        elif language == 'ru':
+            if post.russian_translated_post.latest():
+                return post.russian_translated_post.latest()
+            else:
+                return post
+        
+        elif language == 'es':
+            if post.spanish_translated_post.latest():
+                return post.spanish_translated_post.latest()
+            else:
+                return post
+        
+        elif language == 'vi':
+            if post.vietnamese_translated_post.latest():
+                return post.vietnamese_translated_post.latest()
+            else:
+                return post
+        # I know it will never get inside this else statement
         else:
+            # print('inside else')
             return post
-    
-    elif language == 'ko':
-        if post.korean_translated_post.latest():
-            return post.korean_translated_post.latest()
-        else:
-            return post
-    
-    elif language == 'nn':
-        if post.norwegian_translated_post.latest():
-            return post.norwegian_translated_post.latest()
-        else:
-            return post
-
-    elif language == 'pt':
-        if post.portuguese_translated_post.latest():
-            return post.portuguese_translated_post.latest()
-        else:
-            return post
-
-    elif language == 'ru':
-        if post.russian_translated_post.latest():
-            return post.russian_translated_post.latest()
-        else:
-            return post
-    
-    elif language == 'es':
-        if post.spanish_translated_post.latest():
-            return post.spanish_translated_post.latest()
-        else:
-            return post
-    
-    elif language == 'vi':
-        if post.vietnamese_translated_post.latest():
-            return post.vietnamese_translated_post.latest()
-        else:
-            return post
-    # I know it will never get inside this else statement
-    else:
-        # print('inside else')
+    except ObjectDoesNotExist:
         return post
-
 
 def language_in_post_tags(post, language):
     default = MyCustomTag.objects.filter(post=post.id)

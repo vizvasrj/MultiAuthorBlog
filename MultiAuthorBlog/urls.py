@@ -10,6 +10,7 @@ from blog.views import post_detail, tags_posts_lists
 from blog.rest_views import ApiRoot
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
+from sitemap.views import robots_txt
 # from blog.sitemaps import PostSitemap
 
 # from django.contrib.sitemaps.views import sitemap
@@ -65,6 +66,7 @@ urlpatterns += [
     #         }, name='django.contrib.sitemaps.views.sitemap'
     # ),
     path('sitemap/', include('sitemap.urls')),
+    path('robots.txt', robots_txt, name='robots_txt'),
 ]
 
 if settings.DEBUG:

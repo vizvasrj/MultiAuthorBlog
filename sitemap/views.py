@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Sitemap
-from django.views.decorators.gzip import gzip_page
 from django.conf import settings
 
 
@@ -17,9 +16,7 @@ def sitemap_list(request):
     )
 
 
-@gzip_page
 def sitemap_detail(request, name):
-    print(name)
     try:
         sitemap = Sitemap.objects.get(name=name)
     except Sitemap.DoesNotExist:
@@ -29,3 +26,11 @@ def sitemap_detail(request, name):
     #     'Content-Type': 'application/gzip',
     #     # 'Content-Disposition': 'attachment; filename="foo.gz"',
     # })
+
+
+def robots_txt(request):
+    with open('sitemap/robots.txt', 'r') as f:
+        text = f.read()
+
+    return HttpResponse(text, content_type='text/plain', status=200)
+

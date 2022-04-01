@@ -205,7 +205,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Kolkata'
 
@@ -578,3 +578,4 @@ if filepath.is_file():
     HOME_DOMAIN = HOME_DOMAIN
 else:
     HOME_DOMAIN = 'https://vizvasrj.com'
+

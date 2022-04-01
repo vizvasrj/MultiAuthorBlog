@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vizvasrj.com/sitemap/sitemap.xml
+Sitemap: https://vizvasrj.com/sitemap/sitemap/zh.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/en.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/hi.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/id.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/it.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/ja.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/ko.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/nn.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/ta.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/vi.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/es.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/ar.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/pt.xml 
+Sitemap: https://vizvasrj.com/sitemap/sitemap/ru.xml 
