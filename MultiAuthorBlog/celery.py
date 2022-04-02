@@ -23,5 +23,5 @@ def setup_periodic_tasks(sender, **kwargs):
 
 @app.task
 def daily_sitemap_generate():
-    print("EVER MINUTE")
+    print("EVER day 1 'O clock")
     sitemap_creator()

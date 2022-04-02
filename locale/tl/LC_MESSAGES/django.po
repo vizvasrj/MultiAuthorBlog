@@ -16,239 +16,225 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: MultiAuthorBlog/pro_settings/base.py:282
 #: MultiAuthorBlog/pro_settings/pro_settings.py:314
 #: MultiAuthorBlog/settings.py:345
 msgid "English"
-msgstr "إنجليزي"
+msgstr "Ingles"
 
 #: MultiAuthorBlog/pro_settings/base.py:283
 #: MultiAuthorBlog/pro_settings/pro_settings.py:315
 #: MultiAuthorBlog/settings.py:346
 msgid "Arabic"
-msgstr "عربي"
+msgstr "Arabic"
 
 #: MultiAuthorBlog/pro_settings/base.py:284
 #: MultiAuthorBlog/pro_settings/pro_settings.py:316
 #: MultiAuthorBlog/settings.py:347
 msgid "Chinese"
-msgstr "صينى"
+msgstr "Intsik"
 
 #: MultiAuthorBlog/pro_settings/base.py:285
 #: MultiAuthorBlog/pro_settings/pro_settings.py:317
 #: MultiAuthorBlog/settings.py:348
 msgid "Filipino"
-msgstr "الفلبينية"
+msgstr "Filipino"
 
 #: MultiAuthorBlog/pro_settings/base.py:286
 #: MultiAuthorBlog/pro_settings/pro_settings.py:318
 #: MultiAuthorBlog/settings.py:349
 msgid "French"
-msgstr "فرنسي"
+msgstr "Pranses"
 
 #: MultiAuthorBlog/pro_settings/base.py:287
 #: MultiAuthorBlog/pro_settings/pro_settings.py:319
 #: MultiAuthorBlog/settings.py:350
 msgid "German"
-msgstr "ألمانية"
+msgstr "Aleman"
 
 #: MultiAuthorBlog/pro_settings/base.py:288
 #: MultiAuthorBlog/pro_settings/pro_settings.py:320
 #: MultiAuthorBlog/settings.py:351
 msgid "Hindi"
-msgstr "هندي"
+msgstr "Hindi"
 
 #: MultiAuthorBlog/pro_settings/base.py:289
 #: MultiAuthorBlog/pro_settings/pro_settings.py:321
 #: MultiAuthorBlog/settings.py:352
 msgid "Indonesian"
-msgstr "الأندونيسية"
+msgstr "Indonesian"
 
 #: MultiAuthorBlog/pro_settings/base.py:290
 #: MultiAuthorBlog/pro_settings/pro_settings.py:322
 #: MultiAuthorBlog/settings.py:353
 msgid "Italian"
-msgstr "إيطالي"
+msgstr "Italyano"
 
 #: MultiAuthorBlog/pro_settings/base.py:291
 #: MultiAuthorBlog/pro_settings/pro_settings.py:323
 #: MultiAuthorBlog/settings.py:354
 msgid "Japanese"
-msgstr "اليابانية"
+msgstr "Hapon"
 
 #: MultiAuthorBlog/pro_settings/base.py:292
 #: MultiAuthorBlog/pro_settings/pro_settings.py:324
 #: MultiAuthorBlog/settings.py:355
 msgid "Korean"
-msgstr "الكورية"
+msgstr "Koreano"
 
 #: MultiAuthorBlog/pro_settings/base.py:293
 #: MultiAuthorBlog/pro_settings/pro_settings.py:325
 #: MultiAuthorBlog/settings.py:356
 msgid "Norwegian"
-msgstr "النرويجية"
+msgstr "Norwegian"
 
 #: MultiAuthorBlog/pro_settings/base.py:294
 #: MultiAuthorBlog/pro_settings/pro_settings.py:326
 #: MultiAuthorBlog/settings.py:357
 msgid "Portuguese"
-msgstr "البرتغالية"
+msgstr "Portuges"
 
 #: MultiAuthorBlog/pro_settings/base.py:295
 #: MultiAuthorBlog/pro_settings/pro_settings.py:327
 #: MultiAuthorBlog/settings.py:358
 msgid "Russian"
-msgstr "الروسية"
+msgstr "Ruso"
 
 #: MultiAuthorBlog/pro_settings/base.py:296
 #: MultiAuthorBlog/pro_settings/pro_settings.py:328
 #: MultiAuthorBlog/settings.py:359
 msgid "Spanish"
-msgstr "الأسبانية"
+msgstr "Espanyol"
 
 #: MultiAuthorBlog/pro_settings/base.py:297
 #: MultiAuthorBlog/pro_settings/pro_settings.py:329
 #: MultiAuthorBlog/settings.py:360
 msgid "Vietnamese"
-msgstr "فيتنامي"
+msgstr "Vietnamese"
 
 #: account/forms.py:22 account/forms.py:24 account/forms.py:50
 msgid "Username"
-msgstr "اسم المستخدم"
+msgstr "Username"
 
 #: account/forms.py:29 account/forms.py:31 account/forms.py:38
 msgid "Password"
-msgstr "كلمه السر"
+msgstr "Password"
 
 #: account/forms.py:40
 msgid "Password ..."
-msgstr "كلمه السر ..."
+msgstr "Password..."
 
 #: account/forms.py:44 account/forms.py:171
 msgid "Repeat Password"
-msgstr "اعد كلمة السر"
+msgstr "Ulitin ang password"
 
 #: account/forms.py:46
 msgid "Repeat Password ..."
-msgstr "اعد كلمة السر ..."
+msgstr "Ulitin ang password ..."
 
 #: account/forms.py:52
 msgid "Username ..."
-msgstr "اسم المستخدم ..."
+msgstr "Username..."
 
 #: account/forms.py:57
 msgid "Email"
-msgstr "بريد الالكتروني"
+msgstr "Email"
 
 #: account/forms.py:59 account/forms.py:149
 msgid "Email ..."
-msgstr "بريد الالكتروني ..."
+msgstr "Email..."
 
 #: account/forms.py:78
 msgid "Passwords doesn't Matched."
-msgstr "كلمات المرور غير متطابقة."
+msgstr "Ang mga password ay hindi Nagtutugma."
 
 #: account/forms.py:147
 msgid "Enter email address"
-msgstr ""
+msgstr "Ilagay ang email address"
 
 #: account/forms.py:159
-#, fuzzy
-#| msgid "Password"
 msgid "Old password"
-msgstr "كلمه السر"
+msgstr "Lumang password"
 
 #: account/forms.py:161
-#, fuzzy
-#| msgid "Password ..."
 msgid "Old password ..."
-msgstr "كلمه السر ..."
+msgstr "Lumang password ..."
 
 #: account/forms.py:165
-#, fuzzy
-#| msgid "Change password"
 msgid "New password"
-msgstr "تغيير كلمة المرور"
+msgstr "Bagong password"
 
 #: account/forms.py:167
-#, fuzzy
-#| msgid "Password ..."
 msgid "New password ..."
-msgstr "كلمه السر ..."
+msgstr "Bagong password..."
 
 #: account/forms.py:173
-#, fuzzy
-#| msgid "Repeat Password ..."
 msgid "Repeat password ..."
-msgstr "اعد كلمة السر ..."
+msgstr "Ulitin ang password ..."
 
 #: account/forms.py:182
 msgid "Enter Your password to delete your account"
-msgstr ""
+msgstr "Ilagay ang Iyong password para tanggalin ang iyong account"
 
 #: account/forms.py:185
-#, fuzzy
-#| msgid "But First you have to Verify your account."
 msgid "Enter your password to delete your account"
-msgstr "ولكن عليك أولاً التحقق من حسابك."
+msgstr "Ilagay ang iyong password para tanggalin ang iyong account"
 
 #: account/models.py:55
 msgid "user"
-msgstr "المستعمل"
+msgstr "gumagamit"
 
 #: account/models.py:58
 msgid "full name"
-msgstr "الاسم بالكامل"
+msgstr "buong pangalan"
 
 #: account/models.py:65
 msgid "photo"
-msgstr "صورة فوتوغرافية"
+msgstr "larawan"
 
 #: account/models.py:71 publication/models.py:33
 msgid "about"
-msgstr "حول"
+msgstr "tungkol sa"
 
 #: account/models.py:89
 msgid "my theme"
-msgstr "موضوعي"
+msgstr "ang tema ko"
 
 #: account/templates/account/edit.html:5
 msgid "Edit your account"
-msgstr "تحرير حسابك"
+msgstr "I-edit ang iyong account"
 
 #: account/templates/account/edit.html:17
 #: account/templates/account/edit.html:40
 msgid "Profile"
-msgstr "الملف الشخصي"
+msgstr "Profile"
 
 #: account/templates/account/edit.html:20
 msgid "Configuration"
-msgstr "إعدادات"
+msgstr "Configuration"
 
 #: account/templates/account/edit.html:23 blog/templates/blog_base.html:244
 #: blog/templates/blog_base.html:283
 msgid "My Stories"
-msgstr "قصصي"
+msgstr "Mga Kwento Ko"
 
 #: account/templates/account/edit.html:26 blog/templates/blog_base.html:245
 #: blog/templates/blog_base.html:284
 msgid "My Shared"
-msgstr "مشتركي"
+msgstr "Aking Ibinahagi"
 
 #: account/templates/account/edit.html:29
 msgid "They Shared"
-msgstr "هم شاركوا"
+msgstr "Nagbahagi sila"
 
 #: account/templates/account/edit.html:49
 msgid "Upload"
-msgstr "تحميل"
+msgstr "Mag-upload"
 
 #: account/templates/account/edit.html:84
 msgid "Save changes"
-msgstr "احفظ التغييرات"
+msgstr "I-save ang mga pagbabago"
 
 #: account/templates/account/login.html:25
 #: account/templates/account/login.html:45
@@ -256,37 +242,35 @@ msgstr "احفظ التغييرات"
 #: account/templates/registration/login.html:30
 #: blog/templates/blog_base.html:259
 msgid "Login"
-msgstr "تسجيل الدخول"
+msgstr "Mag log in"
 
 #: account/templates/account/login.html:46
 #: account/templates/registration/login.html:31
 #: blog/templates/blog_base.html:262
 msgid "SignUp"
-msgstr "اشتراك"
+msgstr "SignUp"
 
 #: account/templates/account/me/fallowing/post.html:52
-#, fuzzy
-#| msgid "All tags"
 msgid "Related tags"
-msgstr "كل العلامات"
+msgstr "Mga kaugnay na tag"
 
 #: account/templates/account/me/my_post_list_ajax.html:12
 msgid "delete"
-msgstr "حذف"
+msgstr "tanggalin"
 
 #: account/templates/account/me/my_post_list_ajax.html:20
 msgid "Publish now"
-msgstr "نشر الآن"
+msgstr "I-publish ngayon"
 
 #: account/templates/account/me/my_post_list_ajax.html:27
 msgid "Move to Draft"
-msgstr "الانتقال إلى المسودة"
+msgstr "Ilipat sa Draft"
 
 #: account/templates/account/me/my_post_list_ajax.html:33
 #: account/templates/account/me/my_shared_ajax_list.html:29
 #: account/templates/account/me/shared_ajax_list.html:28
 msgid "Edit post"
-msgstr "تعديل المنشور"
+msgstr "I-edit ang post"
 
 #: account/templates/account/me/my_post_list_ajax.html:65
 #: account/templates/account/me/my_shared_ajax_list.html:93
@@ -295,49 +279,49 @@ msgstr "تعديل المنشور"
 #: blog/templates/blog/post_update.html:104
 #: blog/templates/blog/translate_update.html:77
 msgid "Publish"
-msgstr "ينشر"
+msgstr "I-publish"
 
 #: account/templates/account/me/my_posts.html:21
 msgid "Published"
-msgstr "نشرت"
+msgstr "Nai-publish"
 
 #: account/templates/account/me/my_posts.html:24
 msgid "Drafted"
-msgstr "صاغ"
+msgstr "Na-draft"
 
 #: account/templates/account/me/my_posts.html:27
 msgid "Trashed"
-msgstr "محطمة"
+msgstr "Ibinasura"
 
 #: account/templates/account/me/my_posts.html:96
 msgid "Trashing"
-msgstr "تحطيم"
+msgstr "Nagta-trash"
 
 #: account/templates/account/me/my_posts.html:96
 msgid "Deleting"
-msgstr "حذف"
+msgstr "Tinatanggal"
 
 #: account/templates/account/me/my_posts.html:126
 #: account/templates/account/me/my_posts.html:158
 msgid "Publishing!"
-msgstr "نشر!"
+msgstr "Publishing!"
 
 #: account/templates/account/me/my_posts.html:188
 msgid "Moved to Draft!"
-msgstr "انتقل إلى المسودة!"
+msgstr "Inilipat sa Draft!"
 
 #: account/templates/account/me/my_shared.html:17
 msgid "There shared"
-msgstr "هناك مشتركة"
+msgstr "Doon nagbahagi"
 
 #: account/templates/account/me/my_shared.html:74
 msgid "Detached"
-msgstr "منفصل"
+msgstr "Hiwalay"
 
 #: account/templates/account/me/my_shared_ajax_list.html:15
 #: account/templates/account/me/shared_ajax_list.html:14
 msgid "remove yourself from this post"
-msgstr "احذف نفسك من هذا المنشور"
+msgstr "alisin ang iyong sarili sa post na ito"
 
 #: account/templates/account/me/my_shared_ajax_list.html:82
 #: account/templates/account/me/shared_ajax_list.html:62
@@ -348,158 +332,156 @@ msgstr "احذف نفسك من هذا المنشور"
 #: blog/templates/blog/search/list_ajax.html:61
 #, python-format
 msgid "Published at %(post_publish)s"
-msgstr "تم النشر في%(post_publish)s"
+msgstr "Na-publish noong %(post_publish)s"
 
 #: account/templates/account/me/shared.html:18
 msgid "My shared"
-msgstr "مشاركتي"
+msgstr "Aking ibinahagi"
 
 #: account/templates/account/me/shared.html:77
 msgid "Detaching"
-msgstr "انفصال"
+msgstr "Paghiwalay"
 
 #: account/templates/account/register.html:4
 msgid "Create an account"
-msgstr "انشئ حساب"
+msgstr "Gumawa ng account"
 
 #: account/templates/account/register.html:61
 msgid "Create"
-msgstr "إنشاء"
+msgstr "Lumikha"
 
 #: account/templates/account/register.html:62
 msgid "Login Here"
-msgstr "تسجيل الدخول من هنا"
+msgstr "Mag-login dito"
 
 #: account/templates/account/register.html:125
 msgid "This username is not available!"
-msgstr "اسم المستخدم هذا غير متوفر!"
+msgstr "Hindi available ang username na ito!"
 
 #: account/templates/account/register.html:132
 msgid "This username is available!"
-msgstr "اسم المستخدم متاح!"
+msgstr "Ang username na ito ay magagamit!"
 
 #: account/templates/account/register.html:136
 msgid "Enter valid username character should be more than 4 letters!"
-msgstr "إدخال اسم مستخدم صالح يجب أن يكون أكثر من 4 أحرف!"
+msgstr ""
+"Maglagay ng wastong username na character ay dapat higit sa 4 na letra!"
 
 #: account/templates/account/register.html:196
 msgid "This email is not available!"
-msgstr "هذا البريد الإلكتروني غير متوفر!"
+msgstr "Hindi available ang email na ito!"
 
 #: account/templates/account/register.html:201
 msgid "This email is available!"
-msgstr "هذا البريد الإلكتروني متاح!"
+msgstr "Available ang email na ito!"
 
 #: account/templates/account/register_done.html:3
 msgid "Welcome"
-msgstr "أهلا بك"
+msgstr "Maligayang pagdating"
 
 #: account/templates/account/register_done.html:27
-#, fuzzy, python-format
-#| msgid ""
-#| "Welcome, Your email %(new_user_email)s and username is "
-#| "%(new_user_username)s"
+#, python-format
 msgid ""
 "Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
 msgstr ""
-"مرحبًا ، بريدك الإلكتروني٪ (new_user_email) s واسم المستخدم هو٪ "
-"(new_user_username) s"
+"Maligayang pagdating, Ang iyong email %(new_user_email)s at username ay "
+"%(new_user_username)s"
 
 #: account/templates/account/register_done.html:29
 msgid "Your account has been successfully created."
-msgstr "تم إنشاء حسابك بنجاح."
+msgstr "Ang iyong account ay matagumpay na nalikha."
 
 #: account/templates/account/register_done.html:30
 msgid "Now your can Login."
-msgstr "الآن يمكنك تسجيل الدخول."
+msgstr "Ngayon ay maaari ka nang Mag-login."
 
 #: account/templates/account/register_done.html:32
 msgid "But First you have to Verify your account."
-msgstr "ولكن عليك أولاً التحقق من حسابك."
+msgstr "Ngunit kailangan mo munang i-verify ang iyong account."
 
 #: account/templates/account/user/follower.html:6
 #: account/templates/account/user/following.html:6
 #: account/templates/account/user/list.html:4
 msgid "Users"
-msgstr "المستخدمون"
+msgstr "Mga gumagamit"
 
 #: account/templates/account/user/left_side.html:24
 #: account/templates/account/user/left_side.html:29
 msgid "Follow"
-msgstr "يتبع"
+msgstr "Sundin"
 
 #: account/templates/account/user/left_side.html:24
 msgid "Following"
-msgstr "التالية"
+msgstr "Sumusunod"
 
 #: account/templates/account/user/left_side.html:26
 msgid "following"
-msgstr "التالية"
+msgstr "sumusunod"
 
 #: account/templates/account/user/left_side.html:34
 msgid "Followers"
-msgstr "متابعون"
+msgstr "Mga tagasunod"
 
 #: account/templates/account/user/left_side.html:66
 msgid "Followings"
-msgstr "أتباع"
+msgstr "Mga sumusunod"
 
 #: account/templates/account/user/left_side.html:87
 msgid "more"
-msgstr "أكثر"
+msgstr "higit pa"
 
 #: account/templates/account/user/list.html:12
 msgid "Users List"
-msgstr "قائمة المستخدمين"
+msgstr "Listahan ng mga Gumagamit"
 
 #: account/templates/account/user/user_post_list_ajax.html:76
 #: blog/templates/blog/post/list_ajax.html:329
 #: blog/templates/blog/post/list_ajax_similar.html:276
 #: blog/templates/blog/search/list_ajax.html:72
 msgid "Read more"
-msgstr "اقرأ أكثر"
+msgstr "Magbasa pa"
 
 #: account/templates/account/utils/delete.html:4
 msgid "Delete Account"
-msgstr "حذف الحساب"
+msgstr "Tanggalin ang Account"
 
 #: account/templates/registration/login.html:10
 msgid "Login Now"
-msgstr "تسجيل الدخول الآن"
+msgstr "Mag-login Ngayon"
 
 #: account/templates/registration/logout.html:4
 #: account/templates/registration/logout.html:12
 msgid "Logged out"
-msgstr "تسجيل الخروج"
+msgstr "Naka-log out"
 
 #: account/templates/registration/logout.html:15
 msgid "You have been successfully logged out."
-msgstr "لقد تم تسجيل بنجاح."
+msgstr "Matagumpay kang na-log out."
 
 #: account/templates/registration/logout.html:16
 msgid "You can Login again."
-msgstr "يمكنك تسجيل الدخول مرة أخرى."
+msgstr "Maaari kang mag-login muli."
 
 #: account/templates/registration/password_change_done.html:4
 msgid "Password change"
-msgstr "تغيير كلمة السر"
+msgstr "Palitan ang password"
 
 #: account/templates/registration/password_change_done.html:12
 msgid "Password changed"
-msgstr "تم تغيير كلمة السر"
+msgstr "Nabago ang password"
 
 #: account/templates/registration/password_change_done.html:13
 msgid "Your password has been successfully changed."
-msgstr "كلمة السر الخاصة بك تم تغييرها بنجاح."
+msgstr "Ang iyong password ay matagumpay na nabago."
 
 #: account/templates/registration/password_change_form.html:5
 msgid "Change your password"
-msgstr "غير كلمة المرور الخاصة بك"
+msgstr "Baguhin ang iyong password"
 
 #: account/templates/registration/password_change_form.html:14
 #: account/templates/registration/password_reset_form.html:14
 msgid "Change Password"
-msgstr "تغيير كلمة المرور"
+msgstr "Palitan ANG password"
 
 #: account/templates/registration/password_change_form.html:36
 #: account/templates/registration/password_reset_form.html:24
@@ -508,94 +490,94 @@ msgstr "تغيير كلمة المرور"
 #: blog/templates/blog/post/detail.html:395
 #: blog/templates/blog/post/detail.html:425
 msgid "Submit"
-msgstr "يقدم"
+msgstr "Ipasa"
 
 #: account/templates/registration/password_reset_complete.html:3
 msgid "Password reset"
-msgstr "إعادة تعيين كلمة المرور"
+msgstr "Pag-reset ng password"
 
 #: account/templates/registration/password_reset_complete.html:10
 msgid "Password set"
-msgstr "تعيين كلمة المرور"
+msgstr "Nakatakda ang password"
 
 #: account/templates/registration/password_reset_complete.html:11
 msgid "Your password has been set."
-msgstr "تم تعيين كلمة المرور الخاصة بك."
+msgstr "Naitakda na ang iyong password."
 
 #: account/templates/registration/password_reset_complete.html:12
 msgid " You can Log in now"
-msgstr "يمكنك تسجيل الدخول الآن"
+msgstr "Maaari kang mag-log in ngayon"
 
 #: account/templates/registration/password_reset_confirm.html:3
 #: account/templates/registration/password_reset_confirm.html:11
 #: account/templates/registration/password_reset_done.html:4
 #: account/templates/registration/password_reset_done.html:12
 msgid "Reset your password"
-msgstr "اعد ضبط كلمه السر"
+msgstr "I-reset ang iyong password"
 
 #: account/templates/registration/password_reset_confirm.html:14
 msgid "Please enter your new password twice:"
-msgstr "الرجاء إدخال كلمة المرور الجديدة مرتين:"
+msgstr "Mangyaring ipasok ang iyong bagong password nang dalawang beses:"
 
 #: account/templates/registration/password_reset_confirm.html:24
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
-"رابط إعادة تعيين كلمة المرور غير صالح ، ربما لأنه تم استخدامه بالفعل. يرجى "
-"طلب إعادة تعيين كلمة المرور الجديدة."
+"Ang link sa pag-reset ng password ay hindi wasto, posibleng dahil ito ay "
+"nagamit na. Mangyaring humiling ng bagong pag-reset ng password."
 
 #: account/templates/registration/password_reset_done.html:13
 msgid "We"
-msgstr "نحن"
+msgstr "Kami"
 
 #: account/templates/registration/password_reset_done.html:14
 msgid "make sure to check your spam folder."
-msgstr "تأكد من فحص مجلد الرسائل غير المرغوب فيها."
+msgstr "tiyaking suriin ang iyong folder ng spam."
 
 #: account/templates/registration/password_reset_form.html:5
 msgid "Password Reset"
-msgstr "إعادة تعيين كلمة المرور"
+msgstr "I-reset ang Password"
 
 #: account/views.py:82
 msgid "Disabled Account"
-msgstr "حساب تعطيل"
+msgstr "Naka-disable na Account"
 
 #: account/views.py:85
 msgid "Invalid login"
-msgstr "تسجيل الدخول غير صالح"
+msgstr "Di-wastong pag-login"
 
 #: account/views.py:107
 msgid "User already exists"
-msgstr "المستخدم موجود اصلا"
+msgstr "Umiiral na ang user"
 
 #: account/views.py:154
 msgid "Profile updated successfully"
-msgstr "تم تحديث الملف الشخصي بنجاح"
+msgstr "Matagumpay na na-update ang profile"
 
 #: account/views.py:160
 msgid "Error updating your profile"
-msgstr "خطأ في تحديث ملف التعريف الخاص بك"
+msgstr "Error sa pag-update ng iyong profile"
 
 #: account/views.py:559
 msgid "Wrong password"
-msgstr "كلمة مرور خاطئة"
+msgstr "Maling password"
 
 #: account/views.py:657
 msgid "already removed"
-msgstr "تمت إزالته بالفعل"
+msgstr "tinanggal na"
 
 #: blog/forms.py:69
 msgid "No Publication"
-msgstr "لا يوجد منشور"
+msgstr "Walang Publication"
 
 #: blog/forms.py:97 blog/forms.py:241
 msgid "Title"
-msgstr "عنوان"
+msgstr "Pamagat"
 
 #: blog/forms.py:102 blog/forms.py:246
 msgid "Type content here."
-msgstr "اكتب المحتوى هنا."
+msgstr "I-type ang nilalaman dito."
 
 #: blog/forms.py:110 blog/forms.py:199 blog/forms.py:254
 #: blog/templates/blog/post_form.html:70
@@ -603,273 +585,264 @@ msgstr "اكتب المحتوى هنا."
 #: blog/templates/blog/translate_update.html:59 publication/forms.py:50
 #: publication/forms.py:104
 msgid "Tags"
-msgstr "العلامات"
+msgstr "Mga tag"
 
 #: blog/forms.py:178
 msgid "Text here"
-msgstr "نص هنا"
+msgstr "Text dito"
 
 #: blog/forms.py:193 publication/forms.py:44 publication/forms.py:98
 msgid "Name"
-msgstr "اسم"
+msgstr "Pangalan"
 
 #: blog/forms.py:212 publication/forms.py:63 publication/forms.py:117
 msgid "What's your Publication about of."
-msgstr "ما هو منشورك عن."
+msgstr "Tungkol saan ang iyong Publication."
 
 #: blog/models.py:83 blog/models.py:163
 msgid "title"
-msgstr "لقب"
+msgstr "pamagat"
 
 #: blog/models.py:89
 msgid "subtitle"
-msgstr "العنوان الفرعي"
+msgstr "subtitle"
 
 #: blog/models.py:95 blog/models.py:117 blog/models.py:180
 msgid "cover"
-msgstr "غطاء، يغطي"
+msgstr "takip"
 
 #: blog/models.py:122
 msgid "photographer name"
-msgstr ""
+msgstr "pangalan ng photographer"
 
 #: blog/models.py:127
 msgid "photographer profile url"
-msgstr ""
+msgstr "url ng profile ng photographer"
 
 #: blog/models.py:132
 msgid "sha_256"
-msgstr ""
+msgstr "sha_256"
 
 #: blog/models.py:169
 msgid "category"
-msgstr "الفئة"
+msgstr "kategorya"
 
 #: blog/models.py:177
 msgid "publication"
-msgstr "النشر"
+msgstr "publikasyon"
 
 #: blog/models.py:189
-#, fuzzy
-#| msgid "Upload cover image"
 msgid "cover image"
-msgstr "تحميل صورة الغلاف"
+msgstr "larawan ng pabalat"
 
 #: blog/models.py:201
 msgid "author"
-msgstr "مؤلف"
+msgstr "may-akda"
 
 #: blog/models.py:207
 msgid "other authors"
-msgstr "مؤلفين آخرين"
+msgstr "ibang mga may-akda"
 
 #: blog/templates/blog/comment/replay.html:5
 #: blog/templates/blog/post/detail.html:411
 msgid "Replay:"
-msgstr "إعادة:"
+msgstr "Replay:"
 
 #: blog/templates/blog/comment/update.html:6
 msgid "comments"
-msgstr "تعليقات"
+msgstr "mga komento"
 
 #: blog/templates/blog/comment/update.html:16
 msgid "title:"
-msgstr "لقب:"
+msgstr "pamagat:"
 
 #: blog/templates/blog/comment/update.html:22
 msgid "Update"
-msgstr "تحديث"
+msgstr "Update"
 
 #: blog/templates/blog/post/detail.html:85
-#, fuzzy
-#| msgid "helps you remember more"
 msgid " helps you remember more"
-msgstr "يساعدك على تذكر المزيد"
+msgstr "tumutulong sa iyo na matandaan ang higit pa"
 
 #: blog/templates/blog/post/detail.html:191
 msgid "edit translated"
-msgstr ""
+msgstr "i-edit ang isinalin"
 
 #: blog/templates/blog/post/detail.html:225
 msgid "Its a draft you can publish and edit here"
-msgstr "انها مسودة يمكنك نشرها وتحريرها هنا"
+msgstr "Ito ay isang draft na maaari mong i-publish at i-edit dito"
 
 #: blog/templates/blog/post/detail.html:257
 msgid "Sources"
-msgstr ""
+msgstr "Mga pinagmumulan"
 
 #: blog/templates/blog/post/detail.html:320
 msgid "Edit"
-msgstr "يحرر"
+msgstr "I-edit"
 
 #: blog/templates/blog/post/detail.html:365
 msgid "Reply"
-msgstr "رد"
+msgstr "Sumagot"
 
 #: blog/templates/blog/post/detail.html:378
 #: blog/templates/blog/post/detail.html:389
 msgid "Hit a comment"
-msgstr "اضغط على تعليق"
+msgstr "Pindutin ang isang komento"
 
 #: blog/templates/blog/post/detail.html:422
 msgid "Comment here"
-msgstr "التعليق هنا"
+msgstr "Comment dito"
 
 #: blog/templates/blog/post/detail.html:452
 #: blog/templates/blog/post/detail.html:622
-#, fuzzy
-#| msgid "Please provie some tags"
 msgid "please insert some comment"
-msgstr "يرجى تقديم بعض العلامات"
+msgstr "mangyaring magpasok ng ilang komento"
 
 #: blog/templates/blog/post/detail.html:466
 msgid "Similar posts"
-msgstr "وظائف مماثلة"
+msgstr "Mga katulad na post"
 
 #: blog/templates/blog/post_form.html:7
 msgid "Create post"
-msgstr "إنشاء وظيفة"
+msgstr "Gumawa ng post"
 
 #: blog/templates/blog/post_form.html:67
 #: blog/templates/blog/post_update.html:59
 #: blog/templates/blog/translate_update.html:56
 msgid "Please provie some tags"
-msgstr "يرجى تقديم بعض العلامات"
+msgstr "Mangyaring magbigay ng ilang mga tag"
 
 #: blog/templates/blog/post_form.html:78
 #: blog/templates/blog/post_update.html:70
 msgid "Please provide when to publish"
-msgstr "يرجى تقديم وقت النشر"
+msgstr "Pakibigay kung kailan i-publish"
 
 #: blog/templates/blog/post_form.html:90
 #: blog/templates/blog/post_update.html:82
 #: blog/templates/blog/translate_update.html:67
 msgid "Upload cover image"
-msgstr "تحميل صورة الغلاف"
+msgstr "Mag-upload ng larawan sa pabalat"
 
 #: blog/templates/blog/post_form.html:93
 #: blog/templates/blog/post_update.html:85
 #: blog/templates/blog/translate_update.html:70
 msgid "Upload (Click here)"
-msgstr "تحميل (اضغط هنا)"
+msgstr "Mag-upload (Mag-click dito)"
 
 #: blog/templates/blog/post_form.html:99
 #: blog/templates/blog/post_update.html:91
 msgid "Share to edit with others"
-msgstr "شارك للتحرير مع الآخرين"
+msgstr "Ibahagi para i-edit sa iba"
 
 #: blog/templates/blog/post_form.html:105
 #: blog/templates/blog/post_update.html:97
 msgid "If publication?"
-msgstr "إذا نشر؟"
+msgstr "Kung publikasyon?"
 
 #: blog/templates/blog/post_form.html:229
 msgid "please insert valid content"
-msgstr ""
+msgstr "mangyaring magpasok ng wastong nilalaman"
 
 #: blog/templates/blog/post_form.html:235
 msgid "please insert valid title"
-msgstr ""
+msgstr "mangyaring maglagay ng wastong pamagat"
 
 #: blog/templates/blog/post_update.html:7
 #: blog/templates/blog/translate_update.html:7
 msgid "Update Post"
-msgstr "تحديث المنشور"
+msgstr "I-update ang Post"
 
 #: blog/templates/blog/search/list_ajax.html:88
 msgid "There are no post related this query"
-msgstr "لا توجد وظيفة متعلقة بهذا الاستعلام"
+msgstr "Walang post na nauugnay sa query na ito"
 
 #: blog/templates/blog/search/search.html:6
 #: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:220
 #: blog/templates/blog_base.html:221
 msgid "Search"
-msgstr "بحث"
+msgstr "Maghanap"
 
 #: blog/templates/blog/search/search.html:17
 msgid "Post Containing"
-msgstr "بعد احتواء"
+msgstr "Post na Naglalaman"
 
 #: blog/templates/blog/search/search.html:27
 msgid "Search again"
-msgstr "ابحث ثانيا"
+msgstr "Maghanap muli"
 
 #: blog/templates/blog/tag/list.html:10
 msgid "All tags"
-msgstr "كل العلامات"
+msgstr "Lahat ng mga tag"
 
 #: blog/templates/blog_base.html:132
 msgid "Posts"
-msgstr "دعامات"
+msgstr "Mga post"
 
 #: blog/templates/blog_base.html:135 blog/templates/blog_base.html:243
 #: blog/templates/blog_base.html:282
 msgid "Create Post"
-msgstr "إنشاء منشور"
+msgstr "Gumawa ng Post"
 
 #: blog/templates/blog_base.html:240 blog/templates/blog_base.html:279
 msgid "Manage profile"
-msgstr "إدارة الملف الشخصي"
+msgstr "Pamahalaan ang profile"
 
 #: blog/templates/blog_base.html:241 blog/templates/blog_base.html:280
 msgid "Change password"
-msgstr "تغيير كلمة المرور"
+msgstr "Palitan ANG password"
 
 #: blog/templates/blog_base.html:242 blog/templates/blog_base.html:281
 msgid "Logout"
-msgstr "تسجيل خروج"
+msgstr "Mag-logout"
 
 #: blog/templates/blog_base.html:247 blog/templates/blog_base.html:286
 msgid "My Publications"
-msgstr "منشوراتي"
+msgstr "Aking Mga Lathalain"
 
 #: blog/templates/blog_base.html:248 blog/templates/blog_base.html:287
 msgid "Create Publication"
-msgstr "إنشاء المنشور"
+msgstr "Gumawa ng Publication"
 
 #: blog/templates/blog_base.html:312
 msgid "Multi User Blog"
-msgstr "مدونة متعددة المستخدمين"
+msgstr "Blog ng Maramihang Gumagamit"
 
 #: blog/templates/blog_base.html:318
 msgid "Copyright"
-msgstr "حقوق النشر"
+msgstr "Copyright"
 
 #: blog/views.py:498
 msgid "Your are not authorized to edit :)"
-msgstr "غير مصرح لك بالتعديل :)"
+msgstr "Hindi ka awtorisadong mag-edit :)"
 
 #: blog/views.py:605
 msgid "No posts found ..."
-msgstr "لم يتم العثور على أية منشورات ..."
+msgstr "Walang mahanap na post ..."
 
 #: image_uploader/views.py:65
 msgid "Page not found."
-msgstr "الصفحة غير موجودة."
+msgstr "Hindi nahanap ang page."
 
 #: publication/models.py:11
 msgid "name"
-msgstr "اسم"
+msgstr "pangalan"
 
 #: publication/models.py:13
 msgid "image"
-msgstr "صورة"
+msgstr "larawan"
 
 #: publication/models.py:17
 msgid "slug"
-msgstr "سبيكة"
+msgstr "banatan"
 
 #: publication/models.py:20
 msgid "tags"
-msgstr "العلامات"
+msgstr "mga tag"
 
 #: publication/models.py:26
 msgid "publisher"
-msgstr "الناشر"
+msgstr "tagapaglathala"
 
 #: publication/models.py:31
 msgid "writer"
-msgstr "كاتب"
-
-#~ msgid "views:"
-#~ msgstr "الآراء:"
+msgstr "manunulat"

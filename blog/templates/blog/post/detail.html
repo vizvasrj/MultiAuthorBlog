@@ -165,14 +165,7 @@
                         </div>
                     </div>
                     <div class="col-11 post__body">
-                        <h1 class="posttitle">
-                            
-                                {{ t_post.title }}
-                        
-                        </h1>
-                        <pre>{{t_post.slug}}</pre>
-                        {{t_post.audio_url}}
-                        {{t_post.g_audio_url}}
+                        <h1 class="posttitle">{{ t_post.title }}</h1>
                         {% if t_post.audio_url %}
                             <audio controls id="audio1" style="width: 100%;">
                                 <source id='audio2' src="{{t_post.audio_url}}" type="audio/mpeg">
