@@ -34,7 +34,7 @@ T_SWITCH = (
     # 'en', 
     # 'ar', 
     # 'zh-hans', 
-    # 'ta',
+    # 'tl',
     # 'fr', 
     # 'de', 
     'hi', 
@@ -122,8 +122,8 @@ def lang_detect(text, pk):
             vietnamese_translate(pk)
 
     # filipino_translate(pk)
-    if ln != 'ta':
-        if 'ta' in T_SWITCH:
+    if ln != 'tl':
+        if 'tl' in T_SWITCH:
             filipino_translate(pk)
 
     # italian_translate(pk)
@@ -181,7 +181,7 @@ def text_to_speech(text, pk, part=None, ln=None):
         )
     
     # # for Filipino
-    elif ln == 'ta':
+    elif ln == 'tl':
         voice = texttospeech_v1.VoiceSelectionParams(
             language_code = 'fil-PH',
             name = 'fil-PH-Wavenet-A',

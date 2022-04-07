@@ -13,6 +13,7 @@ from django.contrib.contenttypes.models import ContentType
 
 import redis
 from django.conf import settings
+from termcolor import colored
 
 r = redis.Redis(
     host=settings.REDIS_HOST,
@@ -72,9 +73,12 @@ def about_post_detail(request, slug):
             )
             # new_comment.about_post = about_post
             new_comment.commentor_id = request.user.id
-            print(new_comment.parent)
-            print(new_comment)
-            new_comment.save()
+            print(colored(new_comment.parent, 'red'))
+            print(colored(new_comment.parent.get_ancestors().count(), 'blue'))
+            if new_comment.parent.get_ancestors().count() >= settings.MAX_COMMENT_TREE:
+                pass
+            else:
+                new_comment.save()
 
             return HttpResponseRedirect('')
     else:

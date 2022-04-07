@@ -186,7 +186,7 @@ def post_detail(request, slug, author):
     #     slug = HindiTranslatedPost.objects.get(slug=slug).post.slug
     # elif language == 'ar':
     #     slug = ArabicTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'ta':
+    # elif language == 'tl':
     #     slug = FilipinoTranslatedPost.objects.get(slug=slug).post.slug
     # elif language == 'fr':
     #     slug = FrenchTranslatedPost.objects.get(slug=slug).post.slug
@@ -893,7 +893,7 @@ def update_translate_post(request, pk, id):
         post = get_object_or_404(ChineseTranslatedPost, pk=pk)
     elif language == 'ar':
         post = get_object_or_404(ArabicTranslatedPost, pk=pk)
-    elif language == 'ta':
+    elif language == 'tl':
         post = get_object_or_404(FilipinoTranslatedPost, pk=pk)
     elif language == 'fr':
         post = get_object_or_404(FrenchTranslatedPost, pk=pk)

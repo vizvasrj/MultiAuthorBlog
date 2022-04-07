@@ -345,7 +345,7 @@ LANGUAGES = (
     ('en', _('English')),
     ('ar', _('Arabic')),
     ('zh-hans', _('Chinese')),
-    ('ta', _('Filipino')),#ta is not tl,  tl is tagalog ta is just another lanugae 
+    ('tl', _('Filipino')),#ta is not tl,  tl is tagalog ta is just another lanugae 
     ('fr', _('French')),
     ('de', _('German')),
     ('hi', _('Hindi')),
@@ -370,7 +370,7 @@ PARLER_LANGUAGES = {
         {'code': 'en'},
         {'code': 'ar'},
         {'code': 'zh-hans'},
-        {'code': 'ta'},
+        {'code': 'tl'},
         {'code': 'fr'},
         {'code': 'de'},
         {'code': 'hi'},
@@ -439,7 +439,7 @@ PARLER_DEFAULT_ACTIVATE = True
 # }
 
 # used in account/views/register 
-REGISTER_LANGUAGES = ('en', 'ar', 'zh-hans', 'ta','fr', 'de', 'hi', 'id', 'it', 'ja', 'ko', 'nn', 'pt', 'ru', 'es', 'vi')
+REGISTER_LANGUAGES = ('en', 'ar', 'zh-hans', 'tl','fr', 'de', 'hi', 'id', 'it', 'ja', 'ko', 'nn', 'pt', 'ru', 'es', 'vi')
 
 # Google service key file location for api usage
 GOOGLE_SERVICE_KEY = '/home/ak41622/serviceacc.json'
@@ -449,7 +449,7 @@ ADMIN_SWITCH = (
     # 'en', 
     # 'ar', 
     # 'zh-hans', 
-    # 'ta',
+    # 'tl',
     # 'fr', 
     # 'de', 
     'hi', 
@@ -584,3 +584,21 @@ if filepath.is_file():
     BING_CLARITY = BING_CLARITY
 else:
     BING_CLARITY = False
+
+
+EXTRA_LANG_INFO = {
+    'tl': {
+        'bidi': False,
+        'code': 'tl',
+        'name': 'Filipino',
+        'name_local': 'Filipino',
+    },
+}
+
+import django.conf.locale
+LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
+django.conf.locale.LANG_INFO = LANG_INFO
+
+
+# MY Comment  max Tree level
+MAX_COMMENT_TREE = 2

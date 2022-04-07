@@ -282,7 +282,7 @@ LANGUAGES = (
     ('en', _('English')),
     ('ar', _('Arabic')),
     ('zh-hans', _('Chinese')),
-    ('ta', _('Filipino')),#ta is not tl,  tl is tagalog ta is just another lanugae 
+    ('tl', _('Filipino')),#ta is not tl,  tl is tagalog ta is just another lanugae 
     ('fr', _('French')),
     ('de', _('German')),
     ('hi', _('Hindi')),
@@ -306,7 +306,7 @@ PARLER_LANGUAGES = {
         {'code': 'en'},
         {'code': 'ar'},
         {'code': 'zh-hans'},
-        {'code': 'ta'},
+        {'code': 'tl'},
         {'code': 'fr'},
         {'code': 'de'},
         {'code': 'hi'},

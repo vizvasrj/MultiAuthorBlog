@@ -55,10 +55,13 @@ urlpatterns = i18n_patterns(
     path('it/', include('translates.italian_translate.urls')),
     path('en/', include('translates.english_translate.urls')),
     path('scrape/', include('scrape.urls')),
+
 )
 urlpatterns += [
     path('my_uploader/', include('image_uploader.urls')),
     path('api9006912014/', ApiRoot.as_view(), name='api-root'),
+    path('comment/', include('comment.urls')),
+
     # path(
     #     'sitemap.xml',
     #     sitemap, {
@@ -67,6 +70,7 @@ urlpatterns += [
     # ),
     path('sitemap/', include('sitemap.urls')),
     path('robots.txt', robots_txt, name='robots_txt'),
+    path('comments/', include('comment.urls')),
 ]
 
 if settings.DEBUG:

@@ -34,7 +34,7 @@ class Profile(models.Model):
         ('ar', 'عربي'),
         ('en', 'English'),
         ('zh_hans', '简体中文'),
-        ('ta', 'Filipino'),
+        ('tl', 'Filipino'),
         ('fr', 'français'),
         ('de', 'Deutsch'),
         ('hi', 'हिंदी'),

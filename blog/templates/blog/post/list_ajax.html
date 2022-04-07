@@ -81,7 +81,7 @@
             {% endif %}
               
 
-          {% elif  LANGUAGE_CODE == 'ta' %}
+          {% elif  LANGUAGE_CODE == 'tl' %}
             {% if post.filipino_translated_post.last.title %}
               {{ post.filipino_translated_post.last.title }}
             {% else %}
@@ -229,7 +229,7 @@
         {% endif %}
           
 
-      {% elif  LANGUAGE_CODE == 'ta' %}
+      {% elif  LANGUAGE_CODE == 'tl' %}
         {% if post.filipino_translated_post.last.body %}
           {{ post.filipino_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
         {% else %}

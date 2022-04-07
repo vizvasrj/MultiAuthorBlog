@@ -64,7 +64,7 @@ def language_change_middleware(get_response):
         elif value in {'BY', 'RU', 'KZ', 'KG'}:
             translation.activate('ru')
         elif value in {'PH'}:
-            translation.activate('ta')
+            translation.activate('tl')
         elif value in {'DE', 'AT', 'LI', 'CH'}:
             translation.activate('de')
         elif value in {'ID'}:

@@ -490,7 +490,7 @@ $.each($('p a') , function(index, val) {
   $(this).removeAttr('href')
   }
   });
-  
+  <!-- like -->
 $('a.like').click(function (e) {
 e.preventDefault();
 $.post('{% url "like" %}',

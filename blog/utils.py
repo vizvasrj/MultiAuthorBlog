@@ -45,7 +45,7 @@ def language_in_post_detail(post, language):
             else:
                 return post
 
-        elif language == 'ta':
+        elif language == 'tl':
             if post.filipino_translated_post.latest():
                 return post.filipino_translated_post.latest()
             else:
@@ -149,7 +149,7 @@ def language_in_post_tags(post, language):
         else:
             return default
 
-    elif language == 'ta':
+    elif language == 'tl':
         if FilipinoTranslatedTag.objects.filter(tag__post=post.id):
             return FilipinoTranslatedTag.objects.filter(tag__post=post.id)
         else:

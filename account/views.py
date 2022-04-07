@@ -677,33 +677,33 @@ def validate_email(request):
 
 def my_relations_posts(request):
     if request.user.is_authenticated:
-        user = User.objects.get(id=request.user.id)
-        names = []
-        for f in user.following.all():
-            names.append(f.id)
+        # user = User.objects.get(id=request.user.id)
+        # names = []
+        # for f in user.following.all():
+        #     names.append(f.id)
 
-        q_objects = Q()
-        for u in names:
-            q_objects |= Q(author__user=u)
+        # q_objects = Q()
+        # for u in names:
+        #     q_objects |= Q(author__user=u)
         
-        # For Publication
-        all_pub = user.p_following.all()
-        if all_pub:
-            publications = []
-            for p in all_pub:
-                publications.append(p.id)
+        # # For Publication
+        # all_pub = user.p_following.all()
+        # if all_pub:
+        #     publications = []
+        #     for p in all_pub:
+        #         publications.append(p.id)
         
-            p_objects = Q()
-            for x in publications:
-                p_objects |= Q(publication=x)
-            posts = Post.aupm.filter(p_objects|q_objects).order_by('-publish')
-        else:
-            posts = Post.aupm.all().order_by('-publish')
-        empty = Post.aupm.all()
-        my_tags = TagNameValue.objects.all().filter(user=request.user).order_by('-value')[:10]
-        list_chain = list(chain(posts, empty))
-
-        paginator = Paginator(list_chain, 10)
+        #     p_objects = Q()
+        #     for x in publications:
+        #         p_objects |= Q(publication=x)
+        #     posts = Post.aupm.filter(p_objects|q_objects).order_by('-publish')
+        # else:
+        #     posts = Post.aupm.all().order_by('-publish')
+        # empty = Post.aupm.all()
+        # my_tags = TagNameValue.objects.all().filter(user=request.user).order_by('-value')[:10]
+        # list_chain = list(chain(posts, empty))
+        posts = Post.aupm.all()
+        paginator = Paginator(posts, 10)
         page = request.GET.get('page')
         try:
             posts = paginator.page(page)
@@ -713,7 +713,6 @@ def my_relations_posts(request):
             if request.is_ajax():
                 return HttpResponse('')
             posts = paginator.page(paginator.num_pages)
-            print(posts)
         if request.is_ajax():
             return render(
                 request,
@@ -725,7 +724,7 @@ def my_relations_posts(request):
             request,
             'account/me/fallowing/post.html', {
                 'posts': posts,
-                'my_tags': my_tags
+                # 'my_tags': my_tags
             }
         )
     else:

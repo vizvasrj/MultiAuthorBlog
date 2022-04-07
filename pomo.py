@@ -1,4 +1,5 @@
 import subprocess
+from threading import Thread
 # from google.cloud import translate
 import polib
 import json
@@ -7,23 +8,23 @@ import time
 from django.conf import settings
 from deep_translator import GoogleTranslator
 
-# LANGUAGES = {
-#     'ar': 'ar',
-#     'zh_hans': 'zh-CN',
-#     'ta': 'tl',
-#     'fr': 'fr',
-#     'de': 'de',
-#     'hi': 'hi',
-#     'id': 'id',
-#     'it': 'it',
-#     'ja': 'ja',
-#     'ko': 'ko',
-#     'nn': 'no',
-#     'pt': 'pt-BR',
-#     'ru': 'ru',
-#     'es': 'es',
-#     'vi': 'vi',
-# }
+LANGUAGES = {
+    'ar': 'ar',
+    'zh_Hans': 'zh-CN',
+    'tl': 'tl',
+    'fr': 'fr',
+    'de': 'de',
+    'hi': 'hi',
+    'id': 'id',
+    'it': 'it',
+    'ja': 'ja',
+    'ko': 'ko',
+    'nn': 'no',
+    'pt': 'pt-BR',
+    'ru': 'ru',
+    'es': 'es',
+    'vi': 'vi',
+}
 
 
 # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = settings.GOOGLE_SERVICE_KEY
@@ -102,29 +103,54 @@ def translate_text(text, code):
 import os
 import sys
 args = sys.argv
+from termcolor import colored
+import itertools
+from multiprocessing.dummy import Pool as ThreadPool
 
-null = []
-print(args[1:])
-if args[1:]:
-    for x in args[1:]:
-        p = os.popen('find -L . -maxdepth 6 -name  "*django.po*" -print -type l|grep "/'+x+'/"').read().strip()
-        if len(p) == 0:
-            null.append(x)
-        else:
-            print(p)
-            mo = "/".join(p.split('/')[:-1])
-            dext = p.split('/')[-1]
-            ext = dext.split('.')[0]
-            namext = '/'+ext+'.bk'
-            nemo = mo + namext
-            print(nemo)
-            po = polib.pofile(p)
-            for entry in po:
-                entry.msgstr = translate_text(text=entry.msgid, code=x)
-                print(entry.msgstr)
-                print(entry.msgid)
-            po.save(nemo)
-            os.popen('mv '+nemo+' '+p)
 
-print(null, "DID not return Good PLz check name")
+def create_po():
+    null = []
+    print(args[1:])
+    if args[1:]:
+        for x in args[1:]:
+            if x == 'all':
+                pool = ThreadPool(10)
+                results = pool.starmap(translate_text, zip(itertools.chain(LANGUAGES)))
+                pool.close()
+                pool.join()
+                return results
+            else:
+                try:
+                    ln = LANGUAGES[x]
+                except KeyError:
+                    error = {
+                        'language': x,
+                        'error': KeyError
+                    }
+                    print(x, "KEY ERROR")
+                    null.append(error)
+                    continue
+                p = os.popen('find -L . -maxdepth 6 -name  "*django.po*" -print -type l|grep "/'+x+'/"').read().strip()
+                if len(p) == 0:
+                    null.append(x)
+                else:
+                    print(p)
+                    mo = "/".join(p.split('/')[:-1])
+                    dext = p.split('/')[-1]
+                    ext = dext.split('.')[0]
+                    namext = '/'+ext+'.bk'
+                    nemo = mo + namext
+                    print(nemo)
+                    po = polib.pofile(p)
+                    for entry in po:
+                        entry.msgstr = translate_text(text=entry.msgid, code=ln)
+                        print(entry.msgstr)
+                        print(entry.msgid)
+                    po.save(nemo)
+                    os.popen('mv '+nemo+' '+p)
+
+    if null is []:
+        pass
+    else:
+        print(colored(null, 'red'), "DID not return Good PLz check name")
 

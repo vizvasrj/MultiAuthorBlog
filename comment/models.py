@@ -42,6 +42,7 @@ class Comment(MPTTModel):
         db_index=True,
         default=0
     )
+    
     class MPTTMeta:
         order_instertion_by = ['publish']
 

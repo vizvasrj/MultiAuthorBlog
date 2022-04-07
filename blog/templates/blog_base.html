@@ -150,8 +150,8 @@
                     العربيّة
                   {% elif LANGUAGE_CODE == 'zh-hans' %}
                     简体中文
-                  {% elif LANGUAGE_CODE == 'ta' %}
-                    தமிழ்
+                  {% elif LANGUAGE_CODE == 'tl' %}
+                    Filipino
                   {% elif LANGUAGE_CODE == 'fr' %}
                     français
                   {% elif LANGUAGE_CODE == 'de' %}
@@ -308,19 +308,18 @@
           <div class="row">
             <hr>
             <div class="col-lg-4 ">
-              <h1 class="footertitle">
-                <a class="textnone" href="/">{% trans 'Multi User Blog' %}</a>
+              <h1 class="">
+                <a class="textnone" href="{% url 'about_post_list_view' %}">{% trans 'About us' %}</a>
               </h1>
-              <h3 class="forgetica">Test of Simple Fonts</h3>
             </div>
             <div class="col-lg-4 ">
-              <h3 class="footertitle">
-                {% trans 'Copyright' %}© 2021
+              <h3 class="">
+                {% trans 'Copyright' %}© 2022
               </h3>
-              <a class="linkfooter" href="/sitemap.xml">Sitemap</a>
+              <a class="linkfooter" href="/sitemap/sitemap.xml">Sitemap</a>
             </div>
             <div class="col-lg-4 ">
-              <h4 class="footertitle d-flex flex-column">
+              <h4 class="d-flex flex-column">
                 Contact Me
                 <a class="linkfooter" href="mailto:root@vizvasrj.com">root@vizvasrj.com</a>
               </h4>

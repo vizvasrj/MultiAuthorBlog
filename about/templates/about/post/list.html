@@ -1,5 +1,5 @@
 {% extends "blog_base.html" %}
-
+{% load thumbnail %}
 {% block content %} 
 <div class="container">
     <div class="row">
@@ -10,7 +10,11 @@
             {% for post in posts %}
 
             <a href="{{post.get_absolute_url}}">
-                {{post.title}}
+                <h3 class="post_title">{{post.title}}</h3>
+                <div class="img">
+                    {% thumbnail post.cover 400x200 crop="100%" as im %}
+                    <img src="{{ im.url }}" alt=""></img>
+                </div>
             </a>
         
             {% endfor %}

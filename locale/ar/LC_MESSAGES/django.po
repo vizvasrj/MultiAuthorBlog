@@ -16,8 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: MultiAuthorBlog/pro_settings/base.py:282
 #: MultiAuthorBlog/pro_settings/pro_settings.py:314
@@ -47,7 +46,7 @@ msgstr "الفلبينية"
 #: MultiAuthorBlog/pro_settings/pro_settings.py:318
 #: MultiAuthorBlog/settings.py:349
 msgid "French"
-msgstr "فرنسي"
+msgstr "الفرنسية"
 
 #: MultiAuthorBlog/pro_settings/base.py:287
 #: MultiAuthorBlog/pro_settings/pro_settings.py:319
@@ -121,11 +120,11 @@ msgstr "اسم المستخدم"
 
 #: account/forms.py:29 account/forms.py:31 account/forms.py:38
 msgid "Password"
-msgstr "كلمه السر"
+msgstr "كلمة المرور"
 
 #: account/forms.py:40
 msgid "Password ..."
-msgstr "كلمه السر ..."
+msgstr "كلمة المرور ..."
 
 #: account/forms.py:44 account/forms.py:171
 msgid "Repeat Password"
@@ -153,31 +152,31 @@ msgstr "كلمات المرور غير متطابقة."
 
 #: account/forms.py:147
 msgid "Enter email address"
-msgstr ""
+msgstr "أدخل عنوان البريد الالكتروني"
 
 #: account/forms.py:159
 #, fuzzy
 #| msgid "Password"
 msgid "Old password"
-msgstr "كلمه السر"
+msgstr "كلمة المرور القديمة"
 
 #: account/forms.py:161
 #, fuzzy
 #| msgid "Password ..."
 msgid "Old password ..."
-msgstr "كلمه السر ..."
+msgstr "كلمة المرور القديمة ..."
 
 #: account/forms.py:165
 #, fuzzy
 #| msgid "Change password"
 msgid "New password"
-msgstr "تغيير كلمة المرور"
+msgstr "كلمة مرور جديدة"
 
 #: account/forms.py:167
 #, fuzzy
 #| msgid "Password ..."
 msgid "New password ..."
-msgstr "كلمه السر ..."
+msgstr "كلمة مرور جديدة ..."
 
 #: account/forms.py:173
 #, fuzzy
@@ -187,13 +186,13 @@ msgstr "اعد كلمة السر ..."
 
 #: account/forms.py:182
 msgid "Enter Your password to delete your account"
-msgstr ""
+msgstr "أدخل كلمة المرور الخاصة بك لحذف حسابك"
 
 #: account/forms.py:185
 #, fuzzy
 #| msgid "But First you have to Verify your account."
 msgid "Enter your password to delete your account"
-msgstr "ولكن عليك أولاً التحقق من حسابك."
+msgstr "أدخل كلمة المرور الخاصة بك لحذف حسابك"
 
 #: account/models.py:55
 msgid "user"
@@ -201,7 +200,7 @@ msgstr "المستعمل"
 
 #: account/models.py:58
 msgid "full name"
-msgstr "الاسم بالكامل"
+msgstr "الاسم الكامل"
 
 #: account/models.py:65
 msgid "photo"
@@ -222,7 +221,7 @@ msgstr "تحرير حسابك"
 #: account/templates/account/edit.html:17
 #: account/templates/account/edit.html:40
 msgid "Profile"
-msgstr "الملف الشخصي"
+msgstr "حساب تعريفي"
 
 #: account/templates/account/edit.html:20
 msgid "Configuration"
@@ -268,7 +267,7 @@ msgstr "اشتراك"
 #, fuzzy
 #| msgid "All tags"
 msgid "Related tags"
-msgstr "كل العلامات"
+msgstr "العلامات ذات الصلة"
 
 #: account/templates/account/me/my_post_list_ajax.html:12
 msgid "delete"
@@ -348,7 +347,7 @@ msgstr "احذف نفسك من هذا المنشور"
 #: blog/templates/blog/search/list_ajax.html:61
 #, python-format
 msgid "Published at %(post_publish)s"
-msgstr "تم النشر في%(post_publish)s"
+msgstr "تم النشر في٪ (post_publish) s"
 
 #: account/templates/account/me/shared.html:18
 msgid "My shared"
@@ -360,11 +359,11 @@ msgstr "انفصال"
 
 #: account/templates/account/register.html:4
 msgid "Create an account"
-msgstr "انشئ حساب"
+msgstr "إنشاء حساب"
 
 #: account/templates/account/register.html:61
 msgid "Create"
-msgstr "إنشاء"
+msgstr "خلق"
 
 #: account/templates/account/register.html:62
 msgid "Login Here"
@@ -397,8 +396,7 @@ msgstr "أهلا بك"
 #: account/templates/account/register_done.html:27
 #, fuzzy, python-format
 #| msgid ""
-#| "Welcome, Your email %(new_user_email)s and username is "
-#| "%(new_user_username)s"
+#| "Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
 msgid ""
 "Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
 msgstr ""
@@ -415,7 +413,7 @@ msgstr "الآن يمكنك تسجيل الدخول."
 
 #: account/templates/account/register_done.html:32
 msgid "But First you have to Verify your account."
-msgstr "ولكن عليك أولاً التحقق من حسابك."
+msgstr "لكن عليك أولاً التحقق من حسابك."
 
 #: account/templates/account/user/follower.html:6
 #: account/templates/account/user/following.html:6
@@ -430,11 +428,11 @@ msgstr "يتبع"
 
 #: account/templates/account/user/left_side.html:24
 msgid "Following"
-msgstr "التالية"
+msgstr "التالي"
 
 #: account/templates/account/user/left_side.html:26
 msgid "following"
-msgstr "التالية"
+msgstr "التالي"
 
 #: account/templates/account/user/left_side.html:34
 msgid "Followers"
@@ -591,7 +589,7 @@ msgstr "لا يوجد منشور"
 
 #: blog/forms.py:97 blog/forms.py:241
 msgid "Title"
-msgstr "عنوان"
+msgstr "لقب"
 
 #: blog/forms.py:102 blog/forms.py:246
 msgid "Type content here."
@@ -627,19 +625,19 @@ msgstr "العنوان الفرعي"
 
 #: blog/models.py:95 blog/models.py:117 blog/models.py:180
 msgid "cover"
-msgstr "غطاء، يغطي"
+msgstr "التغطية"
 
 #: blog/models.py:122
 msgid "photographer name"
-msgstr ""
+msgstr "اسم المصور"
 
 #: blog/models.py:127
 msgid "photographer profile url"
-msgstr ""
+msgstr "رابط ملف تعريف المصور"
 
 #: blog/models.py:132
 msgid "sha_256"
-msgstr ""
+msgstr "sha_256"
 
 #: blog/models.py:169
 msgid "category"
@@ -653,7 +651,7 @@ msgstr "النشر"
 #, fuzzy
 #| msgid "Upload cover image"
 msgid "cover image"
-msgstr "تحميل صورة الغلاف"
+msgstr "صورة الغلاف"
 
 #: blog/models.py:201
 msgid "author"
@@ -688,7 +686,7 @@ msgstr "يساعدك على تذكر المزيد"
 
 #: blog/templates/blog/post/detail.html:191
 msgid "edit translated"
-msgstr ""
+msgstr "تحرير المترجم"
 
 #: blog/templates/blog/post/detail.html:225
 msgid "Its a draft you can publish and edit here"
@@ -696,7 +694,7 @@ msgstr "انها مسودة يمكنك نشرها وتحريرها هنا"
 
 #: blog/templates/blog/post/detail.html:257
 msgid "Sources"
-msgstr ""
+msgstr "مصادر"
 
 #: blog/templates/blog/post/detail.html:320
 msgid "Edit"
@@ -720,7 +718,7 @@ msgstr "التعليق هنا"
 #, fuzzy
 #| msgid "Please provie some tags"
 msgid "please insert some comment"
-msgstr "يرجى تقديم بعض العلامات"
+msgstr "الرجاء إدخال بعض التعليق"
 
 #: blog/templates/blog/post/detail.html:466
 msgid "Similar posts"
@@ -765,11 +763,11 @@ msgstr "إذا نشر؟"
 
 #: blog/templates/blog/post_form.html:229
 msgid "please insert valid content"
-msgstr ""
+msgstr "الرجاء إدخال محتوى صالح"
 
 #: blog/templates/blog/post_form.html:235
 msgid "please insert valid title"
-msgstr ""
+msgstr "الرجاء إدخال عنوان صالح"
 
 #: blog/templates/blog/post_update.html:7
 #: blog/templates/blog/translate_update.html:7
@@ -800,7 +798,7 @@ msgstr "كل العلامات"
 
 #: blog/templates/blog_base.html:132
 msgid "Posts"
-msgstr "دعامات"
+msgstr "المشاركات"
 
 #: blog/templates/blog_base.html:135 blog/templates/blog_base.html:243
 #: blog/templates/blog_base.html:282
