@@ -329,7 +329,7 @@
         <p class="read_more">{% trans 'Read more' %} : ({{ post.body|readtime }})</p> 
       </a>
       <div class="">
-        {% with post|language_tags:'ja' as tags %}
+        {% with post|language_tags:LANGUAGE_CODE as tags %}
         {% for tag in tags %}
         <a href="{{ tag.get_absolute_url }}" class=" tags-item
             {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bgredlite---' %}">
