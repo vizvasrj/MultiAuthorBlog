@@ -347,7 +347,7 @@ msgstr "احذف نفسك من هذا المنشور"
 #: blog/templates/blog/search/list_ajax.html:61
 #, python-format
 msgid "Published at %(post_publish)s"
-msgstr "تم النشر في٪ (post_publish) s"
+msgstr "تم النشر في%(post_publish)s"
 
 #: account/templates/account/me/shared.html:18
 msgid "My shared"

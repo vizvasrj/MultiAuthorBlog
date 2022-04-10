@@ -731,7 +731,7 @@ msgstr "Mehrbenutzer-Blog"
 
 #: blog/templates/blog_base.html:173
 msgid "Copyright"
-msgstr "Urheberrechte ©"
+msgstr "Urheberrechte"
 
 #: blog/views.py:438
 msgid "Your are not authorized to edit :)"

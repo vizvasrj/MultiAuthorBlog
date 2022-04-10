@@ -120,11 +120,11 @@ msgstr "Nome utente"
 
 #: account/forms.py:29 account/forms.py:31 account/forms.py:38
 msgid "Password"
-msgstr "Parola d&#39;ordine"
+msgstr "Parola d'ordine"
 
 #: account/forms.py:40
 msgid "Password ..."
-msgstr "Parola d&#39;ordine ..."
+msgstr "Parola d'ordine ..."
 
 #: account/forms.py:44
 msgid "Repeat Password"
@@ -402,7 +402,7 @@ msgstr "Per saperne di più"
 
 #: account/templates/account/utils/delete.html:4
 msgid "Delete Account"
-msgstr "Eliminare l&#39;account"
+msgstr "Eliminare l'account"
 
 #: account/templates/registration/login.html:8
 msgid "Login Now"
@@ -509,7 +509,7 @@ msgstr "Login non valido"
 
 #: account/views.py:98
 msgid "User already exists"
-msgstr "L&#39;utente esiste già"
+msgstr "L'utente esiste già"
 
 #: account/views.py:142
 msgid "Profile updated successfully"
@@ -517,7 +517,7 @@ msgstr "Profilo aggiornato con successo"
 
 #: account/views.py:147
 msgid "Error updating your profile"
-msgstr "Errore durante l&#39;aggiornamento del tuo profilo"
+msgstr "Errore durante l'aggiornamento del tuo profilo"
 
 #: account/views.py:544
 msgid "Wrong password"
@@ -728,7 +728,7 @@ msgstr "Blog multiutente"
 
 #: blog/templates/blog_base.html:173
 msgid "Copyright"
-msgstr "Diritto d&#39;autore"
+msgstr "Diritto d'autore"
 
 #: blog/views.py:438
 msgid "Your are not authorized to edit :)"

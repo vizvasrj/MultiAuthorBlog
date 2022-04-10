@@ -116,7 +116,7 @@ msgstr "vietnamien"
 
 #: account/forms.py:22 account/forms.py:24 account/forms.py:50
 msgid "Username"
-msgstr "Nom d&#39;utilisateur"
+msgstr "Nom d'utilisateur"
 
 #: account/forms.py:29 account/forms.py:31 account/forms.py:38
 msgid "Password"
@@ -136,7 +136,7 @@ msgstr "Répéter le mot de passe ..."
 
 #: account/forms.py:52
 msgid "Username ..."
-msgstr "Nom d&#39;utilisateur ..."
+msgstr "Nom d'utilisateur ..."
 
 #: account/forms.py:57
 msgid "Email"
@@ -215,7 +215,7 @@ msgstr "Connexion"
 #: account/templates/registration/login.html:29
 #: blog/templates/blog_base.html:144
 msgid "SignUp"
-msgstr "S&#39;inscrire"
+msgstr "S'inscrire"
 
 #: account/templates/account/me/my_post_list_ajax.html:12
 msgid "delete"
@@ -317,21 +317,21 @@ msgstr "Connectez-vous ici"
 
 #: account/templates/account/register.html:103
 msgid "This username is not available!"
-msgstr "Ce nom d&#39;utilisateur n&#39;est pas disponible!"
+msgstr "Ce nom d'utilisateur n'est pas disponible!"
 
 #: account/templates/account/register.html:110
 msgid "This username is available!"
-msgstr "Ce nom d&#39;utilisateur est disponible!"
+msgstr "Ce nom d'utilisateur est disponible!"
 
 #: account/templates/account/register.html:114
 msgid "Enter valid username character should be more than 4 letters!"
 msgstr ""
-"Saisissez un nom d&#39;utilisateur valide qui doit comporter plus de "
+"Saisissez un nom d'utilisateur valide qui doit comporter plus de "
 "4 lettres !"
 
 #: account/templates/account/register.html:174
 msgid "This email is not available!"
-msgstr "Cet e-mail n&#39;est pas disponible !"
+msgstr "Cet e-mail n'est pas disponible !"
 
 #: account/templates/account/register.html:179
 msgid "This email is available!"
@@ -345,7 +345,7 @@ msgstr "Bienvenue"
 msgid ""
 "Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
 msgstr ""
-"Bienvenue, votre e-mail %(new_user_email)s et votre nom d&#39;utilisateur "
+"Bienvenue, votre e-mail %(new_user_email)s et votre nom d'utilisateur "
 "sont %(new_user_username)s"
 
 #: account/templates/account/register_done.html:14
@@ -358,7 +358,7 @@ msgstr "Maintenant, vous pouvez vous connecter."
 
 #: account/templates/account/register_done.html:17
 msgid "But First you have to Verify your account."
-msgstr "Mais vous devez d&#39;abord vérifier votre compte."
+msgstr "Mais vous devez d'abord vérifier votre compte."
 
 #: account/templates/account/user/follower.html:6
 #: account/templates/account/user/following.html:6
@@ -485,8 +485,8 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
-"Le lien de réinitialisation du mot de passe n&#39;était pas valide, peut-"
-"être parce qu&#39;il a déjà été utilisé. Veuillez demander une nouvelle "
+"Le lien de réinitialisation du mot de passe n'était pas valide, peut-"
+"être parce qu'il a déjà été utilisé. Veuillez demander une nouvelle "
 "réinitialisation de mot de passe."
 
 #: account/templates/registration/password_reset_done.html:13
@@ -511,7 +511,7 @@ msgstr "Identifiant invalide"
 
 #: account/views.py:98
 msgid "User already exists"
-msgstr "L&#39;utilisateur existe déjà"
+msgstr "L'utilisateur existe déjà"
 
 #: account/views.py:142
 msgid "Profile updated successfully"
@@ -610,7 +610,7 @@ msgstr "vous aide à vous souvenir plus"
 
 #: blog/templates/blog/post/detail.html:121
 msgid "Its a draft you can publish and edit here"
-msgstr "C&#39;est un brouillon que vous pouvez publier et éditer ici"
+msgstr "C'est un brouillon que vous pouvez publier et éditer ici"
 
 #: blog/templates/blog/post/detail.html:142
 msgid "views:"
@@ -654,7 +654,7 @@ msgstr "Veuillez indiquer quand publier"
 #: blog/templates/blog/post_form.html:91
 #: blog/templates/blog/post_update.html:83
 msgid "Upload cover image"
-msgstr "Télécharger l&#39;image de couverture"
+msgstr "Télécharger l'image de couverture"
 
 #: blog/templates/blog/post_form.html:94
 #: blog/templates/blog/post_update.html:86
@@ -664,7 +664,7 @@ msgstr "Télécharger (Cliquez ici)"
 #: blog/templates/blog/post_form.html:100
 #: blog/templates/blog/post_update.html:92
 msgid "Share to edit with others"
-msgstr "Partager pour modifier avec d&#39;autres"
+msgstr "Partager pour modifier avec d'autres"
 
 #: blog/templates/blog/post_form.html:106
 #: blog/templates/blog/post_update.html:98
@@ -677,7 +677,7 @@ msgstr "Mettre à jour le message"
 
 #: blog/templates/blog/search/list_ajax.html:88
 msgid "There are no post related this query"
-msgstr "Il n&#39;y a pas de post lié à cette requête"
+msgstr "Il n'y a pas de post lié à cette requête"
 
 #: blog/templates/blog/search/search.html:6
 #: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:103
@@ -730,11 +730,11 @@ msgstr "Blog multi-utilisateurs"
 
 #: blog/templates/blog_base.html:173
 msgid "Copyright"
-msgstr "droits d&#39;auteur"
+msgstr "droits d'auteur"
 
 #: blog/views.py:438
 msgid "Your are not authorized to edit :)"
-msgstr "Vous n&#39;êtes pas autorisé à modifier :)"
+msgstr "Vous n'êtes pas autorisé à modifier :)"
 
 #: blog/views.py:545
 msgid "No posts found ..."
