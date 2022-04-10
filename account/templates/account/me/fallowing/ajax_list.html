@@ -42,6 +42,7 @@
                     <div class="p-2 tags__home" >
         
                         {% for tag in post.tags.all|tagtag %}
+                        
                         <div  style="display: inline-block;">
                             <a class="author_name_from_list" href="{{tag.get_absolute_url}}"><span class="hash">#</span>{{ tag }}</a>
                         </div>
@@ -115,8 +116,8 @@
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'zh-hans' %}
-        {% if post.chiense_translated_post.last.title %}
-          {{ post.chiense_translated_post.last.title }}
+        {% if post.chinese_translated_post.last.title %}
+          {{ post.chinese_translated_post.last.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
