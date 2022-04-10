@@ -206,7 +206,6 @@
       {% endif %}
         
       <p class="mt-1 post__list__body">
-        
       {% if LANGUAGE_CODE == 'en' %}
         {% if post.english_translated_post.latest.body %}
           {{ post.english_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}

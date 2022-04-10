@@ -25,6 +25,10 @@ class ArabicTranslatedTag(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        get_latest_by = ['id']
+
+
 
 
 

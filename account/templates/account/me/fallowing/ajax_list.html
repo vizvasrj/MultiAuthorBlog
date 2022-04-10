@@ -2,6 +2,7 @@
 {% load thumbnail %}
 {% load blog_tags %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 
 
@@ -40,13 +41,17 @@
                         <!-- <span>Other some</span> -->
                     </div>
                     <div class="p-2 tags__home" >
-        
-                        {% for tag in post.tags.all|tagtag %}
+                      
+                      {% with post|language_tags:LANGUAGE_CODE as tags %}
+                        
+                        {% for tag in tags|tagtag %}
                         
                         <div  style="display: inline-block;">
-                            <a class="author_name_from_list" href="{{tag.get_absolute_url}}"><span class="hash">#</span>{{ tag }}</a>
+                            <a class="author_name_from_list" href="{{tag.tag.get_absolute_url}}"><span class="hash">#</span>{{ tag }}</a>
                         </div>
                         {% endfor %}
+                        
+                      {% endwith %}
         
                     </div>
                 </div>

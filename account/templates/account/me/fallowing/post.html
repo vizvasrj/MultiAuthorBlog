@@ -1,6 +1,7 @@
 {% extends "blog_base.html" %}
 {% load static %}
 {% load blog_tags %}
+{% load account_tags %}
 {% load i18n %}
 {% block style %}
 
@@ -26,7 +27,7 @@ margin-top: -20px !important;
                     <div class="">
                         
                         <a class="hover__tag"
-                            href="{{ tag.get_absolute_url }}"><strong># </strong> {{ tag }}
+                            href="{{ tag.get_absolute_url }}"><strong># </strong> {{ tag|single_tag:LANGUAGE_CODE }}
                         </a>
                         <a data-url="{% url 'tag_follow' %}" data-id="{{ tag.id }}"
                         data-action="{% if request.user in tag.followers.all %}un{% endif %}follow" 
