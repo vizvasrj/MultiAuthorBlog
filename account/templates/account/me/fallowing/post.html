@@ -44,7 +44,7 @@ margin-top: -20px !important;
             {% else %}
             {% endif %}
                 <div id="post-list">
-                {% include "account/me/fallowing/ajax_list.html" %}
+                {% include "account/me/fallowing/ajax_list.html" with posts=posts %}
             </div>
         </div>
         <div class="border col-xl-4">

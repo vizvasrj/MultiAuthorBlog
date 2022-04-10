@@ -802,6 +802,7 @@ def tags_posts_lists(request, slug):
 
 
     posts = Post.aupm.all().filter(tags__slug__in=[tag.slug])
+    
     # posts = Post.objects.all().filter(tags__slug__in=[tag.slug])
     paginator = Paginator(posts, 10)
     page = request.GET.get('page')
@@ -813,12 +814,12 @@ def tags_posts_lists(request, slug):
         if request.is_ajax():
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-        print(posts)
+
     if request.is_ajax():
         return render(
             request,
             'account/me/fallowing/ajax_list.html',{
-                'posts': posts
+                'posts': posts,
             }
         )
     return render(

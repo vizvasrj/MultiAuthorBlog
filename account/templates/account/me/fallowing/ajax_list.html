@@ -102,114 +102,114 @@
 <a class="h1-title" href="{{post.get_absolute_url}}">
     <h1 class="h1-title">
       {% if LANGUAGE_CODE == 'en' %}
-        {% if post.english_translated_post.last.title %}
-          {{ post.english_translated_post.last.title }}
+        {% if post.english_translated_post.latest.title %}
+          {{ post.english_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'ar' %}
-        {% if post.arabic_translated_post.last.title %}
-          {{ post.arabic_translated_post.last.title }}
+        {% if post.arabic_translated_post.latest.title %}
+          {{ post.arabic_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'zh-hans' %}
-        {% if post.chinese_translated_post.last.title %}
-          {{ post.chinese_translated_post.last.title }}
+        {% if post.chinese_translated_post.latest.title %}
+          {{ post.chinese_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
           
 
       {% elif  LANGUAGE_CODE == 'tl' %}
-        {% if post.filipino_translated_post.last.title %}
-          {{ post.filipino_translated_post.last.title }}
+        {% if post.filipino_translated_post.latest.title %}
+          {{ post.filipino_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'fr' %}
-        {% if post.french_translated_post.last.title %}
-          {{ post.french_translated_post.last.title }}
+        {% if post.french_translated_post.latest.title %}
+          {{ post.french_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'de' %}
-        {% if post.german_translated_post.last.title %}
-          {{ post.german_translated_post.last.title }}
+        {% if post.german_translated_post.latest.title %}
+          {{ post.german_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'hi' %}
-        {% if post.hindi_translated_post.last.title %}
-          {{ post.hindi_translated_post.last.title }}
+        {% if post.hindi_translated_post.latest.title %}
+          {{ post.hindi_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
       
       {% elif  LANGUAGE_CODE == 'id' %}
-        {% if post.indonesian_translated_post.last.title %}
-          {{ post.indonesian_translated_post.last.title }}
+        {% if post.indonesian_translated_post.latest.title %}
+          {{ post.indonesian_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'it' %}
-        {% if post.italian_translated_post.last.title %}
-          {{ post.italian_translated_post.last.title }}
+        {% if post.italian_translated_post.latest.title %}
+          {{ post.italian_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
         
       {% elif  LANGUAGE_CODE == 'ja' %}
-        {% if post.japanese_translated_post.last.title %}
-          {{ post.japanese_translated_post.last.title }}
+        {% if post.japanese_translated_post.latest.title %}
+          {{ post.japanese_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'ko' %}
-        {% if post.korean_translated_post.last.title %}
-          {{ post.korean_translated_post.last.title }}
+        {% if post.korean_translated_post.latest.title %}
+          {{ post.korean_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'nn' %}
-        {% if post.norwegian_translated_post.last.title %}
-          {{ post.norwegian_translated_post.last.title }}
+        {% if post.norwegian_translated_post.latest.title %}
+          {{ post.norwegian_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'pt' %}
-        {% if post.portuguese_translated_post.last.title %}
-          {{ post.portuguese_translated_post.last.title }}
+        {% if post.portuguese_translated_post.latest.title %}
+          {{ post.portuguese_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'ru' %}
-        {% if post.russian_translated_post.last.title %}
-          {{ post.russian_translated_post.last.title }}
+        {% if post.russian_translated_post.latest.title %}
+          {{ post.russian_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'es' %}
-        {% if post.spanish_translated_post.last.title %}
-          {{ post.spanish_translated_post.last.title }}
+        {% if post.spanish_translated_post.latest.title %}
+          {{ post.spanish_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
 
       {% elif  LANGUAGE_CODE == 'vi' %}
-        {% if post.vietnamese_translated_post.last.title %}
-          {{ post.vietnamese_translated_post.last.title }}
+        {% if post.vietnamese_translated_post.latest.title %}
+          {{ post.vietnamese_translated_post.latest.title }}
         {% else %}
           {{ post.title }}  
         {% endif %}
@@ -241,114 +241,114 @@
 <p class="word-break">
     
     {% if LANGUAGE_CODE == 'en' %}
-    {% if post.english_translated_post.last.body %}
-      {{ post.english_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.english_translated_post.latest.body %}
+      {{ post.english_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'ar' %}
-    {% if post.arabic_translated_post.last.body %}
-      {{ post.arabic_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.arabic_translated_post.latest.body %}
+      {{ post.arabic_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'zh-hans' %}
-    {% if post.chiense_translated_post.last.body %}
-      {{ post.chiense_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.chinese_translated_post.latest.body %}
+      {{ post.chinese_translated_post.latest.body|xssprotect|removeimage|striptags|split_figures:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
       
 
   {% elif  LANGUAGE_CODE == 'tl' %}
-    {% if post.filipino_translated_post.last.body %}
-      {{ post.filipino_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.filipino_translated_post.latest.body %}
+      {{ post.filipino_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'fr' %}
-    {% if post.french_translated_post.last.body %}
-      {{ post.french_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.french_translated_post.latest.body %}
+      {{ post.french_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'de' %}
-    {% if post.german_translated_post.last.body %}
-      {{ post.german_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.german_translated_post.latest.body %}
+      {{ post.german_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'hi' %}
-    {% if post.hindi_translated_post.last.body %}
-      {{ post.hindi_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.hindi_translated_post.latest.body %}
+      {{ post.hindi_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
   
   {% elif  LANGUAGE_CODE == 'id' %}
-    {% if post.indonesian_translated_post.last.body %}
-      {{ post.indonesian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.indonesian_translated_post.latest.body %}
+      {{ post.indonesian_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'it' %}
-    {% if post.italian_translated_post.last.body %}
-      {{ post.italian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.italian_translated_post.latest.body %}
+      {{ post.italian_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
     
   {% elif  LANGUAGE_CODE == 'ja' %}
-    {% if post.japanese_translated_post.last.body %}
-      {{ post.japanese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.japanese_translated_post.latest.body %}
+      {{ post.japanese_translated_post.latest.body|xssprotect|removeimage|striptags|split_figures:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'ko' %}
-    {% if post.korean_translated_post.last.body %}
-      {{ post.korean_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.korean_translated_post.latest.body %}
+      {{ post.korean_translated_post.latest.body|xssprotect|removeimage|striptags|split_figures:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'nn' %}
-    {% if post.norwegian_translated_post.last.body %}
-      {{ post.norwegian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.norwegian_translated_post.latest.body %}
+      {{ post.norwegian_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'pt' %}
-    {% if post.portuguese_translated_post.last.body %}
-      {{ post.portuguese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.portuguese_translated_post.latest.body %}
+      {{ post.portuguese_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'ru' %}
-    {% if post.russian_translated_post.last.body %}
-      {{ post.russian_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.russian_translated_post.latest.body %}
+      {{ post.russian_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'es' %}
-    {% if post.spanish_translated_post.last.body %}
-      {{ post.spanish_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.spanish_translated_post.latest.body %}
+      {{ post.spanish_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}
 
   {% elif  LANGUAGE_CODE == 'vi' %}
-    {% if post.vietnamese_translated_post.last.body %}
-      {{ post.vietnamese_translated_post.last.body|xssprotect|removeimage|striptags|truncatewords:100 }}
+    {% if post.vietnamese_translated_post.latest.body %}
+      {{ post.vietnamese_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
     {% else %}
       {{post.body|paragraph|truncatechars_html:500}}  
     {% endif %}

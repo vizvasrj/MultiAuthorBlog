@@ -289,7 +289,7 @@ def bing_clarity(boolean):
 @register.filter(is_safe=True, name='tagtag')
 def tagtag(tag):
     try:
-        print(tag[:5])
+        # print(tag[:5])
         tags = tag[:3]
         return tags
     except IndexError:
