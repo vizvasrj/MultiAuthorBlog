@@ -294,3 +294,15 @@ def tagtag(tag):
         return tags
     except IndexError:
         return ''
+
+@register.filter(is_safe=True, name='split_figures')
+def split_figures(text, n):
+    new_text = text[:n]
+    return new_text
+
+
+@register.filter(is_safe=True, name='language_tags')
+def language_tags(post, language):
+    from blog.utils import language_in_post_tags
+    t_tags = language_in_post_tags(post, language)
+    return t_tags

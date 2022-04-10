@@ -18,16 +18,21 @@
         <div class="col-lg-3"></div>
     </div>
 
+    {% if about_post.comment_active is True %}
     <!-- Comments -->
     <div class="row">
         <div class="col-lg-3"></div>
 
         <div class="col-lg-6">
             <div id="comment-list" class="">
+                
+                    
+                
+                    
                 {% load mptt_tags %}
                 <div>
                     {% recursetree comments %}
-                    <div id="{{ node.id }}" class="p-2 {% if node.parent %} my-2 {% endif %}" style="border: 1px solid grey; ">
+                    <div id="{{ node.id }}" class="p-2 my-2" style="border: 1px solid grey; ">
                         <div class="d-flex justify-content-between">
                             {% thumbnail node.commentor.photo "20x20" crop="100%" as im %}
                             <strong>
@@ -41,8 +46,8 @@
                                 {% endif %}
                             </div>
                         </div>
-                        <div class="comment-body">
-                            {{node.id}}:{{ node.body }}
+                        <div class="comment-body" >
+                            {{ node.body }}
                         </div>
                         <div id="">
                             {% with total_likes=node.users_like.count users_like=node.users_like.all %}
@@ -83,11 +88,10 @@
                             <!-- end count and like -->
                             {% endwith %}
                         </div>
-                        <hr>
-                        
                         {% if node.get_ancestors.count > 1 %}
                         
                         {% else %}
+                        <hr>
                         <button class="comment__button" onClick="myFunction({{ node.id }})">Reply</button>
                         {% endif %}
                             
@@ -123,6 +127,7 @@
                     <button type="submit" class="comment__button">Submit</button>
                 </form>
                 {% endif %}
+
             </div>
             <script type="text/javascript">
                 function formExit() {
@@ -164,6 +169,7 @@
         <div class="col-lg-3"></div>
 
     </div>
+    {% endif %}
 </div>
 
 
@@ -211,4 +217,13 @@ $('#comment-list').on("click", "a.c_like", function (event) {
             }
         });
 });
+
+
+$('form').keydown(function(event) {
+    if (event.ctrlKey && event.keyCode === 13) {
+      // submit the form
+      console.log('Submit?');
+      $(this).trigger('submit');
+    }
+  })  
 {% endblock %}

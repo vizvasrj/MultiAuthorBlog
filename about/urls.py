@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
     path('post/',
         views.about_post_list_view,
@@ -11,4 +10,5 @@ urlpatterns = [
         views.about_post_detail,
         name='about_post_detail'
     ),
+    path('contact-us/', views.contact_us, name='contact_us'),
 ]

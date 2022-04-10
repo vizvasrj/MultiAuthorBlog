@@ -15,9 +15,15 @@ from parler.models import TranslatableModel, TranslatedFields
 
 # Create your models here.
 class AboutPost(models.Model):
+    CATEGORY = (
+        ('p', 'p'),
+        ('a', 'a'),
+        ('t', 't'),
+        ('c', 'c')
+    )
     title = models.CharField(max_length=256)
-    slug = AutoSlugField(populate_from='title')
-    body = EditorJsTextField()
+    slug = AutoSlugField(populate_from='title', editable=True)
+    body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     tags = TaggableManager()
@@ -30,7 +36,9 @@ class AboutPost(models.Model):
         upload_to='about/images/',
         blank=True, null=True
     )
+    category = models.CharField(max_length=1, choices=CATEGORY, default='c')
     comments = GenericRelation(Comment)
+    comment_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
