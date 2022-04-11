@@ -1,5 +1,5 @@
 {% extends "blog_base.html" %}
-{% load editorjs %}
+{% load blog_tags %}
 
 {% load thumbnail %}
 {% block content %}
@@ -13,7 +13,7 @@
                 {% thumbnail about_post.cover "500x300" crop="100%" as im %}
                 <img width="100%" src="{{im.url}}" alt="">
             </picture>
-            <p>{{about_post.body|editorjs}}</p>
+            <p>{{about_post.body|xssprotect}}</p>
         </div>
         <div class="col-lg-3"></div>
     </div>
