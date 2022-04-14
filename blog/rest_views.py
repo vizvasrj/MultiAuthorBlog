@@ -12,7 +12,7 @@ from rest_framework import authentication, permissions
 from rest_framework import generics
 from rest_framework.reverse import reverse 
 
-from .serializers import OnlyAudioShow, PostCURDSerializer, PostSerializer, SourcePostSerializer
+from .serializers import OnlyAudioShow, OnlyEngShow, PostCURDSerializer, PostSerializer, SourcePostSerializer
 from rest_framework.exceptions import (
     AuthenticationFailed, PermissionDenied, ValidationError, 
     NotFound
@@ -903,3 +903,14 @@ class AudioPostDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 #         raise Success("Success")
+
+from django_filters.rest_framework import DjangoFilterBackend
+
+class HPPostView(generics.ListCreateAPIView):
+    queryset = Post.aupm.all()
+    serializer_class = OnlyEngShow
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id', ]
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)

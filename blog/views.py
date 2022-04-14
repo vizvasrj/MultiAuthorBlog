@@ -48,7 +48,7 @@ import redis
 from nltk.corpus import wordnet
 from django.utils import translation
 import requests
-
+from blog.tblog.utils import get_tpost_ttags
 
 from django.core.cache import cache
 a_timedelta = timedelta(minutes=1)
@@ -177,41 +177,6 @@ def post_detail(request, slug, author):
     user = request.user
     language = request.LANGUAGE_CODE
 
-    # taking diffrent language slug convert to Post Slug
-    # if language == 'en':
-    #     slug = EnglishTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'zh-hans':
-    #     slug = ChineseTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'hi':
-    #     slug = HindiTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'ar':
-    #     slug = ArabicTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'tl':
-    #     slug = FilipinoTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'fr':
-    #     slug = FrenchTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'de':
-    #     slug = GermanTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'id':
-    #     slug = IndonesianTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'it':
-    #     slug = ItalianTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'ja':
-    #     slug = JapaneseTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'ko':
-    #     slug = KoreanTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'nn':
-    #     slug = NorwegianTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'pt':
-    #     slug = PortugueseTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'ru':
-    #     slug = RussianTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'es':
-    #     slug = SpanishTranslatedPost.objects.get(slug=slug).post.slug
-    # elif language == 'vi':
-    #     slug = VietnameseTranslatedPost.objects.get(slug=slug).post.slug
-    # else:
-    #     slug = slug
     cache.delete(f'post-{slug}')
     post = cache.get(f'post-{slug}')        
     if not post:
@@ -226,13 +191,10 @@ def post_detail(request, slug, author):
         pass
     # r.set(f"idid_post", bytes(post))
 
-    t_post = language_in_post_detail(post=post, language=language)
-    t_tags = language_in_post_tags(post, language)
-    # print(t_post.title)
-    # print(t_post)
-    # IP
-    # ip = request.META.get("REMOTE_ADDR")
-
+    # t_post = language_in_post_detail(post=post, language=language)
+    # t_tags = language_in_post_tags(post, language)
+    t_post = get_tpost_ttags(is_post=post, language=language, need_post=True)
+    t_tags = get_tpost_ttags(is_post=post, need_tags=True, language=language)
     if request.user.is_authenticated:
         user = request.user
         # i think this is better on celery

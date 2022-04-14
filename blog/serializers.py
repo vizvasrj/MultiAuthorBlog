@@ -400,3 +400,15 @@ class SourcePostSerializer(serializers.Serializer):
     text = serializers.CharField()
 
     
+class ENpostall(serializers.ModelSerializer):
+    class Meta:
+        model = EnglishTranslatedPost
+        fields = ('title', 'body',)
+
+
+class OnlyEngShow(serializers.ModelSerializer):
+    english_translated_post = ENpostall(required=False, many=True, read_only=True)
+
+    class Meta:
+        model = Post
+        fields = ('id', 'english_translated_post')

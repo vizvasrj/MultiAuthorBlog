@@ -1,19 +1,19 @@
-# from translates.hindi_translate.models import HindiTranslatedPost
-# from translates.arabic_translate.models import ArabicTranslatedPost
-# from translates.chinese_translate.models import ChineseTranslatedPost
-# from translates.filipino_translate.models import FilipinoTranslatedPost
-# from translates.french_translate.models import FrenchTranslatedPost
-# from translates.german_translate.models import GermanTranslatedPost
-# from translates.indonesian_translate.models import IndonesianTranslatedPost
-# from translates.italian_translate.models import ItalianTranslatedPost
-# from translates.japanese_translate.models import JapaneseTranslatedPost
-# from translates.korean_translate.models import KoreanTranslatedPost
-# from translates.norwegian_translate.models import NorwegianTranslatedPost
-# from translates.portuguese_translate.models import PortugueseTranslatedPost
-# from translates.russian_translate.models import RussianTranslatedPost 
-# from translates.spanish_translate.models import SpanishTranslatedPost
-# from translates.vietnamese_translate.models import VietnameseTranslatedPost
-# from translates.english_translate.models import EnglishTranslatedPost
+# from translates.hindi_translate.models import HindiTranslatedTag
+# from translates.arabic_translate.models import ArabicTranslatedTag
+# from translates.chinese_translate.models import ChineseTranslatedTag
+# from translates.filipino_translate.models import FilipinoTranslatedTag
+# from translates.french_translate.models import FrenchTranslatedTag
+# from translates.german_translate.models import GermanTranslatedTag
+# from translates.indonesian_translate.models import IndonesianTranslatedTag
+# from translates.italian_translate.models import ItalianTranslatedTag
+# from translates.japanese_translate.models import JapaneseTranslatedTag
+# from translates.korean_translate.models import KoreanTranslatedTag
+# from translates.norwegian_translate.models import NorwegianTranslatedTag
+# from translates.portuguese_translate.models import PortugueseTranslatedTag
+# from translates.russian_translate.models import RussianTranslatedTag 
+# from translates.spanish_translate.models import SpanishTranslatedTag
+# from translates.vietnamese_translate.models import VietnameseTranslatedTag
+# from translates.english_translate.models import EnglishTranslatedTag
 
 
 # __all__ = [

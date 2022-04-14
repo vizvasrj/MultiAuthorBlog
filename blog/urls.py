@@ -65,4 +65,6 @@ urlpatterns = [
         rest_views.AudioPostDetail.as_view(),
         name='api-audio-post-detail'),
 
+    path('engish_search/', rest_views.HPPostView.as_view(), name='english_search'),
+
 ]

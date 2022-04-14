@@ -1,4 +1,5 @@
 {% load blog_tags %}
+{% load translates_tags %}
 {% load thumbnail %}
 {% load i18n %}
 {% load no_code_editorjs %}
@@ -58,123 +59,9 @@
       <div class="">
         <a class="post_title" href="{{post.get_absolute_url}}">
           <h3 class="post_title">
-          
-          {% if LANGUAGE_CODE == 'en' %}
-            {% if post.english_translated_post.latest.title %}
-              {{ post.english_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'ar' %}
-            {% if post.arabic_translated_post.latest.title %}
-              {{ post.arabic_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'zh-hans' %}
-            {% if post.chinese_translated_post.latest.title %}
-              {{ post.chinese_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-              
-
-          {% elif  LANGUAGE_CODE == 'tl' %}
-            {% if post.filipino_translated_post.latest.title %}
-              {{ post.filipino_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'fr' %}
-            {% if post.french_translated_post.latest.title %}
-              {{ post.french_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'de' %}
-            {% if post.german_translated_post.latest.title %}
-              {{ post.german_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'hi' %}
-            {% if post.hindi_translated_post.latest.title %}
-              {{ post.hindi_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-          
-          {% elif  LANGUAGE_CODE == 'id' %}
-            {% if post.indonesian_translated_post.latest.title %}
-              {{ post.indonesian_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'it' %}
-            {% if post.italian_translated_post.latest.title %}
-              {{ post.italian_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-            
-          {% elif  LANGUAGE_CODE == 'ja' %}
-            {% if post.japanese_translated_post.latest.title %}
-              {{ post.japanese_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'ko' %}
-            {% if post.korean_translated_post.latest.title %}
-              {{ post.korean_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'nn' %}
-            {% if post.norwegian_translated_post.latest.title %}
-              {{ post.norwegian_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'pt' %}
-            {% if post.portuguese_translated_post.latest.title %}
-              {{ post.portuguese_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'ru' %}
-            {% if post.russian_translated_post.latest.title %}
-              {{ post.russian_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'es' %}
-            {% if post.spanish_translated_post.latest.title %}
-              {{ post.spanish_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% elif  LANGUAGE_CODE == 'vi' %}
-            {% if post.vietnamese_translated_post.latest.title %}
-              {{ post.vietnamese_translated_post.latest.title }}
-            {% else %}
-              {{ post.title }}  
-            {% endif %}
-
-          {% else %}
-            {{ post.title }}
-          {% endif %}
+            {% with post|tr_post:LANGUAGE_CODE as tpost %}
+            {{tpost.title}}
+    
           </h3>
           </a>
       </div>
@@ -206,129 +93,16 @@
       {% endif %}
         
       <p class="mt-1 post__list__body">
-      {% if LANGUAGE_CODE == 'en' %}
-        {% if post.english_translated_post.latest.body %}
-          {{ post.english_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'ar' %}
-        {% if post.arabic_translated_post.latest.body %}
-          {{ post.arabic_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'zh-hans' %}
-        {% if post.chinese_translated_post.latest.body %}
-          {{ post.chinese_translated_post.latest.body|xssprotect|removeimage|striptags|split_figures:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-          
-
-      {% elif  LANGUAGE_CODE == 'tl' %}
-        {% if post.filipino_translated_post.latest.body %}
-          {{ post.filipino_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'fr' %}
-        {% if post.french_translated_post.latest.body %}
-          {{ post.french_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'de' %}
-        {% if post.german_translated_post.latest.body %}
-          {{ post.german_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'hi' %}
-        {% if post.hindi_translated_post.latest.body %}
-          {{ post.hindi_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-      
-      {% elif  LANGUAGE_CODE == 'id' %}
-        {% if post.indonesian_translated_post.latest.body %}
-          {{ post.indonesian_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'it' %}
-        {% if post.italian_translated_post.latest.body %}
-          {{ post.italian_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-        
-      {% elif  LANGUAGE_CODE == 'ja' %}
-        {% if post.japanese_translated_post.latest.body %}
-          {{ post.japanese_translated_post.latest.body|xssprotect|removeimage|striptags|split_figures:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'ko' %}
-        {% if post.korean_translated_post.latest.body %}
-          {{ post.korean_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'nn' %}
-        {% if post.norwegian_translated_post.latest.body %}
-          {{ post.norwegian_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'pt' %}
-        {% if post.portuguese_translated_post.latest.body %}
-          {{ post.portuguese_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'ru' %}
-        {% if post.russian_translated_post.latest.body %}
-          {{ post.russian_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'es' %}
-        {% if post.spanish_translated_post.latest.body %}
-          {{ post.spanish_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% elif  LANGUAGE_CODE == 'vi' %}
-        {% if post.vietnamese_translated_post.latest.body %}
-          {{ post.vietnamese_translated_post.latest.body|xssprotect|removeimage|striptags|truncatewords:100 }}
-        {% else %}
-          {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-        {% endif %}
-
-      {% else %}
-        {{ post.body|xssprotect|removeimage|striptags|truncatewords:100 }}  
-      {% endif %}
-
+        {{ tpost.body|xssprotect|removeimage|striptags|short:LANGUAGE_CODE }}
+      {% endwith %}
     </p>
       <a class="link0" href="{{post.get_absolute_url}}">
         <p class="read_more">{% trans 'Read more' %} : ({{ post.body|readtime }})</p> 
       </a>
+      <p>
+      </p>
       <div class="">
-        {% with post|language_tags:LANGUAGE_CODE as tags %}
+        {% with post|tem_tags:LANGUAGE_CODE as tags %}
         {% for tag in tags %}
         <a href="{{ tag.tag.get_absolute_url }}" class=" tags-item
             {% cycle 'bg-orange-lite' 'bg-olive-lite' 'bg-green-lite' 'bgredlite---' %}">
