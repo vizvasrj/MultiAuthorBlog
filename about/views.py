@@ -83,7 +83,7 @@ def about_post_detail(request, slug):
         #         }
         #     )
     # paginator Ends
-        print(colored(comments, 'red'))
+        # print(colored(comments, 'red'))
         new_comment = None
         if request.method == 'POST':
             comment_form = CommentForm(
@@ -98,9 +98,9 @@ def about_post_detail(request, slug):
                 )
                 # new_comment.about_post = about_post
                 new_comment.commentor_id = request.user.id
-                print(colored(new_comment.parent, 'red'))
+                # print(colored(new_comment.parent, 'red'))
                 try:
-                    print(colored(new_comment.parent.get_ancestors().count(), 'blue'))
+                    # print(colored(new_comment.parent.get_ancestors().count(), 'blue'))
                     if new_comment.parent.get_ancestors().count() >= settings.MAX_COMMENT_TREE:
                         pass
                     else:

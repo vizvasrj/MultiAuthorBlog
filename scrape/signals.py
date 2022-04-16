@@ -7,6 +7,6 @@ from .tasks import hi_only_translate
 @receiver(post_save, sender=HealthlineParsed)
 def post_save_receiver(sender, created, instance, *args, **kwargs):
     if created:
-        print("Singla receving")
+        # print("Singla receving")
         hi_only_translate.delay(pk=instance.id)
 

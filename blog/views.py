@@ -155,8 +155,8 @@ def post_list(request, tag_slug=None):
 
 
 def post_detail(request, slug, author):
-    import time
-    start_time = time.time()
+    # import time
+    # start_time = time.time()
 
     # FOr IP
     # x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -237,8 +237,8 @@ def post_detail(request, slug, author):
     similar_posts = similar_posts.annotate(
         same_tags=Count('tags')
     ).order_by('-same_tags', '-publish')[:4]
-    end_time = time.time() - start_time
-    print(end_time)
+    # end_time = time.time() - start_time
+    # print(end_time)
 
     return render(
         request,
@@ -544,7 +544,7 @@ def post_ajax_search(request):
             publish__lte=timezone.now()
         ).order_by('-rank')
         qs = results
-        print(qs)
+        # print(qs)
         if len(qs) > 0 and len(post) > 0:
             data = []
             for pos in qs:
@@ -800,7 +800,7 @@ def tags_posts_lists(request, slug):
 def tag_follow(request):
     tag_id = request.POST.get('id')
     action = request.POST.get('action')
-    print(action)
+    # print(action)
     if tag_id and action:
         try:
             tag = MyCustomTag.objects.get(id=tag_id)
@@ -844,7 +844,7 @@ from .forms import TranslatePostForm
 @login_required
 def update_translate_post(request, pk, id):
     p = get_object_or_404(Post, pk=id)
-    print(p)
+    # print(p)
     language = request.LANGUAGE_CODE
     if language == 'hi':
         post = get_object_or_404(HindiTranslatedPost, pk=pk)
