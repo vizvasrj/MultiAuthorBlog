@@ -303,9 +303,6 @@ def split_figures(text, n):
 
 @register.filter(is_safe=True, name='language_tags')
 def language_tags(post, language):
-    from termcolor import colored
-    # print(colored(post, 'red'))
-    # print(colored(language, 'blue'))
-    from blog.utils import language_in_post_tags
-    t_tags = language_in_post_tags(post, language)
+    from blog.tblog.utils import get_tpost_ttags
+    t_tags = get_tpost_ttags(is_post=post, language=language, need_tags=True)
     return t_tags

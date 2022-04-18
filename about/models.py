@@ -8,10 +8,7 @@ from account.models import Profile
 from comment.models import Comment
 from taggit_autosuggest.managers import TaggableManager
 from parler.models import TranslatableModel, TranslatedFields
-
-
-
-
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class AboutPost(models.Model):

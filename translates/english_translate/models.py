@@ -45,6 +45,7 @@ class EnglishTranslatedPost(models.Model):
         populate_from='title',
     )
     body = models.TextField()
+    meta_description = models.CharField(max_length=160, null=True, blank=True)
     tags = TaggableManager()
     cover = models.ImageField(
         upload_to='cover/%Y/%m/%d',

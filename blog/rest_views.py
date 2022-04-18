@@ -914,3 +914,113 @@ class HPPostView(generics.ListCreateAPIView):
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
+
+
+
+class EnglishTPOSTS(generics.ListCreateAPIView):
+    queryset = Post.aupm.all()
+    serializer_class = OnlyEngShow
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id', ]
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+
+class MetaDesPostDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.aupm.all()
+    serializer_class = OnlyAudioShow
+    name = 'postmetadescription'
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        # IsOwnerOrReadOnly
+    )
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        meta = request.data['meta']
+        qq = json.loads(meta)
+
+        for x in qq:
+            if x['ln'] == 'ja':
+                i_tr = instance.japanese_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'en':
+                i_tr = instance.english_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'ar':
+                i_tr = instance.arabic_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'zh_CN':
+                i_tr = instance.chinese_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'tl':
+                i_tr = instance.filipino_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'fr':
+                i_tr = instance.french_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'de':
+                i_tr = instance.german_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'hi':
+                i_tr = instance.hindi_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'id':
+                i_tr = instance.indonesian_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'it':
+                i_tr = instance.italian_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'ko':
+                i_tr = instance.korean_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'no':
+                i_tr = instance.norwegian_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'pt':
+                i_tr = instance.portuguese_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'ru':
+                i_tr = instance.russian_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            elif x['ln'] == 'es':
+                i_tr = instance.spanish_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+            
+            elif x['ln'] == 'vi':
+                i_tr = instance.vietnamese_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+
+        raise Success("Success")

@@ -207,6 +207,7 @@ class Post(models.Model):
         verbose_name=_('other authors')
     )
     body = models.TextField()
+    meta_description = models.CharField(max_length=160, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)

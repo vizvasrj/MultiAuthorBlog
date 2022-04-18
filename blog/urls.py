@@ -61,9 +61,10 @@ urlpatterns = [
         rest_views.AudioPostCRUDView.as_view(),
         name='random-audio'
         ),
-    path('audio-posts-detail/<int:pk>/',
-        rest_views.AudioPostDetail.as_view(),
+    path('postmetadescription/<int:pk>/',
+        rest_views.MetaDesPostDetail.as_view(),
         name='api-audio-post-detail'),
+    path('englishpost/', rest_views.EnglishTPOSTS.as_view(), name='onlyenglish'),
 
     path('engish_search/', rest_views.HPPostView.as_view(), name='english_search'),
 
