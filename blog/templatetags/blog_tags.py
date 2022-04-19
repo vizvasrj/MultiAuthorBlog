@@ -10,7 +10,7 @@ from lxml.html.clean import (
 )
 
 
-import markdown
+# import markdown
 import readtime
 
 from account.models import Profile
@@ -47,9 +47,9 @@ def get_most_commented_posts(count=5):
                 ).order_by('-total_comments')[:count]
 
 
-@register.filter(name='markdown')
-def markdown_format(text):
-    return mark_safe(markdown.markdown(text))
+# @register.filter(name='markdown')
+# def markdown_format(text):
+#     return mark_safe(markdown.markdown(text))
 
 def read(html):
     read = readtime.of_html(html)
