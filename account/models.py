@@ -5,26 +5,24 @@ from django.contrib.auth import get_user_model
 
 from colorfield.fields import ColorField
 from django.db.models.signals import (
-    post_save, m2m_changed, pre_save
+    post_save
 )
 from django.dispatch import receiver
-from .tasks import print_full_name
-from django.core.validators import FileExtensionValidator
 from django.utils.translation import gettext_lazy as _
 
-class Theme(models.Model):
-    name = models.CharField(max_length=50)
-    header = ColorField(format='hexa')
-    sidebar = ColorField(format='hexa')
-    text = ColorField(format='hexa')
-    menu = ColorField(format='hexa')
-    selected = ColorField(format='hexa')
-    hover_background = ColorField(format='hexa')
-    hover_text = ColorField(format='hexa')
-    image = models.FileField(upload_to='theme', validators=[FileExtensionValidator(['svg'])])
+# class Theme(models.Model):
+#     name = models.CharField(max_length=50)
+#     header = ColorField(format='hexa')
+#     sidebar = ColorField(format='hexa')
+#     text = ColorField(format='hexa')
+#     menu = ColorField(format='hexa')
+#     selected = ColorField(format='hexa')
+#     hover_background = ColorField(format='hexa')
+#     hover_text = ColorField(format='hexa')
+#     image = models.FileField(upload_to='theme', validators=[FileExtensionValidator(['svg'])])
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 
@@ -82,13 +80,6 @@ class Profile(models.Model):
         max_length=10,
         choices=LANGUAGES,
         default='en'
-    )
-    my_theme = models.ForeignKey(
-        Theme,
-        related_name='themes',
-        on_delete=models.CASCADE,
-        default=1,
-        verbose_name=_("my theme")
     )
     def __str__(self):
         return self.user.username

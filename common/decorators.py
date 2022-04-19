@@ -2,7 +2,7 @@ from django.http import HttpResponseBadRequest
 
 def ajax_required(f):
     def wrap(request, *args, **kwargs):
-        if not request.is_ajax():
+        if not is_ajax(request=request):
             return HttpResponseBadRequest()
         return f(request, *args, **kwargs)
     wrap.__doc__=f.__doc__

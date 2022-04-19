@@ -1,5 +1,5 @@
 from django.db import models
-from taggit.models import  TagBase, GenericTaggedItemBase, ItemBase, TaggedItemBase
+from taggit.models import  TagBase, GenericTaggedItemBase, TaggedItemBase
 from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 from django.urls import reverse

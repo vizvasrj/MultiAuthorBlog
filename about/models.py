@@ -1,7 +1,6 @@
 from autoslug.fields import AutoSlugField
 from django.db import models
 from django.urls import reverse
-from django_editorjs_fields import EditorJsTextField
 from django.contrib.contenttypes.fields import GenericRelation
 
 from account.models import Profile
@@ -53,7 +52,7 @@ class AboutPostTranslated(TranslatableModel):
     translations = TranslatedFields(
         title = models.CharField(max_length=256, db_index=True),
         slug = models.SlugField(max_length=256, db_index=True),
-        body = EditorJsTextField()
+        body = models.TextField()
     )
 
     created = models.DateTimeField(auto_now_add=True)

@@ -1,9 +1,11 @@
 
 from rest_framework import serializers
 from blog.models import (
-    Post, Category, Image
+    Post,
+    # Category, 
+    Image
 )
-from mytag.models import MyCustomTag
+# from mytag.models import MyCustomTag
 from translates.hindi_translate.models import HindiTranslatedPost
 from translates.arabic_translate.models import ArabicTranslatedPost
 from translates.chinese_translate.models import ChineseTranslatedPost
@@ -21,7 +23,7 @@ from translates.spanish_translate.models import SpanishTranslatedPost
 from translates.vietnamese_translate.models import VietnameseTranslatedPost
 from translates.english_translate.models import EnglishTranslatedPost
 from translates.bengali_translate.models import BengaliTranslatedPost
-from . import views
+# from . import views
 
 
 

@@ -1,7 +1,7 @@
 from .models import HealthlineParsed, Healthline
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from blog.models import Post
+# from django.contrib.auth.models import User
+# from blog.models import Post
 
 
 class HLPSerializer(serializers.ModelSerializer):

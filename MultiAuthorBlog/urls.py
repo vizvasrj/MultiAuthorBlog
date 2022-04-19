@@ -26,7 +26,7 @@ urlpatterns = i18n_patterns(
     path('', include('account.urls')),
     # path('', post_list),
     path('blog/', include('blog.urls')),
-    path('editorjs/', include('django_editorjs_fields.urls')),
+    # path('editorjs/', include('django_editorjs_fields.urls')),
     # path('ckeditor/', include('ckeditor_uploader.urls')),
     path('select2/', include('django_select2.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),

@@ -8,6 +8,8 @@ from django.core.paginator import (
     PageNotAnInteger,
     EmptyPage
 )
+from common.utils import is_ajax
+
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
@@ -75,10 +77,10 @@ def publication_detail_view(request, slug):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'publication/pub_post_list_ajax.html',{
@@ -165,10 +167,10 @@ def my_publication_list(request):
     except PageNotAnInteger:
         p_following = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         p_following = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'publication/me/publication_follow_list_ajax.html',{

@@ -48,6 +48,7 @@ import redis
 from django.utils import translation
 import requests
 from blog.tblog.utils import get_tpost_ttags
+from common.utils import is_ajax
 
 from django.core.cache import cache
 a_timedelta = timedelta(minutes=1)
@@ -117,10 +118,10 @@ def post_list(request, tag_slug=None):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'blog/post/list_ajax.html', {
@@ -283,10 +284,10 @@ def post_search(request):
     except PageNotAnInteger:
         results = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         results = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'blog/search/list_ajax.html', {
@@ -495,10 +496,10 @@ def tag_list(request, post_id=None):
     except PageNotAnInteger:
         tags = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         tags = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'blog/tag/list_ajax.html', {
@@ -525,7 +526,7 @@ def tag_detail(request, tag):
 @ajax_required
 @require_POST
 def post_ajax_search(request):
-    if request.is_ajax():
+    if is_ajax(request=request):
         res = None
         post = request.POST.get('post')
         # print(post)
@@ -695,11 +696,11 @@ def tags_posts_lists(request, slug):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
 
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/me/fallowing/ajax_list.html',{

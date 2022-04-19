@@ -34,13 +34,13 @@ from rest_framework.exceptions import (
 from rest_framework.exceptions import APIException
 import jwt
 from rest_framework import status
-from django.contrib.auth.middleware import get_user
-from .permissions import IsOwnerOrReadOnly
-from termcolor import colored
+# from django.contrib.auth.middleware import get_user
+# from .permissions import IsOwnerOrReadOnly
+# from termcolor import colored
 from django.contrib.auth.models import AnonymousUser
 
 from mytag.models import MyCustomTag
-import io
+# import io
 import os
 import base64
 from django.core.files import File

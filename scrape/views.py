@@ -1,9 +1,10 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from rest_framework.generics import (
-    ListCreateAPIView, RetrieveUpdateDestroyAPIView
+    ListCreateAPIView, 
+    # RetrieveUpdateDestroyAPIView
 )
 from django.contrib.auth.models import AnonymousUser, User
-from rest_framework import authentication, permissions
+# from rest_framework import authentication, permissions
 from rest_framework.exceptions import AuthenticationFailed
 from django.urls import reverse
 from rest_framework.response import Response
@@ -11,7 +12,7 @@ from django.db.models import Q
 from .serializers import HLPSerializer, UntranslatedSerializer
 from scrape.models import Healthline, HealthlineParsed
 from django_filters.rest_framework import DjangoFilterBackend
-from account.models import Profile
+# from account.models import Profile
 from rest_framework import status
 from django.conf import settings
 import redis

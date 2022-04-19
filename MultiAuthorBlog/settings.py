@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     'taggit',
     'taggit_autosuggest',
     'mptt',
-    'django_editorjs_fields',
+    # 'django_editorjs_fields',
     # 'ckeditor_uploader',
     'django_extensions',
     # 'tempus_dominus',

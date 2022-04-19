@@ -1,8 +1,4 @@
 # django
-from datetime import date
-import re
-from django.contrib import auth
-from django.core import paginator
 from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +7,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.paginator import (
     EmptyPage,
-    Page,
     PageNotAnInteger,
     Paginator)
 from django.shortcuts import get_object_or_404
@@ -27,7 +22,7 @@ from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
 # 3rd party
-from itertools import chain
+from common.utils import is_ajax
 
 # local
 from .models import Profile, Contact
@@ -36,8 +31,6 @@ from .forms import (
     UserEditForm, ProfileEditForm
 )
 from blog.models import Post
-from mytag.models import TagNameValue
-from publication.models import Publication
 
 from django.utils import translation
 
@@ -185,10 +178,10 @@ def user_list(request):
     except PageNotAnInteger:
         users = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         users = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/user/user_list.html',
@@ -217,10 +210,10 @@ def user_detail(request, username):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/user/user_post_list_ajax.html', {
@@ -294,10 +287,10 @@ def me(request):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/user/user_post_list_ajax.html', {
@@ -327,10 +320,10 @@ def user_following(request, username):
     except PageNotAnInteger:
         following = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         following = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/user/following_list.html',
@@ -357,10 +350,10 @@ def user_follower(request, username):
     except PageNotAnInteger:
         follower = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         follower = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/user/follower_list.html',
@@ -385,10 +378,10 @@ def my_published_stories(request):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/me/my_post_list_ajax.html', {
@@ -415,10 +408,10 @@ def my_drafted_stories(request):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/me/my_post_list_ajax.html', {
@@ -445,10 +438,10 @@ def my_trashed_stories(request):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/me/my_post_list_ajax.html', {
@@ -579,10 +572,10 @@ def shared_post_by_other(request):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/me/shared_ajax_list.html', {
@@ -626,10 +619,10 @@ def shared_post_by_me(request):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'account/me/my_shared_ajax_list.html', {
@@ -710,10 +703,10 @@ def my_relations_posts(request):
         except PageNotAnInteger:
             posts = paginator.page(1)
         except EmptyPage:
-            if request.is_ajax():
+            if is_ajax(request=request):
                 return HttpResponse('')
             posts = paginator.page(paginator.num_pages)
-        if request.is_ajax():
+        if is_ajax(request=request):
             return render(
                 request,
                 'account/me/fallowing/ajax_list.html',{

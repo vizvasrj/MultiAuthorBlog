@@ -1,7 +1,4 @@
-from django.urls import reverse
-from xml.etree.ElementInclude import include
 from blog.models import Comment
-from django.core import paginator
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from .models import AboutPost
@@ -11,11 +8,10 @@ from django.core.paginator import (
 
 from comment.forms import CommentForm
 from comment.models import Comment
-from django.contrib.contenttypes.models import ContentType
 
 import redis
 from django.conf import settings
-from termcolor import colored
+from common.utils import is_ajax
 
 r = redis.Redis(
     host=settings.REDIS_HOST,
@@ -35,10 +31,10 @@ def about_post_list_view(request):
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse('')
         posts = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(
             request,
             'about/post/list_ajax.html', {
@@ -71,10 +67,10 @@ def about_post_detail(request, slug):
         # except PageNotAnInteger:
         #     comments = paginator.page(1)
         # except EmptyPage:
-        #     if request.is_ajax():
+        #     if is_ajax(request=request):
         #         return HttpResponse('')
         #     comments = paginator.page(paginator.num_pages)
-        # if request.is_ajax():
+        # if is_ajax(request=request):
         #     return render(
         #         request,
         #         'about/comment/list_ajax.html', {

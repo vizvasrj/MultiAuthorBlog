@@ -4,7 +4,7 @@ from django.db.models.signals import (
     post_save, m2m_changed, pre_save
 )
 from django.utils.text import slugify
-from django.core.signals import request_finished
+# from django.core.signals import request_finished
 
 
 from unidecode import unidecode

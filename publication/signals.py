@@ -1,9 +1,9 @@
-from .models import Publication as Pub
-from django.dispatch import receiver
-from django.db.models.signals import (
-    post_save, m2m_changed,
-)
-from .tasks import add_admin_to_publication
+# from .models import Publication as Pub
+# from django.dispatch import receiver
+# from django.db.models.signals import (
+#     post_save, m2m_changed,
+# )
+# from .tasks import add_admin_to_publication
 
 
 # @receiver(post_save, sender=Pub)

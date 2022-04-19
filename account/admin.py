@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Profile,Contact, Theme
+from .models import Profile,Contact
 # Register your models here.
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
@@ -8,4 +8,3 @@ class ProfileAdmin(admin.ModelAdmin):
     
 
 admin.site.register(Contact)
-admin.site.register(Theme)

@@ -1,24 +1,18 @@
 # core
 from django import forms
-from django.db.models import fields, query
-from django.forms import widgets
 
-from account.models import Profile
 
 # local
 from .models import Post, Comment
 
 # 3rd party
-from taggit.forms import TagWidget
 from taggit_autosuggest.widgets import TagAutoSuggest
 from mptt.forms import TreeNodeChoiceField
 # from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 from django_select2 import forms as s2forms
-from django_select2.forms import ModelSelect2Widget
 from django.utils import timezone, dateformat
 from django.utils.timezone import localtime
 
-from django.contrib.auth.models import User
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
