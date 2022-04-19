@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
 
     # 3rd party
-    'storages',
+    # 'storages',
     'corsheaders',
     'crispy_forms',
     'colorfield',
