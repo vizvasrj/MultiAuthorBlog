@@ -114,7 +114,16 @@ def language_in_post_tags(post, language, n=3):
             return VietnameseTranslatedTag.objects.filter(tag__post=post.id)[:n]
         else:
             return default
+
+    elif language == 'bn':
+        from translates.bengali_translate.models import BengaliTranslatedTag
+        if BengaliTranslatedTag.objects.filter(tag__post=post.id):
+            return BengaliTranslatedTag.objects.filter(tag__post=post.id)[:n]
+        else:
+            return default
+
     # I know it will never get inside this else statement
+
     else:
         # print('inside else')
         return default
@@ -353,6 +362,21 @@ def get_tpost_ttags(is_post=None, is_tag=None, need_tags=None, need_post=None  ,
                 elif need_post:
                     from blog.tblog.languages.vi import vi_p
                     return vi_p(post=is_post)
+
+        if language == 'bn':
+            if is_tag:
+                from blog.tblog.languages.bn import bn_t
+                # need translate tag of given translate tag
+                return bn_t(tag=tag)
+            elif is_post:
+                if need_tags:
+                    from blog.tblog.languages.bn import bn_t
+                    # return multiple translated tags of given un translated post
+                    return bn_t(post=is_post)
+                elif need_post:
+                    from blog.tblog.languages.bn import bn_p
+                    return bn_p(post=is_post)
+
     # I know it will never get inside this else statement
     except ObjectDoesNotExist:
         # print('inside else')

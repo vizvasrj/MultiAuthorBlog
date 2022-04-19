@@ -5,7 +5,10 @@ def fr_t(tag=None, post=None):
         return FrenchTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return FrenchTranslatedTag.objects.filter(tag__post=post.id)
+        if FrenchTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return FrenchTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def fr_p(post=None):

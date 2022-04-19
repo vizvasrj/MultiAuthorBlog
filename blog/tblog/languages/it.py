@@ -5,7 +5,10 @@ def it_t(tag=None, post=None):
         return ItalianTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return ItalianTranslatedTag.objects.filter(tag__post=post.id)
+        if ItalianTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return ItalianTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def it_p(post=None):

@@ -5,7 +5,10 @@ def nn_t(tag=None, post=None):
         return NorwegianTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return NorwegianTranslatedTag.objects.filter(tag__post=post.id)
+        if NorwegianTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return NorwegianTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def nn_p(post=None):

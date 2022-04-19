@@ -24,6 +24,7 @@ LANGUAGES = {
     'ru': 'ru',
     'es': 'es',
     'vi': 'vi',
+    'bn': 'bn',
 }
 
 
@@ -154,3 +155,4 @@ def create_po():
     else:
         print(colored(null, 'red'), "DID not return Good PLz check name")
 
+create_po()

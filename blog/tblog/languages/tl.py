@@ -5,7 +5,10 @@ def tl_t(tag=None, post=None):
         return FilipinoTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return FilipinoTranslatedTag.objects.filter(tag__post=post.id)
+        if FilipinoTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return FilipinoTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def tl_p(post=None):

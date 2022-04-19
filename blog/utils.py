@@ -14,6 +14,7 @@ from translates.russian_translate.models import RussianTranslatedTag
 from translates.spanish_translate.models import SpanishTranslatedTag
 from translates.vietnamese_translate.models import VietnameseTranslatedTag
 from translates.english_translate.models import EnglishTranslatedTag
+from translates.bengali_translate.models import BengaliTranslatedTag
 
 from mytag.models import MyCustomTag
 
@@ -114,6 +115,12 @@ def language_in_post_detail(post, language):
         elif language == 'vi':
             if post.vietnamese_translated_post.latest():
                 return post.vietnamese_translated_post.latest()
+            else:
+                return post
+
+        elif language == 'bn':
+            if post.bengali_translated_post.latest():
+                return post.bengali_translated_post.latest()
             else:
                 return post
         # I know it will never get inside this else statement
@@ -218,6 +225,12 @@ def language_in_post_tags(post, language):
     elif language == 'vi':
         if VietnameseTranslatedTag.objects.filter(tag__post=post.id):
             return VietnameseTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return default
+
+    elif language == 'bn':
+        if BengaliTranslatedTag.objects.filter(tag__post=post.id):
+            return BengaliTranslatedTag.objects.filter(tag__post=post.id)
         else:
             return default
     # I know it will never get inside this else statement

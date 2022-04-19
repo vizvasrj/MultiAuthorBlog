@@ -1,3 +1,15 @@
+####
+#   ##
+#    ##
+#     #
+#
+#
+#
+#
+#
+#
+#
+#
 from django.forms import ValidationError
 from .models import Post, Image, Occurrence
 from account.models import Profile
@@ -228,6 +240,11 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
             #         i_tr.audio_url = l_url
             #         i_tr.save()
                 
+            #     elif l_key == 'bn':
+            #         i_tr = instance.bengali_translated_post.latest()
+            #         i_tr.audio_url = l_url
+            #         i_tr.save()
+                
 
 
             # 999999999999999999999999999999999999
@@ -252,6 +269,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
                 es = x["es"]
                 vi = x["vi"]
                 en = x["en"]
+                bn = x["bn"]
                 try:
                     tag = MyCustomTag.objects.get_or_create(name=tag_name)[0]
                     occurrence = Occurrence.objects.get_or_create(number=tag_occurrence)[0]
@@ -276,6 +294,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
                     tag.spanish_tags.get_or_create(tag=tag, name=es)[0]
                     tag.vietnamese_tags.get_or_create(tag=tag, name=vi)[0]
                     tag.english_tags.get_or_create(tag=tag, name=en)[0]
+                    tag.bengali_tags.get_or_create(tag=tag, name=en)[0]
                 except TypeError:
                     pass
             head = str(im_b64[:10])
@@ -457,6 +476,10 @@ class ApiRoot(generics.GenericAPIView):
             ),
             'vi_list': reverse(
                 'vi_list',
+                request=request
+            ),
+            'bn_list': reverse(
+                'bn_list',
                 request=request
             ),
         })
@@ -784,6 +807,12 @@ class AudioPostCRUDView(generics.ListCreateAPIView):
         #         i_tr.audio_url = l_url
         #         i_tr.save()
 
+        #     elif l_key == 'bn':
+        #         i_tr = instance.bengali_translated_post.latest()
+        #         i_tr.audio_url = None
+        #         i_tr.audio_url = l_url
+        #         i_tr.save()
+
         # raise Success("Success")
 
 class AudioPostDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -879,6 +908,12 @@ class AudioPostDetail(generics.RetrieveUpdateDestroyAPIView):
             
             elif x['ln'] == 'vi':
                 i_tr = instance.vietnamese_translated_post.latest()
+                i_tr.g_audio_url = None
+                i_tr.g_audio_url = x['url']
+                i_tr.save()
+
+            elif x['ln'] == 'bn':
+                i_tr = instance.bengali_translated_post.latest()
                 i_tr.g_audio_url = None
                 i_tr.g_audio_url = x['url']
                 i_tr.save()
@@ -1019,6 +1054,12 @@ class MetaDesPostDetail(generics.RetrieveUpdateDestroyAPIView):
             
             elif x['ln'] == 'vi':
                 i_tr = instance.vietnamese_translated_post.latest()
+                i_tr.meta_description = None
+                i_tr.meta_description = x['desc']
+                i_tr.save()
+
+            elif x['ln'] == 'bn':
+                i_tr = instance.bengali_translated_post.latest()
                 i_tr.meta_description = None
                 i_tr.meta_description = x['desc']
                 i_tr.save()

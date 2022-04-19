@@ -113,6 +113,7 @@ class ProfileEditForm(forms.ModelForm):
         ('ru', 'русский'),
         ('es', 'Española'),
         ('vi', 'Tiếng Việt'),
+        ('bn', 'বাংলা'),
     )
     lang = forms.ChoiceField(label='Language', choices=LANGUAGES)
     class Meta:
@@ -208,6 +209,8 @@ class LanguageEditForm(forms.ModelForm):
         ('ru', 'русский'),
         ('es', 'Española'),
         ('vi', 'Tiếng Việt'),
+        ('bn', 'বাংলা'),
+
     )
     lang = forms.ChoiceField(label='Language', choices=LANGUAGES)
     class Meta:

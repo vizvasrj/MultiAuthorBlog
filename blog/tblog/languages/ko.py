@@ -5,7 +5,10 @@ def ko_t(tag=None, post=None):
         return KoreanTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return KoreanTranslatedTag.objects.filter(tag__post=post.id)
+        if KoreanTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return KoreanTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def ko_p(post=None):

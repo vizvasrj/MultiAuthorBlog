@@ -7,12 +7,12 @@
 
 
 .tags__home {
-display: list-item !important;
-list-style: none !important;
-margin-top: -20px !important;
+    display: list-item !important;
+    list-style: none !important;
+    margin-top: -20px !important;
 }
 .publish__home {
-margin-top: -20px !important;
+    margin-top: -20px !important;
 }
 
 {% endblock %}
@@ -29,16 +29,25 @@ margin-top: -20px !important;
                         <a class="hover__tag"
                             href="{{ tag.get_absolute_url }}"><strong># </strong> {{ tag|single_tag:LANGUAGE_CODE }}
                         </a>
+                        
+                        {% if request.user.is_authenticated %}
+                            
+                            
                         <a data-url="{% url 'tag_follow' %}" data-id="{{ tag.id }}"
                         data-action="{% if request.user in tag.followers.all %}un{% endif %}follow" 
                         href="" class="tag__follow {{ tag.id }}">
         
-                        {% if request.user not in tag.followers.all %}
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
-                        {% else %}
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 13.482L15.508 21L12 17.4l1.412-1.388l2.106 2.188l6.094-6.094L23 13.482zm-7.455 1.862L20 10.889V2H2v14c0 1.1.9 2 2 2h4.538l4.913-4.832l2.094 2.176zM8 13H4v-1h4v1zm3-2H4v-1h7v1zm0-2H4V8h7v1zm7-3H4V4h14v2z" fill="currentColor"/></svg>
-                        {% endif %}
+                            {% if request.user not in tag.followers.all %}
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
+                            {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 13.482L15.508 21L12 17.4l1.412-1.388l2.106 2.188l6.094-6.094L23 13.482zm-7.455 1.862L20 10.889V2H2v14c0 1.1.9 2 2 2h4.538l4.913-4.832l2.094 2.176zM8 13H4v-1h4v1zm3-2H4v-1h7v1zm0-2H4V8h7v1zm7-3H4V4h14v2z" fill="currentColor"/></svg>
+                            {% endif %}
                         </a>
+                        {% else %}
+                            <a  href="{% url 'login' %}?next={{request.path}}" class="tag__follow">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
+                            </a>
+                        {% endif %}
         
                     </div>
                 </div>
@@ -51,24 +60,65 @@ margin-top: -20px !important;
         <div class="border col-xl-4">
             <div id="tags" class="">
                 <h6 style="display: none;" class="px-3 py-3 mt-2 bg-red-lite f-30 fw-900">{% trans 'Related tags' %}</h6>
-                {% for s_tags in sorted_related_tags %}
+                {% for s_tags in similar_tags %}
                 <div style="display: inline-block; padding: 3px;" class=" ln p-1">
                     <div class="bg-olive-lite ">
                         
                         <a class="ln"
-                            href="{{ s_tags.get_absolute_url }}"><strong># </strong> {{ s_tags }}
+                            href="{{ s_tags.get_absolute_url }}"><strong># </strong>{{ s_tags|single_tag:LANGUAGE_CODE }}
                         </a>
-                        <a data-url="{% url 'tag_follow' %}" data-id="{{ s_tags.id }}"
-                        data-action="{% if request.user in s_tags.followers.all %}un{% endif %}follow" 
-                        href="" class="tag__follow {{ s_tags.id }}">
-
-                        {% if request.user not in s_tags.followers.all %}
+                        
+                        {% if request.user.is_authenticated %}
+                            
+                            
+                            <a data-url="{% url 'tag_follow' %}" data-id="{{ s_tags.id }}"
+                            data-action="{% if request.user in s_tags.followers.all %}un{% endif %}follow" 
+                            href="" class="tag__follow {{ s_tags.id }}">
+                            
+                            {% if request.user not in s_tags.followers.all %}
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
-                        {% else %}
+                            {% else %}
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 13.482L15.508 21L12 17.4l1.412-1.388l2.106 2.188l6.094-6.094L23 13.482zm-7.455 1.862L20 10.889V2H2v14c0 1.1.9 2 2 2h4.538l4.913-4.832l2.094 2.176zM8 13H4v-1h4v1zm3-2H4v-1h7v1zm0-2H4V8h7v1zm7-3H4V4h14v2z" fill="currentColor"/></svg>
-                        {% endif %}
-                        </a>
+                            {% endif %}
+                            </a>
+                    
+                        {% else %}
+                            <a  href="{% url 'login' %}?next={{request.path}}" class="tag__follow">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
+                            </a>
 
+                        {% endif %}
+
+                    </div>
+                </div>
+                {% endfor %}
+                {% for s_tags in not_so_similar %}
+                <div style="display: inline-block; padding: 3px;" class=" ln p-1">
+                    <div class="bg-olive-lite ">
+                        
+                        <a class="ln"
+                            href="{{ s_tags.get_absolute_url }}"><strong># </strong> {{ s_tags|single_tag:LANGUAGE_CODE }}
+                        </a>
+                        {% if request.user.is_authenticated %}
+                            
+                            
+                            <a data-url="{% url 'tag_follow' %}" data-id="{{ s_tags.id }}"
+                            data-action="{% if request.user in s_tags.followers.all %}un{% endif %}follow" 
+                            href="" class="tag__follow {{ s_tags.id }}">
+                            
+                            {% if request.user not in s_tags.followers.all %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 13.482L15.508 21L12 17.4l1.412-1.388l2.106 2.188l6.094-6.094L23 13.482zm-7.455 1.862L20 10.889V2H2v14c0 1.1.9 2 2 2h4.538l4.913-4.832l2.094 2.176zM8 13H4v-1h4v1zm3-2H4v-1h7v1zm0-2H4V8h7v1zm7-3H4V4h14v2z" fill="currentColor"/></svg>
+                            {% endif %}
+                            </a>
+                    
+                        {% else %}
+                            <a  href="{% url 'login' %}?next={{request.path}}" class="tag__follow">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="24" height="24" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z" fill="currentColor"/></svg>
+                            </a>
+
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
@@ -93,7 +143,12 @@ margin-top: -20px !important;
 {% endblock %}
 
 {% block script %} 
+
+{% if request.user.is_authenticated %}
+    
 <script src="{% static 'js/tag_follow.js' %}"></script>
+{% endif %}
+    
 
 {% endblock %}
 

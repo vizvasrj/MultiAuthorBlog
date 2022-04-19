@@ -5,7 +5,10 @@ def ja_t(tag=None, post=None):
         return JapaneseTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return JapaneseTranslatedTag.objects.filter(tag__post=post.id)
+        if JapaneseTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return JapaneseTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def ja_p(post=None):

@@ -5,7 +5,10 @@ def hi_t(tag=None, post=None):
         return HindiTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return HindiTranslatedTag.objects.filter(tag__post=post.id)
+        if HindiTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return HindiTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def hi_p(post=None):

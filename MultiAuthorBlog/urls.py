@@ -54,6 +54,7 @@ urlpatterns = i18n_patterns(
     path('tl/', include('translates.filipino_translate.urls')),
     path('it/', include('translates.italian_translate.urls')),
     path('en/', include('translates.english_translate.urls')),
+    path('bn/', include('translates.bengali_translate.urls')),
     path('scrape/', include('scrape.urls')),
 
 )

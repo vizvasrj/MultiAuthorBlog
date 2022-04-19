@@ -99,3 +99,23 @@ class ArabicTranslatedPost(models.Model):
             args = [self.slug]
         )
 
+
+
+from about.models import AboutPost
+
+class ArabicTranslatedAbout(models.Model):
+    post = models.ForeignKey(
+        AboutPost,
+        related_name='arabic_about',
+        on_delete=models.CASCADE
+    )
+    title = models.CharField(max_length=256)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-updated']
+        get_latest_by = ['created']

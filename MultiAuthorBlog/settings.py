@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     'scrape',
     'mytag',
     'sitemap',
+    'thesaurus',
 
     # translates
     'translates.hindi_translate',
@@ -110,6 +111,7 @@ INSTALLED_APPS = [
     'translates.filipino_translate',
     'translates.italian_translate',
     'translates.english_translate',
+    'translates.bengali_translate',
 ]
 
 MIDDLEWARE = [
@@ -361,6 +363,7 @@ LANGUAGES = (
     ('ru', _('Russian')),
     ('es', _('Spanish')),
     ('vi', _('Vietnamese')),
+    ('bn', _('Bengali')),
 
 )
 
@@ -386,6 +389,7 @@ PARLER_LANGUAGES = {
         {'code': 'ru'},
         {'code': 'es'},
         {'code': 'vi'},
+        {'code': 'bn'},
     ),
     'default': {
         'fallback': 'en',
@@ -442,7 +446,7 @@ PARLER_DEFAULT_ACTIVATE = True
 # }
 
 # used in account/views/register 
-REGISTER_LANGUAGES = ('en', 'ar', 'zh-hans', 'tl','fr', 'de', 'hi', 'id', 'it', 'ja', 'ko', 'nn', 'pt', 'ru', 'es', 'vi')
+REGISTER_LANGUAGES = ('en', 'ar', 'zh-hans', 'tl','fr', 'de', 'hi', 'id', 'it', 'ja', 'ko', 'nn', 'pt', 'ru', 'es', 'vi', 'bn')
 
 # Google service key file location for api usage
 GOOGLE_SERVICE_KEY = '/home/ak41622/serviceacc.json'
@@ -469,6 +473,7 @@ ADMIN_SWITCH = (
     # 'ru', 
     # 'es', 
     # 'vi'
+    'bn',
     )
 
 

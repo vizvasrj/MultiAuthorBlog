@@ -14,6 +14,7 @@
 # from translates.spanish_translate.models import SpanishTranslatedTag
 # from translates.vietnamese_translate.models import VietnameseTranslatedTag
 # from translates.english_translate.models import EnglishTranslatedTag
+# from translates.bengali_translate.models import BengaliTranslatedTag
 
 
 # __all__ = [
@@ -33,4 +34,5 @@
 #     "SpanishTranslatedPost"
 #     "VietnameseTranslatedPost"
 #     "EnglishTranslatedPost"
+#     "BengaliTranslatedTag"
 # ]

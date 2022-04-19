@@ -47,6 +47,8 @@ class Profile(models.Model):
         ('ru', 'русский'),
         ('es', 'Española'),
         ('vi', 'Tiếng Việt'),
+        ('bn', 'বাংলা'),
+
     )
     user = models.OneToOneField(
         User,

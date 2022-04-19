@@ -606,6 +606,7 @@ def translate_listview(request, post):
     ru_p = post.russian_translated_post.last()
     es_p = post.spanish_translated_post.last()
     vi_p = post.vietnamese_translated_post.last()
+    bn_p = post.bengali_translated_post.last()
 
     return render(
         request,
@@ -624,7 +625,8 @@ def translate_listview(request, post):
             'pt_p': pt_p,
             'ru_p': ru_p,
             'es_p': es_p,
-            'vi_p': vi_p
+            'vi_p': vi_p,
+            'bn_p': bn_p,
         }
     )
 
@@ -648,122 +650,43 @@ def translate_listview(request, post):
 #         else:
 #             form = OtherEditForm()
 
-import enchant
+from thesaurus.models import RelationsScore
 
 def tags_posts_lists(request, slug):
-    # cache.delete(f'tags_posts_lists-{slug}')
-    tag = None
-    tag = cache.get(f'tags_posts_lists-{slug}')
-    # print(slug)
-    d = enchant.Dict("en_US")
-    if d.check(slug):
-        if not tag:
-            tag = get_object_or_404(
-                MyCustomTag,
-                slug=slug
+    from django.db import models
+    tag = MyCustomTag.objects.get(slug=slug)
+    relneg = []
+    for x in (RelationsScore.objects.filter(word__name=slug)
+            .values("related_word__name")
+            .order_by("score").filter(score__lt=-30)
+        ):
+        relneg.append(x["related_word__name"])
+
+
+    rel = []
+    for x in (RelationsScore.objects.filter(word__name=slug)
+            .values("related_word__name")
+            .order_by("-score").filter(score__gt=30)
+        ):
+        rel.append(x["related_word__name"])
+    _whens = []
+
+    for sort_index, value in enumerate(rel):
+        _whens.append(
+            models.When(tags__name=value, then=sort_index)
+        )
+
+    qs = Post.objects.annotate(
+            _sort_index=models.Case(
+                *_whens, 
+                output_field=models.IntegerField()
             )
-            cache.set(f'tags_posts_lists-{slug}', tag, on_day_in_seconds)
-            # print(f'tags_posts_lists-{slug} not in cache')
-            syn = []
-            ant = []
-            for synset in wordnet.synsets(tag.name):
-                for idx, lemma in enumerate(synset.lemmas()):
-                    syn.append(lemma.name())
-                    if lemma.antonyms():
-                        ant.append(lemma.antonyms()[0].name())
-            set_syn = set(syn)
-            try:
-                set_syn.remove(tag.slug)
-            except KeyError:
-                pass
-            # print(syn)
-            # print("Set")
-            suggested_tags = []
-            for word in set_syn:
-                try:
-                    if MyCustomTag.objects.get(slug=word).slug == word:
-                        # print(word, "@@@@::Exists in tags")
-                        suggested_tags.append(word)
-                except MyCustomTag.DoesNotExist:
-                    # print(word, "####::Not")
-                    pass
-            for word in set(ant):
-                try:
-                    if MyCustomTag.objects.get(slug=word).slug == word:
-                        # print(word, "@@@@::Exists in tags")
-                        suggested_tags.append(word)
-                except MyCustomTag.DoesNotExist:
-                    # print(word, "####::Not")
-                    pass
-            
-            try:
-                first_word = wordnet.synset(f'{tag.slug}.n.01')
-            except:
-                try:
-                    first_word = wordnet.synset(f'{tag.slug}.v.01')
-                except:
-                    try:
-                        first_word = wordnet.synset(f'{tag.slug}.r.01')
-                    except:
-                        try:
-                            first_word = wordnet.synset(f'{tag.slug}.a.01')
-                        except:
-                            first_word = wordnet.synset(f'{tag.slug}.s.01')
+        )
+    similar_tags = MyCustomTag.objects.filter(name__in=rel)
+    not_so_similar = MyCustomTag.objects.filter(name__in=relneg)
 
-            sort = {}
-            for word in suggested_tags:
-                try:
-                    second_word = wordnet.synset(f'{word}.v.01')
-                    sort[word] = first_word.wup_similarity(second_word)
-                except:
-                    second_word = wordnet.synset(f'{word}.n.01')
-                    sort[word] = first_word.wup_similarity(second_word)
-                # print(first_word.wup_similarity(second_word),word)
-            
-            import operator
-            des = sorted(sort.items(), key=operator.itemgetter(1), reverse=True)
-            
-            tag_items = []
-            for item, key in des:
-                # print(item, 'item')
-                tag_items.append(item)
-            
-            # t_objects = Q()
-            # for item in tag_items:
-            #     t_objects |= Q(slug=item)
-            
-            # related_tags = MyCustomTag.objects.filter(t_objects)
-                
-            whens = []
-            try:
-                for sort_index, value in enumerate(tag_items):
-                    whens.append(models.When(slug=value, then=sort_index))
-                    qs = MyCustomTag.objects.filter(slug__in=tag_items).annotate(
-                        _sort_index=models.Case(*whens, output_field=models.IntegerField())
-                    )
-                    # print("Here")
-                
-                sorted_related_tags = qs.order_by('_sort_index')[:10]
-                cache.set(f'sorted_related_tags-{tag}', sorted_related_tags, on_day_in_seconds)
-            except:
-                sorted_related_tags = MyCustomTag.objects.all()[:10]
-            
-
-
-        else:
-            # print(f'tags_posts_lists-{slug} get from cache')
-            pass
+    posts = qs.order_by('_sort_index')
     
-    else:
-        tag = get_object_or_404(
-                MyCustomTag,
-                slug=slug
-            )
-
-    sorted_related_tags = cache.get(f'sorted_related_tags-{tag}')
-
-
-    posts = Post.aupm.all().filter(tags__slug__in=[tag.slug])
     
     # posts = Post.objects.all().filter(tags__slug__in=[tag.slug])
     paginator = Paginator(posts, 10)
@@ -788,7 +711,8 @@ def tags_posts_lists(request, slug):
         request,
         'account/me/fallowing/post.html', {
             'posts': posts,
-            'sorted_related_tags': sorted_related_tags,
+            'similar_tags': similar_tags,
+            'not_so_similar': not_so_similar,
             'tag' : tag,
         }
     )
@@ -838,6 +762,7 @@ from translates.vietnamese_translate.models import VietnameseTranslatedPost
 from translates.filipino_translate.models import FilipinoTranslatedPost
 from translates.italian_translate.models import ItalianTranslatedPost
 from translates.english_translate.models import EnglishTranslatedPost
+from translates.bengali_translate.models import BengaliTranslatedPost
 
 from .forms import TranslatePostForm
 
@@ -878,6 +803,8 @@ def update_translate_post(request, pk, id):
         post = get_object_or_404(SpanishTranslatedPost, pk=pk)
     elif language == 'vi':
         post = get_object_or_404(VietnameseTranslatedPost, pk=pk)
+    elif language == 'bn':
+        post = get_object_or_404(BengaliTranslatedPost, pk=pk)
 
     if post.cover:
         cover_image = post.cover.url

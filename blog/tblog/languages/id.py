@@ -5,7 +5,10 @@ def id_t(tag=None, post=None):
         return IndonesianTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return IndonesianTranslatedTag.objects.filter(tag__post=post.id)
+        if IndonesianTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return IndonesianTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def id_p(post=None):

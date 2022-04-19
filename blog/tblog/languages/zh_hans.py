@@ -5,7 +5,10 @@ def zh_hans_t(tag=None, post=None):
         return ChineseTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return ChineseTranslatedTag.objects.filter(tag__post=post.id)
+        if ChineseTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return ChineseTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def zh_hans_p(post=None):

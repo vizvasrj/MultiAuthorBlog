@@ -5,7 +5,10 @@ def ru_t(tag=None, post=None):
         return RussianTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return RussianTranslatedTag.objects.filter(tag__post=post.id)
+        if RussianTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return RussianTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def ru_p(post=None):

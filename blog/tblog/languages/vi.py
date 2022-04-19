@@ -5,7 +5,10 @@ def vi_t(tag=None, post=None):
         return VietnameseTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return VietnameseTranslatedTag.objects.filter(tag__post=post.id)
+        if VietnameseTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return VietnameseTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def vi_p(post=None):

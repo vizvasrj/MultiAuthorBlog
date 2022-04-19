@@ -1,0 +1,856 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-19 02:27+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: MultiAuthorBlog/pro_settings/base.py:282
+#: MultiAuthorBlog/pro_settings/pro_settings.py:314
+#: MultiAuthorBlog/settings.py:349
+msgid "English"
+msgstr "ইংরেজি"
+
+#: MultiAuthorBlog/pro_settings/base.py:283
+#: MultiAuthorBlog/pro_settings/pro_settings.py:315
+#: MultiAuthorBlog/settings.py:350
+msgid "Arabic"
+msgstr "আরবি"
+
+#: MultiAuthorBlog/pro_settings/base.py:284
+#: MultiAuthorBlog/pro_settings/pro_settings.py:316
+#: MultiAuthorBlog/settings.py:351
+msgid "Chinese"
+msgstr "চাইনিজ"
+
+#: MultiAuthorBlog/pro_settings/base.py:285
+#: MultiAuthorBlog/pro_settings/pro_settings.py:317
+#: MultiAuthorBlog/settings.py:352
+msgid "Filipino"
+msgstr "ফিলিপিনো"
+
+#: MultiAuthorBlog/pro_settings/base.py:286
+#: MultiAuthorBlog/pro_settings/pro_settings.py:318
+#: MultiAuthorBlog/settings.py:353
+msgid "French"
+msgstr "ফরাসি"
+
+#: MultiAuthorBlog/pro_settings/base.py:287
+#: MultiAuthorBlog/pro_settings/pro_settings.py:319
+#: MultiAuthorBlog/settings.py:354
+msgid "German"
+msgstr "জার্মান"
+
+#: MultiAuthorBlog/pro_settings/base.py:288
+#: MultiAuthorBlog/pro_settings/pro_settings.py:320
+#: MultiAuthorBlog/settings.py:355
+msgid "Hindi"
+msgstr "হিন্দি"
+
+#: MultiAuthorBlog/pro_settings/base.py:289
+#: MultiAuthorBlog/pro_settings/pro_settings.py:321
+#: MultiAuthorBlog/settings.py:356
+msgid "Indonesian"
+msgstr "ইন্দোনেশিয়ান"
+
+#: MultiAuthorBlog/pro_settings/base.py:290
+#: MultiAuthorBlog/pro_settings/pro_settings.py:322
+#: MultiAuthorBlog/settings.py:357
+msgid "Italian"
+msgstr "ইতালীয়"
+
+#: MultiAuthorBlog/pro_settings/base.py:291
+#: MultiAuthorBlog/pro_settings/pro_settings.py:323
+#: MultiAuthorBlog/settings.py:358
+msgid "Japanese"
+msgstr "জাপানিজ"
+
+#: MultiAuthorBlog/pro_settings/base.py:292
+#: MultiAuthorBlog/pro_settings/pro_settings.py:324
+#: MultiAuthorBlog/settings.py:359
+msgid "Korean"
+msgstr "কোরিয়ান"
+
+#: MultiAuthorBlog/pro_settings/base.py:293
+#: MultiAuthorBlog/pro_settings/pro_settings.py:325
+#: MultiAuthorBlog/settings.py:360
+msgid "Norwegian"
+msgstr "নরওয়েজীয়"
+
+#: MultiAuthorBlog/pro_settings/base.py:294
+#: MultiAuthorBlog/pro_settings/pro_settings.py:326
+#: MultiAuthorBlog/settings.py:361
+msgid "Portuguese"
+msgstr "পর্তুগীজ"
+
+#: MultiAuthorBlog/pro_settings/base.py:295
+#: MultiAuthorBlog/pro_settings/pro_settings.py:327
+#: MultiAuthorBlog/settings.py:362
+msgid "Russian"
+msgstr "রাশিয়ান"
+
+#: MultiAuthorBlog/pro_settings/base.py:296
+#: MultiAuthorBlog/pro_settings/pro_settings.py:328
+#: MultiAuthorBlog/settings.py:363
+msgid "Spanish"
+msgstr "স্পেনীয়"
+
+#: MultiAuthorBlog/pro_settings/base.py:297
+#: MultiAuthorBlog/pro_settings/pro_settings.py:329
+#: MultiAuthorBlog/settings.py:364
+msgid "Vietnamese"
+msgstr "ভিয়েতনামী"
+
+#: MultiAuthorBlog/settings.py:365
+msgid "Bengali"
+msgstr "বাংলা"
+
+#: account/forms.py:22 account/forms.py:24 account/forms.py:50
+msgid "Username"
+msgstr "ব্যবহারকারীর নাম"
+
+#: account/forms.py:29 account/forms.py:31 account/forms.py:38
+msgid "Password"
+msgstr "পাসওয়ার্ড"
+
+#: account/forms.py:40
+msgid "Password ..."
+msgstr "পাসওয়ার্ড..."
+
+#: account/forms.py:44 account/forms.py:172
+msgid "Repeat Password"
+msgstr "পুনরাবৃত্তি পাসওয়ার্ড"
+
+#: account/forms.py:46
+msgid "Repeat Password ..."
+msgstr "পুনরাবৃত্তি পাসওয়ার্ড ..."
+
+#: account/forms.py:52
+msgid "Username ..."
+msgstr "ব্যবহারকারীর নাম ..."
+
+#: account/forms.py:57
+msgid "Email"
+msgstr "ইমেইল"
+
+#: account/forms.py:59 account/forms.py:150
+msgid "Email ..."
+msgstr "ইমেইল..."
+
+#: account/forms.py:78
+msgid "Passwords doesn't Matched."
+msgstr "পাসওয়ার্ড মেলে না।"
+
+#: account/forms.py:148
+msgid "Enter email address"
+msgstr "ইমেইল অ্যাড্রেস দিন"
+
+#: account/forms.py:160
+msgid "Old password"
+msgstr "পুরানো পাসওয়ার্ড"
+
+#: account/forms.py:162
+msgid "Old password ..."
+msgstr "পুরানো পাসওয়ার্ড..."
+
+#: account/forms.py:166
+msgid "New password"
+msgstr "নতুন পাসওয়ার্ড"
+
+#: account/forms.py:168
+msgid "New password ..."
+msgstr "নতুন পাসওয়ার্ড..."
+
+#: account/forms.py:174
+msgid "Repeat password ..."
+msgstr "পুনরাবৃত্তি পাসওয়ার্ড ..."
+
+#: account/forms.py:183
+msgid "Enter Your password to delete your account"
+msgstr "আপনার অ্যাকাউন্ট মুছে ফেলতে আপনার পাসওয়ার্ড লিখুন"
+
+#: account/forms.py:186
+msgid "Enter your password to delete your account"
+msgstr "আপনার অ্যাকাউন্ট মুছে ফেলতে আপনার পাসওয়ার্ড লিখুন"
+
+#: account/models.py:57
+msgid "user"
+msgstr "ব্যবহারকারী"
+
+#: account/models.py:60
+msgid "full name"
+msgstr "পুরো নাম"
+
+#: account/models.py:67
+msgid "photo"
+msgstr "ছবি"
+
+#: account/models.py:73 publication/models.py:33
+msgid "about"
+msgstr "সম্পর্কিত"
+
+#: account/models.py:91
+msgid "my theme"
+msgstr "আমার থিম"
+
+#: account/templates/account/edit.html:5
+msgid "Edit your account"
+msgstr "আপনার অ্যাকাউন্ট সম্পাদনা করুন"
+
+#: account/templates/account/edit.html:17
+#: account/templates/account/edit.html:41
+msgid "Profile"
+msgstr "প্রোফাইল"
+
+#: account/templates/account/edit.html:20
+msgid "Configuration"
+msgstr "কনফিগারেশন"
+
+#: account/templates/account/edit.html:23 blog/templates/blog_base.html:251
+#: blog/templates/blog_base.html:290
+msgid "My Stories"
+msgstr "আমার গল্প"
+
+#: account/templates/account/edit.html:26 blog/templates/blog_base.html:252
+#: blog/templates/blog_base.html:291
+msgid "My Shared"
+msgstr "আমার শেয়ার করা"
+
+#: account/templates/account/edit.html:29
+msgid "They Shared"
+msgstr "তারা শেয়ার করেছে"
+
+#: account/templates/account/edit.html:50
+msgid "Upload"
+msgstr "আপলোড করুন"
+
+#: account/templates/account/edit.html:85
+msgid "Save changes"
+msgstr "পরিবর্তনগুলোর সংরক্ষন"
+
+#: account/templates/account/login.html:25
+#: account/templates/account/login.html:45
+#: account/templates/registration/login.html:4
+#: account/templates/registration/login.html:30
+#: blog/templates/blog_base.html:266
+msgid "Login"
+msgstr "প্রবেশ করুন"
+
+#: account/templates/account/login.html:46
+#: account/templates/registration/login.html:31
+#: blog/templates/blog_base.html:269
+msgid "SignUp"
+msgstr "নিবন্ধন করুন"
+
+#: account/templates/account/me/fallowing/post.html:53
+msgid "Related tags"
+msgstr "সম্পর্কিত ট্যাগ"
+
+#: account/templates/account/me/my_post_list_ajax.html:12
+msgid "delete"
+msgstr "মুছে ফেলা"
+
+#: account/templates/account/me/my_post_list_ajax.html:20
+msgid "Publish now"
+msgstr "এখন প্রকাশ করুন"
+
+#: account/templates/account/me/my_post_list_ajax.html:27
+msgid "Move to Draft"
+msgstr "খসড়াতে যান"
+
+#: account/templates/account/me/my_post_list_ajax.html:33
+#: account/templates/account/me/my_shared_ajax_list.html:29
+#: account/templates/account/me/shared_ajax_list.html:28
+msgid "Edit post"
+msgstr "পোস্ট সম্পাদনা করুন"
+
+#: account/templates/account/me/my_post_list_ajax.html:65
+#: account/templates/account/me/my_shared_ajax_list.html:93
+#: account/templates/account/me/shared_ajax_list.html:72
+#: blog/templates/blog/post_form.html:113
+#: blog/templates/blog/post_update.html:104
+#: blog/templates/blog/translate_update.html:77
+msgid "Publish"
+msgstr "প্রকাশ করুন"
+
+#: account/templates/account/me/my_posts.html:21
+msgid "Published"
+msgstr "প্রকাশিত হয়েছে"
+
+#: account/templates/account/me/my_posts.html:24
+msgid "Drafted"
+msgstr "খসড়া"
+
+#: account/templates/account/me/my_posts.html:27
+msgid "Trashed"
+msgstr "ট্র্যাশ"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Trashing"
+msgstr "ট্র্যাশিং"
+
+#: account/templates/account/me/my_posts.html:96
+msgid "Deleting"
+msgstr "মুছে ফেলা হচ্ছে"
+
+#: account/templates/account/me/my_posts.html:126
+#: account/templates/account/me/my_posts.html:158
+msgid "Publishing!"
+msgstr "প্রকাশনা !"
+
+#: account/templates/account/me/my_posts.html:188
+msgid "Moved to Draft!"
+msgstr "খসড়াতে সরানো হয়েছে!"
+
+#: account/templates/account/me/my_shared.html:17
+msgid "There shared"
+msgstr "সেখানে শেয়ার করেছেন"
+
+#: account/templates/account/me/my_shared.html:74
+msgid "Detached"
+msgstr "বিচ্ছিন্ন"
+
+#: account/templates/account/me/my_shared_ajax_list.html:15
+#: account/templates/account/me/shared_ajax_list.html:14
+msgid "remove yourself from this post"
+msgstr "এই পোস্ট থেকে নিজেকে সরিয়ে নিন"
+
+#: account/templates/account/me/my_shared_ajax_list.html:82
+#: account/templates/account/me/shared_ajax_list.html:62
+#: account/templates/account/user/user_post_list_ajax.html:59
+#: blog/templates/blog/post/detail.html:215
+#: blog/templates/blog/post/list_ajax.html:80
+#: blog/templates/blog/post/list_ajax_similar.html:146
+#: blog/templates/blog/search/list_ajax.html:61
+#, python-format
+msgid "Published at %(post_publish)s"
+msgstr "%(post_publish)s এ প্রকাশিত"
+
+#: account/templates/account/me/shared.html:18
+msgid "My shared"
+msgstr "আমার শেয়ার করা"
+
+#: account/templates/account/me/shared.html:77
+msgid "Detaching"
+msgstr "বিচ্ছিন্ন করা"
+
+#: account/templates/account/register.html:4
+msgid "Create an account"
+msgstr "একটি অ্যাকাউন্ট তৈরি করুন"
+
+#: account/templates/account/register.html:61
+msgid "Create"
+msgstr "সৃষ্টি"
+
+#: account/templates/account/register.html:62
+msgid "Login Here"
+msgstr "এখানে লগইন করুন"
+
+#: account/templates/account/register.html:125
+msgid "This username is not available!"
+msgstr "এই ব্যবহারকারীর নাম উপলব্ধ নয়!"
+
+#: account/templates/account/register.html:132
+msgid "This username is available!"
+msgstr "ব্যবহারকৃত নামটি গ্রহণযোগ্য!"
+
+#: account/templates/account/register.html:136
+msgid "Enter valid username character should be more than 4 letters!"
+msgstr "বৈধ ব্যবহারকারীর নাম লিখুন অক্ষর 4 অক্ষরের বেশি হওয়া উচিত!"
+
+#: account/templates/account/register.html:196
+msgid "This email is not available!"
+msgstr "এই ইমেল উপলব্ধ নয়!"
+
+#: account/templates/account/register.html:201
+msgid "This email is available!"
+msgstr "এই ইমেল উপলব্ধ!"
+
+#: account/templates/account/register_done.html:3
+msgid "Welcome"
+msgstr "স্বাগত"
+
+#: account/templates/account/register_done.html:27
+#, python-format
+msgid ""
+"Welcome, Your email %(new_user_email)s and username is %(new_user_username)s"
+msgstr ""
+"স্বাগতম, আপনার ইমেল %(new_user_email)s এবং ব্যবহারকারীর নাম হল "
+"%(new_user_username)s"
+
+#: account/templates/account/register_done.html:29
+msgid "Your account has been successfully created."
+msgstr "আপনার অ্যাকাউন্ট সফলভাবে তৈরি করা হয়েছে."
+
+#: account/templates/account/register_done.html:30
+msgid "Now your can Login."
+msgstr "এখন আপনি লগইন করতে পারেন।"
+
+#: account/templates/account/register_done.html:32
+msgid "But First you have to Verify your account."
+msgstr "তবে প্রথমে আপনাকে আপনার অ্যাকাউন্ট যাচাই করতে হবে।"
+
+#: account/templates/account/user/follower.html:6
+#: account/templates/account/user/following.html:6
+#: account/templates/account/user/list.html:4
+msgid "Users"
+msgstr "ব্যবহারকারীদের"
+
+#: account/templates/account/user/left_side.html:24
+#: account/templates/account/user/left_side.html:29
+msgid "Follow"
+msgstr "অনুসরণ করুন"
+
+#: account/templates/account/user/left_side.html:24
+msgid "Following"
+msgstr "অনুসরণ করছে"
+
+#: account/templates/account/user/left_side.html:26
+msgid "following"
+msgstr "অনুসরণ"
+
+#: account/templates/account/user/left_side.html:34
+msgid "Followers"
+msgstr "অনুগামী"
+
+#: account/templates/account/user/left_side.html:66
+msgid "Followings"
+msgstr "অনুসরণ"
+
+#: account/templates/account/user/left_side.html:87
+msgid "more"
+msgstr "আরো"
+
+#: account/templates/account/user/list.html:12
+msgid "Users List"
+msgstr "ব্যবহারকারীদের তালিকা"
+
+#: account/templates/account/user/user_post_list_ajax.html:76
+#: blog/templates/blog/post/list_ajax.html:100
+#: blog/templates/blog/post/list_ajax_similar.html:277
+#: blog/templates/blog/search/list_ajax.html:72
+msgid "Read more"
+msgstr "আরও পড়ুন"
+
+#: account/templates/account/utils/delete.html:4
+msgid "Delete Account"
+msgstr "হিসাব মুছে ফেলা"
+
+#: account/templates/registration/login.html:10
+msgid "Login Now"
+msgstr "এখন লগ ইন করুন"
+
+#: account/templates/registration/logout.html:4
+#: account/templates/registration/logout.html:12
+msgid "Logged out"
+msgstr "প্রস্থান"
+
+#: account/templates/registration/logout.html:15
+msgid "You have been successfully logged out."
+msgstr "আপনি সফলভাবে লগ আউট হয়েছে."
+
+#: account/templates/registration/logout.html:16
+msgid "You can Login again."
+msgstr "আপনি আবার লগইন করতে পারেন."
+
+#: account/templates/registration/password_change_done.html:4
+msgid "Password change"
+msgstr "পাসওয়ার্ড পরিবর্তন"
+
+#: account/templates/registration/password_change_done.html:12
+msgid "Password changed"
+msgstr "পাসওয়ার্ড পরিবর্তন"
+
+#: account/templates/registration/password_change_done.html:13
+msgid "Your password has been successfully changed."
+msgstr "আপনার পাসওয়ার্ড সফলভাবে পরিবর্তন করা হয়েছে।"
+
+#: account/templates/registration/password_change_form.html:5
+msgid "Change your password"
+msgstr "আপনার পাসওয়ার্ড পরিবর্তন করুন"
+
+#: account/templates/registration/password_change_form.html:14
+#: account/templates/registration/password_reset_form.html:14
+msgid "Change Password"
+msgstr "পাসওয়ার্ড পরিবর্তন করুন"
+
+#: account/templates/registration/password_change_form.html:36
+#: account/templates/registration/password_reset_form.html:24
+#: blog/templates/blog/comment/replay.html:16
+#: blog/templates/blog/post/detail.html:377
+#: blog/templates/blog/post/detail.html:388
+#: blog/templates/blog/post/detail.html:418
+msgid "Submit"
+msgstr "জমা দিন"
+
+#: account/templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr "পাসওয়ার্ড রিসেট"
+
+#: account/templates/registration/password_reset_complete.html:10
+msgid "Password set"
+msgstr "পাসওয়ার্ড সেট"
+
+#: account/templates/registration/password_reset_complete.html:11
+msgid "Your password has been set."
+msgstr "আপনার পাসওয়ার্ড সেট করা হয়েছে।"
+
+#: account/templates/registration/password_reset_complete.html:12
+msgid " You can Log in now"
+msgstr "আপনি এখন লগ ইন করতে পারেন"
+
+#: account/templates/registration/password_reset_confirm.html:3
+#: account/templates/registration/password_reset_confirm.html:11
+#: account/templates/registration/password_reset_done.html:4
+#: account/templates/registration/password_reset_done.html:12
+msgid "Reset your password"
+msgstr "আপনার পাসওয়ার্ড পুনরায় সেট করুন"
+
+#: account/templates/registration/password_reset_confirm.html:14
+msgid "Please enter your new password twice:"
+msgstr "অনুগ্রহ করে আপনার নতুন পাসওয়ার্ড দুবার লিখুন:"
+
+#: account/templates/registration/password_reset_confirm.html:24
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"পাসওয়ার্ড রিসেট লিঙ্কটি অবৈধ ছিল, সম্ভবত কারণ এটি ইতিমধ্যেই ব্যবহার করা "
+"হয়েছে৷ একটি নতুন পাসওয়ার্ড রিসেট অনুরোধ করুন."
+
+#: account/templates/registration/password_reset_done.html:13
+msgid "We"
+msgstr "আমরা"
+
+#: account/templates/registration/password_reset_done.html:14
+msgid "make sure to check your spam folder."
+msgstr "আপনার স্প্যাম ফোল্ডার চেক করতে ভুলবেন না."
+
+#: account/templates/registration/password_reset_form.html:5
+msgid "Password Reset"
+msgstr "পাসওয়ার্ড রিসেট"
+
+#: account/views.py:82
+msgid "Disabled Account"
+msgstr "অক্ষম অ্যাকাউন্ট"
+
+#: account/views.py:85
+msgid "Invalid login"
+msgstr "অবৈধ লগইন"
+
+#: account/views.py:107
+msgid "User already exists"
+msgstr "ব্যবহারকারী আগে থেকেই আছে"
+
+#: account/views.py:154
+msgid "Profile updated successfully"
+msgstr "প্রোফাইল সফলভাবে আপডেট করা হয়েছে"
+
+#: account/views.py:160
+msgid "Error updating your profile"
+msgstr "আপনার প্রোফাইল আপডেট করার সময় ত্রুটি"
+
+#: account/views.py:559
+msgid "Wrong password"
+msgstr "ভুল গোপন নম্বর"
+
+#: account/views.py:657
+msgid "already removed"
+msgstr "ইতিমধ্যে সরানো হয়েছে"
+
+#: blog/forms.py:69
+msgid "No Publication"
+msgstr "প্রকাশনা নেই"
+
+#: blog/forms.py:97 blog/forms.py:241
+msgid "Title"
+msgstr "শিরোনাম"
+
+#: blog/forms.py:102 blog/forms.py:246
+msgid "Type content here."
+msgstr "এখানে বিষয়বস্তু টাইপ করুন."
+
+#: blog/forms.py:110 blog/forms.py:199 blog/forms.py:254
+#: blog/templates/blog/post_form.html:70
+#: blog/templates/blog/post_update.html:62 blog/templates/blog/tag/list.html:4
+#: blog/templates/blog/translate_update.html:59 publication/forms.py:50
+#: publication/forms.py:104
+msgid "Tags"
+msgstr "ট্যাগ"
+
+#: blog/forms.py:178
+msgid "Text here"
+msgstr "এখানে লিখুন"
+
+#: blog/forms.py:193 publication/forms.py:44 publication/forms.py:98
+msgid "Name"
+msgstr "নাম"
+
+#: blog/forms.py:212 publication/forms.py:63 publication/forms.py:117
+msgid "What's your Publication about of."
+msgstr "আপনার প্রকাশনা কি সম্পর্কে."
+
+#: blog/models.py:83 blog/models.py:163
+msgid "title"
+msgstr "শিরোনাম"
+
+#: blog/models.py:89
+msgid "subtitle"
+msgstr "সাবটাইটেল"
+
+#: blog/models.py:95 blog/models.py:117 blog/models.py:180
+msgid "cover"
+msgstr "আবরণ"
+
+#: blog/models.py:122
+msgid "photographer name"
+msgstr "ফটোগ্রাফারের নাম"
+
+#: blog/models.py:127
+msgid "photographer profile url"
+msgstr "ফটোগ্রাফার প্রোফাইল ইউআরএল"
+
+#: blog/models.py:132
+msgid "sha_256"
+msgstr "sha_256"
+
+#: blog/models.py:169
+msgid "category"
+msgstr "বিভাগ"
+
+#: blog/models.py:177
+msgid "publication"
+msgstr "প্রকাশনা"
+
+#: blog/models.py:189
+msgid "cover image"
+msgstr "কভার ইমেজ"
+
+#: blog/models.py:201
+msgid "author"
+msgstr "লেখক"
+
+#: blog/models.py:207
+msgid "other authors"
+msgstr "অন্যান্য লেখক"
+
+#: blog/templates/blog/comment/replay.html:5
+#: blog/templates/blog/post/detail.html:404
+msgid "Replay:"
+msgstr "আবার দেখাও:"
+
+#: blog/templates/blog/comment/update.html:6
+msgid "comments"
+msgstr "মন্তব্য"
+
+#: blog/templates/blog/comment/update.html:16
+msgid "title:"
+msgstr "শিরোনাম:"
+
+#: blog/templates/blog/comment/update.html:22
+msgid "Update"
+msgstr "হালনাগাদ"
+
+#: blog/templates/blog/post/detail.html:85
+msgid " helps you remember more"
+msgstr "আপনাকে আরও মনে রাখতে সাহায্য করে"
+
+#: blog/templates/blog/post/detail.html:184
+msgid "edit translated"
+msgstr "অনুবাদ সম্পাদনা করুন"
+
+#: blog/templates/blog/post/detail.html:218
+msgid "Its a draft you can publish and edit here"
+msgstr "এটি একটি খসড়া যা আপনি এখানে প্রকাশ এবং সম্পাদনা করতে পারেন"
+
+#: blog/templates/blog/post/detail.html:250
+msgid "Sources"
+msgstr "সূত্র"
+
+#: blog/templates/blog/post/detail.html:313
+msgid "Edit"
+msgstr "সম্পাদনা করুন"
+
+#: blog/templates/blog/post/detail.html:358
+msgid "Reply"
+msgstr "উত্তর দিন"
+
+#: blog/templates/blog/post/detail.html:371
+#: blog/templates/blog/post/detail.html:382
+msgid "Hit a comment"
+msgstr "একটি মন্তব্য আঘাত"
+
+#: blog/templates/blog/post/detail.html:415
+msgid "Comment here"
+msgstr "এখানে মন্তব্য করুন"
+
+#: blog/templates/blog/post/detail.html:445
+#: blog/templates/blog/post/detail.html:615
+msgid "please insert some comment"
+msgstr "কিছু মন্তব্য সন্নিবেশ করুন"
+
+#: blog/templates/blog/post/detail.html:459
+msgid "Similar posts"
+msgstr "অনুরূপ পোস্ট"
+
+#: blog/templates/blog/post_form.html:7
+msgid "Create post"
+msgstr "পোস্ট তৈরি করুন"
+
+#: blog/templates/blog/post_form.html:67
+#: blog/templates/blog/post_update.html:59
+#: blog/templates/blog/translate_update.html:56
+msgid "Please provie some tags"
+msgstr "কিছু ট্যাগ প্রদান করুন"
+
+#: blog/templates/blog/post_form.html:78
+#: blog/templates/blog/post_update.html:70
+msgid "Please provide when to publish"
+msgstr "কখন প্রকাশ করবেন অনুগ্রহ করে জানান"
+
+#: blog/templates/blog/post_form.html:90
+#: blog/templates/blog/post_update.html:82
+#: blog/templates/blog/translate_update.html:67
+msgid "Upload cover image"
+msgstr "কভার ইমেজ আপলোড করুন"
+
+#: blog/templates/blog/post_form.html:93
+#: blog/templates/blog/post_update.html:85
+#: blog/templates/blog/translate_update.html:70
+msgid "Upload (Click here)"
+msgstr "আপলোড করুন (এখানে ক্লিক করুন)"
+
+#: blog/templates/blog/post_form.html:99
+#: blog/templates/blog/post_update.html:91
+msgid "Share to edit with others"
+msgstr "অন্যদের সাথে সম্পাদনা করতে শেয়ার করুন"
+
+#: blog/templates/blog/post_form.html:105
+#: blog/templates/blog/post_update.html:97
+msgid "If publication?"
+msgstr "যদি প্রকাশনা?"
+
+#: blog/templates/blog/post_form.html:229
+msgid "please insert valid content"
+msgstr "বৈধ বিষয়বস্তু সন্নিবেশ করুন"
+
+#: blog/templates/blog/post_form.html:235
+msgid "please insert valid title"
+msgstr "বৈধ শিরোনাম সন্নিবেশ করুন"
+
+#: blog/templates/blog/post_update.html:7
+#: blog/templates/blog/translate_update.html:7
+msgid "Update Post"
+msgstr "পোস্ট আপডেট করুন"
+
+#: blog/templates/blog/search/list_ajax.html:88
+msgid "There are no post related this query"
+msgstr "এই প্রশ্ন সম্পর্কিত কোন পোস্ট নেই"
+
+#: blog/templates/blog/search/search.html:6
+#: blog/templates/blog/search/search.html:42 blog/templates/blog_base.html:227
+#: blog/templates/blog_base.html:228
+msgid "Search"
+msgstr "অনুসন্ধান করুন"
+
+#: blog/templates/blog/search/search.html:17
+msgid "Post Containing"
+msgstr "পোস্ট ধারণকারী"
+
+#: blog/templates/blog/search/search.html:27
+msgid "Search again"
+msgstr "আবার খুঁজুন"
+
+#: blog/templates/blog/tag/list.html:10
+msgid "All tags"
+msgstr "সব ট্যাগ"
+
+#: blog/templates/blog_base.html:137
+msgid "Posts"
+msgstr "পোস্ট"
+
+#: blog/templates/blog_base.html:140 blog/templates/blog_base.html:250
+#: blog/templates/blog_base.html:289
+msgid "Create Post"
+msgstr "পোস্ট তৈরি করুন"
+
+#: blog/templates/blog_base.html:247 blog/templates/blog_base.html:286
+msgid "Manage profile"
+msgstr "প্রোফাইল পরিচালনা করুন"
+
+#: blog/templates/blog_base.html:248 blog/templates/blog_base.html:287
+msgid "Change password"
+msgstr "পাসওয়ার্ড পরিবর্তন করুন"
+
+#: blog/templates/blog_base.html:249 blog/templates/blog_base.html:288
+msgid "Logout"
+msgstr "প্রস্থান"
+
+#: blog/templates/blog_base.html:254 blog/templates/blog_base.html:293
+msgid "My Publications"
+msgstr "আমার প্রকাশনা"
+
+#: blog/templates/blog_base.html:255 blog/templates/blog_base.html:294
+msgid "Create Publication"
+msgstr "প্রকাশনা তৈরি করুন"
+
+#: blog/templates/blog_base.html:319
+msgid "About us"
+msgstr "আমাদের সম্পর্কে"
+
+#: blog/templates/blog_base.html:324
+msgid "Copyright"
+msgstr "কপিরাইট"
+
+#: blog/views.py:460
+msgid "Your are not authorized to edit :)"
+msgstr "আপনি সম্পাদনা করার জন্য অনুমোদিত নয় :)"
+
+#: blog/views.py:567
+msgid "No posts found ..."
+msgstr "কোনো পোস্ট পাওয়া যায়নি ..."
+
+#: comment/views.py:69
+msgid "deleted"
+msgstr "মুছে ফেলা হয়েছে"
+
+#: image_uploader/views.py:65
+msgid "Page not found."
+msgstr "পৃষ্ঠা খুঁজে পাওয়া যায়নি."
+
+#: publication/models.py:11
+msgid "name"
+msgstr "নাম"
+
+#: publication/models.py:13
+msgid "image"
+msgstr "ইমেজ"
+
+#: publication/models.py:17
+msgid "slug"
+msgstr "স্লাগ"
+
+#: publication/models.py:20
+msgid "tags"
+msgstr "ট্যাগ"
+
+#: publication/models.py:26
+msgid "publisher"
+msgstr "প্রকাশক"
+
+#: publication/models.py:31
+msgid "writer"
+msgstr "লেখক"

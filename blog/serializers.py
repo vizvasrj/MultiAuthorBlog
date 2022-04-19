@@ -20,6 +20,7 @@ from translates.russian_translate.models import RussianTranslatedPost
 from translates.spanish_translate.models import SpanishTranslatedPost
 from translates.vietnamese_translate.models import VietnameseTranslatedPost
 from translates.english_translate.models import EnglishTranslatedPost
+from translates.bengali_translate.models import BengaliTranslatedPost
 from . import views
 
 
@@ -160,6 +161,11 @@ class VIpost(serializers.ModelSerializer):
         model = VietnameseTranslatedPost
         fields = ('id',)
 
+class BNpost(serializers.ModelSerializer):
+    class Meta:
+        model = BengaliTranslatedPost
+        fields = ('id',)
+
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -168,7 +174,6 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = ('image', 'creator_name', 'creator_url', )
 
 
-from drf_writable_nested.serializers import WritableNestedModelSerializer
 
 class PostCURDSerializer(serializers.ModelSerializer):
     title = serializers.CharField(
@@ -198,6 +203,7 @@ class PostCURDSerializer(serializers.ModelSerializer):
     russian_translated_post = RUpost(required=False, many=True, read_only=True)
     spanish_translated_post = ESpost(required=False, many=True, read_only=True)
     vietnamese_translated_post = VIpost(required=False, many=True, read_only=True)
+    bengali_translated_post = BNpost(required=False, many=True, read_only=True)
     t = serializers.CharField(
         max_length=20,
         allow_null=True,
@@ -229,6 +235,7 @@ class PostCURDSerializer(serializers.ModelSerializer):
             'russian_translated_post',
             'spanish_translated_post',
             'vietnamese_translated_post',
+            'bengali_translated_post',
             't',
             'scrape_url',
             )
@@ -344,6 +351,11 @@ class VIaudio(serializers.ModelSerializer):
         model = VietnameseTranslatedPost
         fields = ('id', 'meta_description')
 
+class BNaudio(serializers.ModelSerializer):
+    class Meta:
+        model = BengaliTranslatedPost
+        fields = ('id', 'meta_description')
+
 class OnlyAudioShow(serializers.ModelSerializer):
     # title = serializers.CharField(
     #     max_length=256, read_only=True
@@ -366,6 +378,7 @@ class OnlyAudioShow(serializers.ModelSerializer):
     spanish_translated_post = ESpost(required=False, many=True, read_only=True)
 
     vietnamese_translated_post = VIaudio(required=False, many=True, read_only=True)
+    bengali_translated_post = BNpost(required=False, many=True, read_only=True)
     t = serializers.CharField(
         max_length=20,
         allow_null=True,
@@ -393,6 +406,7 @@ class OnlyAudioShow(serializers.ModelSerializer):
             'russian_translated_post',
             'spanish_translated_post',
             'vietnamese_translated_post',
+            'bengali_translated_post',
             't',
             )
 

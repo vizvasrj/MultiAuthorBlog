@@ -5,7 +5,10 @@ def en_t(tag=None, post=None):
         return EnglishTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return EnglishTranslatedTag.objects.filter(tag__post=post.id)
+        if EnglishTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return EnglishTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def en_p(post=None):

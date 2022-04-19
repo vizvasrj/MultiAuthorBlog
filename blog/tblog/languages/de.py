@@ -5,7 +5,10 @@ def de_t(tag=None, post=None):
         return GermanTranslatedTag.objects.get(tag=tag)
     elif post:
         # this will return multiple tags
-        return GermanTranslatedTag.objects.filter(tag__post=post.id)
+        if GermanTranslatedTag.objects.filter(tag__post=post.id).exists():
+            return GermanTranslatedTag.objects.filter(tag__post=post.id)
+        else:
+            return post.tags.all()
 
 
 def de_p(post=None):

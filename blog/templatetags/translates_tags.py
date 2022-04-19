@@ -5,6 +5,7 @@ register = template.Library()
 @register.filter(is_safe=True, name='tem_tags')
 def tem_tags(post, language):
     # from termcolor import colored
+    # print(colored('colored Val', 'red'))
     # print(colored(post, 'yellow'))
     # print(colored(language, 'magenta'))
     from blog.tblog.utils import get_tpost_ttags
