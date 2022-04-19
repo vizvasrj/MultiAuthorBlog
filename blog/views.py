@@ -45,7 +45,6 @@ from .utils import language_in_post_detail, language_in_post_tags
 # 3rd party
 from taggit.models import Tag
 import redis
-from nltk.corpus import wordnet
 from django.utils import translation
 import requests
 from blog.tblog.utils import get_tpost_ttags
