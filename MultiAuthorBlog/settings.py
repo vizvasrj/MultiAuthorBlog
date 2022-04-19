@@ -73,7 +73,7 @@ INSTALLED_APPS = [
     'actions',
     'parler',
     'django_user_agents',
-    'django_hosts',
+    # 'django_hosts',
     # 'django_social_share',
     # 'debug_toolbar',
     'rest_framework',
@@ -115,7 +115,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django_hosts.middleware.HostsRequestMiddleware',
+    # 'django_hosts.middleware.HostsRequestMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -129,7 +129,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
     # 'account.middleware.subdomain_course_middleware',
-    'django_hosts.middleware.HostsResponseMiddleware',
+    # 'django_hosts.middleware.HostsResponseMiddleware',
     'crum.CurrentRequestUserMiddleware',
     'blog.middelware.language_change_middleware'
 ]
