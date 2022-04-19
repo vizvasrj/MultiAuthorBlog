@@ -10,7 +10,7 @@ from django.core.signals import request_finished
 from unidecode import unidecode
 
 from .models import Post
-from .tasks import translate_post
+# from .tasks import translate_post
 # the translate function importing
 
 
