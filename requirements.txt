@@ -34,11 +34,12 @@ django-redis==5.2.0
 django-rest-framework==0.1.0
 django-select2==7.10.0
 django-taggit==2.1.0
--e git+https://github.com/iarp/django-taggit-autosuggest.git@a5370a0979e533ec7a9362c41bd43e4e5cc89fd6#egg=django_taggit_autosuggest
+-e git+https://github.com/vizvasrj/django-taggit-autosuggest.git@09fd28bbc67344dc2299566144ce44962f8340ff#egg=django_taggit_autosuggest
 django-user-agents==0.4.0
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.1.0
 easy-thumbnails==2.8.1
+googleapis-common-protos==1.56.0
 grpcio==1.44.0
 grpcio-status==1.44.0
 idna==3.3
