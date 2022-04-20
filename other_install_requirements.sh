@@ -1,8 +1,8 @@
-sudo apt-get install python-enchant
-import nltk
-nltk.download('wordnet')
+# sudo apt-get install python-enchant
+# import nltk
+# nltk.download('wordnet')
 sudo apt install redis
-sudo apt install rabbitmq-server
+# sudo apt install rabbitmq-server
 
 server {
     server_name vizvasrj.com www.vizvasrj.com;
