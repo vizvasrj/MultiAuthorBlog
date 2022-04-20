@@ -26,8 +26,6 @@ urlpatterns = i18n_patterns(
     path('', include('account.urls')),
     # path('', post_list),
     path('blog/', include('blog.urls')),
-    # path('editorjs/', include('django_editorjs_fields.urls')),
-    # path('ckeditor/', include('ckeditor_uploader.urls')),
     path('select2/', include('django_select2.urls')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
     path('about/', include('about.urls')),
@@ -63,12 +61,6 @@ urlpatterns += [
     path('api9006912014/', ApiRoot.as_view(), name='api-root'),
     path('comment/', include('comment.urls')),
 
-    # path(
-    #     'sitemap.xml',
-    #     sitemap, {
-    #         'sitemaps': sitemaps
-    #         }, name='django.contrib.sitemaps.views.sitemap'
-    # ),
     path('sitemap/', include('sitemap.urls')),
     path('robots.txt', robots_txt, name='robots_txt'),
     path('comments/', include('comment.urls')),
