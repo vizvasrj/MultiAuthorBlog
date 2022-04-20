@@ -34,7 +34,6 @@ django-redis==5.2.0
 django-rest-framework==0.1.0
 django-select2==7.10.0
 django-taggit==2.1.0
--e git+https://github.com/vizvasrj/django-taggit-autosuggest.git@09fd28bbc67344dc2299566144ce44962f8340ff#egg=django_taggit_autosuggest
 django-user-agents==0.4.0
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.1.0
